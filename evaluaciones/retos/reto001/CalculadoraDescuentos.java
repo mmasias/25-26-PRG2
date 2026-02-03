@@ -109,4 +109,12 @@ public class CalculadoraDescuentos {
         }
         return total;
     }
+
+    static int calcularCantidad(int[] cantidades, int n) {
+        int total = 0;
+        for (int i = 0; i < n; i++) {
+            total += cantidades[i];
+        }
+        return total;
+    }
 }
