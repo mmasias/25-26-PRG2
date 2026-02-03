@@ -17,11 +17,9 @@ public class CalculadoraDescuentos {
             if (menuOpt == 2) {
                 System.out.println("Saliendo del sistema.");
                 sistemaActivo = false;
-                continue;
             }
             else if (menuOpt != 1) {
                 System.out.println("Opcion no valida.");
-                continue;
             }
             
             String[] nombresProductos = new String[10];
