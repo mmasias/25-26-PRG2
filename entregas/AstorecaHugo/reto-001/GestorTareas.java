@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class GestorTareas {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         String[] tareas = new String[10];
         boolean[] completadas = new boolean[10];
         int numTareas = 0;
@@ -16,13 +16,13 @@ public class GestorTareas {
             System.out.println("[4] Ver estadisticas");
             System.out.println("[5] Salir");
             System.out.print("Opcion: ");
-            int opcion = sc.nextInt();
-            sc.nextLine();
+            int opcion = scanner.nextInt();
+            scanner.nextLine();
 
             if (opcion == 1) {
                 if (numTareas < 10) {
                     System.out.print("Descripcion de la nueva tarea: ");
-                    String d = sc.nextLine();
+                    String d = scanner.nextLine();
                     tareas[numTareas] = d;
                     completadas[numTareas] = false;
                     numTareas++; // El contador se incrementa
@@ -37,7 +37,7 @@ public class GestorTareas {
                 }
                 if (numTareas > 0) {
                     System.out.print("Numero de tarea a marcar como completada: ");
-                    int num = sc.nextInt();
+                    int num = scanner.nextInt();
                     if (num >= 1 && num <= numTareas) {
                         if (!completadas[num - 1]) {
                             completadas[num - 1] = true;
@@ -85,6 +85,6 @@ public class GestorTareas {
                 System.out.println("Opcion no valida. Intente de nuevo.");
             }
         }
-        sc.close();
+        scanner.close();
     }
 }
