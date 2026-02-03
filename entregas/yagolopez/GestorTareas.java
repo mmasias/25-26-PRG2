@@ -4,6 +4,15 @@ public class GestorTareas {
 
     static final int MAX_TAREAS = 10;
 
+    static void mostrarMenu() {
+        System.out.println("[1] Anadir tarea");
+        System.out.println("[2] Marcar tarea como completada");
+        System.out.println("[3] Ver tareas pendientes");
+        System.out.println("[4] Ver estadisticas");
+        System.out.println("[5] Salir");
+        System.out.print("Opcion: ");
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String[] tareas = new String[MAX_TAREAS];
@@ -15,12 +24,7 @@ public class GestorTareas {
         boolean salir = false;
 
         while (!salir) {
-            System.out.println("[1] Anadir tarea");
-            System.out.println("[2] Marcar tarea como completada");
-            System.out.println("[3] Ver tareas pendientes");
-            System.out.println("[4] Ver estadisticas");
-            System.out.println("[5] Salir");
-            System.out.print("Opcion: ");
+            mostrarMenu();
             int opcion = sc.nextInt();
             sc.nextLine();
 
@@ -38,7 +42,8 @@ public class GestorTareas {
             } else if (opcion == 2) {
                 System.out.println("Tareas para Marcar");
                 for (int i = 0; i < numTareas; i++) {
-                    System.out.println((i + 1) + ". " + tareas[i] + " [" + (completadas[i] ? "Completada" : "Pendiente") + "]");
+                    System.out.println((i + 1) + ". " + tareas[i] + " [" +
+                            (completadas[i] ? "Completada" : "Pendiente") + "]");
                 }
                 if (numTareas > 0) {
                     System.out.print("Numero de tarea a marcar como completada: ");
