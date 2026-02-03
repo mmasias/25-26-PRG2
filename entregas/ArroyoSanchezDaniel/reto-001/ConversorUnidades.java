@@ -9,10 +9,10 @@ public class ConversorUnidades {
         System.out.println("[2] Peso");
         System.out.println("[3] Temperatura");
         System.out.print("Tipo de conversion: ");
-        int t = sc.nextInt();
+        int unidadElegida = sc.nextInt();
         
 
-        if (t == 1) {
+        if (unidadElegida == 1) {
             System.out.println("Conversion de longitud:");
             System.out.println("[1] Metros a Kilometros");
             System.out.println("[2] Kilometros a Metros");
@@ -41,7 +41,7 @@ public class ConversorUnidades {
                 System.out.println("Opcion no valida");
                 f = false;
             }
-        } else if (t == 2) {
+        } else if (unidadElegida == 2) {
             System.out.println("Conversion de peso:");
             System.out.println("[1] Kilogramos a Gramos");
             System.out.println("[2] Gramos a Kilogramos");
@@ -70,7 +70,7 @@ public class ConversorUnidades {
                 System.out.println("Opcion no valida");
                 f = false;
             }
-        } else if (t == 3) {
+        } else if (unidadElegida == 3) {
             System.out.println("Conversion de temperatura:");
             System.out.println("[1] Celsius a Fahrenheit");
             System.out.println("[2] Fahrenheit a Celsius");
@@ -99,3 +99,4 @@ public class ConversorUnidades {
     }
 
 }
+
