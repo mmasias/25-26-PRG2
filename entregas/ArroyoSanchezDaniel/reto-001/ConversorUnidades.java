@@ -97,8 +97,12 @@ public class ConversorUnidades {
             System.out.println("Tipo no valido");
         }
     }
+    private static int eleccionUnidad() {
+        
+    }
 
 }
+
 
 
 
