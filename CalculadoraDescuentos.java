@@ -50,11 +50,11 @@ public class CalculadoraDescuentos {
             }
 
            
-            double p_total = 0;
-            int c_total = 0;
+            double precioTotalOriginal = 0;
+            int precioTotalOriginal = 0;
             for(int i=0; i < numeroProductos; i++) {
-                p_total += precios_p[i] * cants_p[i];
-                c_total += cants_p[i];
+                precioTotalOriginal += precios_p[i] * cants_p[i];
+                precioTotalOriginal += precios_p[i] * cants_p[i];
             }
 
             System.out.println("Configuracion del Descuento");
@@ -64,7 +64,7 @@ public class CalculadoraDescuentos {
             System.out.print("Es temporada de rebajas? (s/n): ");
             char r = sc.next().charAt(0);
             
-            double pf = p_total;
+            double pf = precioTotalOriginal;
 
             if (t == 1) { 
                 if (r == 's') { pf = pf - (pf * 0.10); }
@@ -88,12 +88,12 @@ public class CalculadoraDescuentos {
             }
 
             System.out.println("Resumen de Compra");
-            System.out.println("Precio original total: " + p_total + " euros");
-            System.out.println("Numero total de productos: " + c_total);
+            System.out.println("Precio original total: " + precioTotalOriginal + " euros");
+            System.out.println("Numero total de productos: " + numeroProductos);
             System.out.println("Precio final con descuento: " + pf + " euros");
-            System.out.println("Ahorro total: " + (p_total - pf) + " euros");
-            if (p_total > 0) {
-                double porcentaje = ((p_total - pf) / p_total) * 100;
+            System.out.println("Ahorro total: " + (precioTotalOriginal - pf) + " euros");
+            if (precioTotalOriginal > 0) {
+                double porcentaje = ((precioTotalOriginal - pf) / precioTotalOriginal) * 100;
                 System.out.println("Porcentaje de ahorro: " + porcentaje + "%");
             }
         }
