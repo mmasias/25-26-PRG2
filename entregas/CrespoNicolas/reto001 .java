@@ -3,17 +3,24 @@ import java.util.Scanner;
 class GestorTarea {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
+        final int MAX_TAREAS = 10;
+        final int ANADIR_TAREA = 1;
+        final int MARCAR_COMPLETADA = 2;
+        final int VER_PENDIENTES = 3;
+        final int VER_ESTADISTICAS = 4;
+        final int SALIR = 5;
+
         String[] tareas = new String[10];
         boolean[] completadas = new boolean[10];
         int numTareas = 0;
-        final int MAX_TAREAS = 10;
         int opcion = 0;
         System.out.println("Gestor de Tareas v1.0");
-
-        while (true) {
+        booolean salio = false;
+        while (!salio) {
            opcion= Impresor (sc, opcion);
 
-            if (opcion == 1) {
+            if (opcion == ANADIR_TAREA) {
                 if (numTareas < MAX_TAREAS) {
                     System.out.print("Descripcion de la nueva tarea: ");
                     String d = sc.nextLine();
@@ -24,7 +31,7 @@ class GestorTarea {
                 } else {
                     System.out.println("ERROR: No se pueden anadir mas tareas, limite alcanzado.");
                 }
-            } else if (opcion == 2) {
+            } else if (opcion == MARCAR_COMPLETADA) {
                 System.out.println("Tareas para Marcar");
                 for (int i = 0; i < numTareas; i++) {
                     System.out.println((i + 1) + ". " + tareas[i] + " [" + (completadas[i] ? "Completada" : "Pendiente") + "]");
@@ -45,7 +52,7 @@ class GestorTarea {
                 } else {
                     System.out.println("No hay tareas para marcar.");
                 }
-            } else if (opcion == 3) {
+            } else if (opcion == VER_PENDIENTES) {
                 System.out.println("Tareas Pendientes");
                 boolean hayPendientes = false;
                 for (int i = 0; i < numTareas; i++) {
@@ -57,7 +64,7 @@ class GestorTarea {
                 if (!hayPendientes) {
                     System.out.println("(No hay tareas pendientes)");
                 }
-            } else if (opcion == 4) {
+            } else if (opcion == VER_ESTADISTICAS) {
                 System.out.println("Estadisticas");
                 int contCompletadas = 0;
                 for (int i = 0; i < numTareas; i++) {
@@ -74,7 +81,7 @@ class GestorTarea {
                 }
             } else if (opcion == 5) {
                 System.out.println("Saliendo del gestor de tareas.");
-                break;
+                salio = true;
             } else {
                 System.out.println("Opcion no valida. Intente de nuevo.");
             }
