@@ -11,7 +11,7 @@ public class ConversorUnidades {
         System.out.println("[2] Peso");
         System.out.println("[3] Temperatura");
         System.out.print("Tipo de conversion: ");
-        int t = sc.nextInt();
+        int t = scanner.nextInt();
         c++;
 
         if (t == 1) {
@@ -23,9 +23,9 @@ public class ConversorUnidades {
             System.out.println("[5] Centimetros a Pulgadas");
             System.out.println("[6] Pulgadas a Centimetros");
             System.out.print("Opcion: ");
-            int o = sc.nextInt();
+            int o = scanner.nextInt();
             System.out.print("Valor: ");
-            double v = sc.nextDouble();
+            double v = scanner.nextDouble();
 
             if (o == 1) {
                 System.out.println(v + " m = " + (v / 1000) + " km");
@@ -52,9 +52,9 @@ public class ConversorUnidades {
             System.out.println("[5] Gramos a Onzas");
             System.out.println("[6] Onzas a Gramos");
             System.out.print("Opcion: ");
-            int o = sc.nextInt();
+            int o = scanner.nextInt();
             System.out.print("Valor: ");
-            double v = sc.nextDouble();
+            double v = scanner.nextDouble();
 
             if (o == 1) {
                 System.out.println(v + " kg = " + (v * 1000) + " g");
@@ -79,9 +79,9 @@ public class ConversorUnidades {
             System.out.println("[3] Celsius a Kelvin");
             System.out.println("[4] Kelvin a Celsius");
             System.out.print("Opcion: ");
-            int o = sc.nextInt();
+            int o = scanner.nextInt();
             System.out.print("Valor: ");
-            double v = sc.nextDouble();
+            double v = scanner.nextDouble();
 
             if (o == 1) {
                 System.out.println(v + " C = " + (v * 9 / 5 + 32) + " F");
