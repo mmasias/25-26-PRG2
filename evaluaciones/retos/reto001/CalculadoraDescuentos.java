@@ -68,15 +68,9 @@ public class CalculadoraDescuentos {
             
             double pf = aplicarDescuentos(p_total, c_total, t, r);
 
-            System.out.println("Resumen de Compra");
-            System.out.println("Precio original total: " + p_total + " euros");
-            System.out.println("Numero total de productos: " + c_total);
-            System.out.println("Precio final con descuento: " + pf + " euros");
-            System.out.println("Ahorro total: " + (p_total - pf) + " euros");
-            if (p_total > 0) {
-                double porcentaje = ((p_total - pf) / p_total) * 100;
-                System.out.println("Porcentaje de ahorro: " + porcentaje + "%");
-            }
+            mostrarResumen(p_total, c_total, pf);
+
+            
         }
         sc.close();
     }
@@ -125,5 +119,13 @@ public class CalculadoraDescuentos {
         }
 
         return pf;
+    }
+
+    static void mostrarResumen(double total, int cant, double finalP) {
+        System.out.println("\nResumen de Compra");
+        System.out.println("Total original: " + total);
+        System.out.println("Cantidad productos: " + cant);
+        System.out.println("Precio final: " + finalP);
+        System.out.println("Ahorro: " + (total - finalP));
     }
 }
