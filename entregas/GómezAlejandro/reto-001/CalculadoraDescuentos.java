@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class CalculadoraDescuentos {
 
+    static final int MAX_PRODUCTOS = 10;
+
     static double calcularPrecioTotal(double[] precios, int[] cantidades, int n) {
         double total = 0;
         for (int i = 0; i < n; i++) {
@@ -21,11 +23,11 @@ public class CalculadoraDescuentos {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        double[] precios = new double[10];
-        int[] cantidades = new int[10];
+        double[] precios = new double[MAX_PRODUCTOS];
+        int[] cantidades = new int[MAX_PRODUCTOS];
         int numProductos = 0;
 
-        while (numProductos < 10) {
+        while (numProductos < MAX_PRODUCTOS) {
             System.out.print("Precio: ");
             precios[numProductos] = sc.nextDouble();
             System.out.print("Cantidad: ");
@@ -34,11 +36,9 @@ public class CalculadoraDescuentos {
             numProductos++;
         }
 
-        double precioTotal = calcularPrecioTotal(precios, cantidades, numProductos);
-        int cantidadTotal = calcularCantidadTotal(cantidades, numProductos);
-
-        System.out.println("Precio total: " + precioTotal);
-        System.out.println("Cantidad total: " + cantidadTotal);
+        System.out.println(
+            calcularPrecioTotal(precios, cantidades, numProductos)
+        );
 
         sc.close();
     }
