@@ -2,15 +2,9 @@ import java.util.Scanner;
 
 public class ConversorUnidades {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         boolean f = true;
-        System.out.println("Conversor de Unidades - Version 2.1");
-        System.out.println("[1] Longitud");
-        System.out.println("[2] Peso");
-        System.out.println("[3] Temperatura");
-        System.out.print("Tipo de conversion: ");
-        int unidadElegida = sc.nextInt();
-        
+        int unidadElegida = eleccionUnidad();
+        System.out.println("Has elegido la opción: " + unidadElegida);
 
         if (unidadElegida == 1) {
             System.out.println("Conversion de longitud:");
@@ -98,10 +92,18 @@ public class ConversorUnidades {
         }
     }
     private static int eleccionUnidad() {
-        
+       Scanner sc = new Scanner(System.in);
+        System.out.println("Conversor de Unidades - Version 2.1");
+        System.out.println("[1] Longitud");
+        System.out.println("[2] Peso");
+        System.out.println("[3] Temperatura");
+        System.out.print("Tipo de conversion: ");
+        int unidadElegida = scanner.nextInt();
+        return unidadElegida; 
     }
 
 }
+
 
 
 
