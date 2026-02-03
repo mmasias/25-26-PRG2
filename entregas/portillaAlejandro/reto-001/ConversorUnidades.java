@@ -34,22 +34,22 @@ public class ConversorUnidades {
         System.out.println("[5] Centimetros a Pulgadas");
         System.out.println("[6] Pulgadas a Centimetros");
         System.out.print("Opcion: ");
-        int o = scanner.nextInt();
+        int opcion = scanner.nextInt();
         System.out.print("Valor: ");
-        double v = scanner.nextDouble();
+        double valor = scanner.nextDouble();
 
-        if (o == 1) {
-            System.out.println(v + " m = " + (v / 1000) + " km");
-        } else if (o == 2) {
-            System.out.println(v + " km = " + (v * 1000) + " m");
-        } else if (o == 3) {
-            System.out.println(v + " m = " + (v * 0.000621371) + " mi");
-        } else if (o == 4) {
-            System.out.println(v + " mi = " + (v * 1609.34) + " m");
-        } else if (o == 5) {
-            System.out.println(v + " cm = " + (v * 0.393701) + " in");
-        } else if (o == 6) {
-            System.out.println(v + " in = " + (v * 2.54) + " cm");
+        if (opcion == 1) {
+            System.out.println(valor + " m = " + (valor / 1000) + " km");
+        } else if (opcion == 2) {
+            System.out.println(valor + " km = " + (valor * 1000) + " m");
+        } else if (opcion == 3) {
+            System.out.println(valor + " m = " + (valor * 0.000621371) + " mi");
+        } else if (opcion == 4) {
+            System.out.println(valor + " mi = " + (valor * 1609.34) + " m");
+        } else if (opcion == 5) {
+            System.out.println(valor + " cm = " + (valor * 0.393701) + " in");
+        } else if (opcion == 6) {
+            System.out.println(valor + " in = " + (valor * 2.54) + " cm");
         } else {
             System.out.println("Opcion no valida");
         }
