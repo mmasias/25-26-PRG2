@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class ConversorUnidades {
     public static void main(String[] args) {
-        boolean f = true;
         int unidadElegida = eleccionUnidad();
         System.out.println("Has elegido la opción: " + unidadElegida);
 
@@ -33,7 +32,7 @@ public class ConversorUnidades {
                 System.out.println(valorElegido + " in = " + (valorElegido * 2.54) + " cm");
             } else {
                 System.out.println("Opcion no valida");
-                f = false;
+                
             }
         } else if (unidadElegida == 2) {
             System.out.println("Conversion de peso:");
@@ -46,7 +45,7 @@ public class ConversorUnidades {
             System.out.print("Opcion: ");
             int opcionElegida = sc.nextInt();
             System.out.print("Valor: ");
-            double v = sc.nextDouble();
+            double valorElegido = sc.nextDouble();
 
             if (o == 1) {
                 System.out.println(valorElegido + " kg = " + (valorElegido * 1000) + " g");
@@ -62,7 +61,7 @@ public class ConversorUnidades {
                 System.out.println(valorElegido + " oz = " + (valorElegido * 28.3495) + " g");
             } else {
                 System.out.println("Opcion no valida");
-                f = false;
+                
             }
         } else if (unidadElegida == 3) {
             System.out.println("Conversion de temperatura:");
@@ -73,7 +72,7 @@ public class ConversorUnidades {
             System.out.print("Opcion: ");
             int opcionElegida = sc.nextInt();
             System.out.print("Valor: ");
-            double v = sc.nextDouble();
+            double valorElegido = sc.nextDouble();
 
             if (opcionElegida == 1) {
                 System.out.println(valorElegido + " C = " + (valorElegido * 9 / 5 + 32) + " F");
@@ -85,7 +84,7 @@ public class ConversorUnidades {
                 System.out.println(valorElegido + " K = " + (valorElegido - 273.15) + " C");
             } else {
                 System.out.println("Opcion no valida");
-                f = false;
+                
             }
         } else {
             System.out.println("Tipo no valido");
@@ -101,8 +100,10 @@ public class ConversorUnidades {
         int unidadElegida = scanner.nextInt();
         return unidadElegida; 
     }
+    
 
 }
+
 
 
 
