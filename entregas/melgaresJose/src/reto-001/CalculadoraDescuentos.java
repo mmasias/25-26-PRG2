@@ -65,26 +65,10 @@ public class CalculadoraDescuentos {
             int tipoCliente = scanner.nextInt();
 
             System.out.print("Es temporada de rebajas? (s/n): ");
-            char r = scanner.next().charAt(0);
+            boolean hayRebajas = scanner.next().charAt(0) == 's';
             
-            double precioFinal = precioTotal;
-
-            if (tipoCliente == 1) { // Normal
-                if (r == 's') { precioFinal = precioFinal - (precioFinal * 0.10); }
-                if (cantidadTotalProductos >= 5) { precioFinal = precioFinal - (precioFinal * 0.05); }
-            } else if (tipoCliente == 2) { // Estudiante
-                precioFinal = precioFinal - (precioFinal * 0.15);
-                if (r == 's') { precioFinal = precioFinal - (precioFinal * 0.10); }
-                if (cantidadTotalProductos >= 3) { precioFinal = precioFinal - (precioFinal * 0.08); }
-            } else if (tipoCliente == 3) { // Jubilado
-                precioFinal = precioFinal - (precioFinal * 0.20);
-                if (r == 's') { precioFinal = precioFinal - (precioFinal * 0.15); }
-                if (cantidadTotalProductos >= 2) { precioFinal = precioFinal - (precioFinal * 0.10); }
-            } else if (tipoCliente == 4) { // VIP
-                precioFinal = precioFinal - (precioFinal * 0.30);
-                if (r == 's') { precioFinal = precioFinal - (precioFinal * 0.20); }
-                if (cantidadTotalProductos >= 1) { precioFinal = precioFinal - (precioFinal * 0.15); }
-            }
+            double precioFinal = precioTotal * calcularDescuento(cantidadTotalProductos, tipoCliente, hayRebajas);
+			
 
             if (precioFinal > 500) {
                 precioFinal = precioFinal - 50;
@@ -102,4 +86,23 @@ public class CalculadoraDescuentos {
         }
         scanner.close();
     }
+	
+	private static double calcularDescuento(int cantidadTotalProductos, int tipoCliente, boolean hayRebajas) {
+		double descuento = 1;
+		
+		if (tipoCliente == 1) {
+			descuento = hayRebajas ? descuento : 0.9;
+		}
+		else if (tipoCliente == 2) {
+			descuento = hayRebajas ? 0.9*0.85 : 0.85 ;
+		}
+		else if (tipoCliente == 3) {
+			descuento = hayRebajas ? 0.8*0.85 : 0.8;
+		}
+		else if (tipoCliente == 4) {
+			descuento = hayRebajas ? 0.7*0.8: 0.7;
+		}
+		
+		return descuento;
+	}
 }
