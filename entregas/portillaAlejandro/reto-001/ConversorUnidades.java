@@ -3,8 +3,6 @@ import java.util.Scanner;
 public class ConversorUnidades {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int c = 0;
-        boolean f = true;
 
         System.out.println("Conversor de Unidades - Version 2.1");
         System.out.println("[1] Longitud");
@@ -12,7 +10,6 @@ public class ConversorUnidades {
         System.out.println("[3] Temperatura");
         System.out.print("Tipo de conversion: ");
         int t = scanner.nextInt();
-        c++;
 
         if (t == 1) {
             System.out.println("Conversion de longitud:");
@@ -41,7 +38,7 @@ public class ConversorUnidades {
                 System.out.println(v + " in = " + (v * 2.54) + " cm");
             } else {
                 System.out.println("Opcion no valida");
-                f = false;
+
             }
         } else if (t == 2) {
             System.out.println("Conversion de peso:");
@@ -70,7 +67,7 @@ public class ConversorUnidades {
                 System.out.println(v + " oz = " + (v * 28.3495) + " g");
             } else {
                 System.out.println("Opcion no valida");
-                f = false;
+
             }
         } else if (t == 3) {
             System.out.println("Conversion de temperatura:");
@@ -93,7 +90,7 @@ public class ConversorUnidades {
                 System.out.println(v + " K = " + (v - 273.15) + " C");
             } else {
                 System.out.println("Opcion no valida");
-                f = false;
+
             }
         } else {
             System.out.println("Tipo no valido");
