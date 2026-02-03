@@ -5,17 +5,26 @@ public class ConversorUnidades {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Conversor de Unidades - Version 2.1");
-        System.out.println("[1] Longitud");
-        System.out.println("[2] Peso");
-        System.out.println("[3] Temperatura");
-        System.out.print("Tipo de conversion: ");
-        int tipo = sc.nextInt();
+
+        int tipo = 0;
+        while (true) {
+            System.out.println("[1] Longitud");
+            System.out.println("[2] Peso");
+            System.out.println("[3] Temperatura");
+            System.out.print("Tipo de conversion: ");
+            tipo = sc.nextInt();
+            if (tipo >= 1 && tipo <= 3) {
+                break;
+            } else {
+                System.out.println("Tipo no valido. Intenta de nuevo.");
+            }
+        }
 
         String[] menuOpciones;
 
         if (tipo == 1) {
             System.out.println("Conversion de longitud:");
-            menuOpciones = new String[] {
+            menuOpciones = new String[]{
                 "[1] Metros a Kilometros",
                 "[2] Kilometros a Metros",
                 "[3] Metros a Millas",
@@ -25,7 +34,7 @@ public class ConversorUnidades {
             };
         } else if (tipo == 2) {
             System.out.println("Conversion de peso:");
-            menuOpciones = new String[] {
+            menuOpciones = new String[]{
                 "[1] Kilogramos a Gramos",
                 "[2] Gramos a Kilogramos",
                 "[3] Kilogramos a Libras",
@@ -33,26 +42,32 @@ public class ConversorUnidades {
                 "[5] Gramos a Onzas",
                 "[6] Onzas a Gramos"
             };
-        } else if (tipo == 3) {
+        } else {
             System.out.println("Conversion de temperatura:");
-            menuOpciones = new String[] {
+            menuOpciones = new String[]{
                 "[1] Celsius a Fahrenheit",
                 "[2] Fahrenheit a Celsius",
                 "[3] Celsius a Kelvin",
                 "[4] Kelvin a Celsius"
             };
-        } else {
-            System.out.println("Tipo no valido");
-            return;
         }
 
-        // Imprimir el menú usando un bucle
         for (String opcionTexto : menuOpciones) {
             System.out.println(opcionTexto);
         }
 
-        System.out.print("Opcion: ");
-        int opcion = sc.nextInt();
+        int opcion = 0;
+        int maxOpcion = menuOpciones.length;
+        while (true) {
+            System.out.print("Opcion: ");
+            opcion = sc.nextInt();
+            if (opcion >= 1 && opcion <= maxOpcion) {
+                break;
+            } else {
+                System.out.println("Opcion no valida. Intenta de nuevo.");
+            }
+        }
+
         System.out.print("Valor: ");
         double valor = sc.nextDouble();
 
@@ -67,10 +82,8 @@ public class ConversorUnidades {
                 System.out.println(valor + " mi = " + (valor * 1609.34) + " m");
             } else if (opcion == 5) {
                 System.out.println(valor + " cm = " + (valor * 0.393701) + " in");
-            } else if (opcion == 6) {
-                System.out.println(valor + " in = " + (valor * 2.54) + " cm");
             } else {
-                System.out.println("Opcion no valida");
+                System.out.println(valor + " in = " + (valor * 2.54) + " cm");
             }
         } else if (tipo == 2) {
             if (opcion == 1) {
@@ -83,22 +96,18 @@ public class ConversorUnidades {
                 System.out.println(valor + " lb = " + (valor * 0.453592) + " kg");
             } else if (opcion == 5) {
                 System.out.println(valor + " g = " + (valor * 0.035274) + " oz");
-            } else if (opcion == 6) {
-                System.out.println(valor + " oz = " + (valor * 28.3495) + " g");
             } else {
-                System.out.println("Opcion no valida");
+                System.out.println(valor + " oz = " + (valor * 28.3495) + " g");
             }
-        } else if (tipo == 3) {
+        } else {
             if (opcion == 1) {
                 System.out.println(valor + " C = " + (valor * 9 / 5 + 32) + " F");
             } else if (opcion == 2) {
                 System.out.println(valor + " F = " + ((valor - 32) * 5 / 9) + " C");
             } else if (opcion == 3) {
                 System.out.println(valor + " C = " + (valor + 273.15) + " K");
-            } else if (opcion == 4) {
-                System.out.println(valor + " K = " + (valor - 273.15) + " C");
             } else {
-                System.out.println("Opcion no valida");
+                System.out.println(valor + " K = " + (valor - 273.15) + " C");
             }
         }
     }
