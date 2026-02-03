@@ -1,106 +1,123 @@
-import java.util.Scanner;
-
-public class CalculadoraDescuentos {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Calculadora de Descuentos - Tienda Online");
-
-        while (true) {
-            System.out.println("[1] Realizar Nueva Compra");
-            System.out.println("[2] Salir");
-            System.out.print("Opcion: ");
-            int opcionMenu = scanner.nextInt();
-            scanner.nextLine();
-
-            if (opcionMenu == 2) {
-                System.out.println("Saliendo del sistema.");
-                break;
-            }
-            if (opcionMenu != 1) {
-                System.out.println("Opcion no valida.");
-                continue;
-            }
-
-            String[] nombresProductos = new String[10];
-            double[] preciosProductos = new double[10];
-            int[] cantidadesProductos = new int[10];
-            int numeroProductos = 0;
-
-            System.out.println("Carrito de Compra");
-            while (numeroProductos < 10) {
-                System.out.print("Nombre del producto (o 'fin' para terminar): ");
-                String nombreProducto = scanner.nextLine();
-                if (nombreProducto.equalsIgnoreCase("fin")) {
-                    break;
-                }
-
-                nombresProductos[numeroProductos] = nombreProducto;
-
-                System.out.print("Precio de '" + nombreProducto + "': ");
-                preciosProductos[numeroProductos] = scanner.nextDouble();
-
-                System.out.print("Cantidad de '" + nombreProducto + "': ");
-                cantidadesProductos[numeroProductos] = scanner.nextInt();
-                scanner.nextLine();
-
-                numeroProductos++;
-            }
 
             if (numeroProductos == 0) {
                 System.out.println("Carrito vacio, no se puede calcular el descuento.");
                 continue;
             }
 
-            double precioTotal = 0;
-            int cantidadTotal = 0;
-            for (int i = 0; i < numeroProductos; i++) {
-                precioTotal += preciosProductos[i] * cantidadesProductos[i];
-                cantidadTotal += cantidadesProductos[i];
-            }
+            double precioTotal = calcularPrecioTotal(precios, cantidades, numeroProductos);
+            int cantidadTotal = calcularCantidadTotal(cantidades, numeroProductos);
 
-            System.out.println("Configuracion del Descuento");
             System.out.print("Tipo de cliente (1=Normal, 2=Estudiante, 3=Jubilado, 4=VIP): ");
             int tipoCliente = scanner.nextInt();
 
             System.out.print("Es temporada de rebajas? (s/n): ");
             char esRebaja = scanner.next().charAt(0);
 
-            double precioFinal = precioTotal;
+            double precioFinal = aplicarDescuentos(precioTotal, cantidadTotal, tipoCliente, esRebaja);
 
-            if (tipoCliente == 1) {
-                if (esRebaja == 's') precioFinal -= precioFinal * 0.10;
-                if (cantidadTotal >= 5) precioFinal -= precioFinal * 0.05;
-            } else if (tipoCliente == 2) {
-                precioFinal -= precioFinal * 0.15;
-                if (esRebaja == 's') precioFinal -= precioFinal * 0.10;
-                if (cantidadTotal >= 3) precioFinal -= precioFinal * 0.08;
-            } else if (tipoCliente == 3) {
-                precioFinal -= precioFinal * 0.20;
-                if (esRebaja == 's') precioFinal -= precioFinal * 0.15;
-                if (cantidadTotal >= 2) precioFinal -= precioFinal * 0.10;
-            } else if (tipoCliente == 4) {
-                precioFinal -= precioFinal * 0.30;
-                if (esRebaja == 's') precioFinal -= precioFinal * 0.20;
-                if (cantidadTotal >= 1) precioFinal -= precioFinal * 0.15;
-            }
-
-            if (precioFinal > 500) {
-                precioFinal -= 50;
-            }
-
-            System.out.println("Resumen de Compra");
-            System.out.println("Precio original total: " + precioTotal + " euros");
-            System.out.println("Numero total de productos: " + cantidadTotal);
-            System.out.println("Precio final con descuento: " + precioFinal + " euros");
-            System.out.println("Ahorro total: " + (precioTotal - precioFinal) + " euros");
-
-            if (precioTotal > 0) {
-                double porcentaje = ((precioTotal - precioFinal) / precioTotal) * 100;
-                System.out.println("Porcentaje de ahorro: " + porcentaje + "%");
-            }
+            mostrarResumen(precioTotal, precioFinal, cantidadTotal);
         }
 
+        scanner.close();
+    }
+
+    private static int mostrarMenu(Scanner scanner) {
+        System.out.println("[1] Realizar Nueva Compra");
+        System.out.println("[2] Salir");
+        System.out.print("Opcion: ");
+        int opcion = scanner.nextInt();
+        scanner.nextLine();
+        return opcion;
+    }
+
+    private static int cargarCarrito(Scanner scanner, String[] nombres, double[] precios, int[] cantidades) {
+        int contador = 0;
+        System.out.println("Carrito de Compra");
+
+        while (contador < MAX_PRODUCTOS) {
+            System.out.print("Nombre del producto (o 'fin' para terminar): ");
+            String nombre = scanner.nextLine();
+
+            if (nombre.equalsIgnoreCase("fin")) {
+                break;
+            }
+
+            nombres[contador] = nombre;
+
+            System.out.print("Precio de '" + nombre + "': ");
+            precios[contador] = scanner.nextDouble();
+
+            System.out.print("Cantidad de '" + nombre + "': ");
+            cantidades[contador] = scanner.nextInt();
+            scanner.nextLine();
+
+            contador++;
+        }
+        return contador;
+    }
+
+    private static double calcularPrecioTotal(double[] precios, int[] cantidades, int totalProductos) {
+        double total = 0;
+        for (int i = 0; i < totalProductos; i++) {
+            total += precios[i] * cantidades[i];
+        }
+        return total;
+    }
+
+    private static int calcularCantidadTotal(int[] cantidades, int totalProductos) {
+        int total = 0;
+        for (int i = 0; i < totalProductos; i++) {
+            total += cantidades[i];
+        }
+        return total;
+    }
+
+    private static double aplicarDescuentos(double precio, int cantidad, int tipoCliente, char rebaja) {
+        double resultado = precio;
+
+        switch (tipoCliente) {
+            case NORMAL:
+                if (rebaja == 's') resultado *= 0.90;
+                if (cantidad >= 5) resultado *= 0.95;
+                break;
+
+            case ESTUDIANTE:
+                resultado *= 0.85;
+                if (rebaja == 's') resultado *= 0.90;
+                if (cantidad >= 3) resultado *= 0.92;
+                break;
+
+            case JUBILADO:
+                resultado *= 0.80;
+                if (rebaja == 's') resultado *= 0.85;
+                if (cantidad >= 2) resultado *= 0.90;
+                break;
+
+            case VIP:
+                resultado *= 0.70;
+                if (rebaja == 's') resultado *= 0.80;
+                if (cantidad >= 1) resultado *= 0.85;
+                break;
+        }
+
+        if (resultado > 500) {
+            resultado -= 50;
+        }
+
+        return resultado;
+    }
+
+    private static void mostrarResumen(double original, double finalPrecio, int cantidad) {
+        System.out.println("Resumen de Compra");
+        System.out.println("Precio original total: " + original + " euros");
+        System.out.println("Numero total de productos: " + cantidad);
+        System.out.println("Precio final con descuento: " + finalPrecio + " euros");
+        System.out.println("Ahorro total: " + (original - finalPrecio) + " euros");
+
+        double porcentaje = ((original - finalPrecio) / original) * 100;
+        System.out.println("Porcentaje de ahorro: " + porcentaje + "%");
+    }
+}
         scanner.close();
     }
 }
