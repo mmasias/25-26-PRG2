@@ -18,7 +18,7 @@ static int numTareas = 0;
         System.out.println("Gestor de Tareas v1.0");
 
         while (true) {
-            System.out.println("[1] Anadir tarea");
+            System.out.println("[1] Añadir tarea");
             System.out.println("[2] Marcar tarea como completada");
             System.out.println("[3] Ver tareas pendientes");
             System.out.println("[4] Ver estadisticas");
@@ -52,9 +52,9 @@ static void añadirTarea(Scanner scanner) {
         tareas[numTareas] = d;
         completadas[numTareas] = false;
         numTareas++;
-        System.out.println("Tarea anadida correctamente.");
+        System.out.println("Tarea añadida correctamente.");
     } else {
-        System.out.println("ERROR: No se pueden anadir mas tareas, limite alcanzado.");
+        System.out.println("No se pueden añadir mas tareas.");
     }
 }
 
