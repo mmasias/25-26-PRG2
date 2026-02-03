@@ -25,7 +25,7 @@ public class GestorTareas {
                     String d = scanner.nextLine();
                     tareas[numTareas] = d;
                     completadas[numTareas] = false;
-                    numTareas++; // El contador se incrementa
+                    numTareas++; 
                     System.out.println("Tarea anadida correctamente.");
                 } else {
                     System.out.println("ERROR: No se pueden anadir mas tareas, limite alcanzado.");
