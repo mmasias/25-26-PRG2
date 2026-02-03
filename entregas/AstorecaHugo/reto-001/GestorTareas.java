@@ -44,7 +44,7 @@ static int numTareas = 0;
         }
         scanner.close();
     }
-}
+
 static void añadirTarea(Scanner scanner) {
     if (numTareas < 10) {
         System.out.print("Descripcion de la nueva tarea: ");
@@ -117,4 +117,5 @@ static void verEstadisticas(){
         double porc = (contCompletadas * 100.0) / numTareas;
         System.out.println("Porcentaje de completación: " + porc + "%");
     }
+}
 }
