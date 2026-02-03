@@ -10,13 +10,7 @@ public class JuegoAdivinanza {
         int maxNumero = 100;
         int maxIntentos = 10; 
 
-        System.out.println(); 
-        System.out.println("Selecciona Dificultad:");
-        System.out.println("1. Facil (1-50, 10 intentos)");
-        System.out.println("2. Normal (1-100, 7 intentos)");
-        System.out.println("3. Dificil (1-200, 8 intentos)");
-        System.out.print("Opcion: ");
-        int dificultad = scanner.nextInt();
+        int dificultad = mostrarMenuDificultad(scanner);
 
         if (dificultad == 1) {
             maxNumero = 50;
@@ -149,5 +143,15 @@ public class JuegoAdivinanza {
         System.out.println(); 
         System.out.println("Fin del juego");
         scanner.close();
+    }
+    private static int mostrarMenuDificultad(Scanner scanner) {
+        System.out.println("Juego de Adivinanza - Adivina el Numero Secreto");
+        System.out.println();
+        System.out.println("Selecciona Dificultad:");
+        System.out.println("1. Facil (1-50, 10 intentos)");
+        System.out.println("2. Normal (1-100, 7 intentos)");
+        System.out.println("3. Dificil (1-200, 8 intentos)");
+        System.out.print("Opcion: ");
+        return scanner.nextInt();
     }
 }
