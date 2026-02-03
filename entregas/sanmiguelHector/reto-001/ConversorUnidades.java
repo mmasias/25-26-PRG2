@@ -59,12 +59,7 @@ public class ConversorUnidades {
                 f = false;
             }
         } else if (t == 3) {
-            System.out.println("Conversion de temperatura:");
-            System.out.println("[1] Celsius a Fahrenheit");
-            System.out.println("[2] Fahrenheit a Celsius");
-            System.out.println("[3] Celsius a Kelvin");
-            System.out.println("[4] Kelvin a Celsius");
-            System.out.print("Opcion: ");
+            MenuTemperatura();
             int o = sc.nextInt();
             System.out.print("Valor: ");
             double v = sc.nextDouble();
@@ -103,6 +98,14 @@ public class ConversorUnidades {
         System.out.println("[4] Millas a Metros");
         System.out.println("[5] Centimetros a Pulgadas");
         System.out.println("[6] Pulgadas a Centimetros");
+        System.out.print("Opcion: ");
+    }
+    static void MenuTemperatura(){
+        System.out.println("Conversion de temperatura:");
+        System.out.println("[1] Celsius a Fahrenheit");
+        System.out.println("[2] Fahrenheit a Celsius");
+        System.out.println("[3] Celsius a Kelvin");
+        System.out.println("[4] Kelvin a Celsius");
         System.out.print("Opcion: ");
     }
 }
