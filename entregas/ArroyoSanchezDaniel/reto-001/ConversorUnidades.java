@@ -5,6 +5,19 @@ public class ConversorUnidades {
         int unidadElegida = eleccionUnidad();
         System.out.println("Has elegido la opción: " + unidadElegida);
 
+        
+    }
+    private static int eleccionUnidad() {
+       Scanner sc = new Scanner(System.in);
+        System.out.println("Conversor de Unidades - Version 2.1");
+        System.out.println("[1] Longitud");
+        System.out.println("[2] Peso");
+        System.out.println("[3] Temperatura");
+        System.out.print("Tipo de conversion: ");
+        int unidadElegida = scanner.nextInt();
+        return unidadElegida; 
+    }
+    private static void ValorUnidadElegido(int unidadElegida) {
         if (unidadElegida == 1) {
             System.out.println("Conversion de longitud:");
             System.out.println("[1] Metros a Kilometros");
@@ -47,7 +60,7 @@ public class ConversorUnidades {
             System.out.print("Valor: ");
             double valorElegido = sc.nextDouble();
 
-            if (o == 1) {
+            if (opcionElegida == 1) {
                 System.out.println(valorElegido + " kg = " + (valorElegido * 1000) + " g");
             } else if (opcionElegida == 2) {
                 System.out.println(valorElegido + " g = " + (valorElegido / 1000) + " kg");
@@ -84,27 +97,14 @@ public class ConversorUnidades {
                 System.out.println(valorElegido + " K = " + (valorElegido - 273.15) + " C");
             } else {
                 System.out.println("Opcion no valida");
-                
             }
         } else {
             System.out.println("Tipo no valido");
         }
     }
-    private static int eleccionUnidad() {
-       Scanner sc = new Scanner(System.in);
-        System.out.println("Conversor de Unidades - Version 2.1");
-        System.out.println("[1] Longitud");
-        System.out.println("[2] Peso");
-        System.out.println("[3] Temperatura");
-        System.out.print("Tipo de conversion: ");
-        int unidadElegida = scanner.nextInt();
-        return unidadElegida; 
-    }
-    private static void ValorUnidadElegido(int unidadElegida) {
-
-    }
 
 }
+
 
 
 
