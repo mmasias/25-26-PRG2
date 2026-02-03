@@ -3,7 +3,7 @@ public class ConversorUnidades {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Conversor de Unidades - Version 2.1");
+        System.out.println("Conversor de Unidades - Version 2.2");
         System.out.println("[1] Longitud");
         System.out.println("[2] Peso");
         System.out.println("[3] Temperatura");
@@ -84,7 +84,27 @@ public class ConversorUnidades {
             }
     }
 
-    public static double convertirTemperatura(int opcion,double valor){
+    public static void convertirTemperatura(){
+            System.out.println("Conversion de temperatura:");
+            System.out.println("[1] Celsius a Fahrenheit");
+            System.out.println("[2] Fahrenheit a Celsius");
+            System.out.println("[3] Celsius a Kelvin");
+            System.out.println("[4] Kelvin a Celsius");
+            System.out.print("Opcion: ");
+            int opcion = sc.nextInt();
+            System.out.print("Valor: ");
+            double valor = sc.nextDouble();
 
+            if (opcion == 1) {
+                System.out.println(valor + " C = " + (valor * 9 / 5 + 32) + " F");
+            } else if (opcion == 2) {
+                System.out.println(valor + " F = " + ((valor - 32) * 5 / 9) + " C");
+            } else if (opcion == 3) {
+                System.out.println(valor + " C = " + (valor + 273.15) + " K");
+            } else if (opcion == 4) {
+                System.out.println(valor + " K = " + (valor - 273.15) + " C");
+            } else {
+                System.out.println("Opcion no valida");
+            }
     }
 }
