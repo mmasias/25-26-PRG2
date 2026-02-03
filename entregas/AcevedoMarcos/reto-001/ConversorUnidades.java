@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class ConversorUnidades {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         int c = 0;
         boolean f = true;
 
