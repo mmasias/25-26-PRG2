@@ -18,6 +18,10 @@ public class ConversorUnidades {
         return unidadElegida; 
     }
     private static void ValorUnidadElegido(int unidadElegida) {
+        Scanner sc = new Scanner(System.in);
+        double valorElegido;
+        int opcionElegida;
+        
         if (unidadElegida == 1) {
             System.out.println("Conversion de longitud:");
             System.out.println("[1] Metros a Kilometros");
@@ -27,9 +31,9 @@ public class ConversorUnidades {
             System.out.println("[5] Centimetros a Pulgadas");
             System.out.println("[6] Pulgadas a Centimetros");
             System.out.print("Opcion: ");
-            int opcionElegida = sc.nextInt();
+            opcionElegida = sc.nextInt();
             System.out.print("Valor: ");
-            double valorElegido = sc.nextDouble();
+            valorElegido = sc.nextDouble();
 
             if (opcionElegida == 1) {
                 System.out.println(valorElegido + " m = " + (valorElegido / 1000) + " km");
@@ -56,9 +60,9 @@ public class ConversorUnidades {
             System.out.println("[5] Gramos a Onzas");
             System.out.println("[6] Onzas a Gramos");
             System.out.print("Opcion: ");
-            int opcionElegida = sc.nextInt();
+            opcionElegida = sc.nextInt();
             System.out.print("Valor: ");
-            double valorElegido = sc.nextDouble();
+            valorElegido = sc.nextDouble();
 
             if (opcionElegida == 1) {
                 System.out.println(valorElegido + " kg = " + (valorElegido * 1000) + " g");
@@ -83,9 +87,9 @@ public class ConversorUnidades {
             System.out.println("[3] Celsius a Kelvin");
             System.out.println("[4] Kelvin a Celsius");
             System.out.print("Opcion: ");
-            int opcionElegida = sc.nextInt();
+            opcionElegida = sc.nextInt();
             System.out.print("Valor: ");
-            double valorElegido = sc.nextDouble();
+            valorElegido = sc.nextDouble();
 
             if (opcionElegida == 1) {
                 System.out.println(valorElegido + " C = " + (valorElegido * 9 / 5 + 32) + " F");
@@ -104,6 +108,7 @@ public class ConversorUnidades {
     }
 
 }
+
 
 
 
