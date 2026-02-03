@@ -34,7 +34,7 @@ public class JuegoAdivinanza {
         System.out.println(); 
         System.out.println("Adivina el numero entre " + minN + " y " + maxN);
 
-        int ns = (int)(Math.random() * (maxN - minN + 1)) + minN;
+        int ns = generarNumeroSecreto(minN, maxN);
         int intentosRealizados = 0;
         boolean adivinado = false;
 
@@ -148,4 +148,7 @@ public class JuegoAdivinanza {
         System.out.println("Fin del juego");
         sc.close();
     }
+    private static int generarNumeroSecreto(int min, int max) {
+    return (int)(Math.random() * (max - min + 1)) + min;
+}
 }
