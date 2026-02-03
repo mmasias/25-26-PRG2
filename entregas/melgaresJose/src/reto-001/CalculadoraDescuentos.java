@@ -5,18 +5,11 @@ public class CalculadoraDescuentos {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Calculadora de Descuentos - Tienda Online");
-
-        while (true) {
-            System.out.println("[1] Realizar Nueva Compra");
-            System.out.println("[2] Salir");
-            System.out.print("Opcion: ");
+		int menuOpt = 1;
+        while (menuOpt != 2) {
+            imprimirMenu();
             int menuOpt = scanner.nextInt();
-            scanner.nextLine(); 
-
-            if (menuOpt == 2) {
-                System.out.println("Saliendo del sistema.");
-                break;
-            }
+			
             if (menuOpt != 1) {
                 System.out.println("Opcion no valida.");
                 continue;
@@ -27,7 +20,8 @@ public class CalculadoraDescuentos {
             double[] preciosEnCarrito = new double[10];
             int[] cantidadesPorProducto = new int[10];
             int cantidadProductos = 0;
-
+			
+			
             System.out.println("Carrito de Compra");
             while(cantidadProductos < 10) {
                 System.out.print("Nombre del producto (o 'fin' para terminar): ");
@@ -84,8 +78,15 @@ public class CalculadoraDescuentos {
                 System.out.println("Porcentaje de ahorro: " + porcentaje + "%");
             }
         }
+		System.out.println("Saliendo del sistema.");
         scanner.close();
     }
+	
+	private void imprimirMenu() {
+		System.out.println("[1] Realizar Nueva Compra");
+        System.out.println("[2] Salir");
+        System.out.print("Opcion: ");
+	}
 	
 	private static double calcularDescuento(int cantidadTotalProductos, int tipoCliente, boolean hayRebajas) {
 		double descuento = 1;
