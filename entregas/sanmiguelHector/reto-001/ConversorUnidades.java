@@ -6,11 +6,7 @@ public class ConversorUnidades {
         int c = 0;
         boolean f = true;
 
-        System.out.println("Conversor de Unidades - Version 2.1");
-        System.out.println("[1] Longitud");
-        System.out.println("[2] Peso");
-        System.out.println("[3] Temperatura");
-        System.out.print("Tipo de conversion: ");
+        MenuPrincipal();
         int t = sc.nextInt();
         c++;
 
@@ -107,5 +103,12 @@ public class ConversorUnidades {
         System.out.println("[3] Celsius a Kelvin");
         System.out.println("[4] Kelvin a Celsius");
         System.out.print("Opcion: ");
+    }
+    static void MenuPrincipal(){
+        System.out.println("Conversor de Unidades - Version 2.1");
+        System.out.println("[1] Longitud");
+        System.out.println("[2] Peso");
+        System.out.println("[3] Temperatura");
+        System.out.print("Tipo de conversion: ");
     }
 }
