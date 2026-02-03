@@ -2,10 +2,18 @@ import java.util.Scanner;
 
 public class CalculadoraDescuentos {
 
-    static double calcularPrecioTotal(double[] precios, int[] cantidades, int numProductos) {
+    static double calcularPrecioTotal(double[] precios, int[] cantidades, int n) {
         double total = 0;
-        for (int i = 0; i < numProductos; i++) {
+        for (int i = 0; i < n; i++) {
             total += precios[i] * cantidades[i];
+        }
+        return total;
+    }
+
+    static int calcularCantidadTotal(int[] cantidades, int n) {
+        int total = 0;
+        for (int i = 0; i < n; i++) {
+            total += cantidades[i];
         }
         return total;
     }
@@ -27,7 +35,10 @@ public class CalculadoraDescuentos {
         }
 
         double precioTotal = calcularPrecioTotal(precios, cantidades, numProductos);
+        int cantidadTotal = calcularCantidadTotal(cantidades, numProductos);
+
         System.out.println("Precio total: " + precioTotal);
+        System.out.println("Cantidad total: " + cantidadTotal);
 
         sc.close();
     }
