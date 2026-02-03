@@ -1,6 +1,16 @@
 import java.util.Scanner;
 
 public class GestorTareas {
+
+    static void mostrarMenu() {
+        System.out.println("[1] Anadir tarea");
+        System.out.println("[2] Marcar tarea como completada");
+        System.out.println("[3] Ver tareas pendientes");
+        System.out.println("[4] Ver estadisticas");
+        System.out.println("[5] Salir");
+        System.out.print("Opcion: ");
+    }
+
     public static void main(String[] args) {
         final int MAX_TAREAS = 10;
 
@@ -9,15 +19,10 @@ public class GestorTareas {
         boolean[] completadas = new boolean[MAX_TAREAS];
         int numTareas = 0;
 
-        System.out.println("Gestor de Tareas v1.1");
+        System.out.println("Gestor de Tareas v1.2");
 
         while (true) {
-            System.out.println("[1] Anadir tarea");
-            System.out.println("[2] Marcar tarea como completada");
-            System.out.println("[3] Ver tareas pendientes");
-            System.out.println("[4] Ver estadisticas");
-            System.out.println("[5] Salir");
-            System.out.print("Opcion: ");
+            mostrarMenu();
             int opcion = sc.nextInt();
             sc.nextLine();
 
@@ -29,21 +34,24 @@ public class GestorTareas {
                     numTareas++;
                     System.out.println("Tarea anadida correctamente.");
                 } else {
-                    System.out.println("ERROR: Limite de tareas alcanzado.");
+                    System.out.println("ERROR: Limite alcanzado.");
                 }
 
             } else if (opcion == 2) {
+                if (numTareas == 0) {
+                    System.out.println("No hay tareas.");
+                    continue;
+                }
+
                 for (int i = 0; i < numTareas; i++) {
                     System.out.println((i + 1) + ". " + tareas[i]);
                 }
 
-                if (numTareas > 0) {
-                    System.out.print("Numero de tarea: ");
-                    int num = sc.nextInt();
-                    if (num >= 1 && num <= numTareas) {
-                        completadas[num - 1] = true;
-                        System.out.println("Tarea completada.");
-                    }
+                System.out.print("Numero de tarea: ");
+                int num = sc.nextInt();
+                if (num >= 1 && num <= numTareas) {
+                    completadas[num - 1] = true;
+                    System.out.println("Tarea completada.");
                 }
 
             } else if (opcion == 3) {
@@ -63,6 +71,7 @@ public class GestorTareas {
                 System.out.println("Pendientes: " + (numTareas - completas));
 
             } else if (opcion == 5) {
+                System.out.println("Saliendo...");
                 break;
             }
         }
