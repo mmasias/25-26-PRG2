@@ -3,10 +3,11 @@ import java.util.Scanner;
 public class CalculadoraDescuentos {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        boolean sistemaActivo = true;
 
         System.out.println("Calculadora de Descuentos - Tienda Online");
 
-        while (true) {
+        while (sistemaActivo == true) {
             System.out.println("[1] Realizar Nueva Compra");
             System.out.println("[2] Salir");
             System.out.print("Opcion: ");
@@ -15,7 +16,8 @@ public class CalculadoraDescuentos {
 
             if (menuOpt == 2) {
                 System.out.println("Saliendo del sistema.");
-                break;
+                sistemaActivo = false;
+                continue;
             }
             else if (menuOpt != 1) {
                 System.out.println("Opcion no valida.");
