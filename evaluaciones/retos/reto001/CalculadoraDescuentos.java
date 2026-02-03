@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
 public class CalculadoraDescuentos {
+
+    static final int MAX_PROD = 10;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
