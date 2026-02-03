@@ -8,18 +8,16 @@ public class ConversorUnidades {
         System.out.println("[2] Peso");
         System.out.println("[3] Temperatura");
         System.out.print("Tipo de conversion: ");
-        int opcion = sc.nextInt();
+        int opcionPrincipal = sc.nextInt();
 
-        if (t == 1) {
+        if (opcionPrincipal == 1) {
+           convertirLongitud();
+        } else if (opcionPrincipal == 2) {
+          convertirPeso();
+        } else if (opcionPrincipal == 3) {
+            convertirTemperatura();
+        }
            
-        } else if (t == 2) {
-          
-        } else if (t == 3) {
-           
-    }
-
-    public static void menu (){
-
     }
 
     public static  void convertirLongitud(){
@@ -80,7 +78,6 @@ public class ConversorUnidades {
                 System.out.println(valor + " oz = " + (valor * 28.3495) + " g");
             } else {
                 System.out.println("Opcion no valida");
-                f = false;
             }
     }
 
