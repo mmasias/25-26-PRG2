@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class ConversorUnidades {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -12,7 +11,6 @@ public class ConversorUnidades {
         System.out.println("[3] Temperatura");
         System.out.print("Tipo de conversion: ");
         int t = sc.nextInt();
-        c++;
 
         if (t == 1) {
             System.out.println("Conversion de longitud:");
@@ -98,5 +96,21 @@ public class ConversorUnidades {
         } else {
             System.out.println("Tipo no valido");
         }
+    }
+
+    public static void menu (){
+
+    }
+
+    public static  double convertirLongitud(int opcion, double valor){
+
+    }
+
+    public static double convertirPeso(int opcion, double valor){
+
+    }
+
+    public static double convertirTemperatura(int opcion,double valor){
+        
     }
 }
