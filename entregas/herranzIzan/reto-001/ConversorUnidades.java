@@ -1,102 +1,128 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConversorUnidades {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int c = 0;
-        boolean f = true;
 
-        System.out.println("Conversor de Unidades - Version 2.1");
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        mostrarMenuPrincipal();
+        int tipo = leerEntero();
+
+        switch (tipo) {
+            case 1 -> convertirLongitud();
+            case 2 -> convertirPeso();
+            case 3 -> convertirTemperatura();
+            default -> System.out.println("Tipo de conversión no válido.");
+        }
+
+        scanner.close();
+    }
+
+    // ================= MENÚS =================
+
+    private static void mostrarMenuPrincipal() {
+        System.out.println("==============================");
+        System.out.println(" Conversor de Unidades v2.2");
+        System.out.println("==============================");
         System.out.println("[1] Longitud");
         System.out.println("[2] Peso");
         System.out.println("[3] Temperatura");
-        System.out.print("Tipo de conversion: ");
-        int t = scanner.nextInt();
-        c++;
+        System.out.print("Tipo de conversión: ");
+    }
 
-        if (t == 1) {
-            System.out.println("Conversion de longitud:");
-            System.out.println("[1] Metros a Kilometros");
-            System.out.println("[2] Kilometros a Metros");
-            System.out.println("[3] Metros a Millas");
-            System.out.println("[4] Millas a Metros");
-            System.out.println("[5] Centimetros a Pulgadas");
-            System.out.println("[6] Pulgadas a Centimetros");
-            System.out.print("Opcion: ");
-            int o = scanner.nextInt();
-            System.out.print("Valor: ");
-            double v = scanner.nextDouble();
+    private static void convertirLongitud() {
+        System.out.println("\n--- Conversión de longitud ---");
+        System.out.println("[1] Metros a Kilómetros");
+        System.out.println("[2] Kilómetros a Metros");
+        System.out.println("[3] Metros a Millas");
+        System.out.println("[4] Millas a Metros");
+        System.out.println("[5] Centímetros a Pulgadas");
+        System.out.println("[6] Pulgadas a Centímetros");
+        System.out.print("Opción: ");
 
-            if (o == 1) {
-                System.out.println(v + " m = " + (v / 1000) + " km");
-            } else if (o == 2) {
-                System.out.println(v + " km = " + (v * 1000) + " m");
-            } else if (o == 3) {
-                System.out.println(v + " m = " + (v * 0.000621371) + " mi");
-            } else if (o == 4) {
-                System.out.println(v + " mi = " + (v * 1609.34) + " m");
-            } else if (o == 5) {
-                System.out.println(v + " cm = " + (v * 0.393701) + " in");
-            } else if (o == 6) {
-                System.out.println(v + " in = " + (v * 2.54) + " cm");
-            } else {
-                System.out.println("Opcion no valida");
-                f = false;
+        int opcion = leerEntero();
+        System.out.print("Valor: ");
+        double valor = leerDouble();
+
+        switch (opcion) {
+            case 1 -> System.out.println(valor + " m = " + (valor / 1000) + " km");
+            case 2 -> System.out.println(valor + " km = " + (valor * 1000) + " m");
+            case 3 -> System.out.println(valor + " m = " + (valor * 0.000621371) + " mi");
+            case 4 -> System.out.println(valor + " mi = " + (valor * 1609.34) + " m");
+            case 5 -> System.out.println(valor + " cm = " + (valor * 0.393701) + " in");
+            case 6 -> System.out.println(valor + " in = " + (valor * 2.54) + " cm");
+            default -> System.out.println("Opción no válida.");
+        }
+    }
+
+    private static void convertirPeso() {
+        System.out.println("\n--- Conversión de peso ---");
+        System.out.println("[1] Kilogramos a Gramos");
+        System.out.println("[2] Gramos a Kilogramos");
+        System.out.println("[3] Kilogramos a Libras");
+        System.out.println("[4] Libras a Kilogramos");
+        System.out.println("[5] Gramos a Onzas");
+        System.out.println("[6] Onzas a Gramos");
+        System.out.print("Opción: ");
+
+        int opcion = leerEntero();
+        System.out.print("Valor: ");
+        double valor = leerDouble();
+
+        switch (opcion) {
+            case 1 -> System.out.println(valor + " kg = " + (valor * 1000) + " g");
+            case 2 -> System.out.println(valor + " g = " + (valor / 1000) + " kg");
+            case 3 -> System.out.println(valor + " kg = " + (valor * 2.20462) + " lb");
+            case 4 -> System.out.println(valor + " lb = " + (valor * 0.453592) + " kg");
+            case 5 -> System.out.println(valor + " g = " + (valor * 0.035274) + " oz");
+            case 6 -> System.out.println(valor + " oz = " + (valor * 28.3495) + " g");
+            default -> System.out.println("Opción no válida.");
+        }
+    }
+
+    private static void convertirTemperatura() {
+        System.out.println("\n--- Conversión de temperatura ---");
+        System.out.println("[1] Celsius a Fahrenheit");
+        System.out.println("[2] Fahrenheit a Celsius");
+        System.out.println("[3] Celsius a Kelvin");
+        System.out.println("[4] Kelvin a Celsius");
+        System.out.print("Opción: ");
+
+        int opcion = leerEntero();
+        System.out.print("Valor: ");
+        double valor = leerDouble();
+
+        switch (opcion) {
+            case 1 -> System.out.println(valor + " °C = " + (valor * 9 / 5 + 32) + " °F");
+            case 2 -> System.out.println(valor + " °F = " + ((valor - 32) * 5 / 9) + " °C");
+            case 3 -> System.out.println(valor + " °C = " + (valor + 273.15) + " K");
+            case 4 -> System.out.println(valor + " K = " + (valor - 273.15) + " °C");
+            default -> System.out.println("Opción no válida.");
+        }
+    }
+
+    // ================= UTILIDADES =================
+
+    private static int leerEntero() {
+        while (true) {
+            try {
+                return scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.print("Entrada inválida. Introduce un número entero: ");
+                scanner.next();
             }
-        } else if (t == 2) {
-            System.out.println("Conversion de peso:");
-            System.out.println("[1] Kilogramos a Gramos");
-            System.out.println("[2] Gramos a Kilogramos");
-            System.out.println("[3] Kilogramos a Libras");
-            System.out.println("[4] Libras a Kilogramos");
-            System.out.println("[5] Gramos a Onzas");
-            System.out.println("[6] Onzas a Gramos");
-            System.out.print("Opcion: ");
-            int o = scanner.nextInt();
-            System.out.print("Valor: ");
-            double v = scanner.nextDouble();
+        }
+    }
 
-            if (o == 1) {
-                System.out.println(v + " kg = " + (v * 1000) + " g");
-            } else if (o == 2) {
-                System.out.println(v + " g = " + (v / 1000) + " kg");
-            } else if (o == 3) {
-                System.out.println(v + " kg = " + (v * 2.20462) + " lb");
-            } else if (o == 4) {
-                System.out.println(v + " lb = " + (v * 0.453592) + " kg");
-            } else if (o == 5) {
-                System.out.println(v + " g = " + (v * 0.035274) + " oz");
-            } else if (o == 6) {
-                System.out.println(v + " oz = " + (v * 28.3495) + " g");
-            } else {
-                System.out.println("Opcion no valida");
-                f = false;
+    private static double leerDouble() {
+        while (true) {
+            try {
+                return scanner.nextDouble();
+            } catch (InputMismatchException e) {
+                System.out.print("Entrada inválida. Introduce un número válido: ");
+                scanner.next();
             }
-        } else if (t == 3) {
-            System.out.println("Conversion de temperatura:");
-            System.out.println("[1] Celsius a Fahrenheit");
-            System.out.println("[2] Fahrenheit a Celsius");
-            System.out.println("[3] Celsius a Kelvin");
-            System.out.println("[4] Kelvin a Celsius");
-            System.out.print("Opcion: ");
-            int o = scanner.nextInt();
-            System.out.print("Valor: ");
-            double v = scanner.nextDouble();
-
-            if (o == 1) {
-                System.out.println(v + " C = " + (v * 9 / 5 + 32) + " F");
-            } else if (o == 2) {
-                System.out.println(v + " F = " + ((v - 32) * 5 / 9) + " C");
-            } else if (o == 3) {
-                System.out.println(v + " C = " + (v + 273.15) + " K");
-            } else if (o == 4) {
-                System.out.println(v + " K = " + (v - 273.15) + " C");
-            } else {
-                System.out.println("Opcion no valida");
-                f = false;
-            }
-        } else {
-            System.out.println("Tipo no valido");
         }
     }
 }
