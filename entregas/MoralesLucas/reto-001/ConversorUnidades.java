@@ -12,7 +12,7 @@ public class ConversorUnidades {
         System.out.println("[3] Temperatura");
         System.out.print("Tipo de conversion: ");
         int tipo = scanner.nextInt();
-        contador++;
+        
 
         if (tipo == 1) {
             System.out.println("Conversion de longitud:");
