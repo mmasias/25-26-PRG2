@@ -51,10 +51,10 @@ public class CalculadoraDescuentos {
 
            
             double precioTotalOriginal = 0;
-            int precioTotalOriginal = 0;
+            int cantidadTotal = 0;
             for(int i=0; i < numeroProductos; i++) {
                 precioTotalOriginal += precios_p[i] * cants_p[i];
-                precioTotalOriginal += precios_p[i] * cants_p[i];
+                cantidadTotal += cants_p[i];
             }
 
             System.out.println("Configuracion del Descuento");
@@ -66,21 +66,21 @@ public class CalculadoraDescuentos {
             
             double pf = precioTotalOriginal;
 
-            if (t == 1) { 
+            if (tipoCliente == 1) { 
                 if (r == 's') { pf = pf - (pf * 0.10); }
-                if (c_total >= 5) { pf = pf - (pf * 0.05); }
-            } else if (t == 2) { 
+                if (cantidadTotal >= 5) { pf = pf - (pf * 0.05); }
+            } else if (tipoCliente == 2) { 
                 pf = pf - (pf * 0.15);
                 if (r == 's') { pf = pf - (pf * 0.10); }
-                if (c_total >= 3) { pf = pf - (pf * 0.08); }
-            } else if (t == 3) { 
+                if (cantidadTotal >= 3) { pf = pf - (pf * 0.08); }
+            } else if (tipoCliente == 3) { 
                 pf = pf - (pf * 0.20);
                 if (r == 's') { pf = pf - (pf * 0.15); }
-                if (c_total >= 2) { pf = pf - (pf * 0.10); }
+                if (cantidadTotal >= 2) { pf = pf - (pf * 0.10); }
             } else if (t == 4) { 
                 pf = pf - (pf * 0.30);
                 if (r == 's') { pf = pf - (pf * 0.20); }
-                if (c_total >= 1) { pf = pf - (pf * 0.15); }
+                if (cantidadTotal >= 1) { pf = pf - (pf * 0.15); }
             }
 
             if (pf > 500) {
