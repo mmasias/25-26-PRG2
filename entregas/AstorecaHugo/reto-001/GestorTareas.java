@@ -2,13 +2,15 @@
 import java.util.Scanner;
 
 
+
+
+public class GestorTareas {
+
 static final int MAX_TAREAS = 10;
 static String[] tareas = new String[MAX_TAREAS];
 static boolean[] completadas = new boolean[MAX_TAREAS];
 static int numTareas = 0;
 
-
-public class GestorTareas {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
