@@ -31,44 +31,44 @@ public class JuegoAdivinanza {
             System.out.println("Opcion no valida, usando dificultad Normal.");
         }
 
-        System.out.println(); // espacio
-        System.out.println("Adivina el numero entre " + minN + " y " + maxN);
+        System.out.println(); 
+        System.out.println("Adivina el numero entre " + numMinimo + " y " + numMaximo);
 
-        int ns = (int)(Math.random() * (maxN - minN + 1)) + minN;
+        int ns = (int)(Math.random() * (numMaximo - numMinimo + 1)) + numMinimo;
         int intentosRealizados = 0;
         boolean adivinado = false;
 
-        // Historial
-        int[] histN = new int[maxI];
-        String[] histP = new String[maxI];
-        int idx = 0; // Indice
+        
+        int[] numHistorial = new int[maxIntentos];
+        String[] historialP = new String[maxIntentos];
+        int indice = 0; 
 
-        while (intentosRealizados < maxI && !adivinado) {
-            System.out.println(); // espacio
+        while (intentosRealizados < maxIntentos && !adivinado) {
+            System.out.println(); 
             System.out.println("Intento " + (intentosRealizados + 1) + "/" + maxI + ": ");
             System.out.println("[1] Adivinar [2] Pedir Pista");
             System.out.print("Opcion: ");
-            int opt_juego = sc.nextInt();
+            int opcionJuego = sc.nextInt();
 
             String pistaActual = "";
 
-            if (opt_juego == 2) { // Pista
-                if (intentosRealizados >= maxI - 1) { // Ultimo intento no hay pista
+            if (opcionJuego == 2) { 
+                if (intentosRealizados >= maxI - 1) { 
                     System.out.println("No puedes pedir mas pistas, es tu ultimo intento.");
                     pistaActual = "Pista denegada";
                 } else {
-                    intentosRealizados++; // La pista cuesta
+                    intentosRealizados++; 
                     System.out.print("PISTA: ");
-                    if (ns % 2 == 0) { // Duplicado
+                    if (ns % 2 == 0) { 
                         System.out.println("El numero es par.");
                     } else {
                         System.out.println("El numero es impar.");
                     }
-                    if (ns % 3 == 0) { // Otra
+                    if (ns % 3 == 0) { 
                         System.out.println("El numero es multiplo de 3.");
                     }
                     pistaActual = "Pista solicitada";
-                    // Guardar en historial
+                    
                     if (idx < maxI) {
                         histN[idx] = 0; // 0 para pista
                         histP[idx] = pistaActual;
