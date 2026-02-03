@@ -23,20 +23,20 @@ public class ConversorUnidades {
             System.out.print("Opcion: ");
             int opcionElegida = sc.nextInt();
             System.out.print("Valor: ");
-            double v = sc.nextDouble();
+            double valorElegido = sc.nextDouble();
 
             if (opcionElegida == 1) {
-                System.out.println(v + " m = " + (v / 1000) + " km");
+                System.out.println(valorElegido + " m = " + (valorElegido / 1000) + " km");
             } else if (opcionElegida == 2) {
-                System.out.println(v + " km = " + (v * 1000) + " m");
+                System.out.println(valorElegido + " km = " + (valorElegido * 1000) + " m");
             } else if (opcionElegida == 3) {
-                System.out.println(v + " m = " + (v * 0.000621371) + " mi");
+                System.out.println(valorElegido + " m = " + (valorElegido * 0.000621371) + " mi");
             } else if (opcionElegida == 4) {
-                System.out.println(v + " mi = " + (v * 1609.34) + " m");
+                System.out.println(valorElegido + " mi = " + (valorElegido * 1609.34) + " m");
             } else if (opcionElegida == 5) {
-                System.out.println(v + " cm = " + (v * 0.393701) + " in");
+                System.out.println(valorElegido + " cm = " + (valorElegido * 0.393701) + " in");
             } else if (opcionElegida == 6) {
-                System.out.println(v + " in = " + (v * 2.54) + " cm");
+                System.out.println(valorElegido + " in = " + (valorElegido * 2.54) + " cm");
             } else {
                 System.out.println("Opcion no valida");
                 f = false;
@@ -55,17 +55,17 @@ public class ConversorUnidades {
             double v = sc.nextDouble();
 
             if (o == 1) {
-                System.out.println(v + " kg = " + (v * 1000) + " g");
+                System.out.println(valorElegido + " kg = " + (valorElegido * 1000) + " g");
             } else if (opcionElegida == 2) {
-                System.out.println(v + " g = " + (v / 1000) + " kg");
+                System.out.println(valorElegido + " g = " + (valorElegido / 1000) + " kg");
             } else if (opcionElegida == 3) {
-                System.out.println(v + " kg = " + (v * 2.20462) + " lb");
+                System.out.println(valorElegido + " kg = " + (valorElegido * 2.20462) + " lb");
             } else if (opcionElegida == 4) {
-                System.out.println(v + " lb = " + (v * 0.453592) + " kg");
+                System.out.println(valorElegido + " lb = " + (valorElegido * 0.453592) + " kg");
             } else if (opcionElegida == 5) {
-                System.out.println(v + " g = " + (v * 0.035274) + " oz");
+                System.out.println(valorElegido + " g = " + (valorElegido * 0.035274) + " oz");
             } else if (opcionElegida == 6) {
-                System.out.println(v + " oz = " + (v * 28.3495) + " g");
+                System.out.println(valorElegido + " oz = " + (valorElegido * 28.3495) + " g");
             } else {
                 System.out.println("Opcion no valida");
                 f = false;
@@ -82,13 +82,13 @@ public class ConversorUnidades {
             double v = sc.nextDouble();
 
             if (opcionElegida == 1) {
-                System.out.println(v + " C = " + (v * 9 / 5 + 32) + " F");
+                System.out.println(valorElegido + " C = " + (valorElegido * 9 / 5 + 32) + " F");
             } else if (opcionElegida == 2) {
-                System.out.println(v + " F = " + ((v - 32) * 5 / 9) + " C");
+                System.out.println(valorElegido + " F = " + ((valorElegido - 32) * 5 / 9) + " C");
             } else if (opcionElegida == 3) {
-                System.out.println(v + " C = " + (v + 273.15) + " K");
+                System.out.println(valorElegido + " C = " + (valorElegido + 273.15) + " K");
             } else if (opcionElegida == 4) {
-                System.out.println(v + " K = " + (v - 273.15) + " C");
+                System.out.println(valorElegido + " K = " + (valorElegido - 273.15) + " C");
             } else {
                 System.out.println("Opcion no valida");
                 f = false;
@@ -99,5 +99,6 @@ public class ConversorUnidades {
     }
 
 }
+
 
 
