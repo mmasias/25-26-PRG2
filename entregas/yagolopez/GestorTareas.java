@@ -13,6 +13,12 @@ public class GestorTareas {
         System.out.print("Opcion: ");
     }
 
+    static int leerOpcion(Scanner sc) {
+        int opcion = sc.nextInt();
+        sc.nextLine();
+        return opcion;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String[] tareas = new String[MAX_TAREAS];
@@ -25,8 +31,7 @@ public class GestorTareas {
 
         while (!salir) {
             mostrarMenu();
-            int opcion = sc.nextInt();
-            sc.nextLine();
+            int opcion = leerOpcion(sc);
 
             if (opcion == 1) {
                 if (numTareas < MAX_TAREAS) {
