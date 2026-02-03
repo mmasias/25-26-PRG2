@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class GestorTareas {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         String[] tareas = new String[10];
         boolean[] completadas = new boolean[10];
         int numTareas = 0;
@@ -22,7 +22,7 @@ public class GestorTareas {
             if (opcion == 1) {
                 if (numTareas < 10) {
                     System.out.print("Descripcion de la nueva tarea: ");
-                    String d = sc.nextLine();
+                    String descripcion = sc.nextLine();
                     tareas[numTareas] = d;
                     completadas[numTareas] = false;
                     numTareas++; // El contador se incrementa
@@ -75,7 +75,7 @@ public class GestorTareas {
                 System.out.println("Tareas completadas: " + contCompletadas);
                 System.out.println("Tareas pendientes: " + (numTareas - contCompletadas));
                 if (numTareas > 0) {
-                    double porc = (contCompletadas * 100.0) / numTareas;
+                    double porcentaje = (contCompletadas * 100.0) / numTareas;
                     System.out.println("Porcentaje de completacion: " + porc + "%");
                 }
             } else if (opcion == 5) {
