@@ -66,28 +66,7 @@ public class CalculadoraDescuentos {
             System.out.print("Es temporada de rebajas? (s/n): ");
             char r = sc.next().charAt(0);
             
-            double pf = p_total;
-
-            if (t == 1) { // Normal
-                if (r == 's') { pf = pf - (pf * 0.10); }
-                if (c_total >= 5) { pf = pf - (pf * 0.05); }
-            } else if (t == 2) { // Estudiante
-                pf = pf - (pf * 0.15);
-                if (r == 's') { pf = pf - (pf * 0.10); }
-                if (c_total >= 3) { pf = pf - (pf * 0.08); }
-            } else if (t == 3) { // Jubilado
-                pf = pf - (pf * 0.20);
-                if (r == 's') { pf = pf - (pf * 0.15); }
-                if (c_total >= 2) { pf = pf - (pf * 0.10); }
-            } else if (t == 4) { // VIP
-                pf = pf - (pf * 0.30);
-                if (r == 's') { pf = pf - (pf * 0.20); }
-                if (c_total >= 1) { pf = pf - (pf * 0.15); }
-            }
-
-            if (pf > 500) {
-                pf = pf - 50;
-            }
+            double pf = aplicarDescuentos(p_total, c_total, t, r);
 
             System.out.println("Resumen de Compra");
             System.out.println("Precio original total: " + p_total + " euros");
@@ -116,5 +95,35 @@ public class CalculadoraDescuentos {
             total += cantidades[i];
         }
         return total;
+    }
+
+    static double aplicarDescuentos(double total, int cant, int tipo, char rebajas) {
+        double pf = total;
+
+        if (tipo == 1) {
+            if (rebajas == 's') pf -= pf * 0.10;
+            if (cant >= 5) pf -= pf * 0.05;
+        } 
+        else if (tipo == 2) {
+            pf -= pf * 0.15;
+            if (rebajas == 's') pf -= pf * 0.10;
+            if (cant >= 3) pf -= pf * 0.08;
+        } 
+        else if (tipo == 3) {
+            pf -= pf * 0.20;
+            if (rebajas == 's') pf -= pf * 0.15;
+            if (cant >= 2) pf -= pf * 0.10;
+        } 
+        else if (tipo == 4) {
+            pf -= pf * 0.30;
+            if (rebajas == 's') pf -= pf * 0.20;
+            if (cant >= 1) pf -= pf * 0.15;
+        }
+
+        if (pf > 500) {
+            pf -= 50;
+        }
+
+        return pf;
     }
 }
