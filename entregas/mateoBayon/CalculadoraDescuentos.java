@@ -17,7 +17,7 @@ public class CalculadoraDescuentos {
                 System.out.println("Saliendo del sistema.");
                 break;
             }
-            if (menuOpt != 1) {
+            else if (menuOpt != 1) {
                 System.out.println("Opcion no valida.");
                 continue;
             }
