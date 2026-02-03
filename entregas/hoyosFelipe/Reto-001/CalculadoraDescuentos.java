@@ -22,7 +22,6 @@ public class CalculadoraDescuentos {
                 continue;
             }
             
-            // Carrito de compra y precios
             String[] nombres_p = new String[10];
             double[] precios_p = new double[10];
             int[] cants_p = new int[10];
@@ -52,7 +51,6 @@ public class CalculadoraDescuentos {
                 continue;
             }
 
-            // Calcular total del carrito
             double p_total = 0;
             int c_total = 0;
             for(int i=0; i < n_prods; i++) {
@@ -69,18 +67,18 @@ public class CalculadoraDescuentos {
             
             double pf = p_total;
 
-            if (t == 1) { // Normal
+            if (t == 1) { 
                 if (r == 's') { pf = pf - (pf * 0.10); }
                 if (c_total >= 5) { pf = pf - (pf * 0.05); }
-            } else if (t == 2) { // Estudiante
+            } else if (t == 2) { 
                 pf = pf - (pf * 0.15);
                 if (r == 's') { pf = pf - (pf * 0.10); }
                 if (c_total >= 3) { pf = pf - (pf * 0.08); }
-            } else if (t == 3) { // Jubilado
+            } else if (t == 3) { 
                 pf = pf - (pf * 0.20);
                 if (r == 's') { pf = pf - (pf * 0.15); }
                 if (c_total >= 2) { pf = pf - (pf * 0.10); }
-            } else if (t == 4) { // VIP
+            } else if (t == 4) { 
                 pf = pf - (pf * 0.30);
                 if (r == 's') { pf = pf - (pf * 0.20); }
                 if (c_total >= 1) { pf = pf - (pf * 0.15); }
