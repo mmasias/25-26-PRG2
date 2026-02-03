@@ -75,7 +75,7 @@ public class JuegoAdivinanza {
                         indiceHistorial++;
                     }
                 }
-                continue; 
+                
             } else if (opt_juego == 1) { 
                 System.out.print("Tu numero: ");
                 int numeroUsuario = scanner.nextInt();
@@ -90,7 +90,7 @@ public class JuegoAdivinanza {
                         historialPistas[indiceHistorial] = pistaActual;
                         indiceHistorial++;
                     }
-                    continue; 
+                    
                 }
                 
                 intentosRealizados++;
@@ -108,7 +108,7 @@ public class JuegoAdivinanza {
                     } else {
                         pistaActual = "MAYOR";
                     }
-                } else { // n > ns
+                } else { 
                     System.out.println("El numero es MENOR");
                     if (numeroUsuario > numeroSecreto - 5 && numeroUsuario < numeroSecreto + 5) {
                         System.out.println("¡Muy cerca!");
