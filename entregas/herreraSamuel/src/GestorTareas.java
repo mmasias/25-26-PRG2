@@ -6,6 +6,7 @@ public class GestorTareas {
         String[] tareas = new String[10];
         boolean[] completadas = new boolean[10];
         int numTareas = 0;
+        boolean continuar = true;
 
         System.out.println("Gestor de Tareas v1.0");
 
