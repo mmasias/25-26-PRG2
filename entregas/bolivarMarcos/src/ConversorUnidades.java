@@ -3,18 +3,11 @@ import java.util.Scanner;
 public class ConversorUnidades {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int c = 0;
-        boolean f = true;
+        int eleccionConversion=0;
+        double valorConversion= 0.0;
+        pedirConversion(sc, eleccionConversion);
 
-        System.out.println("Conversor de Unidades - Version 2.1");
-        System.out.println("[1] Longitud");
-        System.out.println("[2] Peso");
-        System.out.println("[3] Temperatura");
-        System.out.print("Tipo de conversion: ");
-        int t = sc.nextInt();
-        c++;
-
-        if (t == 1) {
+        if (eleccionConversion == 1) {
             System.out.println("Conversion de longitud:");
             System.out.println("[1] Metros a Kilometros");
             System.out.println("[2] Kilometros a Metros");
@@ -41,7 +34,7 @@ public class ConversorUnidades {
                 System.out.println(v + " in = " + (v * 2.54) + " cm");
             } else {
                 System.out.println("Opcion no valida");
-                f = false;
+
             }
         } else if (t == 2) {
             System.out.println("Conversion de peso:");
@@ -70,7 +63,6 @@ public class ConversorUnidades {
                 System.out.println(v + " oz = " + (v * 28.3495) + " g");
             } else {
                 System.out.println("Opcion no valida");
-                f = false;
             }
         } else if (t == 3) {
             System.out.println("Conversion de temperatura:");
@@ -93,10 +85,23 @@ public class ConversorUnidades {
                 System.out.println(v + " K = " + (v - 273.15) + " C");
             } else {
                 System.out.println("Opcion no valida");
-                f = false;
             }
         } else {
             System.out.println("Tipo no valido");
         }
+        
     }
+        static int pedirConversion(Scanner sc, int eleccionConversion){
+        System.out.println("Conversor de Unidades - Version 2.1");
+        System.out.println("[1] Longitud");
+        System.out.println("[2] Peso");
+        System.out.println("[3] Temperatura");
+        System.out.println("[4] Salir");
+        System.out.print("Tipo de conversion: ");
+        eleccionConversion = sc.nextInt();
+        return eleccionConversion;
+        }
 }
+           
+
+
