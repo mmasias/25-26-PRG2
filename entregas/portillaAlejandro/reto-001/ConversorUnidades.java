@@ -64,22 +64,22 @@ public class ConversorUnidades {
         System.out.println("[5] Gramos a Onzas");
         System.out.println("[6] Onzas a Gramos");
         System.out.print("Opcion: ");
-        int o = scanner.nextInt();
+        int opcion = scanner.nextInt();
         System.out.print("Valor: ");
-        double v = scanner.nextDouble();
+        double valor = scanner.nextDouble();
 
-        if (o == 1) {
-            System.out.println(v + " kg = " + (v * 1000) + " g");
-        } else if (o == 2) {
-            System.out.println(v + " g = " + (v / 1000) + " kg");
-        } else if (o == 3) {
-            System.out.println(v + " kg = " + (v * 2.20462) + " lb");
-        } else if (o == 4) {
-            System.out.println(v + " lb = " + (v * 0.453592) + " kg");
-        } else if (o == 5) {
-            System.out.println(v + " g = " + (v * 0.035274) + " oz");
-        } else if (o == 6) {
-            System.out.println(v + " oz = " + (v * 28.3495) + " g");
+        if (opcion == 1) {
+            System.out.println(valor + " kg = " + (valor * 1000) + " g");
+        } else if (opcion == 2) {
+            System.out.println(valor + " g = " + (valor / 1000) + " kg");
+        } else if (opcion == 3) {
+            System.out.println(valor + " kg = " + (valor * 2.20462) + " lb");
+        } else if (opcion == 4) {
+            System.out.println(valor + " lb = " + (valor * 0.453592) + " kg");
+        } else if (opcion == 5) {
+            System.out.println(valor + " g = " + (valor * 0.035274) + " oz");
+        } else if (opcion == 6) {
+            System.out.println(valor + " oz = " + (valor * 28.3495) + " g");
         } else {
             System.out.println("Opcion no valida");
         }
@@ -92,18 +92,18 @@ public class ConversorUnidades {
         System.out.println("[3] Celsius a Kelvin");
         System.out.println("[4] Kelvin a Celsius");
         System.out.print("Opcion: ");
-        int o = scanner.nextInt();
+        int opcion = scanner.nextInt();
         System.out.print("Valor: ");
-        double v = scanner.nextDouble();
+        double valor = scanner.nextDouble();
 
-        if (o == 1) {
-            System.out.println(v + " C = " + (v * 9 / 5 + 32) + " F");
-        } else if (o == 2) {
-            System.out.println(v + " F = " + ((v - 32) * 5 / 9) + " C");
-        } else if (o == 3) {
-            System.out.println(v + " C = " + (v + 273.15) + " K");
-        } else if (o == 4) {
-            System.out.println(v + " K = " + (v - 273.15) + " C");
+        if (opcion == 1) {
+            System.out.println(valor + " C = " + (valor * 9 / 5 + 32) + " F");
+        } else if (opcion == 2) {
+            System.out.println(valor + " F = " + ((valor - 32) * 5 / 9) + " C");
+        } else if (opcion == 3) {
+            System.out.println(valor + " C = " + (valor + 273.15) + " K");
+        } else if (opcion == 4) {
+            System.out.println(valor + " K = " + (valor - 273.15) + " C");
         } else {
             System.out.println("Opcion no valida");
         }
