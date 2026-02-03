@@ -10,12 +10,7 @@ public class GestorTareas {
         System.out.println("Gestor de Tareas v1.0");
 
         while (true) {
-            System.out.println("[1] Anadir tarea");
-            System.out.println("[2] Marcar tarea como completada");
-            System.out.println("[3] Ver tareas pendientes");
-            System.out.println("[4] Ver estadisticas");
-            System.out.println("[5] Salir");
-            System.out.print("Opcion: ");
+            imprimirMenu();
             int opcion = scanner.nextInt();
             scanner.nextLine();
 
@@ -86,5 +81,14 @@ public class GestorTareas {
             }
         }
         scanner.close();
+    }
+
+   static void imprimirMenu() {
+        System.out.println("[1] Anadir tarea");
+        System.out.println("[2] Marcar tarea como completada");
+        System.out.println("[3] Ver tareas pendientes");
+        System.out.println("[4] Ver estadisticas");
+        System.out.println("[5] Salir");
+        System.out.print("Opcion: ");
     }
 }
