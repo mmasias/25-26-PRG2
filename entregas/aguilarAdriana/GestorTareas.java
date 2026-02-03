@@ -39,14 +39,14 @@ public class GestorTareas {
                 }
             } else if (opcion == 3) {
                 System.out.println("Tareas Pendientes");
-                boolean hayPendientes = false;
+                boolean hayTareasPendientes = false;
                 for (int i = 0; i < cantidadTareas; i++) {
                     if (!completadas[i]) {
                         System.out.println((i + 1) + ". " + tareas[i]);
-                        hayPendientes = true;
+                        hayTareasPendientes = true;
                     }
                 }
-                if (!hayPendientes) {
+                if (!hayTareasPendientes) {
                     System.out.println("(No hay tareas pendientes)");
                 }
             } else if (opcion == 4) {
