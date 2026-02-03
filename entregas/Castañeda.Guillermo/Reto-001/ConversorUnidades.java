@@ -11,31 +11,44 @@ public class ConversorUnidades {
         System.out.print("Tipo de conversion: ");
         int tipo = sc.nextInt();
 
+        String[] menuOpciones;
+
         if (tipo == 1) {
             System.out.println("Conversion de longitud:");
-            System.out.println("[1] Metros a Kilometros");
-            System.out.println("[2] Kilometros a Metros");
-            System.out.println("[3] Metros a Millas");
-            System.out.println("[4] Millas a Metros");
-            System.out.println("[5] Centimetros a Pulgadas");
-            System.out.println("[6] Pulgadas a Centimetros");
+            menuOpciones = new String[] {
+                "[1] Metros a Kilometros",
+                "[2] Kilometros a Metros",
+                "[3] Metros a Millas",
+                "[4] Millas a Metros",
+                "[5] Centimetros a Pulgadas",
+                "[6] Pulgadas a Centimetros"
+            };
         } else if (tipo == 2) {
             System.out.println("Conversion de peso:");
-            System.out.println("[1] Kilogramos a Gramos");
-            System.out.println("[2] Gramos a Kilogramos");
-            System.out.println("[3] Kilogramos a Libras");
-            System.out.println("[4] Libras a Kilogramos");
-            System.out.println("[5] Gramos a Onzas");
-            System.out.println("[6] Onzas a Gramos");
+            menuOpciones = new String[] {
+                "[1] Kilogramos a Gramos",
+                "[2] Gramos a Kilogramos",
+                "[3] Kilogramos a Libras",
+                "[4] Libras a Kilogramos",
+                "[5] Gramos a Onzas",
+                "[6] Onzas a Gramos"
+            };
         } else if (tipo == 3) {
             System.out.println("Conversion de temperatura:");
-            System.out.println("[1] Celsius a Fahrenheit");
-            System.out.println("[2] Fahrenheit a Celsius");
-            System.out.println("[3] Celsius a Kelvin");
-            System.out.println("[4] Kelvin a Celsius");
+            menuOpciones = new String[] {
+                "[1] Celsius a Fahrenheit",
+                "[2] Fahrenheit a Celsius",
+                "[3] Celsius a Kelvin",
+                "[4] Kelvin a Celsius"
+            };
         } else {
             System.out.println("Tipo no valido");
             return;
+        }
+
+        // Imprimir el menú usando un bucle
+        for (String opcionTexto : menuOpciones) {
+            System.out.println(opcionTexto);
         }
 
         System.out.print("Opcion: ");
