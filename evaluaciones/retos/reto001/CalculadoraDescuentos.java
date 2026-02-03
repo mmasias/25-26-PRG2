@@ -26,13 +26,13 @@ public class CalculadoraDescuentos {
             }
             
             // Carrito de compra y precios
-            String[] nombres_p = new String[10];
-            double[] precios_p = new double[10];
-            int[] cants_p = new int[10];
+            String[] nombres_p = new String[MAX_PROD];
+            double[] precios_p = new double[MAX_PROD];
+            int[] cants_p = new int[MAX_PROD];
             int n_prods = 0;
 
             System.out.println("Carrito de Compra");
-            while(n_prods < 10) {
+            while(n_prods < MAX_PROD) {
                 System.out.print("Nombre del producto (o 'fin' para terminar): ");
                 String nombre = sc.nextLine();
                 if (nombre.equalsIgnoreCase("fin")) {
