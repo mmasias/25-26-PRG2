@@ -1,4 +1,6 @@
+
 import java.util.Scanner;
+
 
 public class GestorTareas {
     public static void main(String[] args) {
@@ -20,64 +22,13 @@ public class GestorTareas {
             scanner.nextLine();
 
             if (opcion == 1) {
-                if (numTareas < 10) {
-                    System.out.print("Descripcion de la nueva tarea: ");
-                    String d = scanner.nextLine();
-                    tareas[numTareas] = d;
-                    completadas[numTareas] = false;
-                    numTareas++; 
-                    System.out.println("Tarea anadida correctamente.");
-                } else {
-                    System.out.println("ERROR: No se pueden anadir mas tareas, limite alcanzado.");
-                }
+                añadirTarea(scanner);
             } else if (opcion == 2) {
-                System.out.println("Tareas para Marcar");
-                for (int i = 0; i < numTareas; i++) {
-                    System.out.println((i + 1) + ". " + tareas[i] + " [" + (completadas[i] ? "Completada" : "Pendiente") + "]");
-                }
-                if (numTareas > 0) {
-                    System.out.print("Numero de tarea a marcar como completada: ");
-                    int num = scanner.nextInt();
-                    if (num >= 1 && num <= numTareas) {
-                        if (!completadas[num - 1]) {
-                            completadas[num - 1] = true;
-                            System.out.println("Tarea marcada como completada.");
-                        } else {
-                            System.out.println("Esta tarea ya estaba completada.");
-                        }
-                    } else {
-                        System.out.println("Numero de tarea invalido.");
-                    }
-                } else {
-                    System.out.println("No hay tareas para marcar.");
-                }
+                marcarTarea(scanner);
             } else if (opcion == 3) {
-                System.out.println("Tareas Pendientes");
-                boolean hayPendientes = false;
-                for (int i = 0; i < numTareas; i++) {
-                    if (!completadas[i]) {
-                        System.out.println((i + 1) + ". " + tareas[i]);
-                        hayPendientes = true;
-                    }
-                }
-                if (!hayPendientes) {
-                    System.out.println("(No hay tareas pendientes)");
-                }
+               verPendientes();
             } else if (opcion == 4) {
-                System.out.println("Estadisticas");
-                int contCompletadas = 0;
-                for (int i = 0; i < numTareas; i++) {
-                    if (completadas[i]) {
-                        contCompletadas++;
-                    }
-                }
-                System.out.println("Total de tareas: " + numTareas);
-                System.out.println("Tareas completadas: " + contCompletadas);
-                System.out.println("Tareas pendientes: " + (numTareas - contCompletadas));
-                if (numTareas > 0) {
-                    double porc = (contCompletadas * 100.0) / numTareas;
-                    System.out.println("Porcentaje de completacion: " + porc + "%");
-                }
+                verEstadisticas();
             } else if (opcion == 5) {
                 System.out.println("Saliendo del gestor de tareas.");
                 break;
@@ -86,5 +37,78 @@ public class GestorTareas {
             }
         }
         scanner.close();
+    }
+}
+static void añadirTarea(Scanner scanner) {
+    if (numTareas < 10) {
+        System.out.print("Descripcion de la nueva tarea: ");
+        String d = scanner.nextLine();
+        tareas[numTareas] = d;
+        completadas[numTareas] = false;
+        numTareas++;
+        System.out.println("Tarea anadida correctamente.");
+    } else {
+        System.out.println("ERROR: No se pueden anadir mas tareas, limite alcanzado.");
+    }
+}
+
+static void marcarTarea(Scanner scanner) {
+    if (numTareas == 0) {
+        System.out.println("No hay tareas para marcar.");
+        return;
+    }
+
+    System.out.println("Tareas para Marcar:");
+    for (int i = 0; i < numTareas; i++) {
+        System.out.println((i + 1) + ". " + tareas[i] + " [" + (completadas[i] ? "Completada" : "Pendiente") + "]");
+    }
+
+    System.out.print("Número de tarea a marcar como completada: ");
+    int num = scanner.nextInt();
+    scanner.nextLine(); // limpiar buffer
+
+    if (num < 1 || num > numTareas) {
+        System.out.println("Número de tarea inválido.");
+    } else if (completadas[num - 1]) {
+        System.out.println("Esta tarea ya estaba completada.");
+    } else {
+        completadas[num - 1] = true;
+        System.out.println("Tarea marcada como completada.");
+    }
+}
+
+static void verPendientes() {
+    
+    boolean hayPendientes = false;
+    System.out.println("Tareas Pendientes:");
+
+    for (int i = 0; i < numTareas; i++) {
+        if (!completadas[i]) {
+            System.out.println((i + 1) + ". " + tareas[i]);
+            hayPendientes = true;
+        }
+    }
+
+    if (!hayPendientes) {
+        System.out.println("(No hay tareas pendientes)");
+    }
+}
+
+static void verEstadisticas(){
+    int contCompletadas = 0;
+    for (int i = 0; i < numTareas; i++) {
+        if (completadas[i]) {
+            contCompletadas++;
+        }
+    }
+
+    System.out.println("Estadísticas:");
+    System.out.println("Total de tareas: " + numTareas);
+    System.out.println("Tareas completadas: " + contCompletadas);
+    System.out.println("Tareas pendientes: " + (numTareas - contCompletadas));
+
+    if (numTareas > 0) {
+        double porc = (contCompletadas * 100.0) / numTareas;
+        System.out.println("Porcentaje de completación: " + porc + "%");
     }
 }
