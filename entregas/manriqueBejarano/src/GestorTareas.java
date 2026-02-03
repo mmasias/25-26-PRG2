@@ -44,6 +44,20 @@ public class GestorTareas {
         }
     }
 
+    private static void verTareasPendientes() {
+        System.out.println("Tareas Pendientes");
+        boolean hayPendientes = false;
+        for (int i = 0; i < numTareas; i++) {
+            if (!completadas[i]) {
+                System.out.println((i + 1) + ". " + tareas[i]);
+                hayPendientes = true;
+            }
+        }
+        if (!hayPendientes) {
+            System.out.println("(No hay tareas pendientes)");
+        }
+    }
+
     public static void main(String[] args) {
         sc = new Scanner(System.in);
         tareas = new String[MAX_TAREAS];
@@ -67,17 +81,7 @@ public class GestorTareas {
             } else if (opcion == 2) {
                 marcarCompletada();
             } else if (opcion == 3) {
-                System.out.println("Tareas Pendientes");
-                boolean hayPendientes = false;
-                for (int i = 0; i < numTareas; i++) {
-                    if (!completadas[i]) {
-                        System.out.println((i + 1) + ". " + tareas[i]);
-                        hayPendientes = true;
-                    }
-                }
-                if (!hayPendientes) {
-                    System.out.println("(No hay tareas pendientes)");
-                }
+                verTareasPendientes();
             } else if (opcion == 4) {
                 System.out.println("Estadisticas");
                 int contCompletadas = 0;

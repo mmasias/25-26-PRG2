@@ -4,4 +4,5 @@
  - refactor: promote local variables to static fields
  - refactor: extract method anadirTarea()
  - refactor: extract method marcarCompletada()
- - 
+ - refactor: extract method verTareasPendientes()
+ 
