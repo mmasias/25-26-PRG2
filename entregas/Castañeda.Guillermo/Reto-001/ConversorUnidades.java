@@ -19,11 +19,31 @@ public class ConversorUnidades {
             System.out.println("[4] Millas a Metros");
             System.out.println("[5] Centimetros a Pulgadas");
             System.out.println("[6] Pulgadas a Centimetros");
-            System.out.print("Opcion: ");
-            int opcion = sc.nextInt();
-            System.out.print("Valor: ");
-            double valor = sc.nextDouble();
+        } else if (tipo == 2) {
+            System.out.println("Conversion de peso:");
+            System.out.println("[1] Kilogramos a Gramos");
+            System.out.println("[2] Gramos a Kilogramos");
+            System.out.println("[3] Kilogramos a Libras");
+            System.out.println("[4] Libras a Kilogramos");
+            System.out.println("[5] Gramos a Onzas");
+            System.out.println("[6] Onzas a Gramos");
+        } else if (tipo == 3) {
+            System.out.println("Conversion de temperatura:");
+            System.out.println("[1] Celsius a Fahrenheit");
+            System.out.println("[2] Fahrenheit a Celsius");
+            System.out.println("[3] Celsius a Kelvin");
+            System.out.println("[4] Kelvin a Celsius");
+        } else {
+            System.out.println("Tipo no valido");
+            return;
+        }
 
+        System.out.print("Opcion: ");
+        int opcion = sc.nextInt();
+        System.out.print("Valor: ");
+        double valor = sc.nextDouble();
+
+        if (tipo == 1) {
             if (opcion == 1) {
                 System.out.println(valor + " m = " + (valor / 1000) + " km");
             } else if (opcion == 2) {
@@ -40,18 +60,6 @@ public class ConversorUnidades {
                 System.out.println("Opcion no valida");
             }
         } else if (tipo == 2) {
-            System.out.println("Conversion de peso:");
-            System.out.println("[1] Kilogramos a Gramos");
-            System.out.println("[2] Gramos a Kilogramos");
-            System.out.println("[3] Kilogramos a Libras");
-            System.out.println("[4] Libras a Kilogramos");
-            System.out.println("[5] Gramos a Onzas");
-            System.out.println("[6] Onzas a Gramos");
-            System.out.print("Opcion: ");
-            int opcion = sc.nextInt();
-            System.out.print("Valor: ");
-            double valor = sc.nextDouble();
-
             if (opcion == 1) {
                 System.out.println(valor + " kg = " + (valor * 1000) + " g");
             } else if (opcion == 2) {
@@ -68,16 +76,6 @@ public class ConversorUnidades {
                 System.out.println("Opcion no valida");
             }
         } else if (tipo == 3) {
-            System.out.println("Conversion de temperatura:");
-            System.out.println("[1] Celsius a Fahrenheit");
-            System.out.println("[2] Fahrenheit a Celsius");
-            System.out.println("[3] Celsius a Kelvin");
-            System.out.println("[4] Kelvin a Celsius");
-            System.out.print("Opcion: ");
-            int opcion = sc.nextInt();
-            System.out.print("Valor: ");
-            double valor = sc.nextDouble();
-
             if (opcion == 1) {
                 System.out.println(valor + " C = " + (valor * 9 / 5 + 32) + " F");
             } else if (opcion == 2) {
@@ -89,8 +87,6 @@ public class ConversorUnidades {
             } else {
                 System.out.println("Opcion no valida");
             }
-        } else {
-            System.out.println("Tipo no valido");
         }
     }
 }
