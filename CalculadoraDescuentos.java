@@ -26,28 +26,25 @@ public class CalculadoraDescuentos {
             String[] nombres_p = new String[10];
             double[] precios_p = new double[10];
             int[] cants_p = new int[10];
-            int n_prods = 0;
+            int numeroProductos = 0;
 
             System.out.println("Carrito de Compra");
-            while(n_prods < 10) {
+            while(numeroProductos < 10) {
                 System.out.print("Nombre del producto (o 'fin' para terminar): ");
                 String nombre = sc.nextLine();
                 if (nombre.equalsIgnoreCase("fin")) {
                     break;
                 }
-                nombres_p[n_prods] = nombre;
-                
-                System.out.print("Precio de '" + nombre + "': ");
-                precios_p[n_prods] = sc.nextDouble();
-                
-                System.out.print("Cantidad de '" + nombre + "': ");
-                cants_p[n_prods] = sc.nextInt();
-                sc.nextLine(); 
-
-                n_prods++;
+               nombres_p[numeroProductos] = nombre;
+               System.out.print("Precio de '" + nombre + "': ");
+               precios_p[numeroProductos] = sc.nextDouble();
+               System.out.print("Cantidad de '" + nombre + "': ");
+               cants_p[numeroProductos] = sc.nextInt();
+               sc.nextLine();
+               numeroProductos++;
             }
 
-            if(n_prods == 0){
+            if(numeroProductos == 0){
                 System.out.println("Carrito vacio, no se puede calcular el descuento.");
                 continue;
             }
@@ -55,7 +52,7 @@ public class CalculadoraDescuentos {
            
             double p_total = 0;
             int c_total = 0;
-            for(int i=0; i < n_prods; i++) {
+            for(int i=0; i < numeroProductos; i++) {
                 p_total += precios_p[i] * cants_p[i];
                 c_total += cants_p[i];
             }
