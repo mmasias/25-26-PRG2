@@ -2,12 +2,16 @@
 import java.util.Scanner;
 
 
+static final int MAX_TAREAS = 10;
+static String[] tareas = new String[MAX_TAREAS];
+static boolean[] completadas = new boolean[MAX_TAREAS];
+static int numTareas = 0;
+
+
 public class GestorTareas {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String[] tareas = new String[10];
-        boolean[] completadas = new boolean[10];
-        int numTareas = 0;
+        
 
         System.out.println("Gestor de Tareas v1.0");
 
@@ -65,7 +69,7 @@ static void marcarTarea(Scanner scanner) {
 
     System.out.print("Número de tarea a marcar como completada: ");
     int num = scanner.nextInt();
-    scanner.nextLine(); // limpiar buffer
+    scanner.nextLine(); 
 
     if (num < 1 || num > numTareas) {
         System.out.println("Número de tarea inválido.");
