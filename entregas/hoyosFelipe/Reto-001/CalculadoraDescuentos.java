@@ -22,40 +22,40 @@ public class CalculadoraDescuentos {
                 continue;
             }
             
-            String[] nombres_p = new String[10];
-            double[] precios_p = new double[10];
-            int[] cants_p = new int[10];
-            int n_prods = 0;
+            String[] nombresP = new String[10];
+            double[] preciosP = new double[10];
+            int[] cantsP = new int[10];
+            int nProds = 0;
 
             System.out.println("Carrito de Compra");
-            while(n_prods < 10) {
+            while(nProds < 10) {
                 System.out.print("Nombre del producto (o 'fin' para terminar): ");
                 String nombre = sc.nextLine();
                 if (nombre.equalsIgnoreCase("fin")) {
                     break;
                 }
-                nombres_p[n_prods] = nombre;
+                nombresP[nProds] = nombre;
                 
                 System.out.print("Precio de '" + nombre + "': ");
-                precios_p[n_prods] = sc.nextDouble();
+                preciosP[nProds] = sc.nextDouble();
                 
                 System.out.print("Cantidad de '" + nombre + "': ");
-                cants_p[n_prods] = sc.nextInt();
+                cantsP[nProds] = sc.nextInt();
                 sc.nextLine(); 
 
-                n_prods++;
+                nProds++;
             }
 
-            if(n_prods == 0){
+            if(nProds == 0){
                 System.out.println("Carrito vacio, no se puede calcular el descuento.");
                 continue;
             }
-
-            double p_total = 0;
-            int c_total = 0;
-            for(int i=0; i < n_prods; i++) {
-                p_total += precios_p[i] * cants_p[i];
-                c_total += cants_p[i];
+            
+            double pTotal = 0;
+            int cTotal = 0;
+            for(int i=0; i < nProds; i++) {
+                pTotal += preciosP[i] * cantsP[i];
+                cTotal += cantsP[i];
             }
 
             System.out.println("Configuracion del Descuento");
@@ -65,23 +65,23 @@ public class CalculadoraDescuentos {
             System.out.print("Es temporada de rebajas? (s/n): ");
             char r = sc.next().charAt(0);
             
-            double pf = p_total;
+            double pf = pTotal;
 
             if (t == 1) { 
                 if (r == 's') { pf = pf - (pf * 0.10); }
-                if (c_total >= 5) { pf = pf - (pf * 0.05); }
+                if (cTotal >= 5) { pf = pf - (pf * 0.05); }
             } else if (t == 2) { 
                 pf = pf - (pf * 0.15);
                 if (r == 's') { pf = pf - (pf * 0.10); }
-                if (c_total >= 3) { pf = pf - (pf * 0.08); }
+                if (cTotal >= 3) { pf = pf - (pf * 0.08); }
             } else if (t == 3) { 
                 pf = pf - (pf * 0.20);
                 if (r == 's') { pf = pf - (pf * 0.15); }
-                if (c_total >= 2) { pf = pf - (pf * 0.10); }
+                if (cTotal >= 2) { pf = pf - (pf * 0.10); }
             } else if (t == 4) { 
                 pf = pf - (pf * 0.30);
                 if (r == 's') { pf = pf - (pf * 0.20); }
-                if (c_total >= 1) { pf = pf - (pf * 0.15); }
+                if (cTotal >= 1) { pf = pf - (pf * 0.15); }
             }
 
             if (pf > 500) {
@@ -89,12 +89,12 @@ public class CalculadoraDescuentos {
             }
 
             System.out.println("Resumen de Compra");
-            System.out.println("Precio original total: " + p_total + " euros");
-            System.out.println("Numero total de productos: " + c_total);
+            System.out.println("Precio original total: " + pTotal + " euros");
+            System.out.println("Numero total de productos: " + cTotal);
             System.out.println("Precio final con descuento: " + pf + " euros");
-            System.out.println("Ahorro total: " + (p_total - pf) + " euros");
-            if (p_total > 0) {
-                double porcentaje = ((p_total - pf) / p_total) * 100;
+            System.out.println("Ahorro total: " + (pTotal - pf) + " euros");
+            if (pTotal > 0) {
+                double porcentaje = ((pTotal - pf) / pTotal) * 100;
                 System.out.println("Porcentaje de ahorro: " + porcentaje + "%");
             }
         }
