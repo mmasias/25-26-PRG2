@@ -4,7 +4,7 @@ public class ConversorUnidades {
     public static void main(String[] args) {
         int unidadElegida = eleccionUnidad();
         System.out.println("Has elegido la opción: " + unidadElegida);
-
+        ValorUnidadElegido(unidadElegida);
         
     }
     private static int eleccionUnidad() {
@@ -108,6 +108,7 @@ public class ConversorUnidades {
     }
 
 }
+
 
 
 
