@@ -58,6 +58,23 @@ public class GestorTareas {
         }
     }
 
+    private static void verEstadisticas() {
+        System.out.println("Estadisticas");
+        int contCompletadas = 0;
+        for (int i = 0; i < numTareas; i++) {
+            if (completadas[i]) {
+                contCompletadas++;
+            }
+        }
+        System.out.println("Total de tareas: " + numTareas);
+        System.out.println("Tareas completadas: " + contCompletadas);
+        System.out.println("Tareas pendientes: " + (numTareas - contCompletadas));
+        if (numTareas > 0) {
+            double porcentaje = (contCompletadas * 100.0) / numTareas;
+            System.out.println("Porcentaje de completacion: " + porcentaje + "%");
+        }
+    }
+
     public static void main(String[] args) {
         sc = new Scanner(System.in);
         tareas = new String[MAX_TAREAS];
@@ -83,20 +100,7 @@ public class GestorTareas {
             } else if (opcion == 3) {
                 verTareasPendientes();
             } else if (opcion == 4) {
-                System.out.println("Estadisticas");
-                int contCompletadas = 0;
-                for (int i = 0; i < numTareas; i++) {
-                    if (completadas[i]) {
-                        contCompletadas++;
-                    }
-                }
-                System.out.println("Total de tareas: " + numTareas);
-                System.out.println("Tareas completadas: " + contCompletadas);
-                System.out.println("Tareas pendientes: " + (numTareas - contCompletadas));
-                if (numTareas > 0) {
-                    double porc = (contCompletadas * 100.0) / numTareas;
-                    System.out.println("Porcentaje de completacion: " + porc + "%");
-                }
+                verEstadisticas();
             } else if (opcion == 5) {
                 System.out.println("Saliendo del gestor de tareas.");
                 break;
