@@ -3,18 +3,18 @@ import java.util.Scanner;
 public class ConversorUnidades {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int c = 0;
-        boolean f = true;
+        int contadorConversiones = 0;
+        boolean conversiónVálida = true;
 
         System.out.println("Conversor de Unidades - Version 2.1");
         System.out.println("[1] Longitud");
         System.out.println("[2] Peso");
         System.out.println("[3] Temperatura");
         System.out.print("Tipo de conversion: ");
-        int t = sc.nextInt();
-        c++;
+        int tipoConversión = sc.nextInt();
+        contadorConversiones++;
 
-        if (t == 1) {
+        if (tipoConversión == 1) {
             System.out.println("Conversion de longitud:");
             System.out.println("[1] Metros a Kilometros");
             System.out.println("[2] Kilometros a Metros");
@@ -23,27 +23,27 @@ public class ConversorUnidades {
             System.out.println("[5] Centimetros a Pulgadas");
             System.out.println("[6] Pulgadas a Centimetros");
             System.out.print("Opcion: ");
-            int o = sc.nextInt();
+            int opciónConversión = sc.nextInt();
             System.out.print("Valor: ");
             double v = sc.nextDouble();
 
-            if (o == 1) {
+            if (opciónConversión == 1) {
                 System.out.println(v + " m = " + (v / 1000) + " km");
-            } else if (o == 2) {
+            } else if (opciónConversión == 2) {
                 System.out.println(v + " km = " + (v * 1000) + " m");
-            } else if (o == 3) {
+            } else if (opciónConversión == 3) {
                 System.out.println(v + " m = " + (v * 0.000621371) + " mi");
-            } else if (o == 4) {
+            } else if (opciónConversión == 4) {
                 System.out.println(v + " mi = " + (v * 1609.34) + " m");
-            } else if (o == 5) {
+            } else if (opciónConversión == 5) {
                 System.out.println(v + " cm = " + (v * 0.393701) + " in");
-            } else if (o == 6) {
+            } else if (opciónConversión == 6) {
                 System.out.println(v + " in = " + (v * 2.54) + " cm");
             } else {
                 System.out.println("Opcion no valida");
-                f = false;
+                conversiónVálida = false;
             }
-        } else if (t == 2) {
+        } else if (tipoConversión == 2) {
             System.out.println("Conversion de peso:");
             System.out.println("[1] Kilogramos a Gramos");
             System.out.println("[2] Gramos a Kilogramos");
@@ -70,9 +70,9 @@ public class ConversorUnidades {
                 System.out.println(v + " oz = " + (v * 28.3495) + " g");
             } else {
                 System.out.println("Opcion no valida");
-                f = false;
+                conversiónVálida = false;
             }
-        } else if (t == 3) {
+        } else if (tipoConversión == 3) {
             System.out.println("Conversion de temperatura:");
             System.out.println("[1] Celsius a Fahrenheit");
             System.out.println("[2] Fahrenheit a Celsius");
@@ -93,7 +93,7 @@ public class ConversorUnidades {
                 System.out.println(v + " K = " + (v - 273.15) + " C");
             } else {
                 System.out.println("Opcion no valida");
-                f = false;
+                conversiónVálida = false;
             }
         } else {
             System.out.println("Tipo no valido");
