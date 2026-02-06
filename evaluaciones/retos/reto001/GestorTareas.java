@@ -1,90 +1,179 @@
 import java.util.Scanner;
 
 public class GestorTareas {
+
+    private static final int MAX_TAREAS = 10;
+
+    private static class Tarea {
+        private String descripcion;
+        private boolean completada;
+
+        public Tarea(String descripcion) {
+            this.descripcion = descripcion;
+            this.completada = false;
+        }
+
+        public String getDescripcion() {
+            return descripcion;
+        }
+
+        public boolean isCompletada() {
+            return completada;
+        }
+
+        public void completar() {
+            this.completada = true;
+        }
+    }
+
+    private Tarea[] tareas;
+    private int numTareas;
+
+    public GestorTareas() {
+        tareas = new Tarea[MAX_TAREAS];
+        numTareas = 0;
+    }
+
+    public boolean agregarTarea(String descripcion) {
+        if (numTareas >= MAX_TAREAS) {
+            return false;
+        }
+        tareas[numTareas++] = new Tarea(descripcion);
+        return true;
+    }
+
+    public int contarCompletadas() {
+        int contador = 0;
+        for (int i = 0; i < numTareas; i++) {
+            if (tareas[i].isCompletada()) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
-        String[] tareas = new String[10];
-        boolean[] completadas = new boolean[10];
-        int numTareas = 0;
+        GestorTareas gestor = new GestorTareas();
 
-        System.out.println("Gestor de Tareas v1.0");
+        System.out.println("Gestor de Tareas v2.0");
 
-        while (true) {
-            System.out.println("[1] Anadir tarea");
-            System.out.println("[2] Marcar tarea como completada");
-            System.out.println("[3] Ver tareas pendientes");
-            System.out.println("[4] Ver estadisticas");
-            System.out.println("[5] Salir");
-            System.out.print("Opcion: ");
+        boolean salir = false;
+
+        while (!salir) {
+            mostrarMenu();
             int opcion = sc.nextInt();
             sc.nextLine();
 
-            if (opcion == 1) {
-                if (numTareas < 10) {
+            switch (opcion) {
+                case 1:
                     System.out.print("Descripcion de la nueva tarea: ");
-                    String d = sc.nextLine();
-                    tareas[numTareas] = d;
-                    completadas[numTareas] = false;
-                    numTareas++; // El contador se incrementa
-                    System.out.println("Tarea anadida correctamente.");
-                } else {
-                    System.out.println("ERROR: No se pueden anadir mas tareas, limite alcanzado.");
-                }
-            } else if (opcion == 2) {
-                System.out.println("Tareas para Marcar");
-                for (int i = 0; i < numTareas; i++) {
-                    System.out.println((i + 1) + ". " + tareas[i] + " [" + (completadas[i] ? "Completada" : "Pendiente") + "]");
-                }
-                if (numTareas > 0) {
-                    System.out.print("Numero de tarea a marcar como completada: ");
-                    int num = sc.nextInt();
-                    if (num >= 1 && num <= numTareas) {
-                        if (!completadas[num - 1]) {
-                            completadas[num - 1] = true;
-                            System.out.println("Tarea marcada como completada.");
-                        } else {
-                            System.out.println("Esta tarea ya estaba completada.");
-                        }
+                    String descripcion = sc.nextLine();
+                    if (gestor.agregarTarea(descripcion)) {
+                        System.out.println("Tarea añadida correctamente.");
                     } else {
-                        System.out.println("Numero de tarea invalido.");
+                        System.out.println("ERROR: No se pueden añadir más tareas.");
                     }
-                } else {
-                    System.out.println("No hay tareas para marcar.");
-                }
-            } else if (opcion == 3) {
-                System.out.println("Tareas Pendientes");
-                boolean hayPendientes = false;
-                for (int i = 0; i < numTareas; i++) {
-                    if (!completadas[i]) {
-                        System.out.println((i + 1) + ". " + tareas[i]);
-                        hayPendientes = true;
-                    }
-                }
-                if (!hayPendientes) {
-                    System.out.println("(No hay tareas pendientes)");
-                }
-            } else if (opcion == 4) {
-                System.out.println("Estadisticas");
-                int contCompletadas = 0;
-                for (int i = 0; i < numTareas; i++) {
-                    if (completadas[i]) {
-                        contCompletadas++;
-                    }
-                }
-                System.out.println("Total de tareas: " + numTareas);
-                System.out.println("Tareas completadas: " + contCompletadas);
-                System.out.println("Tareas pendientes: " + (numTareas - contCompletadas));
-                if (numTareas > 0) {
-                    double porc = (contCompletadas * 100.0) / numTareas;
-                    System.out.println("Porcentaje de completacion: " + porc + "%");
-                }
-            } else if (opcion == 5) {
-                System.out.println("Saliendo del gestor de tareas.");
-                break;
-            } else {
-                System.out.println("Opcion no valida. Intente de nuevo.");
+                    break;
+
+                case 2:
+                    marcarTarea(sc, gestor);
+                    break;
+
+                case 3:
+                    mostrarPendientes(gestor);
+                    break;
+
+                case 4:
+                    mostrarEstadisticas(gestor);
+                    break;
+
+                case 5:
+                    System.out.println("Saliendo del gestor de tareas.");
+                    salir = true;
+                    break;
+
+                default:
+                    System.out.println("Opcion no valida. Intente de nuevo.");
             }
         }
+
         sc.close();
+    }
+
+    private static void mostrarMenu() {
+        System.out.println("\n[1] Añadir tarea");
+        System.out.println("[2] Marcar tarea como completada");
+        System.out.println("[3] Ver tareas pendientes");
+        System.out.println("[4] Ver estadisticas");
+        System.out.println("[5] Salir");
+        System.out.print("Opcion: ");
+    }
+
+    private static void marcarTarea(Scanner sc, GestorTareas gestor) {
+
+        if (gestor.numTareas == 0) {
+            System.out.println("No hay tareas para marcar.");
+            return;
+        }
+
+        for (int i = 0; i < gestor.numTareas; i++) {
+            Tarea t = gestor.tareas[i];
+            System.out.println(
+                (i + 1) + ". " + t.getDescripcion() +
+                " [" + (t.isCompletada() ? "Completada" : "Pendiente") + "]"
+            );
+        }
+
+        System.out.print("Numero de tarea a marcar como completada: ");
+        int num = sc.nextInt();
+
+        if (num < 1 || num > gestor.numTareas) {
+            System.out.println("Numero de tarea invalido.");
+            return;
+        }
+
+        Tarea tarea = gestor.tareas[num - 1];
+        if (tarea.isCompletada()) {
+            System.out.println("Esta tarea ya estaba completada.");
+        } else {
+            tarea.completar();
+            System.out.println("Tarea marcada como completada.");
+        }
+    }
+
+    private static void mostrarPendientes(GestorTareas gestor) {
+
+        System.out.println("Tareas Pendientes");
+        boolean hayPendientes = false;
+
+        for (int i = 0; i < gestor.numTareas; i++) {
+            Tarea t = gestor.tareas[i];
+            if (!t.isCompletada()) {
+                System.out.println((i + 1) + ". " + t.getDescripcion());
+                hayPendientes = true;
+            }
+        }
+
+        if (!hayPendientes) {
+            System.out.println("(No hay tareas pendientes)");
+        }
+    }
+
+    private static void mostrarEstadisticas(GestorTareas gestor) {
+
+        int total = gestor.numTareas;
+        int completadas = gestor.contarCompletadas();
+
+        System.out.println("Estadisticas");
+        System.out.println("Total de tareas: " + total);
+        System.out.println("Tareas completadas: " + completadas);
+        System.out.println("Tareas pendientes: " + (total - completadas));
+
+        if (total > 0) {
+            double porcentaje = (completadas * 100.0) / total;
+            System.out.println("Porcentaje de completacion: " + porcentaje + "%");
+        }
     }
 }
