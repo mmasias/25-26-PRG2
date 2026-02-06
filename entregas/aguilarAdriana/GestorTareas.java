@@ -9,14 +9,16 @@ public class GestorTareas {
 
         System.out.println("Gestor de Tareas v1.0");
 
-        while (true) {
+        
             imprimirMenu();
             int opcion = scanner.nextInt();
             scanner.nextLine();
 
             if (opcion == 1) {
                 cantidadTareas = anadirTarea(scanner, tareas, completadas, cantidadTareas);
-            } else if (opcion == 2) {
+            }
+            
+            if (opcion == 2) {
                 System.out.println("Tareas para Marcar");
                 for (int i = 0; i < cantidadTareas; i++) {
                     System.out.println((i + 1) + ". " + tareas[i] + " [" + (completadas[i] ? "Completada" : "Pendiente") + "]");
@@ -37,7 +39,9 @@ public class GestorTareas {
                 } else {
                     System.out.println("No hay tareas para marcar.");
                 }
-            } else if (opcion == 3) {
+            }
+            
+            if (opcion == 3) {
                 System.out.println("Tareas Pendientes");
                 boolean hayTareasPendientes = false;
                 for (int i = 0; i < cantidadTareas; i++) {
@@ -49,7 +53,9 @@ public class GestorTareas {
                 if (!hayTareasPendientes) {
                     System.out.println("(No hay tareas pendientes)");
                 }
-            } else if (opcion == 4) {
+            }
+            
+            if (opcion == 4) {
                 System.out.println("Estadisticas");
                 int contCompletadas = 0;
                 for (int i = 0; i < cantidadTareas; i++) {
@@ -64,13 +70,14 @@ public class GestorTareas {
                     double porc = (contCompletadas * 100.0) / cantidadTareas;
                     System.out.println("Porcentaje de completacion: " + porc + "%");
                 }
-            } else if (opcion == 5) {
+            } 
+            
+            if (opcion == 5) {
                 System.out.println("Saliendo del gestor de tareas.");
-                break;
             } else {
                 System.out.println("Opcion no valida. Intente de nuevo.");
             }
-        }
+        
         scanner.close();
     }
 
