@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class PyEdlin {
-git commit -g "Implementación básica de pyEdlin en Java"
+    
     private static final int MAX_LINES = 10;
     private String[] lines = new String[MAX_LINES];
     private int activeLine = 0;
