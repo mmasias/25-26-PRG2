@@ -2,12 +2,10 @@ import java.util.Scanner;
 
 public class GestorTareas {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        
         String[] tareas = new String[10];
         boolean[] tareasCompletadas = new boolean[10];
         int[] contadorDeTareas = { 0 };
-
-        System.out.println("Gestor de Tareas v1.0");
         boolean estaFuncionando = true;
 
         do {
@@ -103,7 +101,8 @@ public class GestorTareas {
     }
 
     static void mostrarMenu() {
-
+        System.out.println("Gestor de Tareas v1.0");
+        System.out.println("--------------------------------");
         System.out.println("[1] Anadir tarea");
         System.out.println("[2] Marcar tarea como completada");
         System.out.println("[3] Ver tareas pendientes");
