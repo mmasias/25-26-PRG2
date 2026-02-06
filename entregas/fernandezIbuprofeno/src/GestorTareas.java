@@ -12,21 +12,13 @@ public class GestorTareas {
 
         do {
             mostrarMenu();
-            int opcion = preguntarOpcion();
-
-            if (opcion == 1) {
-                agregarTarea(tareas, tareasCompletadas, contadorDeTareas);
-            } else if (opcion == 2) {
-                marcarTareaComoCompletada(tareas, tareasCompletadas, contadorDeTareas);
-            } else if (opcion == 3) {
-                verTareasPendientes(tareas, tareasCompletadas, contadorDeTareas);
-            } else if (opcion == 4) {
-                verEstadisticas(tareas, tareasCompletadas, contadorDeTareas);
-            } else if (opcion == 5) {
-                System.out.println("Saliendo del gestor de tareas.");
-                estaFuncionando = !estaFuncionando;
-            } else {
-                System.out.println("Opcion no valida. Intente de nuevo.");
+            switch (preguntarOpcion()) {
+                case 1 -> agregarTarea(tareas, tareasCompletadas, contadorDeTareas);
+                case 2 -> marcarTareaComoCompletada(tareas, tareasCompletadas, contadorDeTareas);
+                case 3 -> verTareasPendientes(tareas, tareasCompletadas, contadorDeTareas);
+                case 4 -> verEstadisticas(tareas, tareasCompletadas, contadorDeTareas);
+                case 5 -> estaFuncionando = !estaFuncionando;
+                default -> System.out.println("Error!");
             }
         } while (estaFuncionando);
 
