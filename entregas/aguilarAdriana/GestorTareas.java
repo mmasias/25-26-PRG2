@@ -32,10 +32,10 @@ public class GestorTareas {
                 }
                 if (cantidadTareas > 0) {
                     System.out.print("Numero de tarea a marcar como completada: ");
-                    int num = scanner.nextInt();
-                    if (num >= 1 && num <= cantidadTareas) {
-                        if (!completadas[num - 1]) {
-                            completadas[num - 1] = true;
+                    int numeroTareaSeleccionada = scanner.nextInt();
+                    if (numeroTareaSeleccionada >= 1 && numeroTareaSeleccionada <= cantidadTareas) {
+                        if (!completadas[numeroTareaSeleccionada - 1]) {
+                            completadas[numeroTareaSeleccionada - 1] = true;
                             System.out.println("Tarea marcada como completada.");
                         } else {
                             System.out.println("Esta tarea ya estaba completada.");
