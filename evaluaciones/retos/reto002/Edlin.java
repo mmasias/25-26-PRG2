@@ -12,4 +12,9 @@ public class Edlin {
             System.out.println((i + 1) + ": " + lineas[i]);
         }
     }
+
+    public static void main(String[] args) {
+        Edlin e = new Edlin();
+        e.mostrar();
+    }
 }
