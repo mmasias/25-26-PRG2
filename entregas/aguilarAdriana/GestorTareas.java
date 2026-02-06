@@ -25,28 +25,7 @@ public class GestorTareas {
                 cantidadTareas = anadirTarea(scanner, tareas, completadas, cantidadTareas);
             }
             
-            if (opcion == OPCION_MARCAR) {
-                System.out.println("Tareas para Marcar");
-                for (int indiceTarea = 0; indiceTarea < cantidadTareas; indiceTarea++) {
-                    System.out.println((indiceTarea + 1) + ". " + tareas[indiceTarea] + " [" + (completadas[indiceTarea] ? "Completada" : "Pendiente") + "]");
-                }
-                if (cantidadTareas > 0) {
-                    System.out.print("Numero de tarea a marcar como completada: ");
-                    int numeroTareaSeleccionada = scanner.nextInt();
-                    if (numeroTareaSeleccionada >= 1 && numeroTareaSeleccionada <= cantidadTareas) {
-                        if (!completadas[numeroTareaSeleccionada - 1]) {
-                            completadas[numeroTareaSeleccionada - 1] = true;
-                            System.out.println("Tarea marcada como completada.");
-                        } else {
-                            System.out.println("Esta tarea ya estaba completada.");
-                        }
-                    } else {
-                        System.out.println("Numero de tarea invalido.");
-                    }
-                } else {
-                    System.out.println("No hay tareas para marcar.");
-                }
-            }
+            marcarTareaComoCompletada(opcion, scanner, tareas, completadas, cantidadTareas);
             
             if (opcion == OPCION_VER_PENDIENTES) {
                 System.out.println("Tareas Pendientes");
@@ -110,4 +89,31 @@ public class GestorTareas {
         }
         return cantidadTareas;
     }
+
+    static void marcarTareaComoCompletada (int opcion ,Scanner scanner, String[] tareas, boolean [] completadas, int cantidadTareas) {
+        if (opcion == OPCION_MARCAR) {
+                System.out.println("Tareas para Marcar");
+                for (int indiceTarea = 0; indiceTarea < cantidadTareas; indiceTarea++) {
+                    System.out.println((indiceTarea + 1) + ". " + tareas[indiceTarea] + " [" + (completadas[indiceTarea] ? "Completada" : "Pendiente") + "]");
+                }
+                if (cantidadTareas > 0) {
+                    System.out.print("Numero de tarea a marcar como completada: ");
+                    int numeroTareaSeleccionada = scanner.nextInt();
+                    if (numeroTareaSeleccionada >= 1 && numeroTareaSeleccionada <= cantidadTareas) {
+                        if (!completadas[numeroTareaSeleccionada - 1]) {
+                            completadas[numeroTareaSeleccionada - 1] = true;
+                            System.out.println("Tarea marcada como completada.");
+                        } else {
+                            System.out.println("Esta tarea ya estaba completada.");
+                        }
+                    } else {
+                        System.out.println("Numero de tarea invalido.");
+                    }
+                } else {
+                    System.out.println("No hay tareas para marcar.");
+                }
+            }
+    }
+
+    
 }
