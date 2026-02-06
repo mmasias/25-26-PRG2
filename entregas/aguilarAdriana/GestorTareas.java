@@ -27,8 +27,8 @@ public class GestorTareas {
             
             if (opcion == OPCION_MARCAR) {
                 System.out.println("Tareas para Marcar");
-                for (int i = 0; i < cantidadTareas; i++) {
-                    System.out.println((i + 1) + ". " + tareas[i] + " [" + (completadas[i] ? "Completada" : "Pendiente") + "]");
+                for (int indiceTarea = 0; indiceTarea < cantidadTareas; indiceTarea++) {
+                    System.out.println((indiceTarea + 1) + ". " + tareas[indiceTarea] + " [" + (completadas[indiceTarea] ? "Completada" : "Pendiente") + "]");
                 }
                 if (cantidadTareas > 0) {
                     System.out.print("Numero de tarea a marcar como completada: ");
@@ -51,9 +51,9 @@ public class GestorTareas {
             if (opcion == OPCION_VER_PENDIENTES) {
                 System.out.println("Tareas Pendientes");
                 boolean hayTareasPendientes = false;
-                for (int i = 0; i < cantidadTareas; i++) {
-                    if (!completadas[i]) {
-                        System.out.println((i + 1) + ". " + tareas[i]);
+                for (int indiceTarea = 0; indiceTarea < cantidadTareas; indiceTarea++) {
+                    if (!completadas[indiceTarea]) {
+                        System.out.println((indiceTarea + 1) + ". " + tareas[indiceTarea]);
                         hayTareasPendientes = true;
                     }
                 }
@@ -65,8 +65,8 @@ public class GestorTareas {
             if (opcion == OPCION_ESTADISTICAS) {
                 System.out.println("Estadisticas");
                 int contCompletadas = 0;
-                for (int i = 0; i < cantidadTareas; i++) {
-                    if (completadas[i]) {
+                for (int indiceTarea = 0; indiceTarea < cantidadTareas; indiceTarea++) {
+                    if (completadas[indiceTarea]) {
                         contCompletadas++;
                     }
                 }
