@@ -25,7 +25,7 @@ public class GestorTareas {
                 if (numTareas < 10) {
                     System.out.print("Descripcion de la nueva tarea: ");
                     String descripcion = scanner.nextLine();
-                    tareas[numTareas] = d;
+                    tareas[numTareas] = descripcion;
                     completadas[numTareas] = false;
                     numTareas++; // El contador se incrementa
                     System.out.println("Tarea anadida correctamente.");
@@ -78,7 +78,7 @@ public class GestorTareas {
                 System.out.println("Tareas pendientes: " + (numTareas - contCompletadas));
                 if (numTareas > 0) {
                     double porcentaje = (contCompletadas * 100.0) / numTareas;
-                    System.out.println("Porcentaje de completacion: " + porc + "%");
+                    System.out.println("Porcentaje de completacion: " + porcentaje + "%");
                 }
             } else if (opcion == 5) {
                 System.out.println("Saliendo del gestor de tareas.");
