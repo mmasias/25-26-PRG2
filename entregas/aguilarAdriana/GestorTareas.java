@@ -74,8 +74,8 @@ public class GestorTareas {
                 System.out.println("Tareas completadas: " + contCompletadas);
                 System.out.println("Tareas pendientes: " + (cantidadTareas - contCompletadas));
                 if (cantidadTareas > 0) {
-                    double porc = (contCompletadas * 100.0) / cantidadTareas;
-                    System.out.println("Porcentaje de completacion: " + porc + "%");
+                    double porcentaje = (contCompletadas * 100.0) / cantidadTareas;
+                    System.out.println("Porcentaje de completacion: " + porcentaje + "%");
                 }
             } 
             
