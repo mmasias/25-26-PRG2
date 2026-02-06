@@ -27,19 +27,7 @@ public class GestorTareas {
             
             marcarTareaComoCompletada(opcion, scanner, tareas, completadas, cantidadTareas);
             
-            if (opcion == OPCION_VER_PENDIENTES) {
-                System.out.println("Tareas Pendientes");
-                boolean hayTareasPendientes = false;
-                for (int indiceTarea = 0; indiceTarea < cantidadTareas; indiceTarea++) {
-                    if (!completadas[indiceTarea]) {
-                        System.out.println((indiceTarea + 1) + ". " + tareas[indiceTarea]);
-                        hayTareasPendientes = true;
-                    }
-                }
-                if (!hayTareasPendientes) {
-                    System.out.println("(No hay tareas pendientes)");
-                }
-            }
+            verTareasPendientes(opcion, tareas, completadas, cantidadTareas);
             
             if (opcion == OPCION_ESTADISTICAS) {
                 System.out.println("Estadisticas");
@@ -115,5 +103,21 @@ public class GestorTareas {
             }
     }
 
-    
+    static void verTareasPendientes (int opcion, String[] tareas, boolean [] completadas, int cantidadTareas) {
+        if (opcion == OPCION_VER_PENDIENTES) {
+                System.out.println("Tareas Pendientes");
+                boolean hayTareasPendientes = false;
+                for (int indiceTarea = 0; indiceTarea < cantidadTareas; indiceTarea++) {
+                    if (!completadas[indiceTarea]) {
+                        System.out.println((indiceTarea + 1) + ". " + tareas[indiceTarea]);
+                        hayTareasPendientes = true;
+                    }
+                }
+                if (!hayTareasPendientes) {
+                    System.out.println("(No hay tareas pendientes)");
+                }
+            }
+    }
+
+
 }
