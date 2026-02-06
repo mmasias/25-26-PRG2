@@ -2,6 +2,11 @@ import java.util.Scanner;
 
 public class GestorTareas {
     static final int MAXIMO_TAREAS = 10;
+    static final int OPCION_ANADIR = 1;
+    static final int OPCION_MARCAR = 2;
+    static final int OPCION_VER_PENDIENTES = 3;
+    static final int OPCION_ESTADISTICAS = 4;
+    static final int OPCION_SALIR = 5;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -16,11 +21,11 @@ public class GestorTareas {
             int opcion = scanner.nextInt();
             scanner.nextLine();
 
-            if (opcion == 1) {
+            if (opcion == OPCION_ANADIR) {
                 cantidadTareas = anadirTarea(scanner, tareas, completadas, cantidadTareas);
             }
             
-            if (opcion == 2) {
+            if (opcion == OPCION_MARCAR) {
                 System.out.println("Tareas para Marcar");
                 for (int i = 0; i < cantidadTareas; i++) {
                     System.out.println((i + 1) + ". " + tareas[i] + " [" + (completadas[i] ? "Completada" : "Pendiente") + "]");
@@ -43,7 +48,7 @@ public class GestorTareas {
                 }
             }
             
-            if (opcion == 3) {
+            if (opcion == OPCION_VER_PENDIENTES) {
                 System.out.println("Tareas Pendientes");
                 boolean hayTareasPendientes = false;
                 for (int i = 0; i < cantidadTareas; i++) {
@@ -57,7 +62,7 @@ public class GestorTareas {
                 }
             }
             
-            if (opcion == 4) {
+            if (opcion == OPCION_ESTADISTICAS) {
                 System.out.println("Estadisticas");
                 int contCompletadas = 0;
                 for (int i = 0; i < cantidadTareas; i++) {
@@ -74,7 +79,7 @@ public class GestorTareas {
                 }
             } 
             
-            if (opcion == 5) {
+            if (opcion == OPCION_SALIR) {
                 System.out.println("Saliendo del gestor de tareas.");
             } else {
                 System.out.println("Opcion no valida. Intente de nuevo.");
