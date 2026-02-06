@@ -3,24 +3,24 @@ import java.util.Scanner;
 public class GestorTareas {
     public static void main(String[] args) {
         
-        String[] tareas = new String[10];
-        boolean[] tareasCompletadas = new boolean[10];
+        final int AGREGAR_TAREA = 1, COMPLETAR_TAREA = 2, VER_PENDIENTES = 3, VER_ESTADISTICAS = 4, SALIR = 5;
+        final int NUMERO_MAXIMO_TAREAS = 10;
+        String[] tareas = new String[NUMERO_MAXIMO_TAREAS];
+        boolean[] tareasCompletadas = new boolean[NUMERO_MAXIMO_TAREAS];
         int[] contadorDeTareas = { 0 };
         boolean estaFuncionando = true;
 
         do {
             mostrarMenu();
             switch (preguntarOpcion()) {
-                case 1 -> agregarTarea(tareas, tareasCompletadas, contadorDeTareas);
-                case 2 -> marcarTareaComoCompletada(tareas, tareasCompletadas, contadorDeTareas);
-                case 3 -> verTareasPendientes(tareas, tareasCompletadas, contadorDeTareas);
-                case 4 -> verEstadisticas(tareas, tareasCompletadas, contadorDeTareas);
-                case 5 -> estaFuncionando = !estaFuncionando;
+                case AGREGAR_TAREA -> agregarTarea(tareas, tareasCompletadas, contadorDeTareas);
+                case COMPLETAR_TAREA -> marcarTareaComoCompletada(tareas, tareasCompletadas, contadorDeTareas);
+                case VER_PENDIENTES -> verTareasPendientes(tareas, tareasCompletadas, contadorDeTareas);
+                case VER_ESTADISTICAS -> verEstadisticas(tareas, tareasCompletadas, contadorDeTareas);
+                case SALIR -> estaFuncionando = !estaFuncionando;
                 default -> System.out.println("Error!");
             }
         } while (estaFuncionando);
-
-        scanner.close();
     }
 
     static void verEstadisticas(String[] tareas, boolean[] tareasCompletadas, int[] contadorDeTareas) {
@@ -56,7 +56,7 @@ public class GestorTareas {
 
     static void agregarTarea(String[] tareas, boolean[] tareasCompletadas, int[] contadorDeTareas) {
         Scanner scanner = new Scanner(System.in);
-        if (contadorDeTareas[0] < 10) {
+        if (contadorDeTareas[0] < tareas.length) {
             System.out.print("Descripcion de la nueva tarea: ");
             String descripcionDeTarea = scanner.nextLine();
             tareas[contadorDeTareas[0]] = descripcionDeTarea;
@@ -68,13 +68,11 @@ public class GestorTareas {
         }
     }
 
-    static void marcarTareaComoCompletada(String[] tareas, boolean[] tareasCompletadas,
-            int[] contadorDeTareas) {
+    static void marcarTareaComoCompletada(String[] tareas, boolean[] tareasCompletadas, int[] contadorDeTareas) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Tareas para Marcar");
         for (int tarea = 0; tarea < contadorDeTareas[0]; tarea++) {
-            System.out.println((tarea + 1) + ". " + tareas[tarea] + " ["
-                    + (tareasCompletadas[tarea] ? "Completada" : "Pendiente") + "]");
+            System.out.println((tarea + 1) + ". " + tareas[tarea] + " [" + (tareasCompletadas[tarea] ? "Completada" : "Pendiente") + "]");
         }
         if (contadorDeTareas[0] > 0) {
             System.out.print("Numero de tarea a marcar como completada: ");
