@@ -31,11 +31,7 @@ public class GestorTareas {
             
             verEstadisticas(opcion, tareas, completadas, cantidadTareas);
             
-            if (opcion == OPCION_SALIR) {
-                System.out.println("Saliendo del gestor de tareas.");
-            } else {
-                System.out.println("Opcion no valida. Intente de nuevo.");
-            }
+            salir(opcion);
         
         scanner.close();
     }
@@ -123,4 +119,11 @@ public class GestorTareas {
             } 
     }
 
+    static void salir (int opcion) {
+        if (opcion == OPCION_SALIR) {
+                System.out.println("Saliendo del gestor de tareas.");
+            } else {
+                System.out.println("Opcion no valida. Intente de nuevo.");
+            }
+    }
 }
