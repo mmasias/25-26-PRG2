@@ -1,10 +1,12 @@
 import java.util.Scanner;
 
 public class GestorTareas {
+    static final int MAXIMO_TAREAS = 10;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String[] tareas = new String[10];
-        boolean[] completadas = new boolean[10];
+        String[] tareas = new String[MAXIMO_TAREAS];
+        boolean[] completadas = new boolean[MAXIMO_TAREAS];
         int cantidadTareas = 0;
 
         System.out.println("Gestor de Tareas v1.0");
@@ -91,7 +93,7 @@ public class GestorTareas {
     }
 
     static int anadirTarea(Scanner scanner, String[] tareas, boolean[] completadas, int cantidadTareas) {
-        if (cantidadTareas < 10) {
+        if (cantidadTareas < MAXIMO_TAREAS) {
             System.out.print("Descripcion de la nueva tarea: ");
             String d = scanner.nextLine();
             tareas[cantidadTareas] = d;
