@@ -8,8 +8,9 @@ public class GestorTareas {
         int contadorDeTareas = 0;
 
         System.out.println("Gestor de Tareas v1.0");
+        boolean estaFuncionando = true;
 
-        while (true) {
+        do {
             System.out.println("[1] Anadir tarea");
             System.out.println("[2] Marcar tarea como completada");
             System.out.println("[3] Ver tareas pendientes");
@@ -80,11 +81,12 @@ public class GestorTareas {
                 }
             } else if (opcion == 5) {
                 System.out.println("Saliendo del gestor de tareas.");
-                break;
+                estaFuncionando = !estaFuncionando;
             } else {
                 System.out.println("Opcion no valida. Intente de nuevo.");
             }
-        }
+        } while (estaFuncionando);
+
         scanner.close();
     }
 }
