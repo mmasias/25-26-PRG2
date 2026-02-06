@@ -11,15 +11,9 @@ public class GestorTareas {
         boolean estaFuncionando = true;
 
         do {
-            System.out.println("[1] Anadir tarea");
-            System.out.println("[2] Marcar tarea como completada");
-            System.out.println("[3] Ver tareas pendientes");
-            System.out.println("[4] Ver estadisticas");
-            System.out.println("[5] Salir");
-            System.out.print("Opcion: ");
-            int opcion = scanner.nextInt();
-            scanner.nextLine();
-
+            mostrarMenu();
+            int opcion = preguntarOpcion();
+            
             if (opcion == 1) {
                 if (contadorDeTareas < 10) {
                     System.out.print("Descripcion de la nueva tarea: ");
@@ -34,7 +28,8 @@ public class GestorTareas {
             } else if (opcion == 2) {
                 System.out.println("Tareas para Marcar");
                 for (int tarea = 0; tarea < contadorDeTareas; tarea++) {
-                    System.out.println((tarea + 1) + ". " + tareas[tarea] + " [" + (tareasCompletadas[tarea] ? "Completada" : "Pendiente") + "]");
+                    System.out.println((tarea + 1) + ". " + tareas[tarea] + " ["
+                            + (tareasCompletadas[tarea] ? "Completada" : "Pendiente") + "]");
                 }
                 if (contadorDeTareas > 0) {
                     System.out.print("Numero de tarea a marcar como completada: ");
@@ -88,5 +83,21 @@ public class GestorTareas {
         } while (estaFuncionando);
 
         scanner.close();
+    }
+
+    static int preguntarOpcion() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
+
+    static void mostrarMenu() {
+        
+        System.out.println("[1] Anadir tarea");
+        System.out.println("[2] Marcar tarea como completada");
+        System.out.println("[3] Ver tareas pendientes");
+        System.out.println("[4] Ver estadisticas");
+        System.out.println("[5] Salir");
+        System.out.print("Opcion: ");
+
     }
 }
