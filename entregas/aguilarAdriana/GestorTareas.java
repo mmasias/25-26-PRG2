@@ -29,22 +29,7 @@ public class GestorTareas {
             
             verTareasPendientes(opcion, tareas, completadas, cantidadTareas);
             
-            if (opcion == OPCION_ESTADISTICAS) {
-                System.out.println("Estadisticas");
-                int contCompletadas = 0;
-                for (int indiceTarea = 0; indiceTarea < cantidadTareas; indiceTarea++) {
-                    if (completadas[indiceTarea]) {
-                        contCompletadas++;
-                    }
-                }
-                System.out.println("Total de tareas: " + cantidadTareas);
-                System.out.println("Tareas completadas: " + contCompletadas);
-                System.out.println("Tareas pendientes: " + (cantidadTareas - contCompletadas));
-                if (cantidadTareas > 0) {
-                    double porcentaje = (contCompletadas * 100.0) / cantidadTareas;
-                    System.out.println("Porcentaje de completacion: " + porcentaje + "%");
-                }
-            } 
+            verEstadisticas(opcion, tareas, completadas, cantidadTareas);
             
             if (opcion == OPCION_SALIR) {
                 System.out.println("Saliendo del gestor de tareas.");
@@ -119,5 +104,23 @@ public class GestorTareas {
             }
     }
 
+    static void verEstadisticas (int opcion, String[] tareas, boolean [] completadas, int cantidadTareas) {
+         if (opcion == OPCION_ESTADISTICAS) {
+                System.out.println("Estadisticas");
+                int contCompletadas = 0;
+                for (int indiceTarea = 0; indiceTarea < cantidadTareas; indiceTarea++) {
+                    if (completadas[indiceTarea]) {
+                        contCompletadas++;
+                    }
+                }
+                System.out.println("Total de tareas: " + cantidadTareas);
+                System.out.println("Tareas completadas: " + contCompletadas);
+                System.out.println("Tareas pendientes: " + (cantidadTareas - contCompletadas));
+                if (cantidadTareas > 0) {
+                    double porcentaje = (contCompletadas * 100.0) / cantidadTareas;
+                    System.out.println("Porcentaje de completacion: " + porcentaje + "%");
+                }
+            } 
+    }
 
 }
