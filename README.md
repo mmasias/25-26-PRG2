@@ -29,7 +29,7 @@ Repo de materiales y proyectos de la asignatura **Programación II** del [Grado 
 
 NOTA: *Algunos enlaces podrían requerir **credenciales de acceso al campus** o a otros espacios colaborativos.*
 
-- Hoja de asistencia et-al
+- [Hoja de asistencia et-al](https://docs.google.com/spreadsheets/d/1zXIhcFgNw74vIq5y6cZfgMArSl6_cYRpXZskVXBmucY/edit?usp=sharing)
 - Libro de la asignatura
 - [Repo de la asignatura](https://github.com/mmasias/PRG2)
 - Este repo, versión de ediciones pasadas: [[23][24]](https://github.com/mmasias/23-24-PRG2), [[24][25]](https://github.com/mmasias/24-25-PRG2)
