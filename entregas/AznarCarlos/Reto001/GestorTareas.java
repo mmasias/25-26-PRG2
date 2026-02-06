@@ -1,4 +1,3 @@
-package Entregas.Reto001;
 package Entregas.aznarCarlos.Reto001;
 import java.util.Scanner;
 
