@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class GestorTareas {
+class GestorTareas {
     public static void main(String[] args) {
         
         final int AGREGAR_TAREA = 1, COMPLETAR_TAREA = 2, VER_PENDIENTES = 3, VER_ESTADISTICAS = 4, SALIR = 5;
@@ -40,7 +40,7 @@ public class GestorTareas {
         }
     }
 
-    private static void verTareasPendientes(String[] tareas, boolean[] tareasCompletadas, int[] contadorDeTareas) {
+    static void verTareasPendientes(String[] tareas, boolean[] tareasCompletadas, int[] contadorDeTareas) {
         System.out.println("Tareas Pendientes");
         boolean hayPendientes = false;
         for (int tarea = 0; tarea < contadorDeTareas[0]; tarea++) {
