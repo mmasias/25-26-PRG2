@@ -83,13 +83,15 @@ public class pyEdlin {
     }
 
     static void editarLineaActiva() {
-        Scanner scanner = new Scanner(System.in);
-        if (cmd.equals("E") || cmd.equals("e")) {
-                System.out.print("Nuevo texto para linea " + a + ": ");
-                String nuevo = scanner.nextLine();
-                lineas[a] = nuevo; 
-
-            }
+        System.out.println("\nEditando línea " + lineaActiva);
+        System.out.println("Contenido actual: " + lineas[lineaActiva]);
+        System.out.print("Nuevo texto: ");
+        
+        String nuevoTexto = scanner.nextLine();
+        lineas[lineaActiva] = nuevoTexto;
+        
+        System.out.println("Línea actualizada.");
+        pausa();
     }
 
     static void borrarContenidoLineaActiva() {
