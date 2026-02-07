@@ -83,6 +83,7 @@ public class pyEdlin {
     }
 
     static void editarLineaActiva() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("\nEditando línea " + lineaActiva);
         System.out.println("Contenido actual: " + lineas[lineaActiva]);
         System.out.print("Nuevo texto: ");
@@ -95,10 +96,10 @@ public class pyEdlin {
     }
 
     static void borrarContenidoLineaActiva() {
-        if (cmd.equals("B") || cmd.equals("b")) {
-                lineas[a] = ""; 
-
-            }
+        System.out.println("\nBorrando línea " + lineaActiva + "...");
+        lineas[lineaActiva] = "";
+        System.out.println("Línea borrada.");
+        pausa();
     }
 
     static char preguntarOpcion(){
