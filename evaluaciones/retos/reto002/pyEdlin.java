@@ -2,12 +2,14 @@ import java.util.Scanner;
 
 public class pyEdlin {
     private static final int MAX_LINEAS = 10;
+    private static final int ANCHO_PANTALLA = 50;
     private static String[] lineas = new String[MAX_LINEAS];
     private static int lineaActica = 1;
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         iniciarEditor();
+
     }
 
     static void iniciarEditor() {
@@ -22,5 +24,15 @@ public class pyEdlin {
         lineas[4] = "[E] permite editar la linea activa";
         lineas[5] = "[B] borra el contenido de la linea activa";
         lineas[6] = "[S] sale del programa";
+    }
+    
+
+
+
+    private static void imprimirLinea() {
+        for (int i = 0; i < ANCHO_PANTALLA; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }
