@@ -7,5 +7,20 @@ public class pyEdlin {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        iniciarEditor();
+    }
+
+    static void iniciarEditor() {
+        for (int i = 0; i < MAX_LINEAS; i++) {
+            lineas[i] = "";
+        }
+        
+        lineas[0] = "Bienvenidos al editor EDLIN";
+        lineas[1] = "Utilice el menu inferior para editar el texto";
+        lineas[2] = "------";
+        lineas[3] = "[L] permite definir la linea activa";
+        lineas[4] = "[E] permite editar la linea activa";
+        lineas[5] = "[B] borra el contenido de la linea activa";
+        lineas[6] = "[S] sale del programa";
     }
 }
