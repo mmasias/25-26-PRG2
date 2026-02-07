@@ -29,10 +29,16 @@ public class pyEdlin {
 
 
 
-    private static void imprimirLinea() {
+    static void imprimirLinea() {
         for (int i = 0; i < ANCHO_PANTALLA; i++) {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    static void limpiarPantalla() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
     }
 }
