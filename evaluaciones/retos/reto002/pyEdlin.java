@@ -32,6 +32,7 @@ public class pyEdlin {
             cmd = scanner.nextLine(); 
 
             definirLineaActiva();
+            editarLineaActiva();
 
 
             if (cmd.equals("B") || cmd.equals("b")) {
@@ -77,5 +78,12 @@ public class pyEdlin {
             }
     }
 
+    static void editarLineaActiva() {
+        if (cmd.equals("E") || cmd.equals("e")) {
+                System.out.print("Nuevo texto para linea " + a + ": ");
+                String nuevo = scanner.nextLine();
+                lineas[a] = nuevo; 
 
+            }
+    }
 }
