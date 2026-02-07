@@ -36,10 +36,11 @@ public class pyEdlin {
         scanner.close();
     }
 
-    static void mostrarPantalla(String[] lineas){
+    static void mostrarPantalla(String[] lineas, int lineaActiva){
+        limpiarPantalla();
         System.out.println("--------------------------------------------------");
-            for (int i = 0; i < 10; i++) {
-                if (i == a) {
+            for (int i = 0; i < MAX_LINEAS; i++) {
+                if (i == lineaActiva) {
                     System.out.println(i + ":*| " + lineas[i]);
                 } else {
                     System.out.println(i + ": | " + lineas[i]);
@@ -105,5 +106,11 @@ public class pyEdlin {
                 return entrada.charAt(0);
             }
             return ' ';
+    }
+
+    static void limpiarPantalla() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
     }
 }
