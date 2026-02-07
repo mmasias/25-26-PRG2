@@ -8,9 +8,10 @@ public class pyEdlin {
         boolean estaFuncionando = true;
         Scanner scanner = new Scanner(System.in);
 
+        iniciarEditor();
 
         do {
-            iniciarEditor();
+            mostrarPantalla();
             switch(preguntarOpcion()){
                 case 'L', 'l' -> definirLineaActiva(espacioLineas, a);
                 case 'E', 'e' -> editarLineaActiva(espacioLineas, lineas);
@@ -21,16 +22,9 @@ public class pyEdlin {
         }
 
         
-        while (cmd.equalsIgnoreCase("S") == false) {
 
-            System.out.println("--------------------------------------------------");
-            for (int i = 0; i < 10; i++) {
-                if (i == a) {
-                    System.out.println(i + ":*| " + lineas[i]);
-                } else {
-                    System.out.println(i + ": | " + lineas[i]);
-                }
-            }
+
+            
 
 
             definirLineaActiva();
@@ -38,9 +32,19 @@ public class pyEdlin {
             borrarContenidoLineaActiva();
 
 
-        }
 
         scanner.close();
+    }
+
+    static void mostrarPantalla(String[] lineas){
+        System.out.println("--------------------------------------------------");
+            for (int i = 0; i < 10; i++) {
+                if (i == a) {
+                    System.out.println(i + ":*| " + lineas[i]);
+                } else {
+                    System.out.println(i + ": | " + lineas[i]);
+                }
+            }
     }
 
     static void iniciarEditor(String[] lineas) {
