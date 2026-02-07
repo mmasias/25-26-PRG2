@@ -13,15 +13,15 @@ public class pyEdlin {
         do {
             mostrarPantalla();
             switch(preguntarOpcion()){
-                case 'L', 'l' -> definirLineaActiva(espacioLineas, a);
-                case 'E', 'e' -> editarLineaActiva(espacioLineas, lineas);
-                case 'B', 'b' -> borrarContenidoLineaActiva(lineas, espacioLineas, a)
-                case 'E', 'e' -> estaFuncionando = !estaFuncionando;
+                case 'L', 'l' -> definirLineaActiva();
+                case 'E', 'e' -> editarLineaActiva();
+                case 'B', 'b' -> borrarContenidoLineaActiva()
+                case 'S', 's' -> estaFuncionando = !estaFuncionando;
                 default -> System.out.println("Error!");
             }
-        }
+        } while (estaFuncionando);
 
-        
+        scanner.close();
 
 
             
@@ -33,10 +33,10 @@ public class pyEdlin {
 
 
 
-        scanner.close();
+
     }
 
-    static void mostrarPantalla(String[] lineas, int lineaActiva){
+    static void mostrarPantalla(){
         limpiarPantalla();
         System.out.println("--------------------------------------------------");
             for (int i = 0; i < MAX_LINEAS; i++) {
@@ -48,8 +48,8 @@ public class pyEdlin {
             }
     }
 
-    static void iniciarEditor(String[] lineas) {
-        for (int i = 0; i < 10; i++) {
+    static void iniciarEditor() {
+        for (int i = 0; i < MAX_LINEAS; i++) {
             lineas[i] = "";
         }
 
@@ -64,20 +64,25 @@ public class pyEdlin {
 
     static void definirLineaActiva() {
         Scanner scanner = new Scanner(System.in);
-        if (cmd.equals("L") || cmd.equals("l")) {
-                System.out.print("Numero de linea (0-9): ");
-                String x = scanner.nextLine();
-                int n = Integer.parseInt(x);
-                if (n >= 0 && n < 10) {
-                    a = n;
-                } else {
-                    System.out.println("Linea invalida");
-                }
-
+        System.out.print("\n¿Qué línea desea activar? (0-9): ");
+        
+        try {
+            int n = Integer.parseInt(scanner.nextLine());
+            
+            if (n >= 0 && n < MAX_LINEAS) {
+                lineaActiva = n;
+                System.out.println("Línea " + lineaActiva + " activada.");
+            } else {
+                System.out.println("Línea inválida. Debe ser entre 0 y 9.");
             }
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Debe ingresar un número.");
+        }
+        
+        pausa();
     }
 
-    static void editarLineaActiva(String cmd, String[] lineas, int a) {
+    static void editarLineaActiva() {
         Scanner scanner = new Scanner(System.in);
         if (cmd.equals("E") || cmd.equals("e")) {
                 System.out.print("Nuevo texto para linea " + a + ": ");
@@ -87,30 +92,33 @@ public class pyEdlin {
             }
     }
 
-    static void borrarContenidoLineaActiva(String[] lineas, String cmd, int a) {
+    static void borrarContenidoLineaActiva() {
         if (cmd.equals("B") || cmd.equals("b")) {
                 lineas[a] = ""; 
 
             }
     }
 
-    static char preguntarOpcion(String cmd){
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("--------------------------------------------------");
-            System.out.println("Comandos: [L]inea activa | [E]ditar | [B]orrar | [S]alir");
-
-            System.out.print("Ingrese comando: ");
-            cmd = scanner.nextLine();   
-
-            if(entrada.length() > 0){
-                return entrada.charAt(0);
-            }
-            return ' ';
+    static char preguntarOpcion(){
+        System.out.print("\nIngrese comando: ");
+        Scanner scanner = new Scanner(System.in);
+        String entrada = scanner.nextLine();
+        
+        if (entrada.length() > 0) {
+            return entrada.charAt(0);
+        }
+        return ' '; 
     }
 
     static void limpiarPantalla() {
         for (int i = 0; i < 50; i++) {
             System.out.println();
         }
+    }
+
+    static void pausa() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\nPresione ENTER para continuar...");
+        scanner.nextLine();
     }
 }
