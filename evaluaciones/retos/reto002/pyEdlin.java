@@ -1,20 +1,25 @@
 import java.util.Scanner;
 
 public class pyEdlin {
-
-    
-
     public static void main(String[] args) {
         final int MAX_LINEAS = 10;
         String[] lineas = new String[MAX_LINEAS];
-        int[] contadorDeLineas = {0};
+        int LineaActiva = 0;
         boolean estaFuncionando = true;
         Scanner scanner = new Scanner(System.in);
-        int a = 0; 
-        String cmd = "";
 
-        iniciarEditor();
-        preguntarOpcion();
+
+        do {
+            iniciarEditor();
+            switch(preguntarOpcion()){
+                case 'L', 'l' -> definirLineaActiva(espacioLineas, a);
+                case 'E', 'e' -> editarLineaActiva(espacioLineas, lineas);
+                case 'B', 'b' -> borrarContenidoLineaActiva(lineas, espacioLineas, a)
+                case 'E', 'e' -> estaFuncionando = !estaFuncionando;
+                default -> System.out.println("Error!");
+            }
+        }
+
         
         while (cmd.equalsIgnoreCase("S") == false) {
 
@@ -38,8 +43,7 @@ public class pyEdlin {
         scanner.close();
     }
 
-    static void iniciarEditor() {
-        Scanner scanner = new Scanner(System.in);
+    static void iniciarEditor(String[] lineas) {
         for (int i = 0; i < 10; i++) {
             lineas[i] = "";
         }
@@ -54,6 +58,7 @@ public class pyEdlin {
     }
 
     static void definirLineaActiva() {
+        Scanner scanner = new Scanner(System.in);
         if (cmd.equals("L") || cmd.equals("l")) {
                 System.out.print("Numero de linea (0-9): ");
                 String x = scanner.nextLine();
@@ -67,7 +72,8 @@ public class pyEdlin {
             }
     }
 
-    static void editarLineaActiva() {
+    static void editarLineaActiva(String cmd, String[] lineas, int a) {
+        Scanner scanner = new Scanner(System.in);
         if (cmd.equals("E") || cmd.equals("e")) {
                 System.out.print("Nuevo texto para linea " + a + ": ");
                 String nuevo = scanner.nextLine();
@@ -76,19 +82,24 @@ public class pyEdlin {
             }
     }
 
-    static void borrarContenidoLineaActiva() {
+    static void borrarContenidoLineaActiva(String[] lineas, String cmd, int a) {
         if (cmd.equals("B") || cmd.equals("b")) {
                 lineas[a] = ""; 
 
             }
     }
 
-    static void preguntarOpcion(){
+    static char preguntarOpcion(String cmd){
             Scanner scanner = new Scanner(System.in);
             System.out.println("--------------------------------------------------");
             System.out.println("Comandos: [L]inea activa | [E]ditar | [B]orrar | [S]alir");
 
             System.out.print("Ingrese comando: ");
-            cmd = scanner.nextLine(); 
+            cmd = scanner.nextLine();   
+
+            if(entrada.length() > 0){
+                return entrada.charAt(0);
+            }
+            return ' ';
     }
 }
