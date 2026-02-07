@@ -31,22 +31,10 @@ public class pyEdlin {
             System.out.print("Ingrese comando: ");
             cmd = scanner.nextLine(); 
 
-            if (cmd.equals("L") || cmd.equals("l")) {
-                System.out.print("Numero de linea (0-9): ");
-                String x = scanner.nextLine();
-                int n = Integer.parseInt(x);
-                if (n >= 0 && n < 10) {
-                    a = n;
-                } else {
-                    System.out.println("Linea invalida");
-                }
+            definirLineaActiva();
 
-            } else if (cmd.equals("E") || cmd.equals("e")) {
-                System.out.print("Nuevo texto para linea " + a + ": ");
-                String nuevo = scanner.nextLine();
-                lineas[a] = nuevo; 
 
-            } else if (cmd.equals("B") || cmd.equals("b")) {
+            if (cmd.equals("B") || cmd.equals("b")) {
                 lineas[a] = ""; 
 
             } else if (cmd.equals("S") || cmd.equals("s")) {
@@ -74,4 +62,20 @@ public class pyEdlin {
         lineas[5] = "[B] borra el contenido de la linea activa";
         lineas[6] = "[S] sale del programa";
     }
+
+    static void definirLineaActiva() {
+        if (cmd.equals("L") || cmd.equals("l")) {
+                System.out.print("Numero de linea (0-9): ");
+                String x = scanner.nextLine();
+                int n = Integer.parseInt(x);
+                if (n >= 0 && n < 10) {
+                    a = n;
+                } else {
+                    System.out.println("Linea invalida");
+                }
+
+            }
+    }
+
+
 }
