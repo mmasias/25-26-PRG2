@@ -7,6 +7,8 @@ public class PyEdlinMyVersion {
         int lineaSeleccionadaDelTextoIngresado = 0;
         
         menuDeBienvenida();
+        crearTextoIngresadoPorElUsuario(sc, textoIngresadoPorElUsuario);
+        mostrarTextoIngresadoPorElUsuario(textoIngresadoPorElUsuario);
     }
 
     static void menuDeBienvenida() {
@@ -27,5 +29,27 @@ public class PyEdlinMyVersion {
                 """;
 
         System.out.println(menu);
+    }
+
+    static void crearTextoIngresadoPorElUsuario(Scanner sc, String[] textoIngresadoPorElUsuario) {
+        System.out.println("Ingrese el texto que desea editar. Para finalizar, ingrese [S].");
+        System.out.println("--------------------------------------------------");
+        for (int i = 0; i < textoIngresadoPorElUsuario.length; i++) {
+            System.out.print("Ingrese la linea " + (i + 1) + ": ");
+            String lineaIngresada = sc.nextLine();
+            if(lineaIngresada.equals("[S]")) {
+                break;
+            }
+            textoIngresadoPorElUsuario[i] = lineaIngresada;
+        }
+        System.out.println("--------------------------------------------------");
+    }
+
+    static void mostrarTextoIngresadoPorElUsuario(String[] textoIngresadoPorElUsuario) {
+        System.out.println("--------------------------------------------------");
+        for (int i = 0; i < textoIngresadoPorElUsuario.length; i++) {
+            System.out.println((i + 1) + ": " + ((textoIngresadoPorElUsuario[i] != null) ? textoIngresadoPorElUsuario[i] : ""));
+        }
+        System.out.println("--------------------------------------------------");
     }
 }
