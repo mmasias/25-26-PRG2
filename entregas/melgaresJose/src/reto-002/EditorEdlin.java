@@ -1,4 +1,3 @@
-import java.nio.channels.Pipe.SourceChannel;
 import java.util.Scanner;
 
 class EditorEdlin {
@@ -71,9 +70,8 @@ class EditorEdlin {
 
     private static int leerComando() {
         Scanner scanner = new Scanner(System.in);
-        String comando = scanner.next();
+        String comando = scanner.nextLine();
         int numeroComando = mapearComando(comando);
-        scanner.close();
         return numeroComando;
     }
 
@@ -91,7 +89,7 @@ class EditorEdlin {
     private static int ejecutarComando(int opcion, String[] buffer, int lineaActiva) {
         switch (opcion) {
             case 0 -> lineaActiva = cambiarLineaActiva();
-            case 1 -> editarTextoLinea(buffer, lineaActiva);
+            case 1 -> lineaActiva = editarTextoLinea(buffer, lineaActiva);
             case 2 -> intercambiarLineas(buffer);
             case 3 -> inicializarBuffer(buffer);
             case 4 -> salir();
@@ -104,15 +102,14 @@ class EditorEdlin {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Cuál debería de ser la nueva línea activa? (0-9): ");
         int nuevaLineaActiva = scanner.nextInt();
-        scanner.close();
         return nuevaLineaActiva;
     }
 
-    private static void editarTextoLinea(String[] buffer, int lineaActiva) {
+    private static int editarTextoLinea(String[] buffer, int lineaActiva) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Texto en línea [" + lineaActiva + "]: ");
         buffer[lineaActiva] = scanner.nextLine();
-        scanner.close();
+        return lineaActiva + 1;
     }
 
     private static void intercambiarLineas(String[] buffer) {
@@ -125,7 +122,6 @@ class EditorEdlin {
         String auxiliar = buffer[lineaA];
         buffer[lineaA] = buffer[lineaB];
         buffer[lineaB] = auxiliar;
-        scanner.close(); 
     }
 
     private static void salir() {
