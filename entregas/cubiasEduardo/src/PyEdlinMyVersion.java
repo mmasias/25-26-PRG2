@@ -9,6 +9,7 @@ public class PyEdlinMyVersion {
         menuDeBienvenida();
         crearTextoIngresadoPorElUsuario(sc, textoIngresadoPorElUsuario);
         mostrarTextoIngresadoPorElUsuario(textoIngresadoPorElUsuario);
+        preguntarComandoAlUsuario(sc, textoIngresadoPorElUsuario, lineaSeleccionadaDelTextoIngresado);
     }
 
     static void menuDeBienvenida() {
@@ -32,7 +33,7 @@ public class PyEdlinMyVersion {
     }
 
     static void crearTextoIngresadoPorElUsuario(Scanner sc, String[] textoIngresadoPorElUsuario) {
-        System.out.println("Ingrese el texto que desea editar. Para finalizar, ingrese [S].");
+        System.out.println("Ingrese el texto que desea editar. Para finalizar, ingrese [S]");
         System.out.println("--------------------------------------------------");
         for (int i = 0; i < textoIngresadoPorElUsuario.length; i++) {
             System.out.print("Ingrese la linea " + (i + 1) + ": ");
@@ -51,5 +52,47 @@ public class PyEdlinMyVersion {
             System.out.println((i + 1) + ": " + ((textoIngresadoPorElUsuario[i] != null) ? textoIngresadoPorElUsuario[i] : ""));
         }
         System.out.println("--------------------------------------------------");
+    }
+
+    static void preguntarComandoAlUsuario(Scanner sc, String[] textoIngresadoPorElUsuario, int lineaSeleccionadaDelTextoIngresado)
+    {
+        int numeroDeLineaSeleccionada = 0; 
+        boolean salirDelPrograma = false;
+        do {
+            System.out.print("Ingrese un comando de la lista de opciones: ");
+            String comandoIngresado = sc.nextLine();
+            switch (comandoIngresado) {
+                case "[L]" -> {
+                    System.out.print("Ingrese el numero de la linea que desea seleccionar: ");
+                    int numeroDeLineaSeleccionada = sc.nextInt();
+                    sc.nextLine();
+                    validarLineaSeleccionada(numeroDeLineaSeleccionada, textoIngresadoPorElUsuario);
+                }
+                case "[E]" -> {
+                    validarLineaSeleccionada(lineaSeleccionadaDelTextoIngresado, textoIngresadoPorElUsuario);
+                    System.out.print("Ingrese el nuevo contenido de la linea seleccionada: ");
+                    String nuevoContenidoDeLaLineaSeleccionada = sc.nextLine();
+                    editarLineaSeleccionadaConElNuevoContenido(lineaSeleccionadaDelTextoIngresado, textoIngresadoPorElUsuario, nuevoContenidoDeLaLineaSeleccionada);
+                    mostrarTextoIngresadoPorElUsuario(textoIngresadoPorElUsuario);
+                }
+                case "[I]" -> {
+                    validarLineaSeleccionada(lineaSeleccionadaDelTextoIngresado, textoIngresadoPorElUsuario);
+                    System.out.print("Ingrese el numero de la linea con la que desea intercambiar la linea seleccionada: " + lineaSeleccionadaDelTextoIngresado);
+                    int numeroDeLineaConLaQueDeseaIntercambiar = sc.nextInt();
+                    sc.nextLine();
+                    intercambiarLineas(lineaSeleccionadaDelTextoIngresado, numeroDeLineaConLaQueDeseaIntercambiar, textoIngresadoPorElUsuario);
+                    mostrarTextoIngresadoPorElUsuario(textoIngresadoPorElUsuario);
+                }
+                case "[B]" -> {
+                    validarLineaSeleccionada(lineaSeleccionadaDelTextoIngresado, textoIngresadoPorElUsuario);
+                    borrarContenidoDeLaLineaSeleccionada(lineaSeleccionadaDelTextoIngresado, textoIngresadoPorElUsuario);
+                    mostrarTextoIngresadoPorElUsuario(textoIngresadoPorElUsuario);
+                }
+                case "[S]" -> {
+                    salirDelPrograma = true;
+                    System.out.println("Saliendo del programa...");
+                }
+                default -> System.out.println("Comando no reconocido. Por favor, ingrese un comando valido.");        
+        } while (!salirDelPrograma);
     }
 }
