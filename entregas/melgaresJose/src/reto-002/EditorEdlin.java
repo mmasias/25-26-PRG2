@@ -1,3 +1,4 @@
+import java.nio.channels.Pipe.SourceChannel;
 import java.util.Scanner;
 
 class EditorEdlin {
@@ -9,22 +10,28 @@ class EditorEdlin {
         int lineaActiva = LINEA_ACTIVA_INICIAL;
         
         int opcion;
-
-        imprimirMenuIncial();
-        inicializarBuffer(buffer);
+        boolean editorEstaActivo = true;
+        iniciarPrograma(buffer, lineaActiva);
+        
         do {
             opcion = leerComando();
-            ejecutarComando(opcion, buffer, lineaActiva);
-            imprimirEditor(buffer, lineaActiva);
-            imprimirBarraOpciones();
-        } while (opcion != 4);
+            editorEstaActivo = opcion != 4;
+            if(editorEstaActivo) {
+                lineaActiva = ejecutarComando(opcion, buffer, lineaActiva);
+                imprimirEditor(buffer, lineaActiva);
+            }
+            else
+                salir();
+        } while (editorEstaActivo);
     }
 
-    private static void ejecutarEditor(String[] buffer, int lineaActiva) {
-
+    private static void iniciarPrograma(String[] buffer, int lineaActiva) {
+        imprimirMenuIncial(lineaActiva);
+        inicializarBuffer(buffer);
     }
 
     private static void imprimirEditor(String[] buffer, int lineaActiva) {
+        limpiarPantalla();
         imprimirBorde();
         for (int i = 0; i < buffer.length; i++) {
             System.out.print(i);
@@ -33,6 +40,7 @@ class EditorEdlin {
             System.out.println();
         }
         imprimirBorde();
+        imprimirBarraOpciones();
     }
 
     private static void inicializarBuffer(String[] buffer) {
@@ -41,7 +49,7 @@ class EditorEdlin {
         }
     }
 
-    private static void imprimirMenuIncial() {
+    private static void imprimirMenuIncial(int lineaActiva) {
         String[] bufferMenu = {
                 "Bienvenidos al editor EDLIN",
                 "Utilice el menu inferior para editar el texto",
@@ -54,7 +62,7 @@ class EditorEdlin {
                 "",
                 "No lea esto por favor"
         };
-        imprimirEditor(bufferMenu, 0);
+        imprimirEditor(bufferMenu, lineaActiva);
     }
 
     private static void imprimirBarraOpciones() {
@@ -63,7 +71,7 @@ class EditorEdlin {
 
     private static int leerComando() {
         Scanner scanner = new Scanner(System.in);
-        String comando = scanner.nextLine();
+        String comando = scanner.next();
         int numeroComando = mapearComando(comando);
         scanner.close();
         return numeroComando;
@@ -80,27 +88,29 @@ class EditorEdlin {
         return OPCION_INVALIDA;
     }
 
-    private static void ejecutarComando(int opcion, String[] buffer, int lineaActiva) {
+    private static int ejecutarComando(int opcion, String[] buffer, int lineaActiva) {
         switch (opcion) {
             case 0 -> lineaActiva = cambiarLineaActiva();
-            case 1 -> editarLineaActiva(buffer, lineaActiva);
+            case 1 -> editarTextoLinea(buffer, lineaActiva);
             case 2 -> intercambiarLineas(buffer);
             case 3 -> inicializarBuffer(buffer);
             case 4 -> salir();
+            default -> System.out.println("Opcion Invalida!");
         }
+        return lineaActiva;
     }
 
     private static int cambiarLineaActiva() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Cuál debería de ser la nueva línea activa? (0-9): ");
-        int nuevaLinea = scanner.nextInt();
+        int nuevaLineaActiva = scanner.nextInt();
         scanner.close();
-        return nuevaLinea;
+        return nuevaLineaActiva;
     }
 
-    private static void editarLineaActiva(String[] buffer, int lineaActiva) {
+    private static void editarTextoLinea(String[] buffer, int lineaActiva) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Texto en línea [" + lineaActiva + "]");
+        System.out.println("Texto en línea [" + lineaActiva + "]: ");
         buffer[lineaActiva] = scanner.nextLine();
         scanner.close();
     }
