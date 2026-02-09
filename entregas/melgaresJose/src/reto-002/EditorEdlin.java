@@ -5,8 +5,13 @@ class EditorEdlin {
         int opcion;
         imprimirMenuIncial();
         opcion = leerComando();
-        boolean opcionValida = opcion > -1;
-        System.out.println(opcionValida ? "EDLIN v1" : "WRONGGG");
+        switch(opcion) {
+            case 0 -> cambiarLineaActiva();
+            case 1 -> editarLineaActiva();
+            case 2 -> intercambiarLineas();
+            case 3 -> borrar();
+        }
+        limpiarPantalla();
     }
 
     private static void imprimirMenuIncial() {
@@ -43,5 +48,25 @@ class EditorEdlin {
                 return i;
         }
         return OPCION_INVALIDA;
+    }
+
+    private static void cambiarLineaActiva() { 
+        System.out.println("cambiar linea activa...");
+    }
+    private static void editarLineaActiva() {
+        System.out.println("Intercambiando lineas...");
+    }
+    private static void intercambiarLineas(){
+        System.out.println("Intercambiando lineas...");
+    }
+    private static void borrar(){
+        System.out.println("Borrando todo...");
+    }
+    private static void salir(){
+        System.out.println("Bye Bye :D");
+    }
+    private static void limpiarPantalla() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }
