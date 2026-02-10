@@ -12,9 +12,16 @@ public class Edlin {
         for (int i = 0; i < MAX_LINES; i++) {
             file[i] = "";
         }
-         System.out.print("Texto para línea activa: ");
-        String text = sc.nextLine();
-        file[activeLine] = text;
+        
+        file[0] = "Linea 1";
+        file[1] = "Linea 2";
+
+        System.out.print("Número de línea a borrar: ");
+        int line = sc.nextInt();
+
+        if (line >= 1 && line <= MAX_LINES) {
+            file[line - 1] = "";
+        }
 
         printFile();
         sc.close();
