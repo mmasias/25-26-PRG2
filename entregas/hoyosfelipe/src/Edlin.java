@@ -79,6 +79,24 @@ public class Edlin {
                 } else {
                     System.out.println("Numeros de linea invalidos.");
                 }
+            } else if (opcion == 'D' || opcion == 'd') {
+                boolean hayHistorial = false;
+                for (int i = 0; i < 10; i++) {
+                    if (historial[i] != null) {
+                        hayHistorial = true;
+                        break;
+                    }
+                }
+                
+                if (hayHistorial) {
+                    for (int i = 0; i < 10; i++) {
+                        lineas[i] = historial[i];
+                        historial[i] = null;
+                    }
+                    System.out.println("Ultima accion deshecha.");
+                } else {
+                    System.out.println("No hay acciones para deshacer.");
+                }
             }
         }
         
