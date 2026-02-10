@@ -1,12 +1,12 @@
-
 import java.util.Scanner;
 
-class Edlin {
+public class Edlin {
 
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
         String[] lineas = new String[10];
+        int activa = 0;
 
         for (int i = 0; i < 10; i++) {
             lineas[i] = "";
@@ -16,15 +16,22 @@ class Edlin {
 
             System.out.println("\nArchivo:");
             for (int i = 0; i < 10; i++) {
-                System.out.println((i + 1) + ": " + lineas[i]);
+                if (i == activa)
+                    System.out.println("> " + (i + 1) + ": " + lineas[i]);
+                else
+                    System.out.println("  " + (i + 1) + ": " + lineas[i]);
             }
 
-            System.out.println("\nEscribe texto para la línea 1 (0 para salir):");
-            String texto = sc.nextLine();
+            System.out.println("\n1 Seleccionar línea");
+            System.out.println("2 Editar");
+            System.out.println("0 Salir");
 
-            if (texto.equals("0")) break;
+            int op = sc.nextInt();
+            sc.nextLine();
 
-            lineas[0] = texto;
+            if (op == 1) activa = sc.nextInt() - 1;
+            if (op == 2) lineas[activa] = sc.nextLine();
+            if (op == 0) break;
         }
     }
 }
