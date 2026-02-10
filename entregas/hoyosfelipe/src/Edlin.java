@@ -51,6 +51,12 @@ public class Edlin {
                 } else {
                     System.out.println("Numero de linea invalido.");
                 }
+            } else if (opcion == 'E' || opcion == 'e') {
+                System.out.println("Contenido actual: " + lineas[lineaActiva]);
+                System.out.print("Nuevo contenido: ");
+                String nuevoContenido = sc.nextLine();
+                lineas[lineaActiva] = nuevoContenido;
+                System.out.println("Linea " + lineaActiva + " editada.");
             }
         }
         
