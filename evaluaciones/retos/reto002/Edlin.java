@@ -14,6 +14,7 @@ public class Edlin {
             switch(preguntarOpcion()){
                 case 'L', 'l' -> definirLineaActiva();
                 case 'E', 'e' -> editarLineaActiva();
+                case 'I', 'i' -> intercambiarLineas();
                 case 'B', 'b' -> borrarContenidoLineaActiva();
                 case 'S', 's' -> estaFuncionando = !estaFuncionando;
                 default -> System.out.println("Error!");
@@ -44,8 +45,9 @@ public class Edlin {
         lineas[2] = "------";
         lineas[3] = "[L] permite definir la linea activa";
         lineas[4] = "[E] permite editar la linea activa";
-        lineas[5] = "[B] borra el contenido de la linea activa";
-        lineas[6] = "[S] sale del programa";
+        lineas[5] = "[I] permite intercambiar dos lineas";
+        lineas[6] = "[B] borra el contenido de la linea activa";
+        lineas[7] = "[S] sale del programa";
     }
 
     static void definirLineaActiva() {
@@ -79,6 +81,25 @@ public class Edlin {
         
         System.out.println("Línea actualizada.");
         pausa();
+    }
+
+    static void intercambiarLineas() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\nIngrese la primera línea a intercambiar (0-9): ");
+        int linea1 = scanner.nextInt();
+        System.out.print("Ingrese la segunda línea a intercambiar (0-9): ");
+        int linea2 = scanner.nextInt();
+
+        scanner.nextLine(); 
+
+        if (linea1 >= 0 && linea1 < MAX_LINEAS && linea2 >= 0 && linea2 < MAX_LINEAS) {
+            String temporal = lineas[linea1];
+            lineas[linea1] = lineas[linea2];
+            lineas[linea2] = temporal;
+            System.out.println("Líneas intercambiadas.");
+        } else {
+            System.out.println("Error: Líneas inválidas. Deben ser entre 0 y 9.");
+    } pausa();
     }
 
     static void borrarContenidoLineaActiva() {
