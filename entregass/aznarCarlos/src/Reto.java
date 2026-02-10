@@ -1,3 +1,3 @@
-public class Reto-002 {
+public class Reto002 {
     
 }
