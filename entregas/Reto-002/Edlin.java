@@ -21,8 +21,14 @@ public class Edlin {
         while (true) {
             System.out.println("--------------------------------------------------");
             for (int i = 0; i < 10; i++) {
+                String marca;
+                if (i == lineaActiva) {
+                    marca = "*";
+                } else {
+                    marca = " ";
+                }
                 String contenido = (lineas[i] != null) ? lineas[i] : "";
-                System.out.println(i + ": | " + contenido);
+                System.out.println(i + ":" + marca + "| " + contenido);
             }
             System.out.println("--------------------------------------------------");
             
