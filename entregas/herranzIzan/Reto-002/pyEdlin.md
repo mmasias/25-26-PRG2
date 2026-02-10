@@ -7,3 +7,10 @@ Proyecto educativo que reproduce el comportamiento básico del editor clásico d
 
 ## 📁 Estructura del proyecto
 
+**Objetivo:** representar un fichero de 10 líneas
+
+**Código:**
+```python
+MAX_LINES = 10
+file_lines = ["" for _ in range(MAX_LINES)]
+active_line = 0
