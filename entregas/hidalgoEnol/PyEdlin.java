@@ -32,6 +32,11 @@ public class PyEdlin {
                 int nueva = Integer.parseInt(sc.nextLine());
                 if (nueva >= 0 && nueva < 10) lineaActiva = nueva;
             }
+
+            else if (cmd.equals("E")) {
+                System.out.print("Nuevo texto: ");
+                lineas[lineaActiva] = sc.nextLine();
+            }
         }
     }
 }
