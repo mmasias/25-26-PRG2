@@ -3,82 +3,92 @@ import java.util.Stack;
 
 public class PyEdlin {
 
+    static class EstadoEditor {
+        String[] contenidoLineas;
+        int lineaActiva;
+
+        EstadoEditor(String[] lineasActuales, int lineaActivaActual){
+            contenidoLineas = new String[10];
+            for(int indice = 0; indice < 10; indice++)
+                contenidoLineas[indice] = lineasActuales[indice];
+            lineaActiva = lineaActivaActual;
+        }
+    }
+
     static String[] lineas = new String[10];
     static int lineaActiva = 0;
-    static Stack<String[]> historial = new Stack<>();
+    static Stack<EstadoEditor> historialEstados = new Stack<>();
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        for(int i = 0; i < 10; i++){
-            lineas[i] = "";
+        for(int indice = 0; indice < 10; indice++){
+            lineas[indice] = "";
         }
 
         while(true){
             mostrarEditor();
             System.out.print("Comando: ");
-            String comando = sc.nextLine().toUpperCase();
+            String comandoUsuario = scanner.nextLine().toUpperCase();
 
-            if(comando.equals("L")){
+            if(comandoUsuario.equals("L")){
                 System.out.print("Numero de linea (0-9): ");
-                int nueva = Integer.parseInt(sc.nextLine());
-                if(nueva >= 0 && nueva <= 9){
-                    lineaActiva = nueva;
+                int nuevaLineaActiva = Integer.parseInt(scanner.nextLine());
+                if(nuevaLineaActiva >= 0 && nuevaLineaActiva <= 9){
+                    lineaActiva = nuevaLineaActiva;
                 }
             }
-            else if(comando.equals("E")){
+            else if(comandoUsuario.equals("E")){
                 guardarEstado();
                 System.out.print("Nuevo texto: ");
-                String texto = sc.nextLine();
-                lineas[lineaActiva] = texto;
+                String nuevoTexto = scanner.nextLine();
+                lineas[lineaActiva] = nuevoTexto;
             }
-            else if(comando.equals("B")){
+            else if(comandoUsuario.equals("B")){
                 guardarEstado();
                 lineas[lineaActiva] = "";
             }
-            else if(comando.equals("I")){
+            else if(comandoUsuario.equals("I")){
                 guardarEstado();
                 System.out.print("Primera linea: ");
-                int l1 = Integer.parseInt(sc.nextLine());
+                int primeraLinea = Integer.parseInt(scanner.nextLine());
                 System.out.print("Segunda linea: ");
-                int l2 = Integer.parseInt(sc.nextLine());
+                int segundaLinea = Integer.parseInt(scanner.nextLine());
 
-                if(l1 >= 0 && l1 <= 9 && l2 >= 0 && l2 <= 9){
-                    String temp = lineas[l1];
-                    lineas[l1] = lineas[l2];
-                    lineas[l2] = temp;
+                if(primeraLinea >= 0 && primeraLinea <= 9 && segundaLinea >= 0 && segundaLinea <= 9){
+                    String textoTemporal = lineas[primeraLinea];
+                    lineas[primeraLinea] = lineas[segundaLinea];
+                    lineas[segundaLinea] = textoTemporal;
                 }
             }
-            else if(comando.equals("D")){
-                if(!historial.isEmpty()){
-                    lineas = historial.pop();
+            else if(comandoUsuario.equals("D")){
+                if(!historialEstados.isEmpty()){
+                    EstadoEditor estadoAnterior = historialEstados.pop();
+                    lineas = estadoAnterior.contenidoLineas;
+                    lineaActiva = estadoAnterior.lineaActiva;
                 }
             }
-            else if(comando.equals("S")){
+            else if(comandoUsuario.equals("S")){
                 break;
             }
         }
 
-        sc.close();
+        scanner.close();
     }
 
     public static void mostrarEditor(){
         System.out.println("----------------------------------");
-        for(int i = 0; i < 10; i++){
-            if(i == lineaActiva)
-                System.out.println(i + ":*| " + lineas[i]);
+        for(int indice = 0; indice < 10; indice++){
+            if(indice == lineaActiva)
+                System.out.println(indice + ":*| " + lineas[indice]);
             else
-                System.out.println(i + ": | " + lineas[i]);
+                System.out.println(indice + ": | " + lineas[indice]);
         }
         System.out.println("----------------------------------");
     }
 
     public static void guardarEstado(){
-        String[] copia = new String[10];
-        for(int i = 0; i < 10; i++){
-            copia[i] = lineas[i];
-        }
-        historial.push(copia);
+        historialEstados.push(new EstadoEditor(lineas, lineaActiva));
     }
 }
