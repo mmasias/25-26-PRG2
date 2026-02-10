@@ -7,14 +7,28 @@ public class PyEdlin {
     private static int lineaActiva = 0;
 
     public static void main(String[] args) {
-
+        Scanner sc = new Scanner(System.in);
         Arrays.fill(lineas, "");
 
         lineas[0] = "Bienvenidos al editor EDLIN";
         lineas[1] = "Utilice el menu inferior para editar el texto";
         lineas[2] = "------";
 
-        mostrarEditor();
+        boolean salir = false;
+
+        while (!salir) {
+            mostrarEditor();
+            System.out.print("Comando (L para cambiar línea, S para salir): ");
+            String cmd = sc.nextLine().toUpperCase();
+
+            if (cmd.equals("L")) {
+                cambiarLineaActiva(sc);
+            } else if (cmd.equals("S")) {
+                salir = true;
+            }
+        }
+
+        sc.close();
     }
 
     private static void mostrarEditor() {
@@ -25,4 +39,16 @@ public class PyEdlin {
         }
         System.out.println("--------------------------------------------------");
     }
+
+    private static void cambiarLineaActiva(Scanner sc) {
+        System.out.print("Ingrese número de línea (0-9): ");
+        int n = Integer.parseInt(sc.nextLine());
+
+        if (n >= 0 && n < MAX_LINEAS) {
+            lineaActiva = n;
+        } else {
+            System.out.println("Línea inválida.");
+        }
+    }
 }
+
