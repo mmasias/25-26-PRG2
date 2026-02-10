@@ -22,3 +22,14 @@ en esta parte el usuario editara la posicion del array de la linea activa
 
 en esta hago que el espacio en el array de la linea activa sea igual a null
 
+
+MEJORAS – PARTE 1
+Agregue a su versión de edlin la capacidad de intercambiar el contenido de dos líneas
+
+aqui creo al elegir intercambiar el usuario elige las dos linea, se usa una variable temporal que contenga la primera linea y hago que la primera linea sea igual a la segunda luego la segunda linea sera igual a la temporal
+
+
+MEJORAS – PARTE 2
+En base a lo definido arriba, plantee como implementaría la opción de deshacer (CTRL+Z).
+
+en esta parte creo un array que guarde un historial del codigo original y que al elegir la opcion d cargue ese historial
