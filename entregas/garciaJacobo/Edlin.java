@@ -13,19 +13,17 @@ public class Edlin {
         fichero[6] = "[B] borra el contenido de la linea activa";
         fichero[7] = "[D] deshace la última acción realizada";
         fichero[8] = "[S] sale del programa";
-        mostrarMenu(fichero);
+        int[] lineaActiva = { 1 };
+        mostrarMenu(fichero, lineaActiva);
 
     }
 
-    private static void mostrarMenu(String[] fichero) {
+    private static void mostrarMenu(String[] fichero, int[] lineaActiva) {
         imprimirBordeHorizontal();
         for (int i = 0; i < fichero.length; i++) {
-            System.out.print(i + ":" + " |  ");
-            if (fichero[i] != null) {
-                System.out.println(fichero[i]);
-            } else {
-                System.out.println();
-            }
+            
+            String separador= i + ((lineaActiva[0]==i) ? "*": "")+ "|";
+            System.out.println(separador+fichero[i]);
         }
         imprimirBordeHorizontal();
         imprimirComandos();
