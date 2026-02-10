@@ -13,7 +13,15 @@ public class PyEdlin {
             lineas[i] = "";
         }
 
-        mostrarEditor();
+        while(true){
+            mostrarEditor();
+            System.out.print("Comando: ");
+            String comando = sc.nextLine().toUpperCase();
+
+            if(comando.equals("S")){
+                break;
+            }
+        }
 
         sc.close();
     }
