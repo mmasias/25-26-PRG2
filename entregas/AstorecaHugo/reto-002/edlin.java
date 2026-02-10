@@ -28,8 +28,8 @@ class edlin {
                 case "I":
                     intercambiarLineas();
                     break;
-                    case"S":
-                    salir =true;
+                case "S":
+                    salir = true;
                     System.out.println("Saliendo...");
                     break;
 
