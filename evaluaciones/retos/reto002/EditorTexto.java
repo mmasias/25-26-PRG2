@@ -32,10 +32,15 @@ public class EditorTexto {
         System.out.println("Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [D]eshacer | [S]alir");
     }
 
-    public static void editarLinea(){
-        System.out.println("ingrece el contenido de la nueva linea: \n");
+    public static void editarLinea() {
+        System.out.print("Introduce el contenido de la nueva linea: ");
+        
+        teclado.nextLine();
+        String nuevoContenido = teclado.nextLine();
+    
+        fichero[lineaActiva] = nuevoContenido;
     }
-
+    
     public void definirLineaActiva() {
         System.out.print("Introduce la linea activa (1-10): ");
         int linea = teclado.nextInt();
