@@ -1,4 +1,4 @@
-package evaluaciones.retos.reto002.entregas.riveraJorge.src.reto002;
+package entregas.riveraJorge.src.reto002;
 
 import java.util.Scanner;
 class EditorDeTexto {
