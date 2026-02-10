@@ -33,6 +33,18 @@ public class PyEdlin {
             else if(comando.equals("B")){
                 lineas[lineaActiva] = "";
             }
+            else if(comando.equals("I")){
+                System.out.print("Primera linea: ");
+                int l1 = Integer.parseInt(sc.nextLine());
+                System.out.print("Segunda linea: ");
+                int l2 = Integer.parseInt(sc.nextLine());
+
+                if(l1 >= 0 && l1 <= 9 && l2 >= 0 && l2 <= 9){
+                    String temp = lineas[l1];
+                    lineas[l1] = lineas[l2];
+                    lineas[l2] = temp;
+                }
+            }
             else if(comando.equals("S")){
                 break;
             }
