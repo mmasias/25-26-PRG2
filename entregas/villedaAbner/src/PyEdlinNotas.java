@@ -19,25 +19,18 @@ public class PyEdlinNotas {
 
             char comando = verificarComando();
             switch (comando) {
-                case 'L':
+                case 'L' ->
                     lineaActiva = saltoDeLinea(lineaActiva, scanner);
-                    break;
-                case 'E':
-                    MEMORIA[lineaActiva] = editarLinea(scanner);
-                    break;
-                case 'B':
-                    borrarLinea(MEMORIA, lineaActiva);
-                    break;
-                case 'S':
-                    fin = true;
-                    break;
-                case 'I':
-                    intercambioDeLineas(scanner, MEMORIA, lineaActiva);
-                    break;
 
-                default:
-                    System.out.println("Comando Incorrecto");
-                    break;
+                case 'E' -> MEMORIA[lineaActiva] = editarLinea(scanner);
+
+                case 'B' -> borrarLinea(MEMORIA, lineaActiva);
+
+                case 'S' -> fin = true;
+
+                case 'I' -> intercambioDeLineas(scanner, MEMORIA, lineaActiva);
+
+                default -> System.out.println("Comando Incorrecto");
             }
 
         } while (fin == false);
