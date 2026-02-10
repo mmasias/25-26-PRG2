@@ -14,29 +14,43 @@ public class PyEdlin {
         int lineaActiva = 0;
         boolean salir = false;
 
-        while (!salir) {
+        while (salir == false) {
             mostrar(lineas, lineaActiva);
-            System.out.println("[L] Linea | [S] Salir");
 
-            String cmd = sc.nextLine().toUpperCase();
+            System.out.println("L cambiar | E editar | B borrar | S salir");
+            String cmd = sc.nextLine();
 
-            if (cmd.equals("L")) {
-                System.out.print("Numero linea: ");
+            if (cmd.equalsIgnoreCase("L")) {
+                System.out.print("Numero de linea: ");
                 lineaActiva = Integer.parseInt(sc.nextLine());
             }
 
-            if (cmd.equals("S")) salir = true;
+            if (cmd.equalsIgnoreCase("E")) {
+                System.out.print("Nuevo texto: ");
+                lineas[lineaActiva] = sc.nextLine();
+            }
+
+            if (cmd.equalsIgnoreCase("B")) {
+                lineas[lineaActiva] = "";
+            }
+
+            if (cmd.equalsIgnoreCase("S")) {
+                salir = true;
+            }
         }
     }
 
     static void mostrar(String[] lineas, int activa) {
         System.out.println("------ EDLIN ------");
         for (int i = 0; i < lineas.length; i++) {
-            String marca = (i == activa) ? "*" : " ";
-            System.out.println(i + ":" + marca + "| " + lineas[i]);
+            if (i == activa)
+                System.out.println(i + ":*| " + lineas[i]);
+            else
+                System.out.println(i + ": | " + lineas[i]);
         }
     }
 }
+
 
 
 
