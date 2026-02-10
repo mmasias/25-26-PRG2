@@ -35,7 +35,13 @@ public class Edlin {
             System.out.println("Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [D]eshacer | [S]alir");
             System.out.print("Opcion: ");
             
-            break;
+            char opcion = sc.next().charAt(0);
+            sc.nextLine();
+            
+            if (opcion == 'S' || opcion == 's') {
+                System.out.println("Saliendo del editor EDLIN.");
+                break;
+            }
         }
         
         sc.close();
