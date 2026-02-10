@@ -53,6 +53,19 @@ private static Scanner scanner = new Scanner(System.in);
         lineas[6] = "[B] borra el contenido de la linea activa";
         lineas[7] = "[S] sale del programa";
     }
-
+private static void mostrarFichero() {
+        System.out.println("--------------------------------------------------");
+        for (int i = 0; i < MAX_LINEAS; i++) {
+            String marca;
+            if (i == lineaActiva) {
+                marca = "*";
+            } else {
+                marca = " ";
+            }
+            System.out.println(i + ":" + marca + "| " + lineas[i]);
+        }
+        System.out.println("--------------------------------------------------");
+        System.out.println("Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [S]alir");
+    }
     }
 }
