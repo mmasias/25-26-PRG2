@@ -15,7 +15,13 @@ class edlin {
                 mostrarMenu();
                 System.out.print("Ingrese un comando: ");
                 String comando = scanner.nextLine();
-                
+                switch (comando){
+                    case"L":
+                    cambiarLineaActiva();
+                    break;
+
+                }
+
             }
     }
 
@@ -48,4 +54,18 @@ class edlin {
         System.out.println("--------------------------------------------------");
         System.out.println("Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [S]alir");
     }
+
+static void cambiarLineaActiva(){
+     System.out.print("Número de línea (0-9): ");
+        int nueva = scanner.nextInt();
+        scanner.nextLine(); 
+
+        if (nueva >= 0 && nueva < MAX_LINEAS) {
+            lineaActual = nueva;
+        }
+    }
 }
+
+
+
+
