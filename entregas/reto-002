@@ -1,0 +1,131 @@
+import java.util.*;
+
+public class PyEdlin {
+
+    private static final int MAX_LINEAS = 10;
+    private static String[] lineas = new String[MAX_LINEAS];
+    private static int lineaActiva = 0;
+
+    private static Stack<Estado> historial = new Stack<>();
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Arrays.fill(lineas, "");
+
+        lineas[0] = "Bienvenidos al editor EDLIN";
+        lineas[1] = "Utilice el menu inferior para editar el texto";
+        lineas[2] = "------";
+
+        boolean salir = false;
+
+        while (!salir) {
+            mostrarEditor();
+
+            System.out.print("Comando: ");
+            String cmd = sc.nextLine().toUpperCase();
+
+            switch (cmd) {
+                case "L":
+                    guardarEstado();
+                    cambiarLineaActiva(sc);
+                    break;
+                case "E":
+                    guardarEstado();
+                    editarLinea(sc);
+                    break;
+                case "B":
+                    guardarEstado();
+                    borrarLinea();
+                    break;
+                case "I":
+                    guardarEstado();
+                    intercambiarLineas(sc);
+                    break;
+                case "D":
+                    deshacer();
+                    break;
+                case "S":
+                    salir = true;
+                    System.out.println("Saliendo de pyEdlin...");
+                    break;
+                default:
+                    System.out.println("Comando no reconocido.");
+            }
+        }
+
+        sc.close();
+    }
+
+    static class Estado {
+        String[] lineas;
+        int lineaActiva;
+
+        Estado(String[] l, int a) {
+            this.lineas = l;
+            this.lineaActiva = a;
+        }
+    }
+
+    private static void guardarEstado() {
+        historial.push(new Estado(lineas.clone(), lineaActiva));
+    }
+
+    private static void deshacer() {
+        if (historial.isEmpty()) {
+            System.out.println("No hay acciones para deshacer.");
+            return;
+        }
+        Estado e = historial.pop();
+        lineas = e.lineas;
+        lineaActiva = e.lineaActiva;
+        System.out.println("Última acción deshecha.");
+    }
+
+    private static void mostrarEditor() {
+        System.out.println("--------------------------------------------------");
+        for (int i = 0; i < MAX_LINEAS; i++) {
+            String marca = (i == lineaActiva) ? "*" : " ";
+            System.out.printf("%d:%s| %s%n", i, marca, lineas[i]);
+        }
+        System.out.println("--------------------------------------------------");
+        System.out.println(
+            "Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [D]eshacer | [S]alir"
+        );
+    }
+
+    private static void cambiarLineaActiva(Scanner sc) {
+        System.out.print("Ingrese número de línea (0-9): ");
+        int n = Integer.parseInt(sc.nextLine());
+
+        if (n >= 0 && n < MAX_LINEAS) {
+            lineaActiva = n;
+        } else {
+            System.out.println("Línea inválida.");
+        }
+    }
+
+    private static void editarLinea(Scanner sc) {
+        System.out.print("Nuevo contenido: ");
+        lineas[lineaActiva] = sc.nextLine();
+    }
+
+    private static void borrarLinea() {
+        lineas[lineaActiva] = "";
+    }
+
+    private static void intercambiarLineas(Scanner sc) {
+        System.out.print("Primera línea: ");
+        int l1 = Integer.parseInt(sc.nextLine());
+
+        System.out.print("Segunda línea: ");
+        int l2 = Integer.parseInt(sc.nextLine());
+
+        if (l1 >= 0 && l1 < MAX_LINEAS && l2 >= 0 && l2 < MAX_LINEAS) {
+            String temp = lineas[l1];
+            lineas[l1] = lineas[l2];
+            lineas[l2] = temp;
+        } else {
+            System.out.println("Líneas inválidas.");
+        }
+    }
+}
