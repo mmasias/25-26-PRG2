@@ -32,7 +32,7 @@ public class pyEdlin {
         System.out.println("9|" + (lineas[9]));
         System.out.println("------------------------------------------------------------------");
 
-        System.out.print("Elegir un comando: [1]Añadir linea, [2]Quitar linea, [3]Moficar linea, [4]Salir: ");
+        System.out.print("Elegir un comando: [1]Añadir linea, [2]Quitar linea reciente, [3]Moficar linea, [4]Salir: ");
         String comandoElegido = comando.nextLine();
         switch (comandoElegido) {
             case "1" -> {
@@ -49,6 +49,12 @@ public class pyEdlin {
 
             case "2" -> {
                 System.out.println("Borrando línea...");
+                if (lineasEscritas > 0) {
+                    lineasEscritas--;
+                    lineas[lineasEscritas] = "";
+                } else {
+                    System.out.println("No hay líneas para borrar.");
+                }
             }
 
             case "3" -> {
