@@ -20,9 +20,9 @@ public class Edlin {
     private static void mostrarMenu(String[] fichero) {
         imprimirBordeHorizontal();
         for (int i = 0; i < fichero.length; i++) {
-            System.out.print(i+":" + " |  ");
+            System.out.print(i + ":" + " |  ");
             if (fichero[i] != null) {
-                System.out.println(  fichero[i]);
+                System.out.println(fichero[i]);
             } else {
                 System.out.println();
             }
