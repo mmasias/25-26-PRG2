@@ -5,6 +5,7 @@ public class EditorFicheros {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         MostrarMenu();
+        CrearFichero();
     }
 
     static void LineaActiva(){
@@ -33,4 +34,12 @@ public class EditorFicheros {
         System.out.println("--------------------------------------------------");
         System.out.println("Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [S]alir");
     }
+
+    static String[] fichero;
+    static void CrearFichero() {
+        fichero = new String[10];
+        for (int i = 0; i < fichero.length; i++) {
+            fichero[i] = "";
+        }
+    }    
 }
