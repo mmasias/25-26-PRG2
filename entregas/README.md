@@ -23,3 +23,5 @@ Crea la primera versión de edlin, que pueda gestionar un fichero de 10 líneas
 2. Crear la opciones de mirar, crear, modificar lineas o cerrar el programma.
 
 3. Quitar el la opcion de commando "mirar" haciendo que sea algo ya hecho constantemente en el programma, teniendo la idea de que la introduccion del programma ya este siendo las primeras lineas, las cuales deberan poderse modificar y hacerunos arreglos gramaticos.
+
+4. Crear la funcion de añadir texto en las lineas, por ahora comenzara en la linea 4.

@@ -15,6 +15,7 @@ public class pyEdlin {
     lineas[7] = "";
     lineas[8] = "";
     lineas[9] = "";
+    int lineasEscritas = 3;
     Scanner comando = new Scanner(System.in);
 
     do {
@@ -36,6 +37,14 @@ public class pyEdlin {
         switch (comandoElegido) {
             case "1" -> {
                 System.out.println("Añadiendo línea...");
+                if (lineasEscritas < 10) {
+                    System.out.print("Escribe la línea que deseas añadir: ");
+                    String nuevaLinea = comando.nextLine();
+                    lineas[lineasEscritas] = nuevaLinea;
+                    lineasEscritas++;
+                } else {
+                    System.out.println("No se pueden añadir más líneas. El límite es de 10 líneas.");
+                }
             }
 
             case "2" -> {
