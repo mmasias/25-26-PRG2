@@ -18,7 +18,7 @@ public class PyEdlin {
 
         while (!salir) {
             mostrarEditor();
-            System.out.print("Comando [L,E,B,S]: ");
+            System.out.print("Comando [L,E,B,I,S]: ");
             String cmd = sc.nextLine().toUpperCase();
 
             switch (cmd) {
@@ -30,6 +30,9 @@ public class PyEdlin {
                     break;
                 case "B":
                     borrarLinea();
+                    break;
+                case "I":
+                    intercambiarLineas(sc);
                     break;
                 case "S":
                     salir = true;
@@ -70,5 +73,20 @@ public class PyEdlin {
     private static void borrarLinea() {
         lineas[lineaActiva] = "";
     }
-}
 
+    private static void intercambiarLineas(Scanner sc) {
+        System.out.print("Primera línea: ");
+        int l1 = Integer.parseInt(sc.nextLine());
+
+        System.out.print("Segunda línea: ");
+        int l2 = Integer.parseInt(sc.nextLine());
+
+        if (l1 >= 0 && l1 < MAX_LINEAS && l2 >= 0 && l2 < MAX_LINEAS) {
+            String temp = lineas[l1];
+            lineas[l1] = lineas[l2];
+            lineas[l2] = temp;
+        } else {
+            System.out.println("Líneas inválidas.");
+        }
+    }
+}
