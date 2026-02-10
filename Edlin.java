@@ -40,4 +40,17 @@ public class Edlin {
 
         } while (opcion != 'S');
     }
+    
+     static void mostrarTexto() {
+        System.out.println("\n---------------------------------");
+        for (int i = 0; i < MAX_LINEAS; i++) {
+            if (i == lineaActiva) {
+                System.out.println(i + ":* " + texto[i]);
+            } else {
+                System.out.println(i + ":  " + texto[i]);
+            }
+        }
+        System.out.println("---------------------------------");
+    }
+
 
