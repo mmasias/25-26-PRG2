@@ -51,4 +51,14 @@ public class Edlin {
             }
         }
     }
+
+    static void mostrarArchivo() {
+        System.out.println("--------------------------------------------------------------");
+        for (int i = 0; i < MAX_LINEAS; i++) {
+            String marca = (i == lineaActiva) ? "*" : " ";
+            System.out.println(i + ":" + marca + "| " + archivo[i]);
+        }
+        System.out.println("--------------------------------------------------------------");
+        System.out.println("Comandos: [L] Línea activa | [E] Editar | [I] Intercambiar | [B] Borrar | [S] Salir");
+    }
 }
