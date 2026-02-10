@@ -102,6 +102,32 @@ class ConversorUnidades {
         } else {
             System.out.println("Opción no válida");
         }
+               private static void convertirTemperatura() {
+        Scanner entrada = new Scanner(System.in);
+        int opcion;
+        double valor;
+
+        System.out.println("Conversión de temperatura");
+        System.out.println("1 - Celsius a Fahrenheit");
+        System.out.println("2 - Fahrenheit a Celsius");
+        System.out.println("3 - Celsius a Kelvin");
+        System.out.println("4 - Kelvin a Celsius");
+
+        opcion = entrada.nextInt();
+        System.out.println("Introduzca el valor:");
+        valor = entrada.nextDouble();
+
+        if (opcion == 1) {
+            System.out.println(valor + " C = " + (valor * 9 / 5 + 32) + " F");
+        } else if (opcion == 2) {
+            System.out.println(valor + " F = " + ((valor - 32) * 5 / 9) + " C");
+        } else if (opcion == 3) {
+            System.out.println(valor + " C = " + (valor + 273.15) + " K");
+        } else if (opcion == 4) {
+            System.out.println(valor + " K = " + (valor - 273.15) + " C");
+        } else {
+            System.out.println("Opción no válida");
+        }
      }
 }
 
