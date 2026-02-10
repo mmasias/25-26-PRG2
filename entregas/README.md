@@ -1,37 +1,29 @@
-# Carpeta de entregas
+# Reto cuál resolver
 
-Para cada entrega, cree en esta carpeta su carpeta personal usando el estándar `apellidoNombre`.
+Crea la primera versión de edlin, que pueda gestionar un fichero de 10 líneas
 
-## Estructura
+# Requisitos del reto
 
-```
-/entregas/apellidoNombre/README.md   <-- Presentación de la entrega
-                        /src         <-- Código fuente
-                        /modelosUML  <-- Modelos en plantUML
-                        /docs        <-- Documentación adicional
-                        /images      <-- Imágenes, diagramas...
-```
+1. Defina e implemente una manera de representar la información a almacenar, teniendo en cuenta que gestionará un fichero de texto de hasta 10 líneas.
+2. Implemente la salida de información en pantalla, mostrando el fichero y las líneas que lo conforman.
+3. Agregue a su versión de edlin la capacidad de especificar la línea activa.
+4. Agregue a su versión de edlin la capacidad de editar el contenido de la línea activa.
+5. Agregue a su versión de edlin la capacidad de eliminar el contenido de una línea.
 
-## Artefactos habituales
+# Mejoras possibles
 
-||||
-|-|-|-|
-|1|**README.md**|Presentación de la entrega, con explicación de la solución y referencias al resto de artefactos. ¡Navegabilidad!|
-|2|**Código fuente**|Proyecto ordenado dentro de `/src`.|
-|3|**Diagramas**|Fuente en `/modelosUML`, exportado en `/images`, referenciado en los .md pertinentes.|
-|4|**Documentación adicional**|En `/docs`, en formato markdown (u otro formato, solo si se solicita explícitamente).|
+1. Agregue a su versión de edlin la capacidad de intercambiar el contenido de dos líneas.
 
-> Cada reto indicará qué artefactos son obligatorios y cuáles opcionales.
+2. En base a lo definido arriba, plantee como implementaría la opción de deshacer (CTRL+Z).
 
-## Criterios de valoración
+# Pasos tomados para la solución
 
-- **Proceso de creación** — commits bien descritos, un cambio por commit.
-- **Código limpio** — innegociable.
-- **Adecuado reparto de responsabilidades** entre módulos.
-- **Aplicación de lo visto en la vida, en el grado, en la asignatura y en las clases**, en ese orden.
+1. Creación de la clase pyEdlin y el boceto de que hacer en el README.
 
-## Tenga en cuenta
+2. Crear la opciones de mirar, crear, modificar lineas o cerrar el programma.
 
-- **Planificar** antes de codificar (diagramas, esquemas, pseudocódigo).
-- **Construir código que se autoexplique**.
-- **Usar los commits** para documentar el proceso.
+3. Quitar el la opcion de commando "mirar" haciendo que sea algo ya hecho constantemente en el programma, teniendo la idea de que la introduccion del programma ya este siendo las primeras lineas, las cuales deberan poderse modificar y hacerunos arreglos gramaticos.
+
+4. Crear la funcion de añadir texto en las lineas, por ahora comenzara en la linea 4.
+
+5. Crear la funcion de borrar la linea mas reciente.
