@@ -18,8 +18,16 @@ public class Edlin {
         lineas[8] = "[S] sale del programa";
         lineas[9] = "";
         
-        System.out.println("Editor EDLIN - Iniciando...");
-        System.out.println("Contenido cargado: " + lineas[0]);
+        while (true) {
+            System.out.println("--------------------------------------------------");
+            for (int i = 0; i < 10; i++) {
+                String contenido = (lineas[i] != null) ? lineas[i] : "";
+                System.out.println(i + ": | " + contenido);
+            }
+            System.out.println("--------------------------------------------------");
+            
+            break;
+        }
         
         sc.close();
     }
