@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class PyEdlin {
 
     static String[] lineas = new String[10];
+    static int lineaActiva = 0;
 
     public static void main(String[] args) {
 
@@ -20,7 +21,10 @@ public class PyEdlin {
     public static void mostrarEditor(){
         System.out.println("----------------------------------");
         for(int i = 0; i < 10; i++){
-            System.out.println(i + ": | " + lineas[i]);
+            if(i == lineaActiva)
+                System.out.println(i + ":*| " + lineas[i]);
+            else
+                System.out.println(i + ": | " + lineas[i]);
         }
         System.out.println("----------------------------------");
     }
