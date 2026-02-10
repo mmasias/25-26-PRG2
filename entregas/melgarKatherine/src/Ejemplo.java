@@ -23,12 +23,30 @@ public class Ejemplo{
     }
 
     static void preguntarAlUsuarioOpciones(String[] textoAModificar, Scanner sc){
-        
+        boolean salirDeMenu = false;
+        do{
+            System.out.println("Elije una opción del menú");
+            String letraOpcionElejida = sc.nextLine();
+            switch (letraOpcionElejida){
+                case "L" -> {
+                    System.out.println("Escribe el indice de la linea que quieres activar");
+                    String letraOpcionElejida = sc.nextLine();
+                    activarLinea()
+                }
+                case "E" ->
+                case "I" ->
+                case "B" ->
+                case "D" ->
+                case "S" ->
+            }
+        } while(salirDeMenu);
+        System.out.println("Elije una opción del menú");
     }
 
     static void mostrarMenuAlUsuario(String[] mostrarMenuAlUsuario){
         for(int i = 0; i < mostrarMenuAlUsuario.length; i++){
             System.out.println(mostrarMenuAlUsuario[i]);
         }
+        System.out.println("Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [D]eshacer | [S]alir");
     }
 }
