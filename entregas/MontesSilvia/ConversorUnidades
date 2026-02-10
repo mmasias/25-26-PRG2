@@ -1,0 +1,101 @@
+import java.util.Scanner;
+
+public class ConversorUnidades {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Conversor de Unidades - Version 2.1");
+        System.out.println("[1] Longitud");
+        System.out.println("[2] Peso");
+        System.out.println("[3] Temperatura");
+        System.out.print("Tipo de conversion: ");
+
+        int tipo = sc.nextInt();
+
+        switch (tipo) {
+            case 1 -> convertirLongitud(sc);
+            case 2 -> convertirPeso(sc);
+            case 3 -> convertirTemperatura(sc);
+            default -> System.out.println("Tipo no valido");
+        }
+    }
+
+    private static void convertirLongitud(Scanner sc) {
+        System.out.println("Conversion de longitud:");
+        System.out.println("[1] Metros a Kilometros");
+        System.out.println("[2] Kilometros a Metros");
+        System.out.println("[3] Metros a Millas");
+        System.out.println("[4] Millas a Metros");
+        System.out.println("[5] Centimetros a Pulgadas");
+        System.out.println("[6] Pulgadas a Centimetros");
+        System.out.print("Opcion: ");
+
+        int opcion = sc.nextInt();
+        double valor = pedirValor(sc);
+
+        switch (opcion) {
+            case 1 -> imprimirResultado(valor, "m", valor / 1000, "km");
+            case 2 -> imprimirResultado(valor, "km", valor * 1000, "m");
+            case 3 -> imprimirResultado(valor, "m", valor * 0.000621371, "mi");
+            case 4 -> imprimirResultado(valor, "mi", valor * 1609.34, "m");
+            case 5 -> imprimirResultado(valor, "cm", valor * 0.393701, "in");
+            case 6 -> imprimirResultado(valor, "in", valor * 2.54, "cm");
+            default -> System.out.println("Opcion no valida");
+        }
+    }
+
+    private static void convertirPeso(Scanner sc) {
+        System.out.println("Conversion de peso:");
+        System.out.println("[1] Kilogramos a Gramos");
+        System.out.println("[2] Gramos a Kilogramos");
+        System.out.println("[3] Kilogramos a Libras");
+        System.out.println("[4] Libras a Kilogramos");
+        System.out.println("[5] Gramos a Onzas");
+        System.out.println("[6] Onzas a Gramos");
+        System.out.print("Opcion: ");
+
+        int opcion = sc.nextInt();
+        double valor = pedirValor(sc);
+
+        switch (opcion) {
+            case 1 -> imprimirResultado(valor, "kg", valor * 1000, "g");
+            case 2 -> imprimirResultado(valor, "g", valor / 1000, "kg");
+            case 3 -> imprimirResultado(valor, "kg", valor * 2.20462, "lb");
+            case 4 -> imprimirResultado(valor, "lb", valor * 0.453592, "kg");
+            case 5 -> imprimirResultado(valor, "g", valor * 0.035274, "oz");
+            case 6 -> imprimirResultado(valor, "oz", valor * 28.3495, "g");
+            default -> System.out.println("Opcion no valida");
+        }
+    }
+
+    private static void convertirTemperatura(Scanner sc) {
+        System.out.println("Conversion de temperatura:");
+        System.out.println("[1] Celsius a Fahrenheit");
+        System.out.println("[2] Fahrenheit a Celsius");
+        System.out.println("[3] Celsius a Kelvin");
+        System.out.println("[4] Kelvin a Celsius");
+        System.out.print("Opcion: ");
+
+        int opcion = sc.nextInt();
+        double valor = pedirValor(sc);
+
+        switch (opcion) {
+            case 1 -> imprimirResultado(valor, "C", valor * 9 / 5 + 32, "F");
+            case 2 -> imprimirResultado(valor, "F", (valor - 32) * 5 / 9, "C");
+            case 3 -> imprimirResultado(valor, "C", valor + 273.15, "K");
+            case 4 -> imprimirResultado(valor, "K", valor - 273.15, "C");
+            default -> System.out.println("Opcion no valida");
+        }
+    }
+
+    private static double pedirValor(Scanner sc) {
+        System.out.print("Valor: ");
+        return sc.nextDouble();
+    }
+
+    private static void imprimirResultado(double valorOriginal, String unidadOriginal,
+                                          double valorConvertido, String unidadConvertida) {
+        System.out.println(valorOriginal + " " + unidadOriginal + " = " + valorConvertido + " " + unidadConvertida);
+    }
+}
