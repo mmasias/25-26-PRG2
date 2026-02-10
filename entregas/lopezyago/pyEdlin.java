@@ -17,7 +17,7 @@ public class PyEdlin {
         while (salir == false) {
             mostrar(lineas, lineaActiva);
 
-            System.out.println("L cambiar | E editar | B borrar | S salir");
+            System.out.println("L cambiar | E editar | B borrar | I intercambiar | S salir");
             String cmd = sc.nextLine();
 
             if (cmd.equalsIgnoreCase("L")) {
@@ -32,6 +32,17 @@ public class PyEdlin {
 
             if (cmd.equalsIgnoreCase("B")) {
                 lineas[lineaActiva] = "";
+            }
+
+            if (cmd.equalsIgnoreCase("I")) {
+                System.out.print("Linea 1: ");
+                int a = Integer.parseInt(sc.nextLine());
+                System.out.print("Linea 2: ");
+                int b = Integer.parseInt(sc.nextLine());
+
+                String temp = lineas[a];
+                lineas[a] = lineas[b];
+                lineas[b] = temp;
             }
 
             if (cmd.equalsIgnoreCase("S")) {
@@ -50,6 +61,7 @@ public class PyEdlin {
         }
     }
 }
+
 
 
 
