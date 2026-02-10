@@ -11,13 +11,15 @@ public class PyEdlin {
         String[] lineas = new String[MAX_LINEAS];
         Arrays.fill(lineas, "");
 
+        String[] copia = new String[MAX_LINEAS];
+
         int lineaActiva = 0;
         boolean salir = false;
 
         while (salir == false) {
             mostrar(lineas, lineaActiva);
 
-            System.out.println("L cambiar | E editar | B borrar | I intercambiar | S salir");
+            System.out.println("L cambiar | E editar | B borrar | I intercambiar | D deshacer | S salir");
             String cmd = sc.nextLine();
 
             if (cmd.equalsIgnoreCase("L")) {
@@ -26,15 +28,19 @@ public class PyEdlin {
             }
 
             if (cmd.equalsIgnoreCase("E")) {
+                copia = Arrays.copyOf(lineas, lineas.length);
                 System.out.print("Nuevo texto: ");
                 lineas[lineaActiva] = sc.nextLine();
             }
 
             if (cmd.equalsIgnoreCase("B")) {
+                copia = Arrays.copyOf(lineas, lineas.length);
                 lineas[lineaActiva] = "";
             }
 
             if (cmd.equalsIgnoreCase("I")) {
+                copia = Arrays.copyOf(lineas, lineas.length);
+
                 System.out.print("Linea 1: ");
                 int a = Integer.parseInt(sc.nextLine());
                 System.out.print("Linea 2: ");
@@ -43,6 +49,10 @@ public class PyEdlin {
                 String temp = lineas[a];
                 lineas[a] = lineas[b];
                 lineas[b] = temp;
+            }
+
+            if (cmd.equalsIgnoreCase("D")) {
+                lineas = Arrays.copyOf(copia, copia.length);
             }
 
             if (cmd.equalsIgnoreCase("S")) {
@@ -61,6 +71,7 @@ public class PyEdlin {
         }
     }
 }
+
 
 
 
