@@ -21,10 +21,14 @@ public class PyEdlin {
             if(comando.equals("L")){
                 System.out.print("Numero de linea (0-9): ");
                 int nueva = Integer.parseInt(sc.nextLine());
-
                 if(nueva >= 0 && nueva <= 9){
                     lineaActiva = nueva;
                 }
+            }
+            else if(comando.equals("E")){
+                System.out.print("Nuevo texto: ");
+                String texto = sc.nextLine();
+                lineas[lineaActiva] = texto;
             }
             else if(comando.equals("S")){
                 break;
