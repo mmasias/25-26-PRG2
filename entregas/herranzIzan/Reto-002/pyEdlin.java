@@ -11,7 +11,15 @@ public class Edlin {
             file[i] = "";
         }
 
-        System.out.println("EDLIN iniciado");
+        printFile();
+    }
+    
+    private static void printFile() {
+        System.out.println("----- FICHERO -----");
+        for (int i = 0; i < MAX_LINES; i++) {
+            System.out.println((i + 1) + ": " + file[i]);
+        }
+        System.out.println("-------------------");
     }
 }
 
