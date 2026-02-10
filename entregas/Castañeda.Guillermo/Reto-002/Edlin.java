@@ -61,4 +61,47 @@ public class Edlin {
         System.out.println("--------------------------------------------------------------");
         System.out.println("Comandos: [L] Línea activa | [E] Editar | [I] Intercambiar | [B] Borrar | [S] Salir");
     }
+
+    static void definirLineaActiva() {
+        System.out.print("Numero de linea activa (0-9): ");
+        try {
+            int n = Integer.parseInt(sc.nextLine());
+            if (n >= 0 && n < MAX_LINEAS) {
+                lineaActiva = n;
+            } else {
+                System.out.println("Linea fuera de rango.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Entrada invalida.");
+        }
+    }
+
+    static void editarLineaActiva() {
+        System.out.print("Nuevo contenido de la linea: ");
+        archivo[lineaActiva] = sc.nextLine();
+    }
+
+    static void borrarLineaActiva() {
+        archivo[lineaActiva] = "";
+    }
+
+    static void intercambiarLineas() {
+        try {
+            System.out.print("Primera linea (0-9): ");
+            int l1 = Integer.parseInt(sc.nextLine());
+            System.out.print("Segunda linea (0-9): ");
+            int l2 = Integer.parseInt(sc.nextLine());
+
+            if (l1 >= 0 && l1 < MAX_LINEAS && l2 >= 0 && l2 < MAX_LINEAS) {
+                String aux = archivo[l1];
+                archivo[l1] = archivo[l2];
+                archivo[l2] = aux;
+            } else {
+                System.out.println("Lineas fuera de rango.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Entrada invalida.");
+        }
+    }
 }
+
