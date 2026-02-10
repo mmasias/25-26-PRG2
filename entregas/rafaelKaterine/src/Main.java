@@ -43,6 +43,12 @@ public class Main {
             punteroLinea[0] = new Scanner(System.in).nextLine();
         }
 
+        static void borrarContenido(String[]linea, int[] punteroLinea){
+            Scanner scanner = new scanner(System.in);
+            System.out.println("Borrando la linea" + punteroLinea[0]);
+            linea[punteroLinea]= "";
+        }
+
         String cmd = sc.nextLine().toUpperCase();
 
     }
