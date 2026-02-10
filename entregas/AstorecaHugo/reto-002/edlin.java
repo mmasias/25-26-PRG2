@@ -11,6 +11,10 @@ class edlin {
     public static void main(String[] args) {
             cargarTexto();
             boolean salir = false;
+            while(!salir){
+                mostrarMenu();
+                
+            }
     }
 
     static void cargarTexto() {
@@ -26,5 +30,20 @@ class edlin {
         lineas[5] = "[I] permite intercambiar dos lineas";
         lineas[6] = "[B] borra el contenido de la linea activa";
         lineas[7] = "[S] sale del programa";
+    }
+
+    static void mostrarMenu(){
+        System.out.println("--------------------------------------------------");
+        for (int i = 0; i < MAX_LINEAS; i++) {
+            String seleccion;
+            if (i == lineaActual) {
+                seleccion = "*";
+            } else {
+                seleccion = " ";
+            }
+            System.out.println(i + ":" + seleccion + "| " + lineas[i]);
+        }
+        System.out.println("--------------------------------------------------");
+        System.out.println("Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [S]alir");
     }
 }
