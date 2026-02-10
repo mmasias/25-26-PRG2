@@ -18,13 +18,24 @@ public class PyEdlin {
 
         while (!salir) {
             mostrarEditor();
-            System.out.print("Comando (L para cambiar línea, S para salir): ");
+            System.out.print("Comando [L,E,B,S]: ");
             String cmd = sc.nextLine().toUpperCase();
 
-            if (cmd.equals("L")) {
-                cambiarLineaActiva(sc);
-            } else if (cmd.equals("S")) {
-                salir = true;
+            switch (cmd) {
+                case "L":
+                    cambiarLineaActiva(sc);
+                    break;
+                case "E":
+                    editarLinea(sc);
+                    break;
+                case "B":
+                    borrarLinea();
+                    break;
+                case "S":
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("Comando no reconocido.");
             }
         }
 
@@ -49,6 +60,15 @@ public class PyEdlin {
         } else {
             System.out.println("Línea inválida.");
         }
+    }
+
+    private static void editarLinea(Scanner sc) {
+        System.out.print("Nuevo contenido: ");
+        lineas[lineaActiva] = sc.nextLine();
+    }
+
+    private static void borrarLinea() {
+        lineas[lineaActiva] = "";
     }
 }
 
