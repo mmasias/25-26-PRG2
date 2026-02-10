@@ -66,6 +66,42 @@ class ConversorUnidades {
             System.out.println("Opción no válida");
         }
         }
+          
+          private static void convertirPeso() {
+        Scanner entrada = new Scanner(System.in);
+
+        String[] opciones = {
+            "Kilogramos a Gramos",
+            "Gramos a Kilogramos",
+            "Kilogramos a Libras",
+            "Libras a Kilogramos",
+            "Gramos a Onzas",
+            "Onzas a Gramos"
+        };
+
+        double[] factores = {
+            1000,
+            1.0 / 1000,
+            2.20462,
+            0.453592,
+            0.035274,
+            28.3495
+        };
+
+        System.out.println("Conversión de peso");
+        for (int i = 0; i < opciones.length; i++) {
+            System.out.println((i + 1) + " - " + opciones[i]);
+        }
+
+        int opcion = entrada.nextInt();
+        System.out.println("Introduzca el valor:");
+        double valor = entrada.nextDouble();
+
+        if (opcion >= 1 && opcion <= opciones.length) {
+            System.out.println("Resultado: " + (valor * factores[opcion - 1]));
+        } else {
+            System.out.println("Opción no válida");
+        }
      }
 }
 
