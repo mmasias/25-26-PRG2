@@ -11,24 +11,33 @@ public class PyEdlin {
         String[] lineas = new String[MAX_LINEAS];
         Arrays.fill(lineas, "");
 
+        int lineaActiva = 0;
         boolean salir = false;
 
         while (!salir) {
-            mostrar(lineas);
-            System.out.println("[S] Salir");
+            mostrar(lineas, lineaActiva);
+            System.out.println("[L] Linea | [S] Salir");
 
             String cmd = sc.nextLine().toUpperCase();
+
+            if (cmd.equals("L")) {
+                System.out.print("Numero linea: ");
+                lineaActiva = Integer.parseInt(sc.nextLine());
+            }
+
             if (cmd.equals("S")) salir = true;
         }
     }
 
-    static void mostrar(String[] lineas) {
+    static void mostrar(String[] lineas, int activa) {
         System.out.println("------ EDLIN ------");
         for (int i = 0; i < lineas.length; i++) {
-            System.out.println(i + ": | " + lineas[i]);
+            String marca = (i == activa) ? "*" : " ";
+            System.out.println(i + ":" + marca + "| " + lineas[i]);
         }
     }
 }
+
 
 
 
