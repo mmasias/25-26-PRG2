@@ -12,8 +12,16 @@ public class PyEdlin {
             lineas[i] = "";
         }
 
-        System.out.println("Archivo inicializado");
+        mostrarEditor();
 
         sc.close();
+    }
+
+    public static void mostrarEditor(){
+        System.out.println("----------------------------------");
+        for(int i = 0; i < 10; i++){
+            System.out.println(i + ": | " + lineas[i]);
+        }
+        System.out.println("----------------------------------");
     }
 }
