@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class Edlin {
+
+    static final int MAX_LINEAS = 10;
+    static String[] lineas = new String[MAX_LINEAS];
+    static int lineaActiva = 0;
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        for (int i = 0; i < MAX_LINEAS; i++) {
+            lineas[i] = "";
+        }
+
+        System.out.println("EDLIN básico iniciado");
+
+        while (true) {
+            System.out.print("* ");
+            String comando = sc.nextLine().trim().toUpperCase();
+
+            if (comando.equals("Q")) {
+                break;
+            }
+        }
+
+        sc.close();
+    }
+}
+       
+
+    static void mostrar() {
+        for (int i = 0; i < MAX_LINEAS; i++) {
+            String marca = (i == lineaActiva) ? ">" : " ";
+            System.out.printf("%s%2d %s%n", marca, i + 1, lineas[i]);
+        }
+    }
+}
