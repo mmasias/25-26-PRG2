@@ -6,6 +6,7 @@ public class Edlin {
         Scanner sc = new Scanner(System.in);
         
         String[] lineas = new String[10];
+        String[] historial = new String[10];
         int lineaActiva = 1;
         
         lineas[0] = "Bienvenidos al editor EDLIN";
@@ -52,15 +53,18 @@ public class Edlin {
                     System.out.println("Numero de linea invalido.");
                 }
             } else if (opcion == 'E' || opcion == 'e') {
+                guardarHistorial(lineas, historial);
                 System.out.println("Contenido actual: " + lineas[lineaActiva]);
                 System.out.print("Nuevo contenido: ");
                 String nuevoContenido = sc.nextLine();
                 lineas[lineaActiva] = nuevoContenido;
                 System.out.println("Linea " + lineaActiva + " editada.");
             } else if (opcion == 'B' || opcion == 'b') {
+                guardarHistorial(lineas, historial);
                 lineas[lineaActiva] = "";
                 System.out.println("Linea " + lineaActiva + " borrada.");
             } else if (opcion == 'I' || opcion == 'i') {
+                guardarHistorial(lineas, historial);
                 System.out.print("Primera linea a intercambiar (0-9): ");
                 int linea1 = sc.nextInt();
                 System.out.print("Segunda linea a intercambiar (0-9): ");
@@ -79,5 +83,11 @@ public class Edlin {
         }
         
         sc.close();
+    }
+    
+    static void guardarHistorial(String[] lineas, String[] historial) {
+        for (int i = 0; i < 10; i++) {
+            historial[i] = lineas[i];
+        }
     }
 }
