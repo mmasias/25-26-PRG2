@@ -20,6 +20,9 @@ public class Main {
         
         imprimirArray(linea, punteroLinea);
         editarLinea(punteroLinea, linea);
+        lineaActiva(linea, punteroLinea);
+        borrarContenido(linea, punteroLinea);
+
 
 
         static void imprimirArray(String[]linea, int[] punteroLinea ){
@@ -30,9 +33,16 @@ public class Main {
         }
 
         static void editarLineaeditarLinea(String[]linea, int[] punteroLinea){
-            System.out.println("Editando la linea");
-
+            Scanner scanner = new scanner(System.in);
+            System.out.println("Editando la linea" + punteroLinea[0]);
+            linea[punteroLinea[0]] = Scanner.nextLine();
         }
+
+        static void lineaActiva(String[]linea, int[] punteroLinea){
+            System.out.println("Indique la linea activa");
+            punteroLinea[0] = new Scanner(System.in).nextLine();
+        }
+
         String cmd = sc.nextLine().toUpperCase();
 
     }

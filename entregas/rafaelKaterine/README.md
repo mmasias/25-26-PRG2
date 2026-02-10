@@ -23,6 +23,8 @@
 
 **Creacion de metodos:**
 
+- imprimirArray();
+- 
 - asignarLineaActiva();
 - editarLinea();
 - intercambiarLinea();
