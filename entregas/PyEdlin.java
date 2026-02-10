@@ -18,7 +18,15 @@ public class PyEdlin {
             System.out.print("Comando: ");
             String comando = sc.nextLine().toUpperCase();
 
-            if(comando.equals("S")){
+            if(comando.equals("L")){
+                System.out.print("Numero de linea (0-9): ");
+                int nueva = Integer.parseInt(sc.nextLine());
+
+                if(nueva >= 0 && nueva <= 9){
+                    lineaActiva = nueva;
+                }
+            }
+            else if(comando.equals("S")){
                 break;
             }
         }
