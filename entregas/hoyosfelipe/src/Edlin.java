@@ -32,6 +32,8 @@ public class Edlin {
                 System.out.println(i + ":" + marca + "| " + contenido);
             }
             System.out.println("--------------------------------------------------");
+            System.out.println("Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [D]eshacer | [S]alir");
+            System.out.print("Opcion: ");
             
             break;
         }
