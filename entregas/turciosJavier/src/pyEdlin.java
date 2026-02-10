@@ -27,4 +27,60 @@ public class pyEdlin {
         Scanner lector = new Scanner(System.in);
         boolean ejecutando = true;
 
+        while (ejecutando) {
+
+            mostrarPantalla(lineas, lineaActiva);
+            System.out.print("Comando: ");
+            String opcion = lector.nextLine().trim().toUpperCase();
+
+            if (opcion.isEmpty()) {
+                continue;
+            }
+
+            switch (opcion) {
+
+                case "L":
+                    lineaActiva = elegirLinea(lector, "Linea activa (0-9): ");
+
+                case "S":
+                    ejecutando = false;
+
+                default:
+                    System.out.println("Opcion no valida.");
+            }
+        }
+
+        lector.close();
+    }
+
+    private static void mostrarPantalla(String[] lineas, int lineaActiva) {
+        System.out.println("--------------------------------------------------");
+        for (int i = 0; i < MAX_LINEAS; i++) {
+            String marcador = (i == lineaActiva) ? "*|" : " |";
+            String contenido = (lineas[i] == null) ? "" : lineas[i];
+            System.out.println(i + ":" + marcador + " " + contenido);
+        }
+        System.out.println("--------------------------------------------------");
+        System.out.println(
+                "Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [D]eshacer | [S]alir"
+        );
+    }
+
+    private static int elegirLinea(Scanner lector, String mensaje) {
+        int numeroLinea = -1;
+
+        while (numeroLinea < 0 || numeroLinea >= MAX_LINEAS) {
+            System.out.print(mensaje);
+            String entrada = lector.nextLine().trim();
+            try {
+                numeroLinea = Integer.parseInt(entrada);
+            } catch (NumberFormatException e) {
+                numeroLinea = -1;
+            }
+        }
+        return numeroLinea;
+    }
+
+   
+    
 }
