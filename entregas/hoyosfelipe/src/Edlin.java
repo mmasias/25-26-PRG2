@@ -41,6 +41,16 @@ public class Edlin {
             if (opcion == 'S' || opcion == 's') {
                 System.out.println("Saliendo del editor EDLIN.");
                 break;
+            } else if (opcion == 'L' || opcion == 'l') {
+                System.out.print("Numero de linea activa (0-9): ");
+                int nuevaLinea = sc.nextInt();
+                sc.nextLine();
+                if (nuevaLinea >= 0 && nuevaLinea <= 9) {
+                    lineaActiva = nuevaLinea;
+                    System.out.println("Linea activa cambiada a: " + lineaActiva);
+                } else {
+                    System.out.println("Numero de linea invalido.");
+                }
             }
         }
         
