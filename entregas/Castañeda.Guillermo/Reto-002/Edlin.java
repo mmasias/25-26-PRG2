@@ -23,5 +23,32 @@ public class Edlin {
         archivo[7] = "[S] Salir del programa";
 
         boolean salir = false;
+
+        while (!salir) {
+            mostrarArchivo();
+            System.out.print("Comando: ");
+            String comando = sc.nextLine().toUpperCase();
+
+            switch (comando) {
+                case "L":
+                    definirLineaActiva();
+                    break;
+                case "E":
+                    editarLineaActiva();
+                    break;
+                case "B":
+                    borrarLineaActiva();
+                    break;
+                case "I":
+                    intercambiarLineas();
+                    break;
+                case "S":
+                    salir = true;
+                    System.out.println("Saliendo del editor...");
+                    break;
+                default:
+                    System.out.println("Comando no reconocido.");
+            }
+        }
     }
 }
