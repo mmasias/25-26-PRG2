@@ -1,4 +1,5 @@
 
+import java.util.*;
 
 public class main {
     Scanner sc = new Scanner(System.in);
@@ -15,6 +16,23 @@ public class main {
     linea[7] = "[D] deshace la última acción realizada";
     linea[8] = "[S] sale del programa";
     linea[9] = " ------------------------------------";
+
+    while(true){
+        for (int i = 0; i < 10; i++){
+            String signo = (i == punteroLinea) ? ":*" : ": | ";
+            System.out.println(i + signo + linea[i]);
+        }
+
+    }
+    System.out.println("Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [D]eshacer | [S]alir\n> ");
+
+    String cmd = sc.nextLine().toUpperCase();
+
+    if (cmd.equals("S")) break;
+
+
+
 }
+
 
 
