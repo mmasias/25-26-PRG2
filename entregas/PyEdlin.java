@@ -30,6 +30,9 @@ public class PyEdlin {
                 String texto = sc.nextLine();
                 lineas[lineaActiva] = texto;
             }
+            else if(comando.equals("B")){
+                lineas[lineaActiva] = "";
+            }
             else if(comando.equals("S")){
                 break;
             }
