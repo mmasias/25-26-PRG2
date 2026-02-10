@@ -7,13 +7,17 @@ public class Edlin {
     private static int activeLine = 0;
 
     public static void main(String[] args) {
-        // Inicializar líneas
+          Scanner sc = new Scanner(System.in);
+        
         for (int i = 0; i < MAX_LINES; i++) {
             file[i] = "";
         }
+         System.out.print("Texto para línea activa: ");
+        String text = sc.nextLine();
+        file[activeLine] = text;
 
         printFile();
-        System.out.println("Línea activa: " + (activeLine + 1));
+        sc.close();
     }
     
     private static void printFile() {
