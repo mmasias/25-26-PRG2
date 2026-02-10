@@ -26,7 +26,9 @@ Agregue a su versión de edlin la capacidad de intercambiar el contenido de dos 
 
 ### MEJORAS – PARTE 2
 
-En base a lo definido arriba, plantee como implementaría la opción de deshacer (CTRL+Z). Esto no hace falta codificarlo, basta con explicarlo en función a lo que ha programado.
+En base a lo definido arriba, plantee como implementaría la opción de deshacer (CTRL+Z). 
+
+Impleméntelo.
 
 ## Sugerencias de presentación
 
@@ -39,9 +41,9 @@ En base a lo definido arriba, plantee como implementaría la opción de deshacer
 4: | [E] permite editar la linea activa
 5: | [I] permite intercambiar dos lineas
 6: | [B] borra el contenido de la linea activa
-7: | [S] sale del programa
-8: | 
+7: | [D] deshace la última acción realizada
+8: | [S] sale del programa
 9: | 
 --------------------------------------------------
-Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [S]alir
+Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [D]eshacer | [S]alir
 ```
