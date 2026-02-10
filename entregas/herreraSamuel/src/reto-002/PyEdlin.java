@@ -7,7 +7,7 @@ public class PyEdlin {
 
         String[] lineasDeTexto = new String[10];
         String[] historial = new String[10];
-        int LineaActiva = 0;
+        int lineaActiva = 0;
 
         lineasDeTexto[0] = "Bienvenidos al editor EDLIN";
         lineasDeTexto[1] = "Utilice el menu inferior para editar el texto";
@@ -23,7 +23,18 @@ public class PyEdlin {
         for (int i = 0; i < 10; i++) {
             historial[i] = lineasDeTexto[i];
         }
-
+        imprimirFichero(lineasDeTexto, lineaActiva);
+    }
+    public static void imprimirFichero(String[] lineas, int lineaActiva) {
+        System.out.println("--------------------------------------------------");
+        for (int i = 0; i < lineas.length; i++) {
+            if (i == lineaActiva) {
+                System.out.println(i + ":*| " + lineas[i]);
+            } else {
+                System.out.println(i + ": | " + lineas[i]);
+            }
+        }
+        System.out.println("--------------------------------------------------");
     }
 
 }
