@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class EditorTexto {
 
-    String[] fichero;
-    int lineaActiva = 0;
-    Scanner teclado = new Scanner(System.in);
+    static String[] fichero;
+    static int lineaActiva = 0;
+    static Scanner teclado = new Scanner(System.in);
     public static void main(String[] args) {
         EditorTexto editor = new EditorTexto();
         editor.fichero = new String[10];
@@ -36,15 +36,25 @@ public class EditorTexto {
         System.out.println("ingrece el contenido de la nueva linea: \n");
     }
 
-    public static void definirLineaActiva(){
-
+    public void definirLineaActiva() {
+        System.out.print("Introduce la linea activa (1-10): ");
+        int linea = teclado.nextInt();
+    
+        if (linea >= 1 && linea <= 10) {
+            lineaActiva = linea - 1;
+        } else {
+            System.out.println("Error: la linea debe estar entre 1 y 10");
+        }
     }
+    
 
     public static void intercambiarLinea(){
 
     }
 
     public static void elimiarLinea(){
-        
+
     }
+
+    
 }
