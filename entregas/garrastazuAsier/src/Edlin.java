@@ -23,6 +23,7 @@ public class Edlin {
             System.out.println("\n1 Seleccionar");
             System.out.println("2 Editar");
             System.out.println("3 Borrar");
+            System.out.println("4 Intercambiar");
             System.out.println("0 Salir");
 
             int op = sc.nextInt();
@@ -31,6 +32,15 @@ public class Edlin {
             if (op == 1) activa = sc.nextInt() - 1;
             if (op == 2) lineas[activa] = sc.nextLine();
             if (op == 3) lineas[sc.nextInt() - 1] = "";
+
+            if (op == 4) {
+                int a = sc.nextInt() - 1;
+                int b = sc.nextInt() - 1;
+                String temp = lineas[a];
+                lineas[a] = lineas[b];
+                lineas[b] = temp;
+            }
+
             if (op == 0) break;
         }
     }
