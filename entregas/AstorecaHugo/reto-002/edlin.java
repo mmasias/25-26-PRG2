@@ -19,6 +19,9 @@ class edlin {
                     case"L":
                     cambiarLineaActiva();
                     break;
+                    case "E":
+                        editarLineaActiva();
+                        break;
 
                 }
 
@@ -64,6 +67,14 @@ static void cambiarLineaActiva(){
             lineaActual = nueva;
         }
     }
+
+static void editarLineaActiva(){
+    System.out.print("Nuevo contenido: ");
+        lineas[lineaActual] = scanner.nextLine();
+}
+
+
+
 }
 
 
