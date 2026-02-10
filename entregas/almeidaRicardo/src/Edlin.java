@@ -22,28 +22,46 @@ public class Edlin {
         linhas[7] = "[S] sale del programa";
 
         boolean sair = false;
-        String comando;
 
         do {
             mostrarTela(linhas, linhaAtiva);
 
             System.out.print(">> ");
-            comando = scanner.nextLine();
+            char comando = scanner.next().charAt(0);
 
-            if (comando.equals("L") || comando.equals("l")) {
-                linhaAtiva = definirLinhaAtiva(scanner);
-            } 
-            else if (comando.equals("E") || comando.equals("e")) {
-                editarLinha(linhas, linhaAtiva, scanner);
-            } 
-            else if (comando.equals("B") || comando.equals("b")) {
-                borrarLinha(linhas, linhaAtiva);
-            } 
-            else if (comando.equals("I") || comando.equals("i")) {
-                intercambiarLinhas(linhas, scanner);
-            } 
-            else if (comando.equals("S") || comando.equals("s")) {
+            if (comando == 'L' || comando == 'l') {
+                System.out.print("Digite o numero da linha (0 a 9): ");
+                linhaAtiva = scanner.nextInt();
+                scanner.nextLine();
+            }
+            else if (comando == 'E' || comando == 'e') {
+                System.out.print("Novo conteudo da linha: ");
+                scanner.nextLine();
+                linhas[linhaAtiva] = scanner.nextLine();
+            }
+            else if (comando == 'B' || comando == 'b') {
+                linhas[linhaAtiva] = "";
+                scanner.nextLine();
+            }
+            else if (comando == 'I' || comando == 'i') {
+                System.out.print("Primeira linha (0 a 9): ");
+                int a = scanner.nextInt();
+                System.out.print("Segunda linha (0 a 9): ");
+                int b = scanner.nextInt();
+                scanner.nextLine();
+
+                if (a >= 0 && a <= 9 && b >= 0 && b <= 9) {
+                    String temp = linhas[a];
+                    linhas[a] = linhas[b];
+                    linhas[b] = temp;
+                }
+            }
+            else if (comando == 'S' || comando == 's') {
                 sair = true;
+                scanner.nextLine();
+            }
+            else {
+                scanner.nextLine();
             }
 
         } while (!sair);
@@ -57,37 +75,5 @@ public class Edlin {
         }
         System.out.println("--------------------------------------------------");
         System.out.println("Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [S]alir");
-    }
-
-    static int definirLinhaAtiva(Scanner scanner) {
-        System.out.print("Digite o numero da linha (0 a 9): ");
-        int n = Integer.parseInt(scanner.nextLine());
-        if (n >= 0 && n <= 9) {
-            return n;
-        }
-        return 0;
-    }
-
-    static void editarLinha(String[] linhas, int linhaAtiva, Scanner scanner) {
-        System.out.print("Novo conteudo da linha: ");
-        linhas[linhaAtiva] = scanner.nextLine();
-    }
-
-    static void borrarLinha(String[] linhas, int linhaAtiva) {
-        linhas[linhaAtiva] = "";
-    }
-
-    static void intercambiarLinhas(String[] linhas, Scanner scanner) {
-        System.out.print("Primeira linha (0 a 9): ");
-        int a = Integer.parseInt(scanner.nextLine());
-
-        System.out.print("Segunda linha (0 a 9): ");
-        int b = Integer.parseInt(scanner.nextLine());
-
-        if (a >= 0 && a <= 9 && b >= 0 && b <= 9) {
-            String temp = linhas[a];
-            linhas[a] = linhas[b];
-            linhas[b] = temp;
-        }
     }
 }
