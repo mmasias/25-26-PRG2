@@ -7,7 +7,22 @@ public class PyEdlin {
     private static int lineaActiva = 0;
 
     public static void main(String[] args) {
+
         Arrays.fill(lineas, "");
-        System.out.println("pyEdlin iniciado (estructura base creada).");
+
+        lineas[0] = "Bienvenidos al editor EDLIN";
+        lineas[1] = "Utilice el menu inferior para editar el texto";
+        lineas[2] = "------";
+
+        mostrarEditor();
+    }
+
+    private static void mostrarEditor() {
+        System.out.println("--------------------------------------------------");
+        for (int i = 0; i < MAX_LINEAS; i++) {
+            String marca = (i == lineaActiva) ? "*" : " ";
+            System.out.printf("%d:%s| %s%n", i, marca, lineas[i]);
+        }
+        System.out.println("--------------------------------------------------");
     }
 }
