@@ -16,7 +16,17 @@ class EditorDeTexto {
 
         while (ejecutar) {
             System.out.println("--------------------------------------------------");
+            for (int i = 0; i < 10; i++) {
+                String marca;
+                if(i == lineaActiva) {
+                    marca = "*";
+                } else {
+                     marca = " ";
+                }
 
+                System.out.println(i + ":" + marca + "| " + lineas[i]);
+
+            }
 
         }
 
