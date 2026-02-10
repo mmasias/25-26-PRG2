@@ -8,9 +8,7 @@ public class Edlin {
         String[] lineas = new String[10];
         int activa = 0;
 
-        for (int i = 0; i < 10; i++) {
-            lineas[i] = "";
-        }
+        for (int i = 0; i < 10; i++) lineas[i] = "";
 
         while (true) {
 
@@ -22,8 +20,9 @@ public class Edlin {
                     System.out.println("  " + (i + 1) + ": " + lineas[i]);
             }
 
-            System.out.println("\n1 Seleccionar línea");
+            System.out.println("\n1 Seleccionar");
             System.out.println("2 Editar");
+            System.out.println("3 Borrar");
             System.out.println("0 Salir");
 
             int op = sc.nextInt();
@@ -31,6 +30,7 @@ public class Edlin {
 
             if (op == 1) activa = sc.nextInt() - 1;
             if (op == 2) lineas[activa] = sc.nextLine();
+            if (op == 3) lineas[sc.nextInt() - 1] = "";
             if (op == 0) break;
         }
     }
