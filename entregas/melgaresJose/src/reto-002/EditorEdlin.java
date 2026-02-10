@@ -91,13 +91,16 @@ class EditorEdlin {
             case 0 -> lineaActiva = cambiarLineaActiva();
             case 1 -> lineaActiva = editarTextoLinea(buffer, lineaActiva);
             case 2 -> intercambiarLineas(buffer);
-            case 3 -> inicializarBuffer(buffer);
+            case 3 -> borrarLineaActiva(buffer, lineaActiva);
             case 4 -> salir();
             default -> System.out.println("Opcion Invalida!");
         }
         return lineaActiva;
     }
 
+    private static void borrarLineaActiva(String[] buffer, int lineaActiva) {
+        buffer[lineaActiva] = "~";
+    }
     private static int cambiarLineaActiva() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Cuál debería de ser la nueva línea activa? (0-9): ");
