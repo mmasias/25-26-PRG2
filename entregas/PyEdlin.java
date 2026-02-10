@@ -1,9 +1,11 @@
 import java.util.Scanner;
+import java.util.Stack;
 
 public class PyEdlin {
 
     static String[] lineas = new String[10];
     static int lineaActiva = 0;
+    static Stack<String[]> historial = new Stack<>();
 
     public static void main(String[] args) {
 
@@ -26,14 +28,17 @@ public class PyEdlin {
                 }
             }
             else if(comando.equals("E")){
+                guardarEstado();
                 System.out.print("Nuevo texto: ");
                 String texto = sc.nextLine();
                 lineas[lineaActiva] = texto;
             }
             else if(comando.equals("B")){
+                guardarEstado();
                 lineas[lineaActiva] = "";
             }
             else if(comando.equals("I")){
+                guardarEstado();
                 System.out.print("Primera linea: ");
                 int l1 = Integer.parseInt(sc.nextLine());
                 System.out.print("Segunda linea: ");
@@ -43,6 +48,11 @@ public class PyEdlin {
                     String temp = lineas[l1];
                     lineas[l1] = lineas[l2];
                     lineas[l2] = temp;
+                }
+            }
+            else if(comando.equals("D")){
+                if(!historial.isEmpty()){
+                    lineas = historial.pop();
                 }
             }
             else if(comando.equals("S")){
@@ -62,5 +72,13 @@ public class PyEdlin {
                 System.out.println(i + ": | " + lineas[i]);
         }
         System.out.println("----------------------------------");
+    }
+
+    public static void guardarEstado(){
+        String[] copia = new String[10];
+        for(int i = 0; i < 10; i++){
+            copia[i] = lineas[i];
+        }
+        historial.push(copia);
     }
 }
