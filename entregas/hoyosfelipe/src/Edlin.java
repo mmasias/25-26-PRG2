@@ -57,6 +57,9 @@ public class Edlin {
                 String nuevoContenido = sc.nextLine();
                 lineas[lineaActiva] = nuevoContenido;
                 System.out.println("Linea " + lineaActiva + " editada.");
+            } else if (opcion == 'B' || opcion == 'b') {
+                lineas[lineaActiva] = "";
+                System.out.println("Linea " + lineaActiva + " borrada.");
             }
         }
         
