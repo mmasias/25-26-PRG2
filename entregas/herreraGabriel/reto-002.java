@@ -5,31 +5,32 @@ class PyEdlin {
     public static void main(String[] args) {
 
         String[] documento = obtenerDocumentoInicial();
-        String[] backup = documento.clone();
+        String[] backup = copiarDocumento(documento);
         int lineaActiva = 1;
-        boolean ejecutar = true;
+        boolean ejecucion = true;
 
         do {
             imprimirInterfaz(documento, lineaActiva);
             String comando = solicitarComando();
 
             if (comando.equals("S")) {
-                ejecutar = false;
+                ejecucion = false;
             } else if (comando.equals("D")) {
-                documento = deshacerAccion(backup);
+                documento = realizarDeshacer(backup);
             } else {
-                backup = documento.clone();
+                backup = copiarDocumento(documento);
+                
                 if (comando.equals("L")) {
                     lineaActiva = seleccionarLinea();
                 } else if (comando.equals("E")) {
                     editarLinea(documento, lineaActiva);
                 } else if (comando.equals("I")) {
-                    intercambiarLineas(documento);
+                    intercambiarContenidos(documento);
                 } else if (comando.equals("B")) {
                     borrarLinea(documento, lineaActiva);
                 }
             }
-        } while (ejecutar);
+        } while (ejecucion);
 
     }
 
@@ -48,10 +49,40 @@ class PyEdlin {
         };
     }
 
-    static String solicitarComando() {
+    static String[] copiarDocumento(String[] original) {
+        return original.clone();
+    }
+
+    static String[] realizarDeshacer(String[] backup) {
+        return backup.clone();
+    }
+
+    static void intercambiarContenidos(String[] doc) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [D]eshacer | [S]alir\n> ");
-        return sc.nextLine().toUpperCase();
+        System.out.print("Línea origen: ");
+        int origen = sc.nextInt();
+        System.out.print("Línea destino: ");
+        int destino = sc.nextInt();
+
+        if (esIndiceValido(doc, origen) && esIndiceValido(doc, destino)) {
+            String temporal = doc[origen];
+            doc[origen] = doc[destino];
+            doc[destino] = temporal;
+        }
+    }
+
+    static boolean esIndiceValido(String[] doc, int i) {
+        return i >= 0 && i < doc.length;
+    }
+
+    static void editarLinea(String[] doc, int indice) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nuevo texto: ");
+        doc[indice] = sc.nextLine();
+    }
+
+    static void borrarLinea(String[] doc, int indice) {
+        doc[indice] = " ";
     }
 
     static int seleccionarLinea() {
@@ -60,30 +91,10 @@ class PyEdlin {
         return sc.nextInt();
     }
 
-    static void editarLinea(String[] doc, int indice) {
+    static String solicitarComando() {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Nuevo texto para línea " + indice + ": ");
-        doc[indice] = sc.nextLine();
-    }
-
-    static void borrarLinea(String[] doc, int indice) {
-        doc[indice] = " ";
-    }
-
-    static void intercambiarLineas(String[] doc) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Línea origen: ");
-        int origen = sc.nextInt();
-        System.out.print("Línea destino: ");
-        int destino = sc.nextInt();
-
-        String temporal = doc[origen];
-        doc[origen] = doc[destino];
-        doc[destino] = temporal;
-    }
-
-    static String[] deshacerAccion(String[] backup) {
-        return backup.clone();
+        System.out.print("Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [D]eshacer | [S]alir\n> ");
+        return sc.nextLine().toUpperCase();
     }
 
     static void imprimirInterfaz(String[] doc, int activa) {
