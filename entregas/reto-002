@@ -6,6 +6,8 @@ public class PyEdlin {
     private static String[] lineas = new String[MAX_LINEAS];
     private static int lineaActiva = 0;
 
+    private static Stack<Estado> historial = new Stack<>();
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Arrays.fill(lineas, "");
@@ -18,24 +20,33 @@ public class PyEdlin {
 
         while (!salir) {
             mostrarEditor();
-            System.out.print("Comando [L,E,B,I,S]: ");
+
+            System.out.print("Comando: ");
             String cmd = sc.nextLine().toUpperCase();
 
             switch (cmd) {
                 case "L":
+                    guardarEstado();
                     cambiarLineaActiva(sc);
                     break;
                 case "E":
+                    guardarEstado();
                     editarLinea(sc);
                     break;
                 case "B":
+                    guardarEstado();
                     borrarLinea();
                     break;
                 case "I":
+                    guardarEstado();
                     intercambiarLineas(sc);
+                    break;
+                case "D":
+                    deshacer();
                     break;
                 case "S":
                     salir = true;
+                    System.out.println("Saliendo de pyEdlin...");
                     break;
                 default:
                     System.out.println("Comando no reconocido.");
@@ -45,6 +56,31 @@ public class PyEdlin {
         sc.close();
     }
 
+    static class Estado {
+        String[] lineas;
+        int lineaActiva;
+
+        Estado(String[] l, int a) {
+            this.lineas = l;
+            this.lineaActiva = a;
+        }
+    }
+
+    private static void guardarEstado() {
+        historial.push(new Estado(lineas.clone(), lineaActiva));
+    }
+
+    private static void deshacer() {
+        if (historial.isEmpty()) {
+            System.out.println("No hay acciones para deshacer.");
+            return;
+        }
+        Estado e = historial.pop();
+        lineas = e.lineas;
+        lineaActiva = e.lineaActiva;
+        System.out.println("Última acción deshecha.");
+    }
+
     private static void mostrarEditor() {
         System.out.println("--------------------------------------------------");
         for (int i = 0; i < MAX_LINEAS; i++) {
@@ -52,6 +88,9 @@ public class PyEdlin {
             System.out.printf("%d:%s| %s%n", i, marca, lineas[i]);
         }
         System.out.println("--------------------------------------------------");
+        System.out.println(
+            "Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [D]eshacer | [S]alir"
+        );
     }
 
     private static void cambiarLineaActiva(Scanner sc) {
