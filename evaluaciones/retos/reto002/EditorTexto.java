@@ -1,5 +1,3 @@
-package evaluaciones.retos.reto002;
-
 import java.util.Scanner;
 
 public class EditorTexto {
