@@ -1,0 +1,13 @@
+import java.util.*;
+
+public class PyEdlin {
+
+    private static final int MAX_LINEAS = 10;
+    private static String[] lineas = new String[MAX_LINEAS];
+    private static int lineaActiva = 0;
+
+    public static void main(String[] args) {
+        Arrays.fill(lineas, "");
+        System.out.println("pyEdlin iniciado (estructura base creada).");
+    }
+}
