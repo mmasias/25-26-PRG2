@@ -13,6 +13,8 @@ class edlin {
             boolean salir = false;
             while(!salir){
                 mostrarMenu();
+                System.out.print("Ingrese un comando: ");
+                String comando = scanner.nextLine();
                 
             }
     }
