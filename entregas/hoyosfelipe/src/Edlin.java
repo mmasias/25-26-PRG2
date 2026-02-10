@@ -60,6 +60,21 @@ public class Edlin {
             } else if (opcion == 'B' || opcion == 'b') {
                 lineas[lineaActiva] = "";
                 System.out.println("Linea " + lineaActiva + " borrada.");
+            } else if (opcion == 'I' || opcion == 'i') {
+                System.out.print("Primera linea a intercambiar (0-9): ");
+                int linea1 = sc.nextInt();
+                System.out.print("Segunda linea a intercambiar (0-9): ");
+                int linea2 = sc.nextInt();
+                sc.nextLine();
+                
+                if (linea1 >= 0 && linea1 <= 9 && linea2 >= 0 && linea2 <= 9) {
+                    String temp = lineas[linea1];
+                    lineas[linea1] = lineas[linea2];
+                    lineas[linea2] = temp;
+                    System.out.println("Lineas " + linea1 + " y " + linea2 + " intercambiadas.");
+                } else {
+                    System.out.println("Numeros de linea invalidos.");
+                }
             }
         }
         
