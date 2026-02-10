@@ -7,26 +7,48 @@ public class Edlin {
     private static int activeLine = 0;
 
     public static void main(String[] args) {
-          Scanner sc = new Scanner(System.in);
-        
+        Scanner sc = new Scanner(System.in);
+
         for (int i = 0; i < MAX_LINES; i++) {
             file[i] = "";
         }
-        
-        file[0] = "Linea 1";
-        file[1] = "Linea 2";
 
-        System.out.print("Número de línea a borrar: ");
-        int line = sc.nextInt();
+        System.out.println("=== Mini EDLIN Java ===");
+        System.out.println("p -> print");
+        System.out.println("s n -> select line");
+        System.out.println("e -> edit line");
+        System.out.println("d n -> delete line");
+        System.out.println("q -> quit");
 
-        if (line >= 1 && line <= MAX_LINES) {
-            file[line - 1] = "";
+        while (true) {
+            System.out.print("EDLIN> ");
+            String input = sc.nextLine().trim();
+
+            if (input.equals("q")) break;
+
+            if (input.equals("p")) {
+                printFile();
+            } 
+            else if (input.startsWith("s ")) {
+                int n = Integer.parseInt(input.split(" ")[1]);
+                if (n >= 1 && n <= MAX_LINES) activeLine = n - 1;
+            } 
+            else if (input.equals("e")) {
+                System.out.print("Nuevo texto: ");
+                file[activeLine] = sc.nextLine();
+            } 
+            else if (input.startsWith("d ")) {
+                int n = Integer.parseInt(input.split(" ")[1]);
+                if (n >= 1 && n <= MAX_LINES) file[n - 1] = "";
+            } 
+            else {
+                System.out.println("Comando desconocido");
+            }
         }
 
-        printFile();
         sc.close();
     }
-    
+
     private static void printFile() {
         System.out.println("----- FICHERO -----");
         for (int i = 0; i < MAX_LINES; i++) {
