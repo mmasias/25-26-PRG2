@@ -8,6 +8,7 @@ public class Edlin {
         String[] lineas = new String[10];
         String[] historial = new String[10];
         int lineaActiva = 1;
+        boolean continuar = true;
         
         lineas[0] = "Bienvenidos al editor EDLIN";
         lineas[1] = "Utilice el menu inferior para editar el texto";
@@ -20,7 +21,7 @@ public class Edlin {
         lineas[8] = "[S] sale del programa";
         lineas[9] = "";
         
-        while (true) {
+        while (continuar) {
             System.out.println("--------------------------------------------------");
             for (int i = 0; i < 10; i++) {
                 String marca;
@@ -41,7 +42,7 @@ public class Edlin {
             
             if (opcion == 'S' || opcion == 's') {
                 System.out.println("Saliendo del editor EDLIN.");
-                break;
+                continuar = false;
             } else if (opcion == 'L' || opcion == 'l') {
                 System.out.print("Numero de linea activa (0-9): ");
                 int nuevaLinea = sc.nextInt();
@@ -84,7 +85,6 @@ public class Edlin {
                 for (int i = 0; i < 10; i++) {
                     if (historial[i] != null) {
                         hayHistorial = true;
-                        break;
                     }
                 }
                 
