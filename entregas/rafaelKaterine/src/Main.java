@@ -2,9 +2,8 @@ import java.util.*;
 
 public class Main {
     public static void main (String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         String[] linea = new String[10];
-        Stack<String[]> historial = new Stack<>();
         int[] punteroLinea = {1};
 
         linea[0] = "Bienvenidos al editor de texto JEdlin";
@@ -18,38 +17,50 @@ public class Main {
         linea[8] = "[S] sale del programa";
         linea[9] = " ------------------------------------";
         
+        
         imprimirArray(linea, punteroLinea);
-        editarLinea(punteroLinea, linea);
+        editarLinea( linea, punteroLinea);
         lineaActiva(linea, punteroLinea);
         borrarContenido(linea, punteroLinea);
+        salirDelPrograma();
 
-
-
-        static void imprimirArray(String[]linea, int[] punteroLinea ){
-            for (int i = 0; i < 10; i++){
-                String signo = (i == punteroLinea) ? ":*" : ": | ";
-                System.out.println(i + signo + linea[i]);
-            }System.out.println("Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [D]eshacer | [S]alir\n> ");
-        }
-
-        static void editarLineaeditarLinea(String[]linea, int[] punteroLinea){
-            Scanner scanner = new scanner(System.in);
-            System.out.println("Editando la linea" + punteroLinea[0]);
-            linea[punteroLinea[0]] = Scanner.nextLine();
-        }
-
-        static void lineaActiva(String[]linea, int[] punteroLinea){
-            System.out.println("Indique la linea activa");
-            punteroLinea[0] = new Scanner(System.in).nextLine();
-        }
-
-        static void borrarContenido(String[]linea, int[] punteroLinea){
-            Scanner scanner = new scanner(System.in);
-            System.out.println("Borrando la linea" + punteroLinea[0]);
-            linea[punteroLinea]= "";
-        }
-
-        String cmd = sc.nextLine().toUpperCase();
-
+        String cmd = scanner.nextLine().toUpperCase();
     }
+
+    static void imprimirArray(String[]linea, int[] punteroLinea ){
+            for (int i = 0; i < 10; i++){
+            String signo = (i == punteroLinea[0]) ? ":*" : ": | ";
+            System.out.println(i + signo + linea[i]);
+        }
+        System.out.print("Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [D]eshacer | [S]alir\n> ");}
+    static void editarLinea(String[]linea, int[] punteroLinea){
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Editando la linea" + punteroLinea[0]);
+            linea[punteroLinea[0]] = scanner.nextLine();
+        }
+
+    static void lineaActiva(String[]linea, int[] punteroLinea){
+            System.out.println("Indique la linea activa");
+            punteroLinea[0] = new Scanner(System.in).nextInt();
+        }
+
+    static void borrarContenido(String[]linea, int[] punteroLinea){
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Borrando la linea" + punteroLinea[0]);
+            linea[punteroLinea[0]]= "";
+        }
+
+    static void salirDelPrograma(){
+            System.out.println("Saliendo el programa");
+            System.exit(0);
+        }
+        
+        
+
 }
+
+        
+
+
+
+
