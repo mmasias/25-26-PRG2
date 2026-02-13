@@ -27,16 +27,30 @@ public class Edlin {
     }
 
     private static void intercambiarFilas(String[] fichero) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Que linea deseas intercambiar?");
-        int linea1 = scanner.nextInt();
-        System.out.println("por que linea la intercambias?");
-        int linea2 = scanner.nextInt();
+        int linea1;
+        int linea2;
+        do {
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Que linea deseas intercambiar?");
+            linea1 = scanner.nextInt();
+            System.out.println("por que linea la intercambias?");
+            linea2 = scanner.nextInt();
+        } while (validarLineas(fichero, linea1, linea2));
 
         String temporal1 = fichero[linea1];
 
         fichero[linea1] = fichero[linea2];
         fichero[linea2] = temporal1;
+
+    }
+
+    private static boolean validarLineas(String[] fichero, int linea1, int linea2) {
+        boolean lineasInvalidas = linea1 < 0 || linea1 >= fichero.length || linea2 < 0 || linea2 >= fichero.length;
+        if (lineasInvalidas) {
+            System.out.println("lineas erroneas escoge otras entre 0 y 9");
+        } 
+            return false;
 
     }
 
