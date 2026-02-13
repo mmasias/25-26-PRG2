@@ -16,8 +16,27 @@ public class Main {
         linea[7] = "[D] deshace la última acción realizada";
         linea[8] = "[S] sale del programa";
         linea[9] = " ------------------------------------";
-        
-        
+        boolean estaFuncionando = true;
+
+        do {
+            imprimirArray(linea, punteroLinea);
+            String comando = scanner.nextLine().toUpperCase();
+
+            switch(comando){
+                case "L" -> lineaActiva(linea, punteroLinea);
+                case "E" -> editarLinea(linea, punteroLinea);
+                case "I" -> intercambiarLineas(linea, punteroLinea);
+                case "B" -> borrarContenido(linea, punteroLinea);
+                case "D" -> deshacerAccion();
+                case "S" -> {
+                    estaFuncionando = false;
+                    salirDelPrograma();
+                }
+                default -> System.out.println("Comando no reconocido.");
+            }
+
+        } while (estaFuncionando);
+
         imprimirArray(linea, punteroLinea);
         editarLinea( linea, punteroLinea);
         lineaActiva(linea, punteroLinea);
