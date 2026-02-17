@@ -32,7 +32,7 @@ public class ExamenMina{
 			{"5", 	"0", 	"0",	"0", 	"0", 	"0", 	"0",	"0"}
 		};
 
-	//Posiciones Random de la mina
+	
 	public static void main(String[] args){	
 	Scanner scan = new Scanner(System.in);
 
@@ -47,7 +47,7 @@ public class ExamenMina{
 		}
 	
 		int posX=0, posY=0, juegoEncendido=1, valoresCorrectos, casillasLibres=0, contadorMinas=0;
-		/////////////Comienza el juego
+		
 		while(juegoEncendido==1){
 			for(int i = 0; i<mapaMinasMostrar.length; i++){            
 				for (int j = 0; j<mapaMinasMostrar[i].length; j++) {                                     
