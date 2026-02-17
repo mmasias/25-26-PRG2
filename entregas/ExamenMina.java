@@ -25,9 +25,9 @@ public class ExamenMina{
 	public static void main(String[] args){	
 	Scanner scan = new Scanner(System.in);
 
+		// generar minas
 		int i=0;	
 		while (i < 5){
-
 			int PosXMina = (int)(Math.random()*5 + 1);
 			int PosYMina = (int)(Math.random()*7 + 1);
 
@@ -39,7 +39,9 @@ public class ExamenMina{
 			i++;
 		}
 	
-		int posX=0, posY=0, juegoEncendido=1, valoresCorrectos, contadorMapa=0, contadorMinas=0;
+		int posX=0, posY=0, juegoEncendido=1, valoresCorrectos;
+		int contadorMinas=0;
+		int casillasDescubiertas=0;
 
 		while(juegoEncendido==1){
 
@@ -71,21 +73,30 @@ public class ExamenMina{
 				}
 			}
 
+			// SI HAY MINA
 			if(mapaMinasActivas[posX][posY].equals("1")){
-				mapaMinasMostrar[posX][posY]="x";
-				contadorMinas++;
+				if(!mapaMinasMostrar[posX][posY].equals("x")){
+					mapaMinasMostrar[posX][posY]="x";
+					contadorMinas++;
+				}
 			}
-			else if(mapaMinasActivas[posX][posY].equals("0")){
-				mapaMinasMostrar[posX][posY]=".";
-			}
-			
-			contadorMapa++;
 
-			if(contadorMinas>2){
+			// SI ES CASILLA SEGURA
+			else{
+				if(mapaMinasMostrar[posX][posY].equals("-")){
+					mapaMinasMostrar[posX][posY]=".";
+					casillasDescubiertas++;
+				}
+			}
+
+			// DERROTA
+			if(contadorMinas>=3){
 				juegoEncendido=0;
 				System.out.println("Has perdido");
 			}
-			else if(contadorMapa>=31){
+
+			// VICTORIA REAL
+			else if(casillasDescubiertas==30){
 				System.out.println("Felicidades Ganador!");
 				juegoEncendido=0;
 			}
