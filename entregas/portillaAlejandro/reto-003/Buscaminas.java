@@ -26,3 +26,26 @@ class Buscaminas {
         inicializarTablero();
         colocarMinas();
     }
+
+    private void inicializarTablero() {
+        for (int i = 0; i < FILAS; i++) {
+            for (int j = 0; j < COLUMNAS; j++) {
+                tableroVisible[i][j] = "-";
+            }
+        }
+    }
+
+    private void colocarMinas() {
+        Random random = new Random();
+        int minasColocadas = 0;
+
+        while (minasColocadas < MINAS) {
+            int fila = random.nextInt(FILAS);
+            int columna = random.nextInt(COLUMNAS);
+
+            if (!tableroMinas[fila][columna]) {
+                tableroMinas[fila][columna] = true;
+                minasColocadas++;
+            }
+        }
+    }
