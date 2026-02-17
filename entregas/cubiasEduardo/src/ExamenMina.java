@@ -28,19 +28,16 @@ public class ExamenMina {
         int posicionFilaMina;
         int posicionColumnaMina;
 
-        while (contadorMinasGeneradas < 5) {
-
+        do {
             posicionColumnaMina = (int) (Math.random() * 7 + 1);
             posicionFilaMina = (int) (Math.random() * 5 + 1);
-
-            if (mapaMinasActivas[posicionFilaMina][posicionColumnaMina] == "1") {
-                contadorMinasGeneradas--;
-            } else {
+        
+            if (mapaMinasActivas[posicionFilaMina][posicionColumnaMina] != "1") {
                 mapaMinasActivas[posicionFilaMina][posicionColumnaMina] = "1";
+                contadorMinasGeneradas++;
             }
-
-            contadorMinasGeneradas++;
-        }
+        
+        } while (contadorMinasGeneradas < 5);
 
         int posicionFilaUsuario = 0;
         int posicionColumnaUsuario = 0;
