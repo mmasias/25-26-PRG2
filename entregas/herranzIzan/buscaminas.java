@@ -81,7 +81,9 @@ public class buscaminas{
 		
 		
 		
-	while(!salida){
+	Scanner sc = new Scanner(System.in);
+
+        while(!salida){
 		
 	for (int x=0; x < tablero2.length; x++) {
 		System.out.print("|");
@@ -93,17 +95,13 @@ public class buscaminas{
 	}
 	
 
-		
-	
-	
-	
+    
 	System.out.println("introduzca posicion X");
-	Scanner sc=new Scanner(System.in);
-	posx=sc.nextInt();
+posx=sc.nextInt();
 	
 	System.out.println("Introduzca posicion Y");
-    Scanner sc2=new Scanner(System.in);
-    posy=sc2.nextInt();
+posy=sc.nextInt();
+
 
 	if (posx < 1 || posx > 5 || posy < 1 || posy > 7) {
     System.out.println("Coordenadas fuera de rango. X debe ser 1-5 y Y debe ser 1-7.");
