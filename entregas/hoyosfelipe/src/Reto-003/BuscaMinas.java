@@ -8,18 +8,22 @@ public class BuscaMinas {
     static final int MAX_EXPLOSIONES = 3;
     
     static char[][] tableroJuego;
+    static char[][] tableroVisible;
     
     public static void main(String[] args) {
         System.out.println("Bienvenido al Buscaminas!");
         inicializarTablero();
         colocarMinasAleatorias();
+        mostrarTablero();
     }
     
     static void inicializarTablero() {
         tableroJuego = new char[FILAS][COLUMNAS];
+        tableroVisible = new char[FILAS][COLUMNAS];
         for (int fila = 0; fila < FILAS; fila++) {
             for (int columna = 0; columna < COLUMNAS; columna++) {
                 tableroJuego[fila][columna] = '.';
+                tableroVisible[fila][columna] = '-';
             }
         }
     }
@@ -35,5 +39,23 @@ public class BuscaMinas {
                 minasColocadas++;
             }
         }
+    }
+    
+    static void mostrarTablero() {
+        System.out.println("================");
+        System.out.print("  ");
+        for (int columna = 1; columna <= COLUMNAS; columna++) {
+            System.out.print(columna + " ");
+        }
+        System.out.println();
+        
+        for (int fila = 0; fila < FILAS; fila++) {
+            System.out.print((fila + 1) + " ");
+            for (int columna = 0; columna < COLUMNAS; columna++) {
+                System.out.print(tableroVisible[fila][columna] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("================");
     }
 }
