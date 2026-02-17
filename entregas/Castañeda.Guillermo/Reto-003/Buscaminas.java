@@ -30,6 +30,22 @@ public class Buscaminas {
             }
         }
 
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Ingrese X: ");
+        int x = sc.nextInt() - 1;
+
+        System.out.print("Ingrese Y: ");
+        int y = sc.nextInt() - 1;
+
+        if (tableroMinas[x][y] == 1) {
+            System.out.println("Mina!");
+            tablero[x][y] = "*";
+        } else {
+            System.out.println("Libre!");
+            tablero[x][y] = ".";
+        }
+
         System.out.println("================");
         System.out.println("  1 2 3 4 5 6 7");
         for (int i = 0; i < filas; i++) {
@@ -40,5 +56,7 @@ public class Buscaminas {
             System.out.println();
         }
         System.out.println("================");
+
+        sc.close();
     }
 }
