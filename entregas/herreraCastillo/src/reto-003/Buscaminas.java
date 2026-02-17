@@ -23,6 +23,16 @@ public class Buscaminas {
         int filaElegida = leerCoordenada("Ingrese X", TOTAL_FILAS, entrada);
         int columnaElegida = leerCoordenada("Ingrese Y", TOTAL_COLUMNAS, entrada);
 
+        if (mapaMinas[filaElegida][columnaElegida]) {
+            System.out.println("----------------\nMina!");
+            tableroVisual[filaElegida][columnaElegida] = '*';
+            explosionesRecibidas++;
+        } else {
+            System.out.println("----------------\nLibre!");
+            tableroVisual[filaElegida][columnaElegida] = '.';
+            casillasLiberadas++;
+        }
+
     }
 
     public static int leerCoordenada(String mensaje, int limite, Scanner entrada) {
