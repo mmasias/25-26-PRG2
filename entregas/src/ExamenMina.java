@@ -1,8 +1,14 @@
 import java.util.Scanner;
 
-public class ExamenMina{
+public class ExamenMina {
 
-	static String[][] mapaMinasMostrar = {
+	static final int FILAS = 5;
+	static final int COLUMNAS = 7;
+	static final int TOTAL_MINAS = 5;
+	static final int MAX_EXPLOSIONES = 3;
+	static final int CASILLAS_PARA_GANAR = FILAS * COLUMNAS - TOTAL_MINAS;
+
+	static String[][] tableroVisible = {
 		{" ", "1", "2", "3", "4", "5", "6", "7"},
 		{"1", "-", "-", "-", "-", "-", "-", "-"},
 		{"2", "-", "-", "-", "-", "-", "-", "-"},
@@ -10,8 +16,8 @@ public class ExamenMina{
 		{"4", "-", "-", "-", "-", "-", "-", "-"},
 		{"5", "-", "-", "-", "-", "-", "-", "-"}
 	};
-		
-	static String[][] mapaMinasActivas = {
+
+	static String[][] tableroDeMinas = {
 		{" ", "1", "2", "3", "4", "5", "6", "7"},
 		{"1", "0", "0", "0", "0", "0", "0", "0"},
 		{"2", "0", "0", "0", "0", "0", "0", "0"},
@@ -20,69 +26,89 @@ public class ExamenMina{
 		{"5", "0", "0", "0", "0", "0", "0", "0"}
 	};
 
-	
-	public static void main(String[] args){	
-	Scanner scan = new Scanner(System.in);
+	static Scanner scan = new Scanner(System.in);
 
-		int minasColocadas = 0;
-		while (minasColocadas < 5){
-			int fila = (int)(Math.random()*5+1);
-			int columna = (int)(Math.random()*7+1);
-			if (!mapaMinasActivas[fila][columna].equals("1")){
-				mapaMinasActivas[fila][columna]="1";
-				minasColocadas++;
-			}
-		}
-	
-		int posX=0, posY=0, casillasLibres=0, contadorMinas=0;
+	public static void main(String[] args) {
+		colocarMinas();
+
+		int casillasLibres = 0;
+		int explosiones = 0;
 		boolean juegoActivo = true;
-		
-		while(juegoActivo){
-			for(int i = 0; i<mapaMinasMostrar.length; i++){            
-				for (int j = 0; j<mapaMinasMostrar[i].length; j++) {                                     
-					System.out.print(mapaMinasMostrar[i][j]);
-				}
-				System.out.println(" ");
-			}
-			boolean entradaValida = false;
-			while(!entradaValida){
-				System.out.println(" ");
-				System.out.println("Ingrese X");
-				posX = scan.nextInt();
-				System.out.println("Ingrese Y");
-				posY = scan.nextInt();
-				if(posX<1 || posX>5 || posY<1 || posY>7){
-					System.out.println("Coordenadas fuera de rango.");
-				}
-				else if(mapaMinasMostrar[posX][posY].equals(".") || mapaMinasMostrar[posX][posY].equals("*")){
-					System.out.println("Casilla ya descubierta.");
-				}
-				else{
-					entradaValida = true;
-				}
-			}
 
-			if(mapaMinasActivas[posX][posY].equals("1")){
-				mapaMinasMostrar[posX][posY]="*";
-				contadorMinas++;
+		while (juegoActivo) {
+			mostrarTablero();
+			int[] coordenadas = pedirCoordenadas();
+			int fila = coordenadas[0];
+			int columna = coordenadas[1];
+
+			if (hayMina(fila, columna)) {
+				tableroVisible[fila][columna] = "*";
+				explosiones++;
 				System.out.println("Mina!");
-			}
-			else if(mapaMinasActivas[posX][posY].equals("0")){
-				mapaMinasMostrar[posX][posY]=".";
+			} else {
+				tableroVisible[fila][columna] = ".";
 				casillasLibres++;
 				System.out.println("Libre!");
 			}
-			
-			if(contadorMinas>=3){
-				juegoActivo=false;
+
+			if (explosiones >= MAX_EXPLOSIONES) {
+				mostrarTablero();
 				System.out.println("Has perdido");
-			}
-			else if(casillasLibres>=30){
+				juegoActivo = false;
+			} else if (casillasLibres >= CASILLAS_PARA_GANAR) {
+				mostrarTablero();
 				System.out.println("Felicidades Ganador!");
-				juegoActivo=false;
+				juegoActivo = false;
 			}
 		}
-	}	
-		
-		
+	}
+
+	static void colocarMinas() {
+		int minasColocadas = 0;
+		while (minasColocadas < TOTAL_MINAS) {
+			int fila = (int) (Math.random() * FILAS + 1);
+			int columna = (int) (Math.random() * COLUMNAS + 1);
+			if (!hayMina(fila, columna)) {
+				tableroDeMinas[fila][columna] = "1";
+				minasColocadas++;
+			}
+		}
+	}
+
+	static void mostrarTablero() {
+		System.out.println("================");
+		for (int i = 0; i < tableroVisible.length; i++) {
+			for (int j = 0; j < tableroVisible[i].length; j++) {
+				System.out.print(tableroVisible[i][j] + " ");
+			}
+			System.out.println();
+		}
+		System.out.println("================");
+	}
+
+	static int[] pedirCoordenadas() {
+		while (true) {
+			System.out.println("Ingrese X");
+			int fila = scan.nextInt();
+			System.out.println("Ingrese Y");
+			int columna = scan.nextInt();
+
+			if (fila < 1 || fila > FILAS || columna < 1 || columna > COLUMNAS) {
+				System.out.println("Coordenadas fuera de rango.");
+			} else if (casillaYaDescubierta(fila, columna)) {
+				System.out.println("Casilla ya descubierta.");
+			} else {
+				return new int[]{fila, columna};
+			}
+		}
+	}
+
+	static boolean hayMina(int fila, int columna) {
+		return tableroDeMinas[fila][columna].equals("1");
+	}
+
+	static boolean casillaYaDescubierta(int fila, int columna) {
+		return tableroVisible[fila][columna].equals(".")
+			|| tableroVisible[fila][columna].equals("*");
+	}
 }
