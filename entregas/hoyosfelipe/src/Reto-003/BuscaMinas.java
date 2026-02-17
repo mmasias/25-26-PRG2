@@ -11,5 +11,15 @@ public class BuscaMinas {
     
     public static void main(String[] args) {
         System.out.println("Bienvenido al Buscaminas!");
+        inicializarTablero();
+    }
+    
+    static void inicializarTablero() {
+        tableroJuego = new char[FILAS][COLUMNAS];
+        for (int fila = 0; fila < FILAS; fila++) {
+            for (int columna = 0; columna < COLUMNAS; columna++) {
+                tableroJuego[fila][columna] = '.';
+            }
+        }
     }
 }
