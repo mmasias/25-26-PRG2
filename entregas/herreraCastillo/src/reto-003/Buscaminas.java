@@ -12,6 +12,18 @@ public class Buscaminas {
 
         int explosionesRecibidas = 0;
         int casillasLiberadas = 0;
+
+        inicializarTableroVisual(tableroVisual);
+
         
     }
+
+    public static void inicializarTableroVisual(char[][] tablero) {
+        for (int fila = 0; fila < TOTAL_FILAS; fila++) {
+            for (int columna = 0; columna < TOTAL_COLUMNAS; columna++) {
+                tablero[fila][columna] = '-';
+            }
+        }
+    }
+    
 }
