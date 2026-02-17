@@ -9,5 +9,9 @@ public class Buscaminas {
 
         boolean[][] mapaMinas = new boolean[TOTAL_FILAS][TOTAL_COLUMNAS ];
         char[][] tableroVisual = new char[TOTAL_FILAS][TOTAL_COLUMNAS];
+
+        int explosionesRecibidas = 0;
+        int casillasLiberadas = 0;
+        
     }
 }
