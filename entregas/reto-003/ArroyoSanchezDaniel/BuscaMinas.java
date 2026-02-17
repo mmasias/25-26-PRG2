@@ -4,18 +4,39 @@ public class BuscaMinas {
     public static void main(String[] args) {
         final int MINAS_TOTALES = 5;
         int posicionMinas[][] = new int[5][7];
-        int tableroVisible[][] = new int[5][7];
+        int tableroVisible[][] = { { -1, -1, -1, -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1 },
+                { -1, -1, -1, -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1 },
+                { -1, -1, -1, -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1 },
+                { -1, -1, -1, -1, -1, -1, -1, -1 }, { -1, -1, -1, -1, -1, -1, -1, -1 } };
         int minasDescubiertas = 0;
+        int casillasDescubiertas = 0;
 
         colocarMinas(posicionMinas, MINAS_TOTALES);
 
+        while (minasDescubiertas < 3 && casillasDescubiertas <= 30) {
+            System.out.println();
+            System.out.println("Has descubierto " + minasDescubiertas + " minas. Y has mirado " + casillasDescubiertas
+                    + " casillas.");
+            System.out.println();
+
+            imprimir(tableroVisible);
+            minasDescubiertas = adivinarCasilla(tableroVisible, posicionMinas, minasDescubiertas);
+            System.out.println();
+
+            if (minasDescubiertas == 3) {
+                System.out.println("Encontraste 3 minas, perdiste");
+            } else if (minasDescubiertas == 30) {
+                System.out.println("¡Has descubierto 30 casillas, Ganaste!");
+            }
+            casillasDescubiertas++;
+        }
     }
 
     static void colocarMinas(int posicionMinas[][], int MINAS_TOTALES) {
         int minas = 0;
         while (minas < MINAS_TOTALES) {
-            int px = (int) (Math.random() * 8);
-            int py = (int) (Math.random() * 8);
+            int px = (int) (Math.random() * 7);
+            int py = (int) (Math.random() * 5);
             if (posicionMinas[py][px] == 0) {
                 minas++;
                 posicionMinas[py][px] = 1;
@@ -48,9 +69,11 @@ public class BuscaMinas {
                 if (posicionMinas[posicionY][posicionX] == 1) {
                     tableroVisible[posicionY][posicionX] = posicionMinas[posicionY][posicionX];
                     minasDescubiertas++;
+                    System.out.println("¡MINA DESCUBIERTA!");
 
                 } else if (posicionMinas[posicionY][posicionX] == 0) {
                     tableroVisible[posicionY][posicionX] = posicionMinas[posicionY][posicionX];
+                    System.out.println("¡Libre de Minas!");
                 }
             }
 
@@ -63,7 +86,7 @@ public class BuscaMinas {
         String posicion[] = { " . ", " * " };
         System.out.println("    1  2  3  4  5  6  7");
         for (int i = 0; i < 5; i++) {
-            System.out.print(i + " | ");
+            System.out.print((i + 1) + " | ");
             for (int j = 0; j < 7; j++) {
                 if (tableroVisible[i][j] == -1) {
                     System.out.print(" - ");
@@ -73,6 +96,6 @@ public class BuscaMinas {
             }
             System.out.println();
         }
-        System.out.println("================");
+        System.out.println("=====================");
     }
 }
