@@ -27,11 +27,20 @@ public class Buscaminas {
         }
     }
     public static void dibujarTablero(char[][] tablero) {
+        System.out.print("  ");
+        for (int columna = 0; columna < TOTAL_COLUMNAS; columna++) {
+            System.out.print((columna + 1) + " ");
+        }
+        System.out.println();
+
         for (int fila = 0; fila < TOTAL_FILAS; fila++) {
+            System.out.print((fila + 1) + " ");
             for (int columna = 0; columna < TOTAL_COLUMNAS; columna++) {
                 System.out.print(tablero[fila][columna] + " ");
             }
             System.out.println();
+
+            
         }
     }
 }
