@@ -40,7 +40,7 @@ public class ExamenMina{
 		while ( i < 5){
 			int PosYMina = (int)(Math.random()*2+1);
 			int PosXMina = (int)(Math.random()*4+1);
-			if (mapaMinasActivas[PosXMina][PosYMina]=="1"){
+			if (mapaMinasActivas[PosXMina][PosYMina].equals("1")){
 			i=i-1;
 			}
 			else {
@@ -76,11 +76,11 @@ public class ExamenMina{
 				}
 			}
 
-			if(mapaMinasActivas[posX][posY]=="1"){
+			if(mapaMinasActivas[posX][posY].equals("1")){
 			mapaMinasMostrar[posX][posY]="x";
 			contadorMinas++;
 			}
-			else if(mapaMinasActivas[posX][posY]=="0"){
+			else if(mapaMinasActivas[posX][posY].equals("0")){
 			mapaMinasMostrar[posX][posY]=".";
 			}
 			else{
