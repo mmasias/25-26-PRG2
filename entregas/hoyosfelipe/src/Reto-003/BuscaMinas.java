@@ -12,6 +12,7 @@ public class BuscaMinas {
     public static void main(String[] args) {
         System.out.println("Bienvenido al Buscaminas!");
         inicializarTablero();
+        colocarMinasAleatorias();
     }
     
     static void inicializarTablero() {
@@ -19,6 +20,19 @@ public class BuscaMinas {
         for (int fila = 0; fila < FILAS; fila++) {
             for (int columna = 0; columna < COLUMNAS; columna++) {
                 tableroJuego[fila][columna] = '.';
+            }
+        }
+    }
+    
+    static void colocarMinasAleatorias() {
+        int minasColocadas = 0;
+        while (minasColocadas < TOTAL_MINAS) {
+            int filaAleatoria = (int)(Math.random() * FILAS);
+            int columnaAleatoria = (int)(Math.random() * COLUMNAS);
+            
+            if (tableroJuego[filaAleatoria][columnaAleatoria] != '*') {
+                tableroJuego[filaAleatoria][columnaAleatoria] = '*';
+                minasColocadas++;
             }
         }
     }
