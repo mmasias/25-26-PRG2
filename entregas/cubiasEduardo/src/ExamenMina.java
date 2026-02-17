@@ -2,42 +2,15 @@ import java.util.Scanner;
 
 public class ExamenMina {
 
-    static String[][] mapaMinasMostrar = {
-            {" ", "1", "2", "3", "4", "5", "6", "7"},
-            {"1", "-", "-", "-", "-", "-", "-", "-"},
-            {"2", "-", "-", "-", "-", "-", "-", "-"},
-            {"3", "-", "-", "-", "-", "-", "-", "-"},
-            {"4", "-", "-", "-", "-", "-", "-", "-"},
-            {"5", "-", "-", "-", "-", "-", "-", "-"}
-    };
+    static String[][] mapaMinasMostrar = {};
 
-    static String[][] mapaMinasActivas = {
-            {" ", "1", "2", "3", "4", "5", "6", "7"},
-            {"1", "0", "0", "0", "0", "0", "0", "0"},
-            {"2", "0", "0", "0", "0", "0", "0", "0"},
-            {"3", "0", "0", "0", "0", "0", "0", "0"},
-            {"4", "0", "0", "0", "0", "0", "0", "0"},
-            {"5", "0", "0", "0", "0", "0", "0", "0"}
-    };
+    static String[][] mapaMinasActivas = {};
 
     public static void main(String[] args) {
 
         Scanner scannerEntrada = new Scanner(System.in);
 
-        int contadorMinasGeneradas = 0;
-        int posicionFilaMina;
-        int posicionColumnaMina;
-
-        do {
-            posicionColumnaMina = (int) (Math.random() * 7 + 1);
-            posicionFilaMina = (int) (Math.random() * 5 + 1);
-        
-            if (mapaMinasActivas[posicionFilaMina][posicionColumnaMina] != "1") {
-                mapaMinasActivas[posicionFilaMina][posicionColumnaMina] = "1";
-                contadorMinasGeneradas++;
-            }
-        
-        } while (contadorMinasGeneradas < 5);
+        generarMinas();
 
         int posicionFilaUsuario = 0;
         int posicionColumnaUsuario = 0;
@@ -94,4 +67,23 @@ public class ExamenMina {
             }
         }
     }
+
+    public static void generarMinas() {
+
+        int contadorMinasGeneradas = 0;
+        int posicionFilaMina;
+        int posicionColumnaMina;
+    
+        do {
+            posicionColumnaMina = (int) (Math.random() * 7 + 1);
+            posicionFilaMina = (int) (Math.random() * 5 + 1);
+    
+            if (mapaMinasActivas[posicionFilaMina][posicionColumnaMina] != "1") {
+                mapaMinasActivas[posicionFilaMina][posicionColumnaMina] = "1";
+                contadorMinasGeneradas++;
+            }
+    
+        } while (contadorMinasGeneradas < 5);
+    }
+    
 }
