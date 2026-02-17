@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class ExamenMina {
 
-    static String[][] mapaMinasMostrar = {};
+    static String[][] mapaMinasMostrar = new String[6][8];
+    static String[][] mapaMinasActivas = new String[6][8];
 
-    static String[][] mapaMinasActivas = {};
 
     static final int TOTAL_MINAS = 5;
     static final int LIMITE_MINAS_PERDER = 2;
@@ -98,12 +98,12 @@ public class ExamenMina {
 
         String valorCelda = mapaMinasActivas[fila][columna];
     
-        if (valorCelda == "1") {
-            mapaMinasMostrar[fila][columna] = "x";
+        if (valorCelda.equals("1")) {
+            mapaMinasMostrar[fila][columna] = "*";
             contadorMinasEncontradas[0]++;
         }
     
-        if (valorCelda == "0") {
+        if (valorCelda.equals("0")) {
             mapaMinasMostrar[fila][columna] = ".";
         }
     }
