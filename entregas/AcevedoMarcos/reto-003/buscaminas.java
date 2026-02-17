@@ -110,3 +110,13 @@ class Buscaminas {
         }
 
         mostrarTablero();
+
+    if (explosiones == MAX_EXPLOSIONES) {
+            System.out.println("Has perdido");
+        } else {
+            System.out.println("Has ganado");
+        }
+
+        scanner.close();
+    }
+}
