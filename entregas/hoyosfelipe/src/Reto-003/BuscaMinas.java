@@ -22,13 +22,18 @@ public class BuscaMinas {
         while (juegoTerminado == false) {
             mostrarTablero();
             int[] coordenadas = pedirCoordenadas(scanner);
-            boolean hayMina = procesarJugada(coordenadas[0], coordenadas[1]);
             
-            if (hayMina) {
-                minasExplotadas++;
+            if (validarCasillaNoRevelada(coordenadas[0], coordenadas[1])) {
+                boolean hayMina = procesarJugada(coordenadas[0], coordenadas[1]);
+                
+                if (hayMina) {
+                    minasExplotadas++;
+                }
+                
+                juegoTerminado = verificarFinDeJuego(minasExplotadas);
+            } else {
+                System.out.println("Esta casilla ya fue revelada! Intenta otra");
             }
-            
-            juegoTerminado = verificarFinDeJuego(minasExplotadas);
         }
         
         mostrarTablero();
@@ -87,6 +92,10 @@ public class BuscaMinas {
         coordenadas[0] = fila - 1;
         coordenadas[1] = columna - 1;
         return coordenadas;
+    }
+    
+    static boolean validarCasillaNoRevelada(int fila, int columna) {
+        return tableroVisible[fila][columna] == '-';
     }
     
     static boolean procesarJugada(int fila, int columna) {
