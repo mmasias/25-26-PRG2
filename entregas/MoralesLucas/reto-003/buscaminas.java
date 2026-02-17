@@ -67,3 +67,44 @@ class Buscaminas {
         }
         System.out.println("================");
     }
+    public void jugar() {
+        Scanner scanner = new Scanner(System.in);
+
+        while (explosiones < MAX_EXPLOSIONES &&
+               casillasDescubiertas < (FILAS * COLUMNAS - MINAS)) {
+
+            mostrarTablero();
+
+            System.out.println("Ingrese X");
+            int x = scanner.nextInt();
+
+            System.out.println("Ingrese Y");
+            int y = scanner.nextInt();
+
+            int fila = x - 1;
+            int columna = y - 1;
+
+            if (fila < 0 || fila >= FILAS || columna < 0 || columna >= COLUMNAS) {
+                System.out.println("----------------");
+                System.out.println("Posición inválida");
+                continue;
+            }
+
+            if (!tableroVisible[fila][columna].equals("-")) {
+                System.out.println("----------------");
+                System.out.println("Casilla ya descubierta");
+                continue;
+            }
+
+            if (tableroMinas[fila][columna]) {
+                tableroVisible[fila][columna] = "*";
+                explosiones++;
+                System.out.println("----------------");
+                System.out.println("Mina!");
+            } else {
+                tableroVisible[fila][columna] = ".";
+                casillasDescubiertas++;
+                System.out.println("----------------");
+                System.out.println("Libre!");
+            }
+        }
