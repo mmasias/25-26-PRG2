@@ -11,10 +11,14 @@ public class BuscaMinas {
     static char[][] tableroVisible;
     
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Bienvenido al Buscaminas!");
         inicializarTablero();
         colocarMinasAleatorias();
         mostrarTablero();
+        
+        int[] coordenadas = pedirCoordenadas(scanner);
+        System.out.println("Has elegido fila: " + coordenadas[0] + " columna: " + coordenadas[1]);
     }
     
     static void inicializarTablero() {
@@ -57,5 +61,17 @@ public class BuscaMinas {
             System.out.println();
         }
         System.out.println("================");
+    }
+    
+    static int[] pedirCoordenadas(Scanner scanner) {
+        System.out.print("Ingrese X: ");
+        int columna = scanner.nextInt();
+        System.out.print("Ingresie Y: ");
+        int fila = scanner.nextInt();
+        
+        int[] coordenadas = new int[2];
+        coordenadas[0] = fila - 1;
+        coordenadas[1] = columna - 1;
+        return coordenadas;
     }
 }
