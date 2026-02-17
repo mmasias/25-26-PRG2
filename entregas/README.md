@@ -1,37 +1,28 @@
-# Carpeta de entregas
+# Plan de Desarrollo: Buscaminas (Versión Estructurada)
 
-Para cada entrega, cree en esta carpeta su carpeta personal usando el estándar `apellidoNombre`.
+Este documento describe la estrategia paso a paso para implementar el juego de Buscaminas en Java, siguiendo un enfoque de programación modular y evolutiva. Se hace asi en pasos pequenos justo por lo mencionado de baby steps. 
 
-## Estructura
+## Fase 1: Definición de Estructura y Constantes
+* **Paso 1.1:** Definir constantes para el tamaño del tablero (5x7), la cantidad de minas (5) y el límite de explosiones (3).
+* **Paso 1.2:** Declarar la matriz del "tablero lógico" (donde están las minas) y el "tablero visual" (lo que se imprime en pantalla).
 
-```
-/entregas/apellidoNombre/README.md   <-- Presentación de la entrega
-                        /src         <-- Código fuente
-                        /modelosUML  <-- Modelos en plantUML
-                        /docs        <-- Documentación adicional
-                        /images      <-- Imágenes, diagramas...
-```
+## Fase 2: Inicialización y Preparación
+* **Paso 2.1:** Crear un método para llenar el tablero visual con caracteres iniciales (`-`).
+* **Paso 2.2:** Crear un método de generación aleatoria para colocar exactamente 5 minas en el tablero lógico, asegurando que no se repitan posiciones.
 
-## Artefactos habituales
+## Fase 3: El Ciclo de Juego (Game Loop)
+* **Paso 3.1:** Implementar la estructura `while` principal basada en el estado de las explosiones y las casillas restantes.
+* **Paso 3.2:** Diseñar el método de renderizado que imprime el tablero con el formato requerido (números de guía en filas y columnas).
 
-||||
-|-|-|-|
-|1|**README.md**|Presentación de la entrega, con explicación de la solución y referencias al resto de artefactos. ¡Navegabilidad!|
-|2|**Código fuente**|Proyecto ordenado dentro de `/src`.|
-|3|**Diagramas**|Fuente en `/modelosUML`, exportado en `/images`, referenciado en los .md pertinentes.|
-|4|**Documentación adicional**|En `/docs`, en formato markdown (u otro formato, solo si se solicita explícitamente).|
+## Fase 4: Interacción y Validación
+* **Paso 4.1:** Crear métodos para solicitar X e Y.
+* **Paso 4.2:** Validar que las coordenadas estén dentro del rango (1-5 para filas, 1-7 para columnas).
 
-> Cada reto indicará qué artefactos son obligatorios y cuáles opcionales.
+## Fase 5: Lógica de Impacto y Actualización
+* **Paso 5.1:** Crear un método que verifique si en la coordenada elegida hay una mina.
+* **Paso 5.2:** Actualizar el tablero visual: colocar un punto `.` si está libre o un asterisco `*` si hay mina.
+* **Paso 5.3:** Gestionar los contadores de explosiones y de casillas liberadas.
 
-## Criterios de valoración
-
-- **Proceso de creación** — commits bien descritos, un cambio por commit.
-- **Código limpio** — innegociable.
-- **Adecuado reparto de responsabilidades** entre módulos.
-- **Aplicación de lo visto en la vida, en el grado, en la asignatura y en las clases**, en ese orden.
-
-## Tenga en cuenta
-
-- **Planificar** antes de codificar (diagramas, esquemas, pseudocódigo).
-- **Construir código que se autoexplique**.
-- **Usar los commits** para documentar el proceso.
+## Fase 6: Finalización y Mensajes
+* **Paso 6.1:** Crear un método que verifique si el jugador ganó (todas las casillas sin mina liberadas) o perdió (3 explosiones).
+* **Paso 6.2:** Mostrar el mensaje final y el estado definitivo del tablero.
