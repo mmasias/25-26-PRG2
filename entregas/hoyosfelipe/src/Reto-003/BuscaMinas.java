@@ -15,11 +15,24 @@ public class BuscaMinas {
         System.out.println("Bienvenido al Buscaminas!");
         inicializarTablero();
         colocarMinasAleatorias();
-        mostrarTablero();
         
-        int[] coordenadas = pedirCoordenadas(scanner);
-        boolean hayMina = procesarJugada(coordenadas[0], coordenadas[1]);
+        int minasExplotadas = 0;
+        boolean juegoTerminado = false;
+        
+        while (juegoTerminado == false) {
+            mostrarTablero();
+            int[] coordenadas = pedirCoordenadas(scanner);
+            boolean hayMina = procesarJugada(coordenadas[0], coordenadas[1]);
+            
+            if (hayMina) {
+                minasExplotadas++;
+            }
+            
+            juegoTerminado = verificarFinDeJuego(minasExplotadas);
+        }
+        
         mostrarTablero();
+        scanner.close();
     }
     
     static void inicializarTablero() {
@@ -112,4 +125,4 @@ public class BuscaMinas {
         
         return false;
     }
-}   
+}
