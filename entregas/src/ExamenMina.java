@@ -62,9 +62,9 @@ public class ExamenMina{
 			while(valoresCorrectos==0){
 				System.out.println(" ");
 				System.out.println("Ingrese X");
-				posY = scan.nextInt();
-				System.out.println("Ingrese Y");
-				posX = scan.nextInt();
+			posX = scan.nextInt();
+			System.out.println("Ingrese Y");
+			posY = scan.nextInt();
 				if(posX>5){
 					valoresCorrectos=0;
 				}
