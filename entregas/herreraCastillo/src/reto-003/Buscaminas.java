@@ -16,9 +16,14 @@ public class Buscaminas {
 
         int explosionesRecibidas = 0;
         int casillasLiberadas = 0;
+        int totalCasillasSeguras = (TOTAL_FILAS * TOTAL_COLUMNAS) - CANTIDAD_MINAS;
 
         inicializarTableroVisual(tableroVisual);
-        dibujarTablero(tableroVisual);
+        colocarMinas(mapaMinas);
+
+
+        while (explosionesRecibidas < MAXIMO_EXPLOSIONES && casillasLiberadas < totalCasillasSeguras) {
+            dibujarTablero(tableroVisual);
 
         int filaElegida = leerCoordenada("Ingrese X", TOTAL_FILAS, entrada);
         int columnaElegida = leerCoordenada("Ingrese Y", TOTAL_COLUMNAS, entrada);
@@ -32,7 +37,20 @@ public class Buscaminas {
             tableroVisual[filaElegida][columnaElegida] = '.';
             casillasLiberadas++;
         }
+    }
 
+    }
+
+    public static boolean verificarPresenciaMina(int fila, int columna, boolean[][] mapa) {
+        return mapa[fila][columna];
+    }
+
+    public static void marcarMinaEnTablero(int fila, int columna, char[][] tablero) {
+        tablero[fila][columna] = '*';
+    }
+
+    public static void marcarEspacioLibreEnTablero(int fila, int columna, char[][] tablero) {
+        tablero[fila][columna] = '.';
     }
 
     public static int leerCoordenada(String mensaje, int limite, Scanner entrada) {
