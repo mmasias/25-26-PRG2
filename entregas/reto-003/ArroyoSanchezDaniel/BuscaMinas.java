@@ -20,5 +20,20 @@ public class BuscaMinas {
             }
         }
     }
+    static void imprimir(int tableroVisible[][]) {
+        String posicion[] = { " . ", " * " };
+
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (tableroVisible[i][j] == -1) {
+                    System.out.print(" - ");
+                } else if (tableroVisible[i][j] >= 0) {
+                    System.out.print(posicion[tableroVisible[i][j]]);
+                }
+            }
+            System.out.println();
+        }
+    }
 }
+
 
