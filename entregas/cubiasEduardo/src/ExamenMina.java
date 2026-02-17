@@ -28,16 +28,10 @@ public class ExamenMina {
             leerCoordenadas(scannerEntrada, null);
 
             revelarCelda();
-
+            
+            evaluarEstadoJuego(contadorTurnos, contadorMinasEncontradas, null);
             contadorTurnos++;
 
-            if (contadorMinasEncontradas > 2) {
-                juegoEncendido = 0;
-                System.out.println("Has perdido");
-            } else if (contadorTurnos >= 31) {
-                System.out.println("Felicidades Ganador!");
-                juegoEncendido = 0;
-            }
         }
     }
 
@@ -100,5 +94,17 @@ public class ExamenMina {
         }
     }
     
+    public static void evaluarEstadoJuego(int contadorTurnos, int contadorMinasEncontradas, int[] juegoEncendido) {
+
+        if (contadorMinasEncontradas > 2) {
+            juegoEncendido[0] = 0;
+            System.out.println("Has perdido");
+        }
+    
+        if (contadorTurnos >= 31) {
+            juegoEncendido[0] = 0;
+            System.out.println("Felicidades Ganador!");
+        }
+    }
     
 }
