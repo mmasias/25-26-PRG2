@@ -53,7 +53,7 @@ public class ExamenMina{
 		/////////////Comienza el juego
 		while(juegoEncendido==1){
 			for( i = 0; i<mapaMinasMostrar.length; i++){            
-				for (int j = 0; j<=mapaMinasMostrar.length+1; j++) {                                     
+				for (int j = 0; j<mapaMinasMostrar[i].length; j++) {                                     
 					System.out.print(mapaMinasMostrar[i][j]);
 				}
 				System.out.println(" ");
