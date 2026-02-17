@@ -111,7 +111,8 @@ public class buscaminas{
 }
 
 	
-	if ((tablero[posx][posy])=="  "){
+	if ("  ".equals(tablero[posx][posy])) {
+
 		tablero2[posx][posy]= "--";
 		celdasVacias++;
 	}
