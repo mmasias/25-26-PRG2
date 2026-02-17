@@ -25,22 +25,7 @@ public class ExamenMina {
 
             valoresCorrectos = 0;
 
-            while (valoresCorrectos == 0) {
-
-                System.out.println("Ingrese X");
-                posicionColumnaUsuario = scannerEntrada.nextInt();
-
-                System.out.println("Ingrese Y");
-                posicionFilaUsuario = scannerEntrada.nextInt();
-
-                if (posicionFilaUsuario > 5) {
-                    valoresCorrectos = 0;
-                } else if (posicionColumnaUsuario > 7) {
-                    valoresCorrectos = 0;
-                } else {
-                    valoresCorrectos = 1;
-                }
-            }
+            leerCoordenadas(scannerEntrada, null);
 
             if (mapaMinasActivas[posicionFilaUsuario][posicionColumnaUsuario] == "1") {
                 mapaMinasMostrar[posicionFilaUsuario][posicionColumnaUsuario] = "x";
@@ -91,5 +76,23 @@ public class ExamenMina {
         }
     }
     
+    public static void leerCoordenadas(Scanner scannerEntrada, int[] coordenadas) {
+
+        int valoresCorrectos;
+    
+        do {
+            valoresCorrectos = 1;
+    
+            System.out.println("Ingrese X");
+            coordenadas[1] = scannerEntrada.nextInt();
+    
+            System.out.println("Ingrese Y");
+            coordenadas[0] = scannerEntrada.nextInt();
+    
+            if (coordenadas[0] > 5) valoresCorrectos = 0;
+            if (coordenadas[1] > 7) valoresCorrectos = 0;
+    
+        } while (valoresCorrectos == 0);
+    }
     
 }
