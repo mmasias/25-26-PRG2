@@ -105,7 +105,11 @@ public class buscaminas{
     Scanner sc2=new Scanner(System.in);
     posy=sc2.nextInt();
 
-	
+	if (posx < 1 || posx > 5 || posy < 1 || posy > 7) {
+    System.out.println("Coordenadas fuera de rango. X debe ser 1-5 y Y debe ser 1-7.");
+    continue;
+}
+
 	
 	if ((tablero[posx][posy])=="  "){
 		tablero2[posx][posy]= "--";
