@@ -13,6 +13,7 @@ public class BuscaMinas {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bienvenido al Buscaminas!");
+        System.out.println();
         inicializarTablero();
         colocarMinasAleatorias();
         
@@ -41,6 +42,8 @@ public class BuscaMinas {
         }
         
         mostrarTablero();
+        System.out.println();
+        System.out.println("Gracias por jugar!");
         scanner.close();
     }
     
