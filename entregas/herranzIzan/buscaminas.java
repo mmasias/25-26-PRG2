@@ -34,50 +34,30 @@ public class buscaminas{
 		
 	
 	
-	//He tenido problemas al hacerlo con un bucle y al no encontrar la solucion he preferido hacerlo asi aun sabiendo que es mas costoso
-		posa=(int)((Math.random()*5)+1);
-		posb=(int)((Math.random()*7)+1);
-		for (int x=1; x < tablero.length; x++) {
-			for (int y=1; y < 8; y++){
-							
-				tablero[posa][posb]="MM";
-			}
-		}
+	
+		posa = (int)((Math.random()*5) + 1);
+posb = (int)((Math.random()*7) + 1);
+tablero[posa][posb] = "MM";
+
 		
-		posa=(int)((Math.random()*5)+1);
-		posb=(int)((Math.random()*7)+1);
-		for (int x=1; x < tablero.length; x++) {
-			for (int y=1; y < 8; y++){
-							
-				tablero[posa][posb]="MM";
-			}
-		}
+		posa = (int)((Math.random()*5) + 1);
+posb = (int)((Math.random()*7) + 1);
+tablero[posa][posb] = "MM";
+
 		
-		posa=(int)((Math.random()*5)+1);
-		posb=(int)((Math.random()*7)+1);
-		for (int x=1; x < tablero.length; x++) {
-			for (int y=1; y < 8; y++){
-							
-				tablero[posa][posb]="MM";
-			}
-		}
+		posa = (int)((Math.random()*5) + 1);
+posb = (int)((Math.random()*7) + 1);
+tablero[posa][posb] = "MM";
+
 		
-		posa=(int)((Math.random()*5)+1);
-		posb=(int)((Math.random()*7)+1);
-		for (int x=1; x < tablero.length; x++) {
-			for (int y=1; y < 8; y++){
-							
-				tablero[posa][posb]="MM";
-			}
-		}
-		posa=(int)((Math.random()*5)+1);
-		posb=(int)((Math.random()*7)+1);
-		for (int x=1; x < tablero.length; x++) {
-			for (int y=1; y < 8; y++){
-							
-				tablero[posa][posb]="MM";
-			}
-		}
+		posa = (int)((Math.random()*5) + 1);
+posb = (int)((Math.random()*7) + 1);
+tablero[posa][posb] = "MM";
+
+		posa = (int)((Math.random()*5) + 1);
+posb = (int)((Math.random()*7) + 1);
+tablero[posa][posb] = "MM";
+
 		
 		
 		
@@ -95,7 +75,7 @@ public class buscaminas{
 	}
 	
 
-    
+
 	System.out.println("introduzca posicion X");
 posx=sc.nextInt();
 	
