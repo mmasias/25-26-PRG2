@@ -1,0 +1,2 @@
+## Resumen
+Básicamente, he decidido rehacer el código desde cero porque intentar arreglar el anterior da más problemas que soluciones. El original tiene todo mezclado y tenie mucho codigo quemado, por lo que cambiar algo simple como el tamaño del tablero era imposible sin reescribir todo el programa. Intentaré automatizar la lógica con bucles y arreglar fallos críticos —como minas duplicadas o cierres inesperados al teclear mal—, logrando un resultado final mucho más limpio, eficiente y fácil de mantener.
