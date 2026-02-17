@@ -2,6 +2,12 @@ import java.util.Scanner;
 public class buscaminas{
 	public static void main(String[] args){
 	
+        final int MAX_X = 5;
+final int MAX_Y = 7;
+final int TOTAL_MINAS = 5;
+final int MAX_MINAS_PISADAS = 3;
+final int VACIAS_PARA_GANAR = (MAX_X * MAX_Y) - TOTAL_MINAS; // 35 - 5 = 30
+
 	int minas=0;
 	int celdasVacias=0;
 	int posa=0;
@@ -36,15 +42,16 @@ public class buscaminas{
 	
 	
 		int colocadas = 0;
-while (colocadas < 5) {
-    posa = (int)((Math.random() * 5) + 1);
-    posb = (int)((Math.random() * 7) + 1);
+while (colocadas < TOTAL_MINAS) {
+    posa = (int)((Math.random() * MAX_X) + 1);
+    posb = (int)((Math.random() * MAX_Y) + 1);
 
     if (!"MM".equals(tablero[posa][posb])) {
         tablero[posa][posb] = "MM";
         colocadas++;
     }
 }
+
 
 
 		
@@ -72,9 +79,11 @@ posx=sc.nextInt();
 posy=sc.nextInt();
 
 
-	if (posx < 1 || posx > 5 || posy < 1 || posy > 7) {
-    System.out.println("Coordenadas fuera de rango. X debe ser 1-5 y Y debe ser 1-7.");
+	if (posx < 1 || posx > MAX_X || posy < 1 || posy > MAX_Y) {
+    System.out.println("Coordenadas fuera de rango. X debe ser 1-" + MAX_X + " y Y debe ser 1-" + MAX_Y + ".");
     continue;
+}
+
 }
 if (!"  ".equals(tablero2[posx][posy])) {
     System.out.println("Esa casilla ya estaba revelada. Elige otra.");
@@ -103,12 +112,14 @@ if (!"  ".equals(tablero2[posx][posy])) {
 	}
 
 		
-		if (minas==3){
+		if (minas == MAX_MINAS_PISADAS) {
+
 		System.out.println("Lo siento, ha perdido");
 		salida=true;
 		}
 		
-		if (celdasVacias==30){
+		if (celdasVacias == VACIAS_PARA_GANAR) {
+
 			System.out.println("Enhorabuena, ha ganado");
 			salida=true;
 		}
