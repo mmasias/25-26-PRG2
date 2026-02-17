@@ -55,17 +55,19 @@ public class ExamenMina{
 				}
 				System.out.println(" ");
 			}
-			valoresCorrectos=0;//reseteo de la variable
+			valoresCorrectos=0;
 			while(valoresCorrectos==0){
 				System.out.println(" ");
 				System.out.println("Ingrese X");
-			posX = scan.nextInt();
-			System.out.println("Ingrese Y");
-			posY = scan.nextInt();
-				if(posX>5){
+				posX = scan.nextInt();
+				System.out.println("Ingrese Y");
+				posY = scan.nextInt();
+				if(posX<1 || posX>5 || posY<1 || posY>7){
+					System.out.println("Coordenadas fuera de rango.");
 					valoresCorrectos=0;
 				}
-				else if(posY>7){
+				else if(mapaMinasMostrar[posX][posY].equals(".") || mapaMinasMostrar[posX][posY].equals("*")){
+					System.out.println("Casilla ya descubierta.");
 					valoresCorrectos=0;
 				}
 				else{
