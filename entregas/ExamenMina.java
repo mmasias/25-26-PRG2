@@ -1,105 +1,108 @@
 import java.util.Scanner;
 
-public class ExamenMina{
+public class ExamenMina {
 
-	static String[][] mapaMinasMostrar = 	
-		{
-			{" ",	"1", 	"2", 	"3", 	"4",	"5",	"6", 	"7"},
-			{"1", 	"-", 	"-", 	"-", 	"-", 	"-", 	"-",	"-"},
-			{"2", 	"-", 	"-",	"-", 	"-", 	"-", 	"-",	"-"},
-			{"3", 	"-", 	"-", 	"-",	"-", 	"-", 	"-",	"-"},
-			{"4", 	"-", 	"-",	"-", 	"-", 	"-", 	"-",	"-"},
-			{"5", 	"-", 	"-",	"-", 	"-", 	"-", 	"-",	"-"}
-		};
-		
-	static String[][] mapaMinasActivas = 	
-		{
-			{" ",	"1", 	"2", 	"3", 	"4",	"5",	"6", 	"7"},
-			{"1", 	"0", 	"0", 	"0", 	"0", 	"0", 	"0",	"0"},
-			{"2", 	"0", 	"0",	"0", 	"0", 	"0", 	"0",	"0"},
-			{"3", 	"0", 	"0", 	"0",	"0", 	"0", 	"0",	"0"},
-			{"4", 	"0", 	"0",	"0", 	"0", 	"0", 	"0",	"0"},
-			{"5", 	"0", 	"0",	"0", 	"0", 	"0", 	"0",	"0"}
-		};
+    static String[][] mapaMinasMostrar =
+            {
+                    {" ", "1", "2", "3", "4", "5", "6", "7"},
+                    {"1", "-", "-", "-", "-", "-", "-", "-"},
+                    {"2", "-", "-", "-", "-", "-", "-", "-"},
+                    {"3", "-", "-", "-", "-", "-", "-", "-"},
+                    {"4", "-", "-", "-", "-", "-", "-", "-"},
+                    {"5", "-", "-", "-", "-", "-", "-", "-"}
+            };
 
-	public static void main(String[] args){	
-	Scanner scan = new Scanner(System.in);
+    static String[][] mapaMinasActivas =
+            {
+                    {" ", "1", "2", "3", "4", "5", "6", "7"},
+                    {"1", "0", "0", "0", "0", "0", "0", "0"},
+                    {"2", "0", "0", "0", "0", "0", "0", "0"},
+                    {"3", "0", "0", "0", "0", "0", "0", "0"},
+                    {"4", "0", "0", "0", "0", "0", "0", "0"},
+                    {"5", "0", "0", "0", "0", "0", "0", "0"}
+            };
 
-		// generar minas
-		int i=0;	
-		while (i < 5){
-			int PosXMina = (int)(Math.random()*5 + 1);
-			int PosYMina = (int)(Math.random()*7 + 1);
+    public static void main(String[] args) {
 
-			if (mapaMinasActivas[PosXMina][PosYMina].equals("1")){
-				continue;
-			}
+        Scanner scanner = new Scanner(System.in);
 
-			mapaMinasActivas[PosXMina][PosYMina] = "1";
-			i++;
-		}
-	
-		int posX=0, posY=0, juegoEncendido=1, valoresCorrectos;
-		int contadorMinas=0;
-		int casillasDescubiertas=0;
+        // GENERAR 5 MINAS ALEATORIAS
+        int minasColocadas = 0;
+        while (minasColocadas < 5) {
 
-		while(juegoEncendido==1){
+            int filaMina = (int) (Math.random() * 5 + 1);
+            int columnaMina = (int) (Math.random() * 7 + 1);
 
-			for( i = 0; i<mapaMinasMostrar.length; i++){            
-				for (int j = 0; j<mapaMinasMostrar[i].length; j++) {                                     
-					System.out.print(mapaMinasMostrar[i][j] + " ");
-				}
-				System.out.println();
-			}
+            if (mapaMinasActivas[filaMina][columnaMina].equals("1")) {
+                continue;
+            }
 
-			valoresCorrectos=0;
-			while(valoresCorrectos==0){
-				System.out.println(" ");
+            mapaMinasActivas[filaMina][columnaMina] = "1";
+            minasColocadas++;
+        }
 
-				System.out.println("Ingrese FILA (1-5)");
-				posX = scan.nextInt();
+        int fila, columna;
+        int minasPisadas = 0;
+        int casillasSegurasDescubiertas = 0;
+        boolean juegoActivo = true;
 
-				System.out.println("Ingrese COLUMNA (1-7)");
-				posY = scan.nextInt();
+        while (juegoActivo) {
 
-				if(posX>5 || posX<1){
-					valoresCorrectos=0;
-				}
-				else if(posY>7 || posY<1){
-					valoresCorrectos=0;
-				}
-				else{
-					valoresCorrectos=1;
-				}
-			}
+            // IMPRIMIR TABLERO
+            for (int i = 0; i < mapaMinasMostrar.length; i++) {
+                for (int j = 0; j < mapaMinasMostrar[i].length; j++) {
+                    System.out.print(mapaMinasMostrar[i][j] + " ");
+                }
+                System.out.println();
+            }
 
-			// SI HAY MINA
-			if(mapaMinasActivas[posX][posY].equals("1")){
-				if(!mapaMinasMostrar[posX][posY].equals("x")){
-					mapaMinasMostrar[posX][posY]="x";
-					contadorMinas++;
-				}
-			}
+            // PEDIR COORDENADAS
+            boolean coordenadasValidas = false;
+            while (!coordenadasValidas) {
 
-			// SI ES CASILLA SEGURA
-			else{
-				if(mapaMinasMostrar[posX][posY].equals("-")){
-					mapaMinasMostrar[posX][posY]=".";
-					casillasDescubiertas++;
-				}
-			}
+                System.out.println();
+                System.out.print("Ingrese FILA (1-5): ");
+                fila = scanner.nextInt();
 
-			// DERROTA
-			if(contadorMinas>=3){
-				juegoEncendido=0;
-				System.out.println("Has perdido");
-			}
+                System.out.print("Ingrese COLUMNA (1-7): ");
+                columna = scanner.nextInt();
 
-			// VICTORIA REAL
-			else if(casillasDescubiertas==30){
-				System.out.println("Felicidades Ganador!");
-				juegoEncendido=0;
-			}
-		}
-	}	
+                if (fila >= 1 && fila <= 5 && columna >= 1 && columna <= 7) {
+                    coordenadasValidas = true;
+                } else {
+                    System.out.println("Coordenadas fuera del tablero. Intente nuevamente.");
+                }
+            }
+
+            // COMPROBAR MINA
+            if (mapaMinasActivas[fila][columna].equals("1")) {
+
+                if (!mapaMinasMostrar[fila][columna].equals("x")) {
+                    mapaMinasMostrar[fila][columna] = "x";
+                    minasPisadas++;
+                }
+
+            } else {
+
+                if (mapaMinasMostrar[fila][columna].equals("-")) {
+                    mapaMinasMostrar[fila][columna] = ".";
+                    casillasSegurasDescubiertas++;
+                }
+            }
+
+            // DERROTA
+            if (minasPisadas >= 3) {
+                juegoActivo = false;
+                System.out.println("Has perdido");
+            }
+
+            // VICTORIA
+            else if (casillasSegurasDescubiertas == 30) {
+                juegoActivo = false;
+                System.out.println("Felicidades Ganador!");
+            }
+        }
+
+        scanner.close();
+    }
 }
