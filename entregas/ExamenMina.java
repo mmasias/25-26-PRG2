@@ -26,24 +26,29 @@ public class ExamenMina{
 	public static void main(String[] args){	
 	Scanner scan = new Scanner(System.in);
 		///////////////////////////
+
+		// -------- GENERACION CORRECTA DE MINAS --------
 		int i=0;	
-		while ( i < 5){
-			int PosYMina = (int)(Math.random()*2+1);
-			int PosXMina = (int)(Math.random()*4+1);
+		while (i < 5){
+
+			int PosXMina = (int)(Math.random()*5 + 1); // filas 1-5
+			int PosYMina = (int)(Math.random()*7 + 1); // columnas 1-7
+
+			// si ya hay mina, repetir
 			if (mapaMinasActivas[PosXMina][PosYMina].equals("1")){
-				i=i-1;
+				continue;
 			}
-			else {
-				mapaMinasActivas[PosXMina+1][PosYMina+1]="1";
-			}
+
+			// colocar mina
+			mapaMinasActivas[PosXMina][PosYMina] = "1";
 			i++;
 		}
 	
 		int posX=0, posY=0, juegoEncendido=1, valoresCorrectos, contadorMapa=0, contadorMinas=0;
+
 		/////////////Comienza el juego
 		while(juegoEncendido==1){
 
-			// ---- IMPRESION ARREGLADA ----
 			for( i = 0; i<mapaMinasMostrar.length; i++){            
 				for (int j = 0; j<mapaMinasMostrar[i].length; j++) {                                     
 					System.out.print(mapaMinasMostrar[i][j] + " ");
@@ -70,7 +75,6 @@ public class ExamenMina{
 				}
 			}
 
-			// ---- COMPARACION STRING ARREGLADA ----
 			if(mapaMinasActivas[posX][posY].equals("1")){
 				mapaMinasMostrar[posX][posY]="x";
 				contadorMinas++;
