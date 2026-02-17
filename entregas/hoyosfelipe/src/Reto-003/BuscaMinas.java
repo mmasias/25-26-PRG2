@@ -18,7 +18,8 @@ public class BuscaMinas {
         mostrarTablero();
         
         int[] coordenadas = pedirCoordenadas(scanner);
-        System.out.println("Has elegido fila: " + coordenadas[0] + " columna: " + coordenadas[1]);
+        boolean hayMina = procesarJugada(coordenadas[0], coordenadas[1]);
+        mostrarTablero();
     }
     
     static void inicializarTablero() {
@@ -66,12 +67,26 @@ public class BuscaMinas {
     static int[] pedirCoordenadas(Scanner scanner) {
         System.out.print("Ingrese X: ");
         int columna = scanner.nextInt();
-        System.out.print("Ingresie Y: ");
+        System.out.print("Ingrese Y: ");
         int fila = scanner.nextInt();
         
         int[] coordenadas = new int[2];
         coordenadas[0] = fila - 1;
         coordenadas[1] = columna - 1;
         return coordenadas;
+    }
+    
+    static boolean procesarJugada(int fila, int columna) {
+        if (tableroJuego[fila][columna] == '*') {
+            tableroVisible[fila][columna] = '*';
+            System.out.println("----------------");
+            System.out.println("Mina!");
+            return true;
+        } else {
+            tableroVisible[fila][columna] = '.';
+            System.out.println("----------------");
+            System.out.println("Libre!");
+            return false;
+        }
     }
 }
