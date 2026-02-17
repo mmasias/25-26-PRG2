@@ -34,7 +34,7 @@ public class ExamenMina{
 			}
 		}
 	
-		int posX=0, posY=0, valoresCorrectos, casillasLibres=0, contadorMinas=0;
+		int posX=0, posY=0, casillasLibres=0, contadorMinas=0;
 		boolean juegoActivo = true;
 		
 		while(juegoActivo){
@@ -44,8 +44,8 @@ public class ExamenMina{
 				}
 				System.out.println(" ");
 			}
-			valoresCorrectos=0;
-			while(valoresCorrectos==0){
+			boolean entradaValida = false;
+			while(!entradaValida){
 				System.out.println(" ");
 				System.out.println("Ingrese X");
 				posX = scan.nextInt();
@@ -53,14 +53,12 @@ public class ExamenMina{
 				posY = scan.nextInt();
 				if(posX<1 || posX>5 || posY<1 || posY>7){
 					System.out.println("Coordenadas fuera de rango.");
-					valoresCorrectos=0;
 				}
 				else if(mapaMinasMostrar[posX][posY].equals(".") || mapaMinasMostrar[posX][posY].equals("*")){
 					System.out.println("Casilla ya descubierta.");
-					valoresCorrectos=0;
 				}
 				else{
-					valoresCorrectos=1;
+					entradaValida = true;
 				}
 			}
 
