@@ -84,15 +84,18 @@ public class ExamenMina {
 
     public static void revelarCelda(int fila, int columna, int[] contadorMinasEncontradas) {
 
-        if (mapaMinasActivas[fila][columna] == "1") {
+        String valorCelda = mapaMinasActivas[fila][columna];
+    
+        if (valorCelda == "1") {
             mapaMinasMostrar[fila][columna] = "x";
             contadorMinasEncontradas[0]++;
         }
     
-        if (mapaMinasActivas[fila][columna] == "0") {
+        if (valorCelda == "0") {
             mapaMinasMostrar[fila][columna] = ".";
         }
     }
+    
     
     public static void evaluarEstadoJuego(int contadorTurnos, int contadorMinasEncontradas, int[] juegoEncendido) {
 
