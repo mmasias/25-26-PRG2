@@ -21,12 +21,7 @@ public class ExamenMina {
 
         while (juegoEncendido == 1) {
 
-            for (int fila = 0; fila < mapaMinasMostrar.length; fila++) {
-                for (int columna = 0; columna < mapaMinasMostrar[fila].length; columna++) {
-                    System.out.print(mapaMinasMostrar[fila][columna]);
-                }
-                System.out.println(" ");
-            }
+            mostrarMapa();
 
             valoresCorrectos = 0;
 
@@ -85,5 +80,16 @@ public class ExamenMina {
     
         } while (contadorMinasGeneradas < 5);
     }
+
+    public static void mostrarMapa() {
+
+        for (int fila = 0; fila < mapaMinasMostrar.length; fila++) {
+            for (int columna = 0; columna < mapaMinasMostrar[fila].length; columna++) {
+                System.out.print(mapaMinasMostrar[fila][columna]);
+            }
+            System.out.println(" ");
+        }
+    }
+    
     
 }
