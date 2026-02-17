@@ -6,34 +6,46 @@ public class ExamenMina {
 
     static String[][] mapaMinasActivas = {};
 
+    static final int TOTAL_MINAS = 5;
+    static final int LIMITE_MINAS_PERDER = 2;
+    static final int LIMITE_TURNOS_GANAR = 31;
+
+
     public static void main(String[] args) {
 
         Scanner scannerEntrada = new Scanner(System.in);
-
-        generarMinas();
-
-        int posicionFilaUsuario = 0;
-        int posicionColumnaUsuario = 0;
-        int juegoEncendido = 1;
-        int valoresCorrectos;
+    
+        int[] coordenadasUsuario = new int[2];
+        int[] juegoEncendido = {1};
+        int[] contadorMinasEncontradas = {0};
+    
         int contadorTurnos = 0;
-        int contadorMinasEncontradas = 0;
-
-        while (juegoEncendido == 1) {
-
+    
+        generarMinas();
+    
+        do {
+    
             mostrarMapa();
-
-            valoresCorrectos = 0;
-
-            leerCoordenadas(scannerEntrada, null);
-
-            revelarCelda();
-            
-            evaluarEstadoJuego(contadorTurnos, contadorMinasEncontradas, null);
+    
+            leerCoordenadas(scannerEntrada, coordenadasUsuario);
+    
+            revelarCelda(
+                    coordenadasUsuario[0],
+                    coordenadasUsuario[1],
+                    contadorMinasEncontradas
+            );
+    
             contadorTurnos++;
-
-        }
+    
+            evaluarEstadoJuego(
+                    contadorTurnos,
+                    contadorMinasEncontradas[0],
+                    juegoEncendido
+            );
+    
+        } while (juegoEncendido[0] == 1);
     }
+    
 
     public static void generarMinas() {
 
