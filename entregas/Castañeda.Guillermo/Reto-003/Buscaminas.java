@@ -79,6 +79,17 @@ public class Buscaminas {
             }
         }
 
+        System.out.println("================");
+        System.out.println("  1 2 3 4 5 6 7");
+        for (int i = 0; i < filas; i++) {
+            System.out.print((i + 1) + " ");
+            for (int j = 0; j < columnas; j++) {
+                System.out.print(tablero[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("================");
+
         if (explosiones == maxExplosiones) {
             System.out.println("Has perdido");
         } else {
