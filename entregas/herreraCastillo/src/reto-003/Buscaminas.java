@@ -6,6 +6,8 @@ public class Buscaminas {
     static final int MAXIMO_EXPLOSIONES = 3;
 
     public static void main(String[] args) {
-        
+
+        boolean[][] mapaMinas = new boolean[TOTAL_FILAS][TOTAL_COLUMNAS ];
+        char[][] tableroVisual = new char[TOTAL_FILAS][TOTAL_COLUMNAS];
     }
 }
