@@ -14,8 +14,9 @@ public class Buscaminas {
         int casillasLiberadas = 0;
 
         inicializarTableroVisual(tableroVisual);
+        dibujarTablero(tableroVisual);
 
-        
+
     }
 
     public static void inicializarTableroVisual(char[][] tablero) {
@@ -25,5 +26,12 @@ public class Buscaminas {
             }
         }
     }
-    
+    public static void dibujarTablero(char[][] tablero) {
+        for (int fila = 0; fila < TOTAL_FILAS; fila++) {
+            for (int columna = 0; columna < TOTAL_COLUMNAS; columna++) {
+                System.out.print(tablero[fila][columna] + " ");
+            }
+            System.out.println();
+        }
+    }
 }
