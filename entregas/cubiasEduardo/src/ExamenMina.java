@@ -27,14 +27,7 @@ public class ExamenMina {
 
             leerCoordenadas(scannerEntrada, null);
 
-            if (mapaMinasActivas[posicionFilaUsuario][posicionColumnaUsuario] == "1") {
-                mapaMinasMostrar[posicionFilaUsuario][posicionColumnaUsuario] = "x";
-                contadorMinasEncontradas++;
-            } else if (mapaMinasActivas[posicionFilaUsuario][posicionColumnaUsuario] == "0") {
-                mapaMinasMostrar[posicionFilaUsuario][posicionColumnaUsuario] = ".";
-            } else {
-                System.out.println("No es correcta esa opcion.");
-            }
+            revelarCelda();
 
             contadorTurnos++;
 
@@ -94,5 +87,18 @@ public class ExamenMina {
     
         } while (valoresCorrectos == 0);
     }
+
+    public static void revelarCelda(int fila, int columna, int[] contadorMinasEncontradas) {
+
+        if (mapaMinasActivas[fila][columna] == "1") {
+            mapaMinasMostrar[fila][columna] = "x";
+            contadorMinasEncontradas[0]++;
+        }
+    
+        if (mapaMinasActivas[fila][columna] == "0") {
+            mapaMinasMostrar[fila][columna] = ".";
+        }
+    }
+    
     
 }
