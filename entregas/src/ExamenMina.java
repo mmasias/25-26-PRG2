@@ -35,18 +35,15 @@ public class ExamenMina{
 	//Posiciones Random de la mina
 	public static void main(String[] args){	
 	Scanner scan = new Scanner(System.in);
-		///////////////////////////
-		int i=0;	
-		while ( i < 5){
-			int PosYMina = (int)(Math.random()*2+1);
-			int PosXMina = (int)(Math.random()*4+1);
-			if (mapaMinasActivas[PosXMina][PosYMina].equals("1")){
-			i=i-1;
+
+		int minasColocadas = 0;
+		while (minasColocadas < 5){
+			int fila = (int)(Math.random()*5+1);
+			int columna = (int)(Math.random()*7+1);
+			if (!mapaMinasActivas[fila][columna].equals("1")){
+				mapaMinasActivas[fila][columna]="1";
+				minasColocadas++;
 			}
-			else {
-				mapaMinasActivas[PosXMina+1][PosYMina+1]="1";
-			}
-			i++;
 		}
 	
 		int posX=0, posY=0, juegoEncendido=1, valoresCorrectos, contadorMapa=0, contadorMinas=0;
