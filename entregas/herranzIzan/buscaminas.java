@@ -35,28 +35,17 @@ public class buscaminas{
 	
 	
 	
-		posa = (int)((Math.random()*5) + 1);
-posb = (int)((Math.random()*7) + 1);
-tablero[posa][posb] = "MM";
+		int colocadas = 0;
+while (colocadas < 5) {
+    posa = (int)((Math.random() * 5) + 1);
+    posb = (int)((Math.random() * 7) + 1);
 
-		
-		posa = (int)((Math.random()*5) + 1);
-posb = (int)((Math.random()*7) + 1);
-tablero[posa][posb] = "MM";
+    if (!"MM".equals(tablero[posa][posb])) {
+        tablero[posa][posb] = "MM";
+        colocadas++;
+    }
+}
 
-		
-		posa = (int)((Math.random()*5) + 1);
-posb = (int)((Math.random()*7) + 1);
-tablero[posa][posb] = "MM";
-
-		
-		posa = (int)((Math.random()*5) + 1);
-posb = (int)((Math.random()*7) + 1);
-tablero[posa][posb] = "MM";
-
-		posa = (int)((Math.random()*5) + 1);
-posb = (int)((Math.random()*7) + 1);
-tablero[posa][posb] = "MM";
 
 		
 		
