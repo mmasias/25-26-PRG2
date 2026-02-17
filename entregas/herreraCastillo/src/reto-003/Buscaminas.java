@@ -1,3 +1,6 @@
+import java.util.Scanner;
+
+
 public class Buscaminas {
 
     static final int TOTAL_FILAS = 5;
@@ -6,6 +9,7 @@ public class Buscaminas {
     static final int MAXIMO_EXPLOSIONES = 3;
 
     public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
 
         boolean[][] mapaMinas = new boolean[TOTAL_FILAS][TOTAL_COLUMNAS ];
         char[][] tableroVisual = new char[TOTAL_FILAS][TOTAL_COLUMNAS];
@@ -16,8 +20,24 @@ public class Buscaminas {
         inicializarTableroVisual(tableroVisual);
         dibujarTablero(tableroVisual);
 
+        int filaElegida = leerCoordenada("Ingrese X", TOTAL_FILAS, entrada);
+        int columnaElegida = leerCoordenada("Ingrese Y", TOTAL_COLUMNAS, entrada);
+
     }
 
+    public static int leerCoordenada(String mensaje, int limite, Scanner entrada) {
+        int valor = 0;
+        boolean esValido = false;
+        while (!esValido) {
+            System.out.println(mensaje);
+            valor = entrada.nextInt();
+            if (valor >= 1 && valor <= limite) {
+                esValido = true;
+            }
+        }
+        return valor - 1;
+    }
+    
     public static void colocarMinas(boolean[][] mapa) {
         int minasColocadas = 0;
 
@@ -31,8 +51,6 @@ public class Buscaminas {
             }
         }
     }
-    
-
     public static int generarNumeroAleatorio(int maximo) {
         return (int) (Math.random() * maximo);
     }
