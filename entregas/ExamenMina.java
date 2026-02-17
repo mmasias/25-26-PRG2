@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class ExamenMina{
 
 	static String[][] mapaMinasMostrar = 	
-		{ //[0][0]	[0][1]	[0][2]	[0][3]	[0][4]	[0][5]	[0][6]	[0][7]
+		{
 			{" ",	"1", 	"2", 	"3", 	"4",	"5",	"6", 	"7"},
 			{"1", 	"-", 	"-", 	"-", 	"-", 	"-", 	"-",	"-"},
 			{"2", 	"-", 	"-",	"-", 	"-", 	"-", 	"-",	"-"},
@@ -13,7 +13,7 @@ public class ExamenMina{
 		};
 		
 	static String[][] mapaMinasActivas = 	
-		{ //[0][0]	[0][1]	[0][2]	[0][3]	[0][4]	[0][5]	[0][6]	[0][7]
+		{
 			{" ",	"1", 	"2", 	"3", 	"4",	"5",	"6", 	"7"},
 			{"1", 	"0", 	"0", 	"0", 	"0", 	"0", 	"0",	"0"},
 			{"2", 	"0", 	"0",	"0", 	"0", 	"0", 	"0",	"0"},
@@ -22,31 +22,25 @@ public class ExamenMina{
 			{"5", 	"0", 	"0",	"0", 	"0", 	"0", 	"0",	"0"}
 		};
 
-	//Posiciones Random de la mina
 	public static void main(String[] args){	
 	Scanner scan = new Scanner(System.in);
-		///////////////////////////
 
-		// -------- GENERACION CORRECTA DE MINAS --------
 		int i=0;	
 		while (i < 5){
 
-			int PosXMina = (int)(Math.random()*5 + 1); // filas 1-5
-			int PosYMina = (int)(Math.random()*7 + 1); // columnas 1-7
+			int PosXMina = (int)(Math.random()*5 + 1);
+			int PosYMina = (int)(Math.random()*7 + 1);
 
-			// si ya hay mina, repetir
 			if (mapaMinasActivas[PosXMina][PosYMina].equals("1")){
 				continue;
 			}
 
-			// colocar mina
 			mapaMinasActivas[PosXMina][PosYMina] = "1";
 			i++;
 		}
 	
 		int posX=0, posY=0, juegoEncendido=1, valoresCorrectos, contadorMapa=0, contadorMinas=0;
 
-		/////////////Comienza el juego
 		while(juegoEncendido==1){
 
 			for( i = 0; i<mapaMinasMostrar.length; i++){            
@@ -56,13 +50,15 @@ public class ExamenMina{
 				System.out.println();
 			}
 
-			valoresCorrectos=0;//reseteo de la variable
+			valoresCorrectos=0;
 			while(valoresCorrectos==0){
 				System.out.println(" ");
-				System.out.println("Ingrese X");
-				posY = scan.nextInt();
-				System.out.println("Ingrese Y");
+
+				System.out.println("Ingrese FILA (1-5)");
 				posX = scan.nextInt();
+
+				System.out.println("Ingrese COLUMNA (1-7)");
+				posY = scan.nextInt();
 
 				if(posX>5 || posX<1){
 					valoresCorrectos=0;
@@ -82,11 +78,9 @@ public class ExamenMina{
 			else if(mapaMinasActivas[posX][posY].equals("0")){
 				mapaMinasMostrar[posX][posY]=".";
 			}
-			else{
-				System.out.println("No es correcta esa opcion.");
-			}
 			
 			contadorMapa++;
+
 			if(contadorMinas>2){
 				juegoEncendido=0;
 				System.out.println("Has perdido");
