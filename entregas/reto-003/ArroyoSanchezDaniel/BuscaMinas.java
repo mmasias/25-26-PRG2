@@ -1,7 +1,9 @@
 public class BuscaMinas {
-    final int MINAS_TOTALES = 5;
-    int posicionMinas[][] = new int[5][7];
-    int tableroVisible[][] = new int[5][7];
-    int minasDescubiertas = 0; 
-
+    public static void main(String[] args) {
+        final int MINAS_TOTALES = 5;
+        int posicionMinas[][] = new int[5][7];
+        int tableroVisible[][] = new int[5][7];
+        int minasDescubiertas = 0; 
+    
+    }
 }
