@@ -76,6 +76,10 @@ posy=sc.nextInt();
     System.out.println("Coordenadas fuera de rango. X debe ser 1-5 y Y debe ser 1-7.");
     continue;
 }
+if (!"  ".equals(tablero2[posx][posy])) {
+    System.out.println("Esa casilla ya estaba revelada. Elige otra.");
+    continue;
+}
 
 	
 	if ("  ".equals(tablero[posx][posy])) {
