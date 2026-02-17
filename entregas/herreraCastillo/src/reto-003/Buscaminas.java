@@ -16,7 +16,25 @@ public class Buscaminas {
         inicializarTableroVisual(tableroVisual);
         dibujarTablero(tableroVisual);
 
+    }
 
+    public static void colocarMinas(boolean[][] mapa) {
+        int minasColocadas = 0;
+
+        while (minasColocadas < CANTIDAD_MINAS) {
+            int filaAleatoria = generarNumeroAleatorio(TOTAL_FILAS);
+            int columnaAleatoria = generarNumeroAleatorio(TOTAL_COLUMNAS);
+
+            if (!mapa[filaAleatoria][columnaAleatoria]) {
+                mapa[filaAleatoria][columnaAleatoria] = true;
+                minasColocadas++;
+            }
+        }
+    }
+    
+
+    public static int generarNumeroAleatorio(int maximo) {
+        return (int) (Math.random() * maximo);
     }
 
     public static void inicializarTableroVisual(char[][] tablero) {
