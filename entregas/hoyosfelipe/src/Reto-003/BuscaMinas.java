@@ -89,4 +89,27 @@ public class BuscaMinas {
             return false;
         }
     }
-}
+    
+    static boolean verificarFinDeJuego(int minasExplotadas) {
+        if (minasExplotadas >= MAX_EXPLOSIONES) {
+            System.out.println("Has perdido! Explotaron 3 minas");
+            return true;
+        }
+        
+        int casillasLibres = 0;
+        for (int fila = 0; fila < FILAS; fila++) {
+            for (int columna = 0; columna < COLUMNAS; columna++) {
+                if (tableroVisible[fila][columna] == '.') {
+                    casillasLibres++;
+                }
+            }
+        }
+        
+        if (casillasLibres == (FILAS * COLUMNAS - TOTAL_MINAS)) {
+            System.out.println("Felicidades! Has ganado!");
+            return true;
+        }
+        
+        return false;
+    }
+}   
