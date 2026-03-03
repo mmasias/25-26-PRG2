@@ -2,6 +2,13 @@
 
 > *Entiéndase "deberíamos saber" como una combinación de "nos debería sonar", "no nos debería sorprender", "deberíamos conocer", "deberíamos saber manejar", en función del tema abordado. En cualquier caso, lo mínimo es "no nos debería sorprender" y deberíamos poder tener una mínima conversación o lectura sobre estos temas.*
 
+## 20 feb
+
+- Sistemas complejos y por qué necesitamos software
+- Los 4 pilares: abstracción, encapsulación, modularización, jerarquización
+- Evolución histórica de los lenguajes hasta POO: POO = TAD + herencia + polimorfismo
+- Conceptos básicos: clase, objeto, mensaje, método, atributo, estado / Vista pública (interfaz) & vista privada (implementación)
+
 ## 10 y 13 feb
 
 - Qué hacer ante un código heredado
