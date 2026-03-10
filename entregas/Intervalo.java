@@ -60,7 +60,12 @@ class Intervalo {
 
     public Intervalo interseccion(Intervalo intervalo)
 
-    public boolean intersecta(Intervalo intervalo)
+    public boolean intersecta(Intervalo intervalo){
+             return this.incluye(intervalo.puntoMedio - intervalo.longitud / 2) ||
+               this.incluye(intervalo.puntoMedio + intervalo.longitud / 2) ||
+               intervalo.incluye(this.puntoMedio - this.longitud / 2) ||
+               intervalo.incluye(this.puntoMedio + this.longitud / 2);
+    }
 
     public void oponer()
 
