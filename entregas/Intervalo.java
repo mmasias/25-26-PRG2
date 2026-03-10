@@ -16,5 +16,6 @@ public class Intervalo {
     public Intervalo interseccion(Intervalo intervalo)
     public boolean intersecta(Intervalo intervalo)
     public void oponer()
+    public void doblar()
 
 }
