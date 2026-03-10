@@ -11,5 +11,6 @@ public class Intervalo {
     public void desplazar (double desplazamiento)
     public Intervalo desplazado(double desplazamiento)
     public boolean incluye(double punto)
+    public boolean incluye(Intervalo intervalo)
 
 }
