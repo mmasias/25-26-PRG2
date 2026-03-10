@@ -37,15 +37,21 @@ class Intervalo {
 
     public void desplazar (double desplazamiento){
         puntoMedio = puntoMedio + desplazamiento;
-    }
+    };
 
     public Intervalo desplazado(double desplazamiento){
         return new Intervalo(puntoMedio + desplazamiento, longitud);
-    }
+    };
 
-    public boolean incluye(double punto)
+    public boolean incluye(double punto){
+        return punto >= puntoMedio - longitud / 2 &&
+               punto <= puntoMedio + longitud / 2;
+    };
 
-    public boolean incluye(Intervalo intervalo)
+    public boolean incluye(Intervalo intervalo){
+        return this.incluye(intervalo.puntoMedio - intervalo.longitud / 2) &&
+               this.incluye(intervalo.puntoMedio + intervalo.longitud / 2);
+    };
 
     public boolean equals(Intervalo intervalo)
 
