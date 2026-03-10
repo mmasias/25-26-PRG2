@@ -6,5 +6,6 @@ public class Intervalo {
     public Intervalo (Intervalo intervalo)
 
     public Intervalo clone()
+    public double longitud()
 
 }
