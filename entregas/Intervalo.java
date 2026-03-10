@@ -8,5 +8,6 @@ public class Intervalo {
     public Intervalo clone()
     public double longitud()
     public double puntoMedio()
+    public void desplazar (double desplazamiento)
 
 }
