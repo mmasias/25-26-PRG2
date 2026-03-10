@@ -1,4 +1,6 @@
-public class Intervalo {
+package visas.intervalo;
+
+class Intervalo {
 
     public Intervalo (double puntoMedio, double longitud)
     public Intervalo (double longitud)
