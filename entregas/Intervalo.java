@@ -2,6 +2,10 @@ package visas.intervalo;
 
 class Intervalo {
 
+    private double puntoMedio;
+    private double longitud;
+    
+
     public Intervalo (double puntoMedio, double longitud)
     public Intervalo (double longitud)
     public Intervalo ()
