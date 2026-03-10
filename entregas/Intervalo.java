@@ -58,14 +58,30 @@ class Intervalo {
                longitud == intervalo.longitud;
     }
 
-    public Intervalo interseccion(Intervalo intervalo)
+    public Intervalo interseccion(Intervalo intervalo){
+           if (!this.intersecta(intervalo)) {
+        return null;
+    }
+
+    double inf1 = puntoMedio - longitud/2;
+    double sup1 = puntoMedio + longitud/2;
+
+    double inf2 = intervalo.puntoMedio - intervalo.longitud/2;
+    double sup2 = intervalo.puntoMedio + intervalo.longitud/2;
+
+    double nuevoInferior = Math.max(inf1, inf2);
+    double nuevoSuperior = Math.min(sup1, sup2);
+
+    return new Intervalo((nuevoInferior + nuevoSuperior)/2,
+    
+    };
 
     public boolean intersecta(Intervalo intervalo){
              return this.incluye(intervalo.puntoMedio - intervalo.longitud / 2) ||
                this.incluye(intervalo.puntoMedio + intervalo.longitud / 2) ||
                intervalo.incluye(this.puntoMedio - this.longitud / 2) ||
                intervalo.incluye(this.puntoMedio + this.longitud / 2);
-    }
+    };
 
     public void oponer()
 
