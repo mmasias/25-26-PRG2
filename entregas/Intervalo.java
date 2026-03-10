@@ -18,5 +18,6 @@ public class Intervalo {
     public void oponer()
     public void doblar()
     public void mostrar()
+    public void recoger()
 
 }
