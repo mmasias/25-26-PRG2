@@ -29,13 +29,19 @@ class Intervalo {
 
     public double longitud() {
         return this.longitud;
+    };
+
+    public double puntoMedio(){
+        return puntoMedio;
+    };
+
+    public void desplazar (double desplazamiento){
+        puntoMedio = puntoMedio + desplazamiento;
     }
 
-    public double puntoMedio()
-
-    public void desplazar (double desplazamiento)
-
-    public Intervalo desplazado(double desplazamiento)
+    public Intervalo desplazado(double desplazamiento){
+        return new Intervalo(puntoMedio + desplazamiento, longitud);
+    }
 
     public boolean incluye(double punto)
 
