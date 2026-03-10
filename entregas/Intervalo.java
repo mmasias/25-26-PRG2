@@ -83,12 +83,22 @@ class Intervalo {
                intervalo.incluye(this.puntoMedio + this.longitud / 2);
     };
 
-    public void oponer()
+    public void oponer(){
+        puntoMedio = -puntoMedio;
+    }
 
-    public void doblar()
+    public void doblar(){
+        longitud = longitud * 2;
+    }
 
-    public void mostrar()
+    public void mostrar(){
+        System.out.println("[" + (puntoMedio - longitud / 2) + ", " + (puntoMedio + longitud / 2) + "]");
+    }
 
-    public void recoger()
+    public void recoger(){
+        if (longitud < 0) {
+            longitud = -longitud;
+        }
+    }
 
 }
