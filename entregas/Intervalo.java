@@ -4,5 +4,7 @@ public class Intervalo {
     public Intervalo (double longitud)
     public Intervalo ()
     public Intervalo (Intervalo intervalo)
-    
+
+    public Intervalo clone()
+
 }
