@@ -9,5 +9,6 @@ public class Intervalo {
     public double longitud()
     public double puntoMedio()
     public void desplazar (double desplazamiento)
+    public Intervalo desplazado(double desplazamiento)
 
 }
