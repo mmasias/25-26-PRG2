@@ -18,11 +18,14 @@ class Intervalo {
     public Intervalo (){
         this(0,0);
     }
+
     public Intervalo (Intervalo intervalo){
         this(intervalo.puntoMedio, intervalo.longitud);
     }
 
-    public Intervalo clone()
+    public Intervalo clone(){
+        return new Intervalo(this);
+    }
 
     public double longitud()
 
