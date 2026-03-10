@@ -53,7 +53,10 @@ class Intervalo {
                this.incluye(intervalo.puntoMedio + intervalo.longitud / 2);
     };
 
-    public boolean equals(Intervalo intervalo)
+    public boolean equals(Intervalo intervalo){
+           return puntoMedio == intervalo.puntoMedio &&
+               longitud == intervalo.longitud;
+    }
 
     public Intervalo interseccion(Intervalo intervalo)
 
