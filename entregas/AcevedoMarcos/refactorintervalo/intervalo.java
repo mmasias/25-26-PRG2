@@ -1,4 +1,4 @@
-package vistas.intervalo;
+package vistasintervalo;
 
 class Intervalo {
 
