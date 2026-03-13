@@ -2,13 +2,13 @@ package vistas.intervalo;
 
 class Intervalo {
 
-    private double superior;
-    private double inferior;
+    private double puntoMedio;
+    private double longitud;
 
     public Intervalo(double inferior, double superior) {
         assert inferior <= superior;
-        this.inferior = inferior;
-        this.superior = superior;
+        longitud = (superior - inferior);
+        puntoMedio = inferior + longitud / 2;
     }
 
     public Intervalo(double superior) {
@@ -20,20 +20,29 @@ class Intervalo {
     }
 
     public Intervalo(Intervalo intervalo) {
-        this(intervalo.inferior, intervalo.superior);
+        this();
+        this.puntoMedio = intervalo.puntoMedio;
+        this.longitud = intervalo.longitud;
     }
 
     public Intervalo clone() {
         return new Intervalo(this);
     }
 
+    private double getSuperior() {
+        return puntoMedio + longitud / 2;
+    }
+
+    private double getInferior() {
+        return puntoMedio - longitud / 2;
+    }
+
     public double longitud() {
-        return superior - inferior;
+        return longitud;
     }
 
     public void desplazar(double desplazamiento) {
-        inferior = inferior + desplazamiento;
-        superior = superior + desplazamiento;
+        this.puntoMedio += desplazamiento;
     }
 
     public Intervalo desplazado(double desplazamiento) {
@@ -44,19 +53,19 @@ class Intervalo {
     }
 
     public boolean incluye(double punto) {
-        return inferior <= punto && punto <= superior;
+        return this.getInferior() <= punto && punto <= this.getSuperior();
     }
 
     public boolean incluye(Intervalo intervalo) {
         assert intervalo != null;
-        return this.incluye(intervalo.inferior) &&
-                this.incluye(intervalo.superior);
+        return this.incluye(intervalo.getInferior()) &&
+                this.incluye(intervalo.getSuperior());
     }
 
     public boolean equals(Intervalo intervalo) {
         assert intervalo != null;
-        return inferior == intervalo.inferior &&
-                superior == intervalo.superior;
+        return this.getInferior() == intervalo.getInferior() &&
+                this.getSuperior() == intervalo.getSuperior();
     }
 
     public Intervalo interseccion(Intervalo intervalo) {
@@ -66,56 +75,57 @@ class Intervalo {
             return intervalo.clone();
         } else if (intervalo.incluye(this)) {
             return this.clone();
-        } else if (this.incluye(intervalo.inferior)) {
-            return new Intervalo(intervalo.inferior, superior);
+        } else if (this.incluye(intervalo.getInferior())) {
+            return new Intervalo(intervalo.getInferior(), getSuperior());
         } else {
-            return new Intervalo(inferior, intervalo.superior);
+            return new Intervalo(getInferior(), intervalo.getSuperior());
         }
     }
 
     public boolean intersecta(Intervalo intervalo) {
         assert intervalo != null;
-        return this.incluye(intervalo.inferior) ||
-                this.incluye(intervalo.superior) ||
+        return this.incluye(intervalo.getInferior()) ||
+                this.incluye(intervalo.getSuperior()) ||
                 intervalo.incluye(this);
     }
 
     public void oponer() {
-        double superiorInicial = superior;
-
-        superior = -inferior;
-        inferior = -superiorInicial;
+        this.puntoMedio = -this.puntoMedio;
     }
 
     public void doblar() {
-        double longitudInicial = this.longitud();
-
-        inferior = inferior - longitudInicial / 2;
-        superior = superior + longitudInicial / 2;
+        longitud = longitud * 2;
     }
 
     public void mostrar() {
         Console console = new Console();
 
-        console.writeln("[" + inferior + "," + superior + "]");
+        console.writeln("[" + this.getInferior() + "," + this.getSuperior() + "]");
     }
 
     public void recoger() {
         Console console = new Console();
         boolean valido = false;
-
+        double inferior, superior;
         do {
             inferior = console.readDouble("Valor inferior?");
             superior = console.readDouble("Valor superior?");
             valido = superior >= inferior;
         } while (!valido);
+        this.set(inferior, superior);
+    }
+
+    private void set(double inferior, double superior) {
+        Intervalo intervalo = new Intervalo(inferior, superior);
+        this.puntoMedio=intervalo.puntoMedio;
+        this.longitud = intervalo.longitud;
     }
 
     public Intervalo[] trocear(int trozos) {
         assert trozos > 1;
 
         Intervalo[] intervalos = new Intervalo[trozos];
-        double inferior = this.inferior;
+        double inferior = this.getInferior();
         double longitud = this.longitud() / trozos;
         for (int i = 0; i < trozos; i++) {
             intervalos[i] = new Intervalo(inferior, inferior + longitud);
@@ -126,12 +136,13 @@ class Intervalo {
 
     public Intervalo union(Intervalo intervalo) {
         assert this.intersecta(intervalo);
-        double nuevoInferior = Math.min(this.inferior, intervalo.inferior);
-        double nuevoSuperior = Math.max(this.superior, intervalo.superior);
+        double nuevoInferior = Math.min(this.getInferior(), intervalo.getInferior());
+        double nuevoSuperior = Math.max(this.getSuperior(), intervalo.getSuperior());
         return new Intervalo(nuevoInferior, nuevoSuperior);
     }
 
     public double puntoMedio() {
-        return inferior + this.longitud() / 2;
+        return this.getInferior() + this.longitud() / 2;
     }
+
 }
