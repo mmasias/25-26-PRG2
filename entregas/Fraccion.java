@@ -9,6 +9,7 @@ public class Fraccion {
         }
         this.numerador = numerador;
         this.denominador = denominador;
+        simplificar();
     }
 
     private int calcularMCD(int a, int b) {
@@ -20,4 +21,15 @@ public class Fraccion {
         return a;
     }
 
+    private void simplificar() {
+        int mcd = calcularMCD(numerador, denominador);
+        numerador = numerador / mcd;
+        denominador = denominador / mcd;
+
+        // Asegurar que el denominador sea positivo
+        if (denominador < 0) {
+            numerador = -numerador;
+            denominador = -denominador;
+        }
+    }
 }
