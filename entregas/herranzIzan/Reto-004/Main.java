@@ -12,5 +12,10 @@ public class Main {
         System.out.println("Resta = " + f1.restar(f2));
         System.out.println("Multiplicación = " + f1.multiplicar(f2));
         System.out.println("División = " + f1.dividir(f2));
+
+        System.out.println("Opuesta de f1 = " + f1.opuesta());
+        System.out.println("Inversa de f2 = " + f2.inversa());
+        System.out.println("Decimal de f1 = " + f1.aDecimal());
+        System.out.println("¿f1 es cero? " + f1.esCero());
     }
 }
