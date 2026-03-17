@@ -3,6 +3,8 @@ public class Main {
         Fraccion f1 = new Fraccion(2, 4);
         Fraccion f2 = new Fraccion(3, 5);
         Fraccion f3 = new Fraccion(-6, -8);
+        Fraccion f4 = new Fraccion(1, 2);
+        Fraccion copia = f1.clone();
 
         System.out.println("f1 = " + f1);
         System.out.println("f2 = " + f2);
@@ -23,5 +25,8 @@ public class Main {
         System.out.println("¿f1 > f2? " + f1.mayorQue(f2));
         System.out.println("¿f1 <= f2? " + f1.menorOIgualQue(f2));
         System.out.println("¿f1 >= f2? " + f1.mayorOIgualQue(f2));
+
+        System.out.println("¿f1 es igual a f4? " + f1.equals(f4));
+        System.out.println("Copia de f1 = " + copia);
     }
 }
