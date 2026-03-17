@@ -89,4 +89,18 @@ public class Fraccion implements Cloneable, Comparable<Fraccion> {
     public double aDecimal() {
         return (double) numerador / denominador;
     }
+
+    @Override
+    public int compareTo(Fraccion f) {
+        long a = (long) this.numerador * f.denominador;
+        long b = (long) f.numerador * this.denominador;
+        return Long.compare(a, b);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Fraccion)) return false;
+        Fraccion f = (Fraccion) obj;
+        return this.numerador == f.numerador && this.denominador == f.denominador;
+    }
 }
