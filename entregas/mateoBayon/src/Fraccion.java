@@ -21,4 +21,15 @@ public class Fraccion implements Cloneable, Comparable<Fraccion> {
 
     public int getNumerador() { return numerador; }
     public int getDenominador() { return denominador; }
+
+    private int mcd(int a, int b) {
+        a = Math.abs(a);
+        b = Math.abs(b);
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
 }
