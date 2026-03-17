@@ -103,4 +103,15 @@ public class Fraccion implements Cloneable, Comparable<Fraccion> {
         Fraccion f = (Fraccion) obj;
         return this.numerador == f.numerador && this.denominador == f.denominador;
     }
+
+    @Override
+    public Fraccion clone() {
+        return new Fraccion(this.numerador, this.denominador);
+    }
+
+    @Override
+    public String toString() {
+        if (denominador == 1) return String.valueOf(numerador);
+        return numerador + "/" + denominador;
+    }
 }
