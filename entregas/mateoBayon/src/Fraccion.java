@@ -32,4 +32,15 @@ public class Fraccion implements Cloneable, Comparable<Fraccion> {
         }
         return a;
     }
+
+    private void simplificar() {
+        int mcd = mcd(numerador, denominador);
+        numerador /= mcd;
+        denominador /= mcd;
+
+        if (denominador < 0) {
+            numerador *= -1;
+            denominador *= -1;
+        }
+    }
 }
