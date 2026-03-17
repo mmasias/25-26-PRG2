@@ -43,7 +43,7 @@ public class Fraccion implements Cloneable, Comparable<Fraccion> {
             denominador *= -1;
         }
     }
-    
+
         public Fraccion sumar(Fraccion f) {
         return new Fraccion(
             this.numerador * f.denominador + f.numerador * this.denominador,
@@ -73,5 +73,20 @@ public class Fraccion implements Cloneable, Comparable<Fraccion> {
             this.numerador * f.denominador,
             this.denominador * f.numerador
         );
+    }
+
+    public Fraccion inversa() {
+        if (numerador == 0) {
+            throw new ArithmeticException("La fracción 0 no tiene inversa.");
+        }
+        return new Fraccion(denominador, numerador);
+    }
+
+    public Fraccion opuesta() {
+        return new Fraccion(-numerador, denominador);
+    }
+
+    public double aDecimal() {
+        return (double) numerador / denominador;
     }
 }
