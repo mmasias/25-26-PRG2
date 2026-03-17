@@ -43,4 +43,35 @@ public class Fraccion implements Cloneable, Comparable<Fraccion> {
             denominador *= -1;
         }
     }
+    
+        public Fraccion sumar(Fraccion f) {
+        return new Fraccion(
+            this.numerador * f.denominador + f.numerador * this.denominador,
+            this.denominador * f.denominador
+        );
+    }
+
+    public Fraccion restar(Fraccion f) {
+        return new Fraccion(
+            this.numerador * f.denominador - f.numerador * this.denominador,
+            this.denominador * f.denominador
+        );
+    }
+
+    public Fraccion multiplicar(Fraccion f) {
+        return new Fraccion(
+            this.numerador * f.numerador,
+            this.denominador * f.denominador
+        );
+    }
+
+    public Fraccion dividir(Fraccion f) {
+        if (f.numerador == 0) {
+            throw new ArithmeticException("No se puede dividir entre cero.");
+        }
+        return new Fraccion(
+            this.numerador * f.denominador,
+            this.denominador * f.numerador
+        );
+    }
 }
