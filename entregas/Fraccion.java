@@ -4,6 +4,9 @@ public class Fraccion {
     private int denominador;
 
     public Fraccion(int numerador, int denominador) {
+        if (denominador == 0) {
+            throw new IllegalArgumentException("El denominador no puede ser 0");
+        }
         this.numerador = numerador;
         this.denominador = denominador;
     }
