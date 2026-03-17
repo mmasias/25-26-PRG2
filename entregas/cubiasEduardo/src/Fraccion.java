@@ -19,6 +19,21 @@ class Fraccion {
     }
 
     public void sumar(int numerador, int denominador){
+        this.sumarFracciones(numerador, denominador);
+    }
+    
+    public void sumar(int numerador){
+        int denominador = 1;
+        this.sumarFracciones(numerador, denominador);
+    }
+
+    public void sumar(){
+        int numerador = 1;
+        int denominador = 1;
+        this.sumarFracciones(numerador, denominador);
+    }
+
+    private void sumarFracciones(int numerador, int denominador){
         if(denominador == this.denominador){
             this.numerador = this.numerador + numerador;
             this.denominador = denominador;
