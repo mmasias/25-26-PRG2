@@ -1,4 +1,4 @@
-public class Fraccion implements Comparable<Fraccion> {
+public class Fraccion implements Comparable<Fraccion>, Cloneable {
 
     private int numerador;
     private int denominador;
@@ -18,6 +18,10 @@ public class Fraccion implements Comparable<Fraccion> {
 
     public Fraccion(int numerador) {
         this(numerador, 1);
+    }
+
+    public Fraccion(Fraccion otra) {
+        this(otra.numerador, otra.denominador);
     }
 
     public int getNumerador() {
@@ -83,7 +87,6 @@ public class Fraccion implements Comparable<Fraccion> {
         return this.numerador == 0;
     }
 
-    @Override
     public int compareTo(Fraccion otra) {
         long izquierda = (long) this.numerador * otra.denominador;
         long derecha = (long) otra.numerador * this.denominador;
@@ -104,6 +107,30 @@ public class Fraccion implements Comparable<Fraccion> {
 
     public boolean mayorOIgualQue(Fraccion otra) {
         return this.compareTo(otra) >= 0;
+    }
+
+    public String toString() {
+        if (denominador == 1) {
+            return String.valueOf(numerador);
+        }
+        return numerador + "/" + denominador;
+    }
+
+    public Fraccion clone() {
+        return new Fraccion(this);
+    }
+
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Fraccion)) return false;
+        Fraccion otra = (Fraccion) obj;
+        return this.numerador == otra.numerador && this.denominador == otra.denominador;
+    }
+
+    public int hashCode() {
+        int resultado = Integer.hashCode(numerador);
+        resultado = 31 * resultado + Integer.hashCode(denominador);
+        return resultado;
     }
 
     private void normalizar() {
