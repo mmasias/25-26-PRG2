@@ -1,4 +1,4 @@
-public class Fraccion {
+public class Fraccion implements Comparable<Fraccion> {
 
     private int numerador;
     private int denominador;
@@ -81,6 +81,29 @@ public class Fraccion {
 
     public boolean esCero() {
         return this.numerador == 0;
+    }
+
+    @Override
+    public int compareTo(Fraccion otra) {
+        long izquierda = (long) this.numerador * otra.denominador;
+        long derecha = (long) otra.numerador * this.denominador;
+        return Long.compare(izquierda, derecha);
+    }
+
+    public boolean menorQue(Fraccion otra) {
+        return this.compareTo(otra) < 0;
+    }
+
+    public boolean mayorQue(Fraccion otra) {
+        return this.compareTo(otra) > 0;
+    }
+
+    public boolean menorOIgualQue(Fraccion otra) {
+        return this.compareTo(otra) <= 0;
+    }
+
+    public boolean mayorOIgualQue(Fraccion otra) {
+        return this.compareTo(otra) >= 0;
     }
 
     private void normalizar() {
