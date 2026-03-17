@@ -7,5 +7,10 @@ public class Main {
         System.out.println("f1 = " + f1);
         System.out.println("f2 = " + f2);
         System.out.println("f3 = " + f3);
+
+        System.out.println("Suma = " + f1.sumar(f2));
+        System.out.println("Resta = " + f1.restar(f2));
+        System.out.println("Multiplicación = " + f1.multiplicar(f2));
+        System.out.println("División = " + f1.dividir(f2));
     }
 }
