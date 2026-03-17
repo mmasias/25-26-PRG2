@@ -41,6 +41,29 @@ public class Fraccion {
         normalizar();
     }
 
+    public Fraccion sumar(Fraccion otra) {
+        int nuevoNumerador = this.numerador * otra.denominador + otra.numerador * this.denominador;
+        int nuevoDenominador = this.denominador * otra.denominador;
+        return new Fraccion(nuevoNumerador, nuevoDenominador);
+    }
+
+    public Fraccion restar(Fraccion otra) {
+        int nuevoNumerador = this.numerador * otra.denominador - otra.numerador * this.denominador;
+        int nuevoDenominador = this.denominador * otra.denominador;
+        return new Fraccion(nuevoNumerador, nuevoDenominador);
+    }
+
+    public Fraccion multiplicar(Fraccion otra) {
+        return new Fraccion(this.numerador * otra.numerador, this.denominador * otra.denominador);
+    }
+
+    public Fraccion dividir(Fraccion otra) {
+        if (otra.numerador == 0) {
+            throw new ArithmeticException("No se puede dividir entre 0.");
+        }
+        return new Fraccion(this.numerador * otra.denominador, this.denominador * otra.numerador);
+    }
+
     private void normalizar() {
         if (denominador < 0) {
             numerador = -numerador;
