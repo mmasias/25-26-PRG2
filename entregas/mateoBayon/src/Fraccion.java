@@ -18,4 +18,7 @@ public class Fraccion implements Cloneable, Comparable<Fraccion> {
     public Fraccion() {
         this(0, 1);
     }
+
+    public int getNumerador() { return numerador; }
+    public int getDenominador() { return denominador; }
 }
