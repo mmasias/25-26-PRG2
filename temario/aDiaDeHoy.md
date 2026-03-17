@@ -2,6 +2,24 @@
 
 > *Entiéndase "deberíamos saber" como una combinación de "nos debería sonar", "no nos debería sorprender", "deberíamos conocer", "deberíamos saber manejar", en función del tema abordado. En cualquier caso, lo mínimo es "no nos debería sorprender" y deberíamos poder tener una mínima conversación o lectura sobre estos temas.*
 
+## 3 feb
+
+- Consideraciones básicas de diseño de vistas públicas
+
+## 27 feb
+
+- Clases de soporte: clase Console y fundamentos de la clase String
+- Vista pública de objetos:
+  - Creación de objetos, referencia a un objeto, vectores de objetos, referencia a un vector de referencias a objetos
+  - Paso de mensajes
+
+## 24 feb
+
+- Vista pública de clases:
+  - Nombre de la clase
+  - Cabecera de métodos de la clase, sobrecarga de métodos
+  - Constructores
+
 ## 20 feb
 
 - Sistemas complejos y por qué necesitamos software
