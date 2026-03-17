@@ -17,5 +17,11 @@ public class Main {
         System.out.println("Inversa de f2 = " + f2.inversa());
         System.out.println("Decimal de f1 = " + f1.aDecimal());
         System.out.println("¿f1 es cero? " + f1.esCero());
+
+        System.out.println("compareTo entre f1 y f2 = " + f1.compareTo(f2));
+        System.out.println("¿f1 < f2? " + f1.menorQue(f2));
+        System.out.println("¿f1 > f2? " + f1.mayorQue(f2));
+        System.out.println("¿f1 <= f2? " + f1.menorOIgualQue(f2));
+        System.out.println("¿f1 >= f2? " + f1.mayorOIgualQue(f2));
     }
 }
