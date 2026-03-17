@@ -1,0 +1,129 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Buscaminas {
+    static final int FILAS = 5;
+    static final int COLUMNAS = 7;
+    static final int TOTAL_MINAS = 5;
+    static final int EXPLOSIONES_PERMITIDAS = 3;
+    static final int CASILLAS_SIN_MINAS = FILAS * COLUMNAS - TOTAL_MINAS;
+    static Scanner sc = new Scanner(System.in);
+    
+    public static void main(String[] args) {
+        char[][] tableroVisible = new char[FILAS][COLUMNAS];
+        boolean[][] tableroMinas = new boolean[FILAS][COLUMNAS];
+
+for (int i = 0; i < FILAS; i++) {
+            for (int j = 0; j < COLUMNAS; j++) {
+                tableroVisible[i][j] = '-';
+            }
+        }
+        
+        colocarMinas(tableroMinas);
+        
+        int explosiones = 0;
+        int casillasLiberadas = 0;
+        
+        System.out.println("=== BUSCAMINAS ===");
+        System.out.println("Debes evitar que te exploten " + EXPLOSIONES_PERMITIDAS + " minas.");
+        System.out.println();
+        mostrarTablero(tableroVisible);
+    
+        while (explosiones < EXPLOSIONES_PERMITIDAS && casillasLiberadas < CASILLAS_SIN_MINAS) {
+            int[] coords = obtenerCoordenadas();
+            int x = coords[0];
+            int y = coords[1];
+            
+            if (tableroVisible[y][x] != '-') {
+                System.out.println("Esta casilla ya fue descubierta. Intente otra.");
+                continue;
+            }
+            
+            String resultado = verificarCasilla(x, y, tableroMinas, tableroVisible);
+            
+            if (resultado.equals("mina")) {
+                explosiones++;
+                System.out.println("Te han explotado " + explosiones + " de " + EXPLOSIONES_PERMITIDAS + " minas permitidas.");
+                
+                if (explosiones >= EXPLOSIONES_PERMITIDAS) {
+                    System.out.println("\n¡PERDISTE! Te explotaron 3 minas.");
+                    break;
+                }
+                } else {
+                casillasLiberadas++;
+                System.out.println("Casillas restantes: " + (CASILLAS_SIN_MINAS - casillasLiberadas));
+            }
+            
+            mostrarTablero(tableroVisible);
+        }
+              if (casillasLiberadas >= CASILLAS_SIN_MINAS) {
+            System.out.println("\n¡FELICIDADES! Liberaste todas las casillas sin minas. ¡GANASTE!");
+        }
+        
+        sc.close();
+    }
+    
+    public static void mostrarTablero(char[][] tablero) {
+        System.out.println("================");
+        System.out.println("  1 2 3 4 5 6 7");
+        for (int i = 0; i < FILAS; i++) {
+            System.out.print((i + 1) + " ");
+            for (int j = 0; j < COLUMNAS; j++) {
+                System.out.print(tablero[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("================");
+    }
+
+    public static void colocarMinas(boolean[][] minas) {
+        Random rand = new Random();
+        int minasColocadas = 0;
+        
+        while (minasColocadas < TOTAL_MINAS) {
+            int fila = rand.nextInt(FILAS);
+            int columna = rand.nextInt(COLUMNAS);
+            
+            if (!minas[fila][columna]) {
+                minas[fila][columna] = true;
+                minasColocadas++;
+            }
+        }
+    }
+    public static int[] obtenerCoordenadas() {
+        int[] coordenadas = new int[2];
+        
+        while (true) {
+            try {
+                System.out.print("Ingrese X: ");
+                int x = sc.nextInt() - 1;
+                System.out.print("Ingrese Y: ");
+                int y = sc.nextInt() - 1;
+                
+                if (x >= 0 && x < COLUMNAS && y >= 0 && y < FILAS) {
+                    coordenadas[0] = x;
+                    coordenadas[1] = y;
+                    return coordenadas;
+                } else {
+                    System.out.println("Coordenadas fuera del tablero. Intente nuevamente.");
+                }
+            } catch (Exception e) {
+                System.out.println("Por favor, ingrese números válidos.");
+                sc.nextLine();
+            }
+        }
+    }
+    public static String verificarCasilla(int x, int y, boolean[][] tableroMinas, char[][] tableroVisible) {
+        System.out.println("----------------");
+        
+        if (tableroMinas[y][x]) {
+            tableroVisible[y][x] = '*';
+            System.out.println("Mina!");
+            return "mina";
+        } else {
+            tableroVisible[y][x] = '.';
+            System.out.println("Libre!");
+            return "libre";
+        }
+    }
+}
