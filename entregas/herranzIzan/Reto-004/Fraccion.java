@@ -13,6 +13,7 @@ public class Fraccion {
         }
         this.numerador = numerador;
         this.denominador = denominador;
+        normalizar();
     }
 
     public Fraccion(int numerador) {
@@ -25,6 +26,7 @@ public class Fraccion {
 
     public void setNumerador(int numerador) {
         this.numerador = numerador;
+        normalizar();
     }
 
     public int getDenominador() {
@@ -36,5 +38,31 @@ public class Fraccion {
             throw new IllegalArgumentException("El denominador no puede ser 0.");
         }
         this.denominador = denominador;
+        normalizar();
+    }
+
+    private void normalizar() {
+        if (denominador < 0) {
+            numerador = -numerador;
+            denominador = -denominador;
+        }
+
+        if (numerador == 0) {
+            denominador = 1;
+            return;
+        }
+
+        int mcd = calcularMCD(Math.abs(numerador), Math.abs(denominador));
+        numerador /= mcd;
+        denominador /= mcd;
+    }
+
+    private int calcularMCD(int a, int b) {
+        while (b != 0) {
+            int temporal = b;
+            b = a % b;
+            a = temporal;
+        }
+        return a;
     }
 }
