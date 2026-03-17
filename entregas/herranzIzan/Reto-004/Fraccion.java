@@ -18,4 +18,23 @@ public class Fraccion {
     public Fraccion(int numerador) {
         this(numerador, 1);
     }
+
+    public int getNumerador() {
+        return numerador;
+    }
+
+    public void setNumerador(int numerador) {
+        this.numerador = numerador;
+    }
+
+    public int getDenominador() {
+        return denominador;
+    }
+
+    public void setDenominador(int denominador) {
+        if (denominador == 0) {
+            throw new IllegalArgumentException("El denominador no puede ser 0.");
+        }
+        this.denominador = denominador;
+    }
 }
