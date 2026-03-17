@@ -64,6 +64,25 @@ public class Fraccion {
         return new Fraccion(this.numerador * otra.denominador, this.denominador * otra.numerador);
     }
 
+    public Fraccion opuesta() {
+        return new Fraccion(-this.numerador, this.denominador);
+    }
+
+    public Fraccion inversa() {
+        if (this.numerador == 0) {
+            throw new ArithmeticException("La fracción 0 no tiene inversa.");
+        }
+        return new Fraccion(this.denominador, this.numerador);
+    }
+
+    public double aDecimal() {
+        return (double) this.numerador / this.denominador;
+    }
+
+    public boolean esCero() {
+        return this.numerador == 0;
+    }
+
     private void normalizar() {
         if (denominador < 0) {
             numerador = -numerador;
