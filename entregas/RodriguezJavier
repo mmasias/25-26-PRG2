@@ -1,0 +1,82 @@
+public class Fraccion {
+    private int numerador;
+    private int denominador;
+
+    public Fraccion(int numerador, int denominador) {
+        if (denominador == 0) {
+            throw new IllegalArgumentException("Denominador no puede ser 0");
+        }
+        this.numerador = numerador;
+        this.denominador = denominador;
+    }
+
+    public Fraccion sumar(Fraccion f) {
+        int num = this.numerador * f.denominador + f.numerador * this.denominador;
+        int den = this.denominador * f.denominador;
+        return new Fraccion(num, den);
+    }
+
+    public Fraccion restar(Fraccion f) {
+        int num = this.numerador * f.denominador - f.numerador * this.denominador;
+        int den = this.denominador * f.denominador;
+        return new Fraccion(num, den);
+    }
+
+    public Fraccion multiplicar(Fraccion f) {
+        return new Fraccion(
+            this.numerador * f.numerador,
+            this.denominador * f.denominador
+        );
+    }
+
+    public Fraccion dividir(Fraccion f) {
+        return new Fraccion(
+            this.numerador * f.denominador,
+            this.denominador * f.numerador
+        );
+    }
+
+    public Fraccion opuesta() {
+        return new Fraccion(-this.numerador, this.denominador);
+    }
+
+    public Fraccion inversa() {
+        return new Fraccion(this.denominador, this.numerador);
+    }
+    public double aDecimal() {
+    return (double) numerador / denominador;
+    
+    @Override
+    public String toString() {
+    return numerador + "/" + denominador;
+    }
+    
+    public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (!(obj instanceof Fraccion)) return false;
+
+    Fraccion f = (Fraccion) obj;
+    return this.numerador * f.denominador == f.numerador * this.denominador;
+    }
+
+    public int compareTo(Fraccion f) {
+    int a = this.numerador * f.denominador;
+    int b = f.numerador * this.denominador;
+    return Integer.compare(a, b);
+    }
+
+    private int mcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+    }
+
+    private void simplificar() {
+    int mcd = mcd(Math.abs(numerador), Math.abs(denominador));
+    numerador /= mcd;
+    denominador /= mcd;
+    }
+}
