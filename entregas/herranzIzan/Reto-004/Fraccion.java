@@ -21,7 +21,9 @@ public class Fraccion implements Comparable<Fraccion>, Cloneable {
     }
 
     public Fraccion(Fraccion otra) {
-        this(otra.numerador, otra.denominador);
+        validarFraccion(otra);
+        this.numerador = otra.numerador;
+        this.denominador = otra.denominador;
     }
 
     public int getNumerador() {
@@ -46,22 +48,26 @@ public class Fraccion implements Comparable<Fraccion>, Cloneable {
     }
 
     public Fraccion sumar(Fraccion otra) {
+        validarFraccion(otra);
         int nuevoNumerador = this.numerador * otra.denominador + otra.numerador * this.denominador;
         int nuevoDenominador = this.denominador * otra.denominador;
         return new Fraccion(nuevoNumerador, nuevoDenominador);
     }
 
     public Fraccion restar(Fraccion otra) {
+        validarFraccion(otra);
         int nuevoNumerador = this.numerador * otra.denominador - otra.numerador * this.denominador;
         int nuevoDenominador = this.denominador * otra.denominador;
         return new Fraccion(nuevoNumerador, nuevoDenominador);
     }
 
     public Fraccion multiplicar(Fraccion otra) {
+        validarFraccion(otra);
         return new Fraccion(this.numerador * otra.numerador, this.denominador * otra.denominador);
     }
 
     public Fraccion dividir(Fraccion otra) {
+        validarFraccion(otra);
         if (otra.numerador == 0) {
             throw new ArithmeticException("No se puede dividir entre 0.");
         }
@@ -88,6 +94,7 @@ public class Fraccion implements Comparable<Fraccion>, Cloneable {
     }
 
     public int compareTo(Fraccion otra) {
+        validarFraccion(otra);
         long izquierda = (long) this.numerador * otra.denominador;
         long derecha = (long) otra.numerador * this.denominador;
         return Long.compare(izquierda, derecha);
@@ -156,5 +163,11 @@ public class Fraccion implements Comparable<Fraccion>, Cloneable {
             a = temporal;
         }
         return a;
+    }
+
+    private void validarFraccion(Fraccion fraccion) {
+        if (fraccion == null) {
+            throw new IllegalArgumentException("La fracción no puede ser null.");
+        }
     }
 }
