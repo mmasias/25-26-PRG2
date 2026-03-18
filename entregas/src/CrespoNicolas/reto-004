@@ -1,0 +1,69 @@
+public class Fraccion {
+    private int numerador;
+    private int denominador;
+
+    public Fraccion(int numerador, int denominador) {
+        this.numerador = numerador;
+        this.denominador = denominador;
+        this.simplificar();
+    }
+    private void simplificar() {
+        int mcd = mcd(numerador, denominador);
+        numerador = numerador / mcd;
+        denominador = denominador / mcd;
+    }
+    private int mcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return mcd(b, a % b);
+    }
+    public  void invertir() {
+        int viejonumerador = numerador;
+        numerador = denominador;
+        denominador = viejonumerador;
+    }
+    public double decimal() {
+        return (double) numerador / denominador;
+    }
+    public String toString() {
+        return numerador + "/" + denominador;
+    }
+    public void hacerOpuesta() {
+        numerador = -numerador;
+    }
+
+    public Fraccion sumar(Fraccion otra) {
+        int nuevoNumerador = this.numerador * otra.denominador + otra.numerador * this.denominador;
+        int nuevoDenominador = this.denominador * otra.denominador;
+       
+        return new Fraccion(nuevoNumerador, nuevoDenominador);
+    }
+    public Fraccion restar(Fraccion otra) {
+        int nuevoNumerador = this.numerador * otra.denominador - otra.numerador * this.denominador;
+        int nuevoDenominador = this.denominador * otra.denominador;
+        return new Fraccion(nuevoNumerador, nuevoDenominador);
+    }
+    public Fraccion multiplicar(Fraccion otra) {
+        int nuevoNumerador = this.numerador * otra.numerador;
+        int nuevoDenominador = this.denominador * otra.denominador;
+        return new Fraccion(nuevoNumerador, nuevoDenominador);
+    }
+    public Fraccion dividir(Fraccion otra) {
+        int nuevoNumerador = this.numerador * otra.denominador;
+        int nuevoDenominador = this.denominador * otra.numerador;
+        return new Fraccion(nuevoNumerador, nuevoDenominador);
+    }
+    public String comparar(Fraccion otra) {
+        if (this.decimal() > otra.decimal()) {
+            return "La primera fracción es mayor que la segunda.";
+        } else if (this.decimal() < otra.decimal()) {
+            return "La primera fracción es menor que la segunda.";
+        } else {
+            return "Ambas fracciones son iguales.";
+        }
+    }
+    public Fraccion clone() {
+    return new Fraccion(this.numerador, this.denominador);
+}
+}
