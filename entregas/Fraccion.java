@@ -23,13 +23,59 @@ public class Fraccion {
 
     private void simplificar() {
         int mcd = calcularMCD(numerador, denominador);
-        numerador = numerador / mcd;
-        denominador = denominador / mcd;
+        numerador /= mcd;
+        denominador /= mcd;
 
-        // Asegurar que el denominador sea positivo
         if (denominador < 0) {
             numerador = -numerador;
             denominador = -denominador;
         }
+    }
+
+    public String toString() {
+        return numerador + "/" + denominador;
+    }
+
+    public double aDecimal() {
+        return (double) numerador / denominador;
+    }
+
+    public Fraccion sumar(Fraccion otra) {
+        int num = this.numerador * otra.denominador + otra.numerador * this.denominador;
+        int den = this.denominador * otra.denominador;
+        return new Fraccion(num, den);
+    }
+
+    public Fraccion restar(Fraccion otra) {
+        int num = this.numerador * otra.denominador - otra.numerador * this.denominador;
+        int den = this.denominador * otra.denominador;
+        return new Fraccion(num, den);
+    }
+
+    public Fraccion multiplicar(Fraccion otra) {
+        return new Fraccion(this.numerador * otra.numerador,
+                            this.denominador * otra.denominador);
+    }
+
+    public Fraccion dividir(Fraccion otra) {
+        return new Fraccion(this.numerador * otra.denominador,
+                            this.denominador * otra.numerador);
+    }
+
+    public Fraccion inversa() {
+        return new Fraccion(denominador, numerador);
+    }
+
+    public Fraccion opuesta() {
+        return new Fraccion(-numerador, denominador);
+    }
+
+    public boolean equals(Fraccion otra) {
+        return this.numerador == otra.numerador &&
+               this.denominador == otra.denominador;
+    }
+
+    public Fraccion clone() {
+        return new Fraccion(this.numerador, this.denominador);
     }
 }
