@@ -12,5 +12,8 @@ public class Fraccion {
     this.numerador = numerador;
     this.denominador = denominador;
 }
+public String toString() {
+    return numerador + "/" + denominador;
+}
 
 }
