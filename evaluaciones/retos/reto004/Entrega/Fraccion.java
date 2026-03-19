@@ -1,5 +1,3 @@
-package vistas.fraccion;
-
 public class Fraccion {
 
     private int numerador;
@@ -68,7 +66,7 @@ public class Fraccion {
         return this.numerador == fraccion.numerador && this.denominador == fraccion.denominador;
     }
 
-    public String tostring(){
+    public String toString(){
         return this.numerador + "/" + this.denominador;
     }
 
@@ -109,4 +107,6 @@ public class Fraccion {
 
 
 
-}
+
+
+
