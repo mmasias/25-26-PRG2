@@ -11,11 +11,12 @@ public class Fraccion {
     }
     this.numerador = numerador;
     this.denominador = denominador;
-    }
+    simplificar();
+}
     
     public String toString() {
     return numerador + "/" + denominador;
-    }
+}
 
     private int calcularMCD(int a, int b) {
     while (b != 0) {
@@ -24,12 +25,37 @@ public class Fraccion {
         a = temporal;
     }
     return a;
-    }
+}
 
     private void simplificar() {
     int mcd = calcularMCD(Math.abs(numerador), Math.abs(denominador));
     numerador /= mcd;
     denominador /= mcd;
     }
+    public Fraccion sumar(Fraccion otra) {
+    int num = this.numerador * otra.denominador + otra.numerador * this.denominador;
+    int den = this.denominador * otra.denominador;
+    return new Fraccion(num, den);
+}
+
+public Fraccion restar(Fraccion otra) {
+    int num = this.numerador * otra.denominador - otra.numerador * this.denominador;
+    int den = this.denominador * otra.denominador;
+    return new Fraccion(num, den);
+}
+
+public Fraccion multiplicar(Fraccion otra) {
+    return new Fraccion(
+        this.numerador * otra.numerador,
+        this.denominador * otra.denominador
+    );
+}
+
+public Fraccion dividir(Fraccion otra) {
+    return new Fraccion(
+        this.numerador * otra.denominador,
+        this.denominador * otra.numerador
+    );
+}
 
 }
