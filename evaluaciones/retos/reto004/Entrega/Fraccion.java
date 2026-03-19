@@ -56,6 +56,22 @@ public class Fraccion {
         simplificar();
     }
 
+    public boolean esMayor (Fraccion fraccion){
+        return this.numerador * fraccion.denominador > fraccion.numerador * this.denominador;
+    }
+
+    public boolean esMenor (Fraccion fraccion){
+        return this.numerador * fraccion.denominador < fraccion.numerador * this.denominador;
+    }
+
+    public boolean equals(Fraccion fraccion){
+        return this.numerador == fraccion.numerador && this.denominador == fraccion.denominador;
+    }
+
+    public String tostring(){
+        return this.numerador + "/" + this.denominador;
+    }
+
 
 
 
