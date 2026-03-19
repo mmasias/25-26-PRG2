@@ -80,4 +80,12 @@ public int comparar(Fraccion otra) {
     if (diff == 0) return 0;
     return diff > 0 ? 1 : -1;
 }
+
+public int getNumerador() {
+    return numerador;
+}
+
+public int getDenominador() {
+    return denominador;
+}
 }
