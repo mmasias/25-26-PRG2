@@ -4,6 +4,7 @@ class Fraccion {
     
     public Fraccion(int numerador, int denominador)
     {
+	validarDenominador(denominador);
         numerador = this.numerador;
         denominador = this.denominador;
     }
@@ -18,22 +19,22 @@ class Fraccion {
         this(1,1);
     }
 
+   private void validarDenominador(int denominador){
+      assert denoniminador != 0 : "Denominador invalido"; 
+  }
+
     public void sumar(int numerador, int denominador){
+	
         this.sumarFracciones(numerador, denominador);
     }
     
     public void sumar(int numerador){
-        int denominador = 1;
-        this.sumarFracciones(numerador, denominador);
+        this.sumarFracciones(numerador, 1);
     }
 
-    public void sumar(){
-        int numerador = 1;
-        int denominador = 1;
-        this.sumarFracciones(numerador, denominador);
-    }
 
     private void sumarFracciones(int numerador, int denominador){
+       validarDenominador(denominador);
         if(denominador == this.denominador){
             this.numerador = this.numerador + numerador;
             this.denominador = denominador;
@@ -52,4 +53,6 @@ class Fraccion {
         }
         return a;
     }
+
+   
 }
