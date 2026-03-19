@@ -72,6 +72,38 @@ public class Fraccion {
         return this.numerador + "/" + this.denominador;
     }
 
+    public void Invertir(){
+        if (this.numerador == 0) throw new IllegalArgumentException("No se puede invertir 0");
+        int temp = this.numerador;
+        this.numerador = this.denominador;
+        this.denominador = temp;
+    }
+
+    public void oponer (){
+        this.numerador = -this.numerador;
+    }
+
+    private void simplificar(){
+        int mcd = calcularMCD(Math.abs(numerador), Math.abs(denominador));
+        numerador /= mcd;
+        denominador /= mcd;
+
+        if (denominador < 0) {
+            numerador *= -1;
+            denominador *= -1;
+        }
+    }
+
+    private int calcularMCD(int a, int b){
+        while (b != 0) {
+            int temporal = b;
+            b = a % b;
+            a = temporal;
+        }
+        return a;
+    }
+}
+
 
 
 
