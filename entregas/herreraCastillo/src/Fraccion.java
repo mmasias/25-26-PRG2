@@ -40,18 +40,68 @@ public class Fraccion {
         this.numerador = numeradorResultado;
         this.denominador = denominadorResultado;
     }
-}
-        public void multiplicar(Fraccion fraccion){}
-        public void dividir(Fraccion fraccion){}
 
-        public boolean esMayor(Fraccion fraccion){}
-        public boolean esMenor(Fraccion fraccion){ }
+        public void multiplicar(Fraccion fraccion) {
+        this.numerador = this.numerador * fraccion.numerador;
+        this.denominador = this.denominador * fraccion.denominador;
+    }
+
+    public void dividir(Fraccion fraccion) {
+        assert fraccion.numerador != 0 : "No se puede dividir por una fraccion con numerador cero";
         
-        public boolean equals(Fraccion fraccion){}
+        int numeradorResultado = this.numerador * fraccion.denominador;
+        int denominadorResultado = this.denominador * fraccion.numerador;
 
-        public Fraccion simplificar (Fraccion fraccion){}
+        this.numerador = numeradorResultado;
+        this.denominador = denominadorResultado;
+    }
 
-        public double decimal(Fraccion fraccion){}
+
+       public boolean esMayor(Fraccion fraccion) {
+        int valorIzquierda = this.numerador * fraccion.denominador;
+        int valorDerecha = fraccion.numerador * this.denominador;
+        
+        return valorIzquierda > valorDerecha;
+    }
+
+    public boolean esMenor(Fraccion fraccion) {
+        int valorIzquierda = this.numerador * fraccion.denominador;
+        int valorDerecha = fraccion.numerador * this.denominador;
+        
+        return valorIzquierda < valorDerecha;
+    }
+    private int obtenerMaximoComunDivisor(int numeroA, int numeroB) {
+        int temporal;
+        int a = Math.abs(numeroA);
+        int b = Math.abs(numeroB);
+        
+        while (b != 0) {
+            temporal = b;
+            b = a % b;
+            a = temporal;
+        }
+        
+        return a;
+    }
+
+    public boolean equals(Fraccion fraccion) {
+        int valorIzquierda = this.numerador * fraccion.denominador;
+        int valorDerecha = fraccion.numerador * this.denominador;
+        
+        return valorIzquierda == valorDerecha;
+    }
+        public Fraccion simplificar(Fraccion fraccion) {
+        int maximoComunDivisor = obtenerMaximoComunDivisor(fraccion.numerador, fraccion.denominador);
+        
+        int nuevoNumerador = fraccion.numerador / maximoComunDivisor;
+        int nuevoDenominador = fraccion.denominador / maximoComunDivisor;
+        
+        return new Fraccion(nuevoNumerador, nuevoDenominador);
+    }
+
+      public double decimal(Fraccion fraccion) {
+        return (double) fraccion.numerador / fraccion.denominador;
+    }
 
 
 
