@@ -154,9 +154,7 @@ public class Fraccion {
     }
 
     public String compareTo(Fraccion otraFraccion) {
-        if (otraFraccion == null) {
-            return "Error: comparacion nula";
-        }
+        assert otraFraccion != null : "La fraccion es null"
         
         int producto1 = this.numerador * otraFraccion.denominador;
         int producto2 = otraFraccion.numerador * this.denominador;
