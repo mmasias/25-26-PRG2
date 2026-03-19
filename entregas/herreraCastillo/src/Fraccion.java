@@ -1,26 +1,51 @@
-    public class Fraccion {
+public class Fraccion {
+
+    private int numerador;
+    private int denominador;
+
+    public Fraccion(int numerador, int denominador) {
+        assert denominador != 0 : "El denominador de una fraccion no puede ser cero";
         
-        private int numerador;
-        private int denominador;
+        this.numerador = numerador;
+        this.denominador = denominador;
+    }
+}
+       public Fraccion(Fraccion fraccion) {
+        this.numerador = fraccion.numerador;
+        this.denominador = fraccion.denominador;
+    }
 
-        public Fraccion(int numerador, int denominador){
-            this.numerador = numerador;
-            this.denominador = denominador;     
-        }
-        public Fraccion (Fraccion fraccion){}
-        public Fraccion(){}
+    public Fraccion() {
+        this.numerador = 0;
+        this.denominador = 1;
+    }
 
-        public Fraccion clonar(){
-            
-        }
+    public Fraccion clonar() {
+        return new Fraccion(this.numerador, this.denominador);
+    }
+}   
 
-        public void sumar(Fraccion fraccion){}
-        public void restar(Fraccion fraccion){}
+        public void sumar(Fraccion fraccion) {
+        int numeradorResultado = (this.numerador * fraccion.denominador) + (fraccion.numerador * this.denominador);
+        int denominadorResultado = this.denominador * fraccion.denominador;
+        
+        this.numerador = numeradorResultado;
+        this.denominador = denominadorResultado;
+    }
+
+    public void restar(Fraccion fraccion) {
+        int numeradorResultado = (this.numerador * fraccion.denominador) - (fraccion.numerador * this.denominador);
+        int denominadorResultado = this.denominador * fraccion.denominador;
+        
+        this.numerador = numeradorResultado;
+        this.denominador = denominadorResultado;
+    }
+}
         public void multiplicar(Fraccion fraccion){}
         public void dividir(Fraccion fraccion){}
 
         public boolean esMayor(Fraccion fraccion){}
-        public boolean esMenor(){Fraccion fraccion}
+        public boolean esMenor(Fraccion fraccion){ }
         
         public boolean equals(Fraccion fraccion){}
 
