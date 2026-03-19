@@ -1,5 +1,3 @@
-
-
 public class Fraccion {
 
     private int numerador;
