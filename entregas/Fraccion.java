@@ -58,4 +58,16 @@ public Fraccion dividir(Fraccion otra) {
     );
 }
 
+public Fraccion inversa() {
+    return new Fraccion(this.denominador, this.numerador);
+}
+
+public Fraccion opuesta() {
+    return new Fraccion(-this.numerador, this.denominador);
+}
+
+public double aDecimal() {
+    return (double) numerador / denominador;
+}
+
 }
