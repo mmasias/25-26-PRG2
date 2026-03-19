@@ -1,37 +1,30 @@
-# Carpeta de entregas
+# Proyecto: Implementación de la Clase Fraccion en Java
 
-Para cada entrega, cree en esta carpeta su carpeta personal usando el estándar `apellidoNombre`.
+Biblioteca para poder hacer de fracciones matemáticas, los principios de encapsulamiento dados en clase  La clase permite realizar operaciones esta siempre que los resultados estén simplificados.
 
-## Estructura
+---
 
-```
-/entregas/apellidoNombre/README.md   <-- Presentación de la entrega
-                        /src         <-- Código fuente
-                        /modelosUML  <-- Modelos en plantUML
-                        /docs        <-- Documentación adicional
-                        /images      <-- Imágenes, diagramas...
-```
+## Estructura y Diseño de la Clase
 
-## Artefactos habituales
+La arquitectura se divide en dos capas 
 
-||||
-|-|-|-|
-|1|**README.md**|Presentación de la entrega, con explicación de la solución y referencias al resto de artefactos. ¡Navegabilidad!|
-|2|**Código fuente**|Proyecto ordenado dentro de `/src`.|
-|3|**Diagramas**|Fuente en `/modelosUML`, exportado en `/images`, referenciado en los .md pertinentes.|
-|4|**Documentación adicional**|En `/docs`, en formato markdown (u otro formato, solo si se solicita explícitamente).|
+### 1. Vista Privada (Estado y Lógica Interna)
+* Atributos: Se definen como private y final quito el main por qu evi que fue inecesaario . Esto asegura que la fracción sea inmutable.
+* MCD : Método private encargado de la lógica de simplificación. que usted nos dio apoya 
 
-> Cada reto indicará qué artefactos son obligatorios y cuáles opcionales.
+### 2. Vista Pública (Interfaz de Programación)
+* Constructores:
+    * Permiten  de fracciones estándar o null (0/1).
+    * Validación: El constructor impide la creación de denominadores iguales a cero.
+    * Normalización: El signo negativo se mantiene siempre en el numerador y la fracción se simplifica automáticamente.
+* Operaciones Aritméticas: Gracias que usamos lo smetodos  para sumar, restar, multiplicar y dividir,nos ayuda ya qu ecada operacion nos devuel e una fraccion
+* Utilidad: Con los metodos nos ayuda para  métodos para obtener la inversa, la opuesta y l esta nos ayuda a que a conversión a decimal (toDouble).
 
-## Criterios de valoración
+---
 
-- **Proceso de creación** — commits bien descritos, un cambio por commit.
-- **Código limpio** — innegociable.
-- **Adecuado reparto de responsabilidades** entre módulos.
-- **Aplicación de lo visto en la vida, en el grado, en la asignatura y en las clases**, en ese orden.
+## Ejemplo
 
-## Tenga en cuenta
-
-- **Planificar** antes de codificar (diagramas, esquemas, pseudocódigo).
-- **Construir código que se autoexplique**.
-- **Usar los commits** para documentar el proceso.
+```java
+Fraccion f1 = new Fraccion(1, 2);
+Fraccion f2 = new Fraccion(1, 4);
+Fraccion resultado = f1.sumar(f2);
