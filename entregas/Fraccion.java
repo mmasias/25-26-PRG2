@@ -11,9 +11,25 @@ public class Fraccion {
     }
     this.numerador = numerador;
     this.denominador = denominador;
-}
-public String toString() {
+    }
+    
+    public String toString() {
     return numerador + "/" + denominador;
-}
+    }
+
+    private int calcularMCD(int a, int b) {
+    while (b != 0) {
+        int temporal = b;
+        b = a % b;
+        a = temporal;
+    }
+    return a;
+    }
+
+    private void simplificar() {
+    int mcd = calcularMCD(Math.abs(numerador), Math.abs(denominador));
+    numerador /= mcd;
+    denominador /= mcd;
+    }
 
 }
