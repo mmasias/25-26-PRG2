@@ -70,4 +70,14 @@ public double aDecimal() {
     return (double) numerador / denominador;
 }
 
+public boolean esIgual(Fraccion otra) {
+    return this.numerador == otra.numerador &&
+        this.denominador == otra.denominador;
+}
+
+public int comparar(Fraccion otra) {
+    double diff = this.aDecimal() - otra.aDecimal();
+    if (diff == 0) return 0;
+    return diff > 0 ? 1 : -1;
+}
 }
