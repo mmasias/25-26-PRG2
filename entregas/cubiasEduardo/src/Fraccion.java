@@ -37,7 +37,7 @@ class Fraccion {
             denominadorTemporal = -denominadorTemporal;
         }
 
-        int mcd = calcularMCD(numeradorTemporal, denominadorTemporal);
+        int mcd = this.calcularMCD(numeradorTemporal, denominadorTemporal);
 
         numerador = numerador / mcd;
         denominador = denominador / mcd;
@@ -60,28 +60,29 @@ class Fraccion {
         this.simplificar();
     }
 
+    private void multiplicarFracciones(int numerador, int denominador){
+        assert denominador != 0 : "Denominador invalido";
+        this.numerador = numerador * this.numerador;
+        this.denominador = denominador * this.denominador;
+        this.simplificar();
+    }
+
     public void sumar(Fraccion otraFraccion) {
-        sumarFracciones(otraFraccion.numerador, otraFraccion.denominador);
+        this.sumarFracciones(otraFraccion.numerador, otraFraccion.denominador);
     }
 
     public void restar(Fraccion otraFraccion) {
-        sumarFracciones(-otraFraccion.numerador, otraFraccion.denominador);
+        this.sumarFracciones(-otraFraccion.numerador, otraFraccion.denominador);
     }
 
     public void multiplicar(Fraccion otraFraccion) {
-        assert denominador != 0 : "Denominador invalido";
-        numerador = numerador * otraFraccion.numerador;
-        denominador = denominador * otraFraccion.denominador;
-        simplificar();
+        this.multiplicarFracciones(otraFraccion.numerador, otraFraccion.denominador);
     }
 
     public void dividir(Fraccion otraFraccion) {
         assert denominador != 0 : "Denominador invalido";
         assert numerador != 0 : "No se puede dividir por cero";
-
-        numerador = numerador * otraFraccion.denominador;
-        denominador = denominador * otraFraccion.numerador;
-        simplificar();
+        this.multiplicarFracciones(otraFraccion.denominador, otraFraccion.numerador);
     }
 
     public Fraccion opuesta() {
