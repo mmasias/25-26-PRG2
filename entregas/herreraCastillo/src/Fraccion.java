@@ -9,8 +9,7 @@ public class Fraccion {
         this.numerador = numerador;
         this.denominador = denominador;
     }
-}
-       public Fraccion(Fraccion fraccion) {
+    public Fraccion(Fraccion fraccion) {
         this.numerador = fraccion.numerador;
         this.denominador = fraccion.denominador;
     }
@@ -23,7 +22,7 @@ public class Fraccion {
     public Fraccion clonar() {
         return new Fraccion(this.numerador, this.denominador);
     }
-}   
+
 
         public void sumar(Fraccion fraccion) {
         int numeradorResultado = (this.numerador * fraccion.denominador) + (fraccion.numerador * this.denominador);
@@ -106,10 +105,10 @@ public class Fraccion {
 
 
     public String toString(){
-       String mensaje = "Hola soy la fraccion " + numerador + " / " + denominador;
+       String mensaje = "Soy la fraccion " + numerador + " / " + denominador;
         return mensaje;
-    }
-
-
-
+    } 
 }
+
+
+
