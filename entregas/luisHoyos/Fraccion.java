@@ -135,4 +135,28 @@ class Fraccion {
         System.out.println(this.toString());
      }
 
+     private void normalizar(){
+        if (denominador < 0) {
+            numerador = -numerador;
+            denominador = -denominador;
+        }
+
+        int mcd = calcularMCD(Math.abs(numerador), Math.abs(denominador));
+
+        if(mcd != 0){
+            numerador /= mcd;
+            denominador /= mcd;
+        }
+     }
+
+     private int calcularMCD(int a, int b){
+        if (b == 0) {
+            int temp =b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+
+     }
+
 }
