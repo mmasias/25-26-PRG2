@@ -39,6 +39,7 @@ public class Fraccion {
     }
 
     public void sumar(Fraccion fraccion) {
+        assert fraccion != null;
         this.numerador = this.numerador * fraccion.denominador + fraccion.numerador * this.denominador;
         this.denominador = this.denominador * fraccion.denominador;
         int mcd = calcularMCD(Math.abs(this.numerador), Math.abs(this.denominador));
@@ -47,6 +48,7 @@ public class Fraccion {
     }
 
     public void restar(Fraccion fraccion) {
+        assert fraccion != null;
         this.numerador = fraccion.numerador * this.denominador - this.numerador * fraccion.denominador;
         this.denominador = this.denominador * fraccion.denominador;
         int mcd = calcularMCD(Math.abs(this.numerador), Math.abs(this.denominador));
@@ -55,6 +57,7 @@ public class Fraccion {
     }
 
     public void multiplicar(Fraccion fraccion) {
+        assert fraccion != null;
         this.numerador = this.numerador * fraccion.numerador;
         this.denominador = this.denominador * fraccion.denominador;
         int mcd = calcularMCD(Math.abs(this.numerador), Math.abs(this.denominador));
@@ -63,6 +66,7 @@ public class Fraccion {
     }
 
     public void dividir(Fraccion fraccion) {
+        assert fraccion != null;
         this.numerador = fraccion.numerador * this.denominador;
         this.denominador = fraccion.denominador * this.numerador;
         int mcd = calcularMCD(Math.abs(this.numerador), Math.abs(this.denominador));
@@ -79,15 +83,17 @@ public class Fraccion {
     }
 
     public boolean esMayor(Fraccion fraccion) {
+        assert fraccion != null;
         return this.numerador * fraccion.denominador > fraccion.numerador * this.denominador;
     }
 
     public boolean esMenor(Fraccion fraccion) {
+        assert fraccion != null;
         return this.numerador * fraccion.denominador < fraccion.numerador * this.denominador;
-
     }
 
     public boolean equals(Fraccion fraccion) {
+        assert fraccion != null;
         return this.numerador * fraccion.denominador == fraccion.numerador * this.denominador;
     }
 
@@ -118,3 +124,4 @@ public class Fraccion {
 
 
 }
+
