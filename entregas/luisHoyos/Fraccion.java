@@ -1,3 +1,5 @@
-public class Fraccion {
+package vistas.fraccion;
+
+class Fraccion {
     
 }
