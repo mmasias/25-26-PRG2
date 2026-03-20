@@ -127,4 +127,12 @@ class Fraccion {
         return resultado;
      }
 
+     public String toString(){
+        return numerador + "/" + denominador;
+     }
+
+     public void mostrar(){
+        System.out.println(this.toString());
+     }
+
 }
