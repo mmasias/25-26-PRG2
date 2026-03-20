@@ -1,6 +1,7 @@
 package vistas.fraccion;
 
 class Fraccion {
+
     private int numerador;
     private int denominador;
 
@@ -11,7 +12,7 @@ class Fraccion {
         this.denominador = denominador;
     }
 
-    public Fraccion (int numerador) {
+    public Fraccion(int numerador) {
         this(numerador, 1);
     }
 
@@ -23,7 +24,7 @@ class Fraccion {
         this(fraccion.numerador, fraccion.denominador);
     }
 
-    public Fraccion clone(){
+    public Fraccion clone() {
         return new Fraccion(this);
     }
 
@@ -35,18 +36,16 @@ class Fraccion {
         return this.denominador;
     }
 
-    public double valor() {
-        return (double) this.numerador / this.denominador;
-    }
 
     public boolean equals(Fraccion fraccion) {
         assert fraccion != null;
 
-        return this.numerador == fraccion.numerador && 
-        this.denominador == fraccion.denominador;
+        return this.numerador == fraccion.numerador &&
+               this.denominador == fraccion.denominador;
     }
 
-    public void sumar(Fraccion fraccion){
+
+    public void sumar(Fraccion fraccion) {
         assert fraccion != null;
 
         numerador = numerador * fraccion.denominador + fraccion.numerador * denominador;
@@ -55,24 +54,24 @@ class Fraccion {
         normalizar();
     }
 
-    public Fraccion sumada(Fraccion fraccion){
-        Fraccion resultaddo = this.clone();
+    public Fraccion sumada(Fraccion fraccion) {
+        Fraccion resultado = this.clone();
         resultado.sumar(fraccion);
         return resultado;
     }
 
-    public void restar(Fraccion fraccion){
+    public void restar(Fraccion fraccion) {
         assert fraccion != null;
         this.sumar(fraccion.opuesta());
     }
 
-    public Fraccion restada(Fraccion fraccion){
+    public Fraccion restada(Fraccion fraccion) {
         Fraccion resultado = this.clone();
         resultado.restar(fraccion);
         return resultado;
     }
 
-    public void multiplicar(Fraccion fraccion){
+    public void multiplicar(Fraccion fraccion) {
         assert fraccion != null;
 
         numerador *= fraccion.numerador;
@@ -81,37 +80,36 @@ class Fraccion {
         normalizar();
     }
 
-    public Fraccion multiplicada(Fraccion fraccion){
+    public Fraccion multiplicada(Fraccion fraccion) {
         Fraccion resultado = this.clone();
         resultado.multiplicar(fraccion);
         return resultado;
     }
 
-    public void dividir(FRaccion fraccion){
+    public void dividir(Fraccion fraccion) {
         assert fraccion != null;
         assert fraccion.numerador != 0;
 
         this.multiplicar(fraccion.invertida());
-
     }
 
-    public Fraccion dividida(Fraccion fraccion){
+    public Fraccion dividida(Fraccion fraccion) {
         Fraccion resultado = this.clone();
         resultado.dividir(fraccion);
         return resultado;
     }
 
-    public void oponer(){
+    public void oponer() {
         numerador = -numerador;
-    } 
+    }
 
-    public Fraccion opuesta(){
+    public Fraccion opuesta() {
         Fraccion resultado = this.clone();
         resultado.oponer();
         return resultado;
     }
 
-    public void invertir(){
+    public void invertir() {
         assert numerador != 0;
 
         int aux = numerador;
@@ -121,21 +119,27 @@ class Fraccion {
         normalizar();
     }
 
-    public Fraccion invertida(){\
+    public Fraccion invertida() {
         Fraccion resultado = this.clone();
         resultado.invertir();
         return resultado;
-     }
+    }
 
-     public String toString(){
-        return numerador + "/" + denominador;
-     }
 
-     public void mostrar(){
+    public double valor() {
+        return (double) this.numerador / this.denominador;
+    }
+
+    public void mostrar() {
         System.out.println(this.toString());
-     }
+    }
 
-     private void normalizar(){
+    public String toString() {
+        return numerador + "/" + denominador;
+    }
+
+
+    private void normalizar() {
         if (denominador < 0) {
             numerador = -numerador;
             denominador = -denominador;
@@ -143,20 +147,18 @@ class Fraccion {
 
         int mcd = calcularMCD(Math.abs(numerador), Math.abs(denominador));
 
-        if(mcd != 0){
+        if (mcd != 0) {
             numerador /= mcd;
             denominador /= mcd;
         }
-     }
+    }
 
-     private int calcularMCD(int a, int b){
+    private int calcularMCD(int a, int b) {
         if (b == 0) {
-            int temp =b;
+            int temp = b;
             b = a % b;
             a = temp;
         }
         return a;
-
-     }
-
+    }
 }
