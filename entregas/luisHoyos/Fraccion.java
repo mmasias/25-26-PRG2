@@ -60,4 +60,15 @@ class Fraccion {
         resultado.sumar(fraccion);
         return resultado;
     }
+
+    public void restar(Fraccion fraccion){
+        assert fraccion != null;
+        this.sumar(fraccion.opuesta());
+    }
+
+    public Fraccion restada(Fraccion fraccion){
+        Fraccion resultado = this.clone();
+        resultado.restar(fraccion);
+        return resultado;
+    }
 }
