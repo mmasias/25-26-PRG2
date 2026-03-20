@@ -39,6 +39,25 @@ class Fraccion {
         return (double) this.numerador / this.denominador;
     }
 
-    
+    public boolean equals(Fraccion fraccion) {
+        assert fraccion != null;
 
+        return this.numerador == fraccion.numerador && 
+        this.denominador == fraccion.denominador;
+    }
+
+    public void sumar(Fraccion fraccion){
+        assert fraccion != null;
+
+        numerador = numerador * fraccion.denominador + fraccion.numerador * denominador;
+        denominador = denominador * fraccion.denominador;
+
+        normalizar();
+    }
+
+    public Fraccion sumada(Fraccion fraccion){
+        Fraccion resultaddo = this.clone();
+        resultado.sumar(fraccion);
+        return resultado;
+    }
 }
