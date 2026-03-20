@@ -71,4 +71,33 @@ class Fraccion {
         resultado.restar(fraccion);
         return resultado;
     }
+
+    public void multiplicar(Fraccion fraccion){
+        assert fraccion != null;
+
+        numerador *= fraccion.numerador;
+        denominador *= fraccion.denominador;
+
+        normalizar();
+    }
+
+    public Fraccion multiplicada(Fraccion fraccion){
+        Fraccion resultado = this.clone();
+        resultado.multiplicar(fraccion);
+        return resultado;
+    }
+
+    public void dividir(FRaccion fraccion){
+        assert fraccion != null;
+        assert fraccion.numerador != 0;
+
+        this.multiplicar(fraccion.invertida());
+
+    }
+
+    public Fraccion dividida(Fraccion fraccion){
+        Fraccion resultado = this.clone();
+        resultado.dividir(fraccion);
+        return resultado;
+    }
 }
