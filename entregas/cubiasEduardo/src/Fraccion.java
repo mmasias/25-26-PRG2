@@ -14,7 +14,7 @@ class Fraccion {
     }
 
     public Fraccion() {
-        this(1, 1);
+        this(0);
     }
 
     private int calcularMCD(int a, int b) {
