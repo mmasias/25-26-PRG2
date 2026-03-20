@@ -100,4 +100,31 @@ class Fraccion {
         resultado.dividir(fraccion);
         return resultado;
     }
+
+    public void oponer(){
+        numerador = -numerador;
+    } 
+
+    public Fraccion opuesta(){
+        Fraccion resultado = this.clone();
+        resultado.oponer();
+        return resultado;
+    }
+
+    public void invertir(){
+        assert numerador != 0;
+
+        int aux = numerador;
+        numerador = denominador;
+        denominador = aux;
+
+        normalizar();
+    }
+
+    public Fraccion invertida(){\
+        Fraccion resultado = this.clone();
+        resultado.invertir();
+        return resultado;
+     }
+
 }
