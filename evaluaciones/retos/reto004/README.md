@@ -20,3 +20,19 @@ int calcularMCD(int a, int b) {
     return a;
 }
 ```
+
+## 
+
+
+<div align=center>
+
+||||
+|-|-|-|
+|¡Revise la teoría!|22|>50%
+|Mal construido|22|>50%
+|Ruta o nombre de archivo incorrecto |16|40%
+|Proceso de creación inexistente     |14|34%
+|👍!                                 |2|5%
+|🤔?                                 |1|2%
+
+</div>
