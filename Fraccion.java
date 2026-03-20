@@ -53,3 +53,26 @@ public class Fraccion {
         this.denominador *= fraccion.numerador;
         simplificar();
     }
+
+    public boolean esMayor (Fraccion fraccion){
+        return this.numerador * fraccion.denominador > fraccion.numerador * this.denominador;
+    }
+
+    public boolean esMenor (Fraccion fraccion){
+        return this.numerador * fraccion.denominador < fraccion.numerador * this.denominador;
+    }
+
+    public boolean equals(Fraccion fraccion){
+        return this.numerador == fraccion.numerador && this.denominador == fraccion.denominador;
+    }
+
+    public String toString(){
+        return this.numerador + "/" + this.denominador;
+    }
+
+    public void Invertir(){
+        if (this.numerador == 0) throw new IllegalArgumentException("No se puede invertir 0");
+        int temp = this.numerador;
+        this.numerador = this.denominador;
+        this.denominador = temp;
+    }
