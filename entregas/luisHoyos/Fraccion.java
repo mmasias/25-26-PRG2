@@ -23,4 +23,22 @@ class Fraccion {
         this(fraccion.numerador, fraccion.denominador);
     }
 
+    public Fraccion clone(){
+        return new Fraccion(this);
+    }
+
+    public int numerador() {
+        return this.numerador;
+    }
+
+    public int denominador() {
+        return this.denominador;
+    }
+
+    public double valor() {
+        return (double) this.numerador / this.denominador;
+    }
+
+    
+
 }
