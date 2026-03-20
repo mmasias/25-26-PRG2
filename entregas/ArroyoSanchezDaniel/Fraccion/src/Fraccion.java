@@ -96,7 +96,11 @@ public class Fraccion {
     }
 
     public void mostrar() {
-        System.out.println(this.numerador + "/" + this.denominador);
+        Console console = new Console();
+        int mcd = calcularMCD(Math.abs(this.numerador), Math.abs(this.denominador));
+        this.numerador = this.numerador/mcd;
+        this.denominador= this.denominador/mcd;
+        console.writeln(this.numerador + "/" + this.denominador);
     }
 
     public void invertir() {
@@ -111,5 +115,6 @@ public class Fraccion {
     public void oponer() {
         this.numerador = this.numerador * (-1);
     }
+
 
 }
