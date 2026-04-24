@@ -18,7 +18,9 @@ public class Caballo {
         return posicion;
     }
 
-    public void avanzar()
+    public void avanzar() {
+        posicion = posicion + this.obtenerAvance();
+    }
 
     public boolean haLlegado(Pista pista)
 }
