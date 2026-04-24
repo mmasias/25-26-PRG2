@@ -10,9 +10,13 @@ public class Caballo {
         posicion = 0;
     }
 
-    public int numero()
+    public int numero() {
+        return numero; 
+    }
 
-    public int posicion()
+    public int posicion() {
+        return posicion;
+    }
 
     public void avanzar()
 
