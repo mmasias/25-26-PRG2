@@ -34,8 +34,14 @@ public class Carrera {
         return caballos[0].haLlegado(pista) ||
                caballos[1].haLlegado(pista);
     }
-    private void mostrarResultado() {}
 
+    private void mostrarResultado() {
+        if (this.hayEmpate()) {
+            console.writeln("Empate");
+        } else {
+            console.writeln("Ganó el caballo " + this.obtenerGanador().numero());
+        }
+    }
     private boolean hayEmpate() {}
 
     private Caballo obtenerGanador() {}
