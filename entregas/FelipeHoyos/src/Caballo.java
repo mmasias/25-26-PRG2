@@ -1,4 +1,7 @@
 public class Caballo {
+
+    private int numero;
+    private int posicion;
     
     public Caballo(int numero)
 
