@@ -1,6 +1,8 @@
 class Carrera{
     private Caballo[] caballos;
+    private Pista pista;
     public Carrera(String[] identificadores){
+        pista = new Pista(30.20); 
         this.crearParticipantes(identificadores);
     }
 
