@@ -29,9 +29,11 @@ public class Carrera {
     private void avanzarCaballoEnTurno() {
         caballos[turno.toca()].avanzar();
     }
-    
-    private boolean hayGanador() {}
 
+    private boolean hayGanador() {
+        return caballos[0].haLlegado(pista) ||
+               caballos[1].haLlegado(pista);
+    }
     private void mostrarResultado() {}
 
     private boolean hayEmpate() {}
