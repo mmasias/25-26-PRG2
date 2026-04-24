@@ -16,10 +16,10 @@ public class Carrera {
 
     public void jugar(){
     
-    do {
-        pista.mostrar(caballos);
-        this.avanzarCaballos();
-    } while (!this.hayGanador());
+        do {
+            pista.mostrar(caballos);
+            this.avanzarCaballos();
+        }   while (!this.hayGanador());
 
         pista.mostrar(caballos);
         this.mostrarResultado();
@@ -31,7 +31,7 @@ public class Carrera {
     }
 
     private void avanzarCaballos() {
-    for (int i = 0; i < caballos.length; i++) {
+        for (int i = 0; i < caballos.length; i++) {
             this.avanzarCaballoEnTurno();
             turno.cambiar();
         }
