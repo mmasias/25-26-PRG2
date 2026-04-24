@@ -25,5 +25,15 @@ public class Pista {
         console.writeln("");
     }
 
+    private void mostrarBorde() {
+        for (int i = 0; i < LONGITUD; i++) {
+            console.write("-");
+        }
+
+        console.writeln("");
+    }
+
+    private void mostrarCaballo(Caballo caballo) {}
+
 
 }
