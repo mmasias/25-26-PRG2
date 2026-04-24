@@ -10,4 +10,19 @@ public class Caballos {
         this.console = console;
     }
 
+    public void movimientoCaballo() {
+        int movimiento = (int) (Math.random() * 3);
+        if (movimiento == 0) {
+
+        } else if (movimiento == 1) {
+            avance = fichasMovimiento + avance;
+            posiciónCaballo = posiciónCaballo + 1;
+
+        } else if (movimiento == 2) {
+            avance = fichasMovimiento + fichasMovimiento + avance;
+            posiciónCaballo = posiciónCaballo + 2;
+        }
+
+    }
+
 }
