@@ -10,7 +10,11 @@ public class Turno {
         return valor;
     }
 
-    public int noLeToca() {}
+    public int noLeToca() {
+        return (valor + 1) % 2;
+    }
 
-    public void cambiar() {}
+    public void cambiar() {
+        valor = (valor + 1) % 2;
+    }
 }
