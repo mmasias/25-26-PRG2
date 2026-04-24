@@ -45,5 +45,13 @@ public class Pista {
         console.writeln(";-;'");
     }
 
+    private int obtenerPosicionVisible(Caballo caballo) {
+        if (caballo.posicion() >= LONGITUD) {
+            return LONGITUD - 1;
+        }
+
+        return caballo.posicion();
+    }
+
 
 }
