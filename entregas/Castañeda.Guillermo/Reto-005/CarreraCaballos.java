@@ -17,10 +17,24 @@ class Carrera {
 
         int turno = r.nextInt(2);
 
-        if (turno == 0) c1.avanzar(r.nextInt(3));
-        else c2.avanzar(r.nextInt(3));
+        while (c1.getPosicion() < meta && c2.getPosicion() < meta) {
+            if (turno == 0) {
+                c1.avanzar(r.nextInt(3));
+                turno = 1;
+            } else {
+                c2.avanzar(r.nextInt(3));
+                turno = 0;
+            }
+            mostrar(c1, c2);
+        }
 
-        mostrar(c1, c2);
+        if (c1.getPosicion() >= meta && c2.getPosicion() >= meta) {
+            System.out.println("Empate");
+        } else if (c1.getPosicion() >= meta) {
+            System.out.println("Ganó el caballo 1");
+        } else {
+            System.out.println("Ganó el caballo 2");
+        }
     }
 
     private void mostrar(Caballo c1, Caballo c2) {
