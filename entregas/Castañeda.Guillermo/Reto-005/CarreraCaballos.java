@@ -8,19 +8,20 @@ public class CarreraCaballos {
 class Carrera {
     public void jugar() {
         Caballo c1 = new Caballo(1);
-        Caballo c2 = new Caballo(2);
-        System.out.println("Caballos: " + c1.getNumero() + ", " + c2.getNumero());
+        System.out.println(c1.getPosicion());
     }
 }
 
 class Caballo {
     private int numero;
+    private int posicion;
 
     public Caballo(int numero) {
         this.numero = numero;
+        this.posicion = 0;
     }
 
-    public int getNumero() {
-        return numero;
+    public int getPosicion() {
+        return posicion;
     }
 }
