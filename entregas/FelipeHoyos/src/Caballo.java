@@ -22,5 +22,14 @@ public class Caballo {
         posicion = posicion + this.obtenerAvance();
     }
 
-    public boolean haLlegado(Pista pista)
+    public boolean haLlegado(Pista pista) {
+        assert pista != null;
+
+        return posicion >= pista.longitud();
+    }
+
+    private int obtenerAvance() {
+        final int MAXIMO_AVANCE = 2;
+        return (int) (Math.random() * (MAXIMO_AVANCE + 1));
+    }
 }
