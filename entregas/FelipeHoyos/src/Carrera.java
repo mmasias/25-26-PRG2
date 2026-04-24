@@ -28,7 +28,7 @@ public class Carrera {
 
     private void avanzarCaballoEnTurno() {}
 
-    
+     private boolean hayGanador() {}
  }
 
 
