@@ -17,17 +17,24 @@ public class Carrera {
     public void jugar(){
     
     do {
-            pista.mostrar(caballos);
-            this.avanzarCaballoEnTurno();
-            turno.cambiar();
-        } while (!this.hayGanador());
+        pista.mostrar(caballos);
+        this.avanzarCaballos();
+    } while (!this.hayGanador());
 
         pista.mostrar(caballos);
         this.mostrarResultado();
     }
+    
 
     private void avanzarCaballoEnTurno() {
         caballos[turno.toca()].avanzar();
+    }
+
+    private void avanzarCaballos() {
+    for (int i = 0; i < caballos.length; i++) {
+            this.avanzarCaballoEnTurno();
+            turno.cambiar();
+        }
     }
 
     private boolean hayGanador() {
