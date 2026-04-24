@@ -33,7 +33,17 @@ public class Pista {
         console.writeln("");
     }
 
-    private void mostrarCaballo(Caballo caballo) {}
+    private void mostrarCaballo(Caballo caballo) {
+        assert caballo != null;
+
+        int posicion = this.obtenerPosicionVisible(caballo);
+
+        for (int i = 0; i < posicion; i++) {
+            console.write(" ");
+        }
+
+        console.writeln(";-;'");
+    }
 
 
 }
