@@ -12,7 +12,18 @@ public class Pista {
     }
 
 
-    public void mostrar(Caballo[] caballos) {}
+    public void mostrar(Caballo[] caballos) {
+        assert caballos != null;
+
+        this.mostrarBorde();
+
+        for (int i = 0; i < caballos.length; i++) {
+            this.mostrarCaballo(caballos[i]);
+        }
+
+        this.mostrarBorde();
+        console.writeln("");
+    }
 
 
 }
