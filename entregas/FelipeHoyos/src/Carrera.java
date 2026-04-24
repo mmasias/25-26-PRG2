@@ -14,7 +14,18 @@ public class Carrera {
         console = new Console();
     }
 
-    public void jugar()
+    public void jugar(){
+    
+    do {
+            pista.mostrar(caballos);
+            this.avanzarCaballoEnTurno();
+            turno.cambiar();
+        } while (!this.hayGanador());
+
+        pista.mostrar(caballos);
+        this.mostrarResultado();
+    }
+ }
 
 
 }
