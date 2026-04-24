@@ -26,8 +26,10 @@ public class Carrera {
         this.mostrarResultado();
     }
 
-    private void avanzarCaballoEnTurno() {}
-
+    private void avanzarCaballoEnTurno() {
+        caballos[turno.toca()].avanzar();
+    }
+    
     private boolean hayGanador() {}
 
     private void mostrarResultado() {}
@@ -36,7 +38,7 @@ public class Carrera {
 
     private Caballo obtenerGanador() {}
 
-    
+
  }
 
 
