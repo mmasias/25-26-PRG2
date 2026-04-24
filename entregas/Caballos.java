@@ -6,4 +6,8 @@ public class Caballos {
     private String avance = "";
     private Console console;
 
+    public Caballos(Console console) {
+        this.console = console;
+    }
+
 }
