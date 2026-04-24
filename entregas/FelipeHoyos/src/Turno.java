@@ -1,14 +1,10 @@
 public class Turno {
        
-    public Turno() {
-    }
+    public Turno() {}
 
-    public int toca() {
-    }
+    public int toca() {}
 
-    public int noLeToca() 
-    }
+    public int noLeToca() {}
 
-    public void cambiar() {
-    }
+    public void cambiar() {}
 }
