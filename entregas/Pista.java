@@ -4,11 +4,8 @@ public class Pista {
     private String Camino2 = "[2]";
     private int turno = 0;
 
-    public void mostrar() {
+    public void mostrar(Caballos caballo1, Caballos caballo2) {
         Console console = new Console();
-        Caballos caballo1 = new Caballos(console);
-        Caballos caballo2 = new Caballos(console);
-
         console.writeln("Turno: " + turno);
         console.write(Camino1);
         caballo1.mostrar();
