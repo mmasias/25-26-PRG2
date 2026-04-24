@@ -25,4 +25,14 @@ public class Caballos {
 
     }
 
+    public boolean haTerminado() {
+        return posiciónCaballo >= 40;
+
+    }
+
+    public void mostrar() {
+        console.writeln(avance + caballo);
+
+    }
+
 }
