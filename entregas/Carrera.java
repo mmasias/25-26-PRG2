@@ -7,9 +7,7 @@ public class Carrera {
       Pista pista = new Pista();
     
       do {
-        pista.mostrar();
-        caballo1.movimientoCaballo();
-        caballo2.movimientoCaballo();
+        pista.mostrar(caballo1, caballo2);
         console.pause(1);
         console.cleanScreen();
 
