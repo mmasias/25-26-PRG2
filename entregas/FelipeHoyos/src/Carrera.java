@@ -25,6 +25,10 @@ public class Carrera {
         pista.mostrar(caballos);
         this.mostrarResultado();
     }
+
+    private void avanzarCaballoEnTurno() {}
+
+    
  }
 
 
