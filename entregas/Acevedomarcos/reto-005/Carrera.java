@@ -11,7 +11,6 @@ public class Carrera<Caballo, Pista> {
         caballos[0] = new Caballo(1);
         caballos[1] = new Caballo(2);
 
-        // empieza uno al azar
         turno = (int)(Math.random() * 2);
     }
 
