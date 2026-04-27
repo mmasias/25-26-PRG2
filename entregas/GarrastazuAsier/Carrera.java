@@ -5,9 +5,12 @@ public class Carrera {
     private Carrera carrera;
     private Juego juego;
     private Turno turno;
+    int caballoActual;
 
     public Carrera() {
-        caballos = new Caballo[5];
+        for (int i = 0; i < caballos.length; i++) {
+            caballos[i] = new Caballo();
+        }
         escenario = new Escenario();
         carrera = new Carrera();
         juego = new Juego();
@@ -17,11 +20,13 @@ public class Carrera {
     public void jugar(){
         do{
             escenario.mostrar();
-            caballos[turno.toca()].moverCaballo();
+            
+            caballoActual= turno.toca();
+            caballos[caballoActual].moverCaballo();
             turno.siguiente();
             
-        }while(!caballos.estaEnMeta());
+        }while(!caballos[caballoActual].estaEnMeta());
     
-        System.out.println("¡El caballo " + caballos[turno.toca()] + " ha ganado la carrera!");
+        System.out.println("¡El caballo " + caballos[caballoActual] + " ha ganado la carrera!");
     }
 }
