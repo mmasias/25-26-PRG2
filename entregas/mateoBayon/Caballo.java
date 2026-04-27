@@ -25,3 +25,7 @@ public class Caballo {
         return modelo;
     }
 }
+
+public class Carrera {
+    
+}
