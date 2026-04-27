@@ -48,12 +48,12 @@ class Carrera {
     }
 
     private void mostrarGanador(){
-        if(caballo1.obtenerPosicion() >= META_FINAL){
-            System.out.println("¡El caballo 1 ha ganado!");
-        } else if(caballo2.obtenerPosicion() >= META_FINAL)  {
-            System.out.println("¡El caballo 2 ha ganado!");
-        } else if(caballo1.obtenerPosicion() >= META_FINAL && caballo2.obtenerPosicion() >= META_FINAL){
+        if(caballo1.obtenerPosicion() >= META_FINAL && caballo2.obtenerPosicion() >= META_FINAL){
             System.out.println("¡Es un empate!");
+        } else if(caballo1.obtenerPosicion() >= META_FINAL){
+            System.out.println("¡El caballo 1 ha ganado!");
+        } else if(caballo2.obtenerPosicion() >= META_FINAL){
+            System.out.println("¡El caballo 2 ha ganado!");
         }
     }
 }
