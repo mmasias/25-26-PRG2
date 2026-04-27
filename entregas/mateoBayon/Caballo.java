@@ -39,4 +39,11 @@ public class Carrera {
         }
         mostrarGanador();
     }
+
+    private void mostrarPista(){
+        System.out.println("[][][][][][][][][][][][][][][][][][][][][][][]");
+        System.out.println("".repeat(caballo1.obtenerPosicion()) + caballo1.obtenerModelo());
+        System.out.println("".repeat(caballo2.obtenerPosicion()) + caballo2.obtenerModelo());
+        System.out.println("----------------------------------------------");
+    }
 }
