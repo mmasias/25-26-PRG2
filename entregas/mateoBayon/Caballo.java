@@ -46,4 +46,14 @@ public class Carrera {
         System.out.println("".repeat(caballo2.obtenerPosicion()) + caballo2.obtenerModelo());
         System.out.println("----------------------------------------------");
     }
+
+    private void mostrarGanador(){
+        if(caballo1.obtenerPosicion() >= META_FINAL){
+            System.out.println("¡El caballo 1 ha ganado!");
+        } else if(caballo2.obtenerPosicion() >= META_FINAL)  {
+            System.out.println("¡El caballo 2 ha ganado!");
+        } else if(caballo1.obtenerPosicion() >= META_FINAL && caballo2.obtenerPosicion() >= META_FINAL){
+            System.out.println("¡Es un empate!");
+        }
+    }
 }
