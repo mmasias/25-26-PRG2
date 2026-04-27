@@ -8,6 +8,7 @@ public class Carrera {
     int caballoActual;
 
     public Carrera() {
+        caballos = new Caballo[5];
         for (int i = 0; i < caballos.length; i++) {
             caballos[i] = new Caballo();
         }

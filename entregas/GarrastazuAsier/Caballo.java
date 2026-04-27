@@ -1,6 +1,12 @@
 
 public class Caballo{
 
+
+    
+    public Caballo(){
+
+    }
+    
     public void moverCaballo() {
     }
 
