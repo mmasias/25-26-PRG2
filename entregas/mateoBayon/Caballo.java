@@ -27,5 +27,6 @@ public class Caballo {
 }
 
 public class Carrera {
-    
+    private Caballo caballo1 = new Caballo();
+    private Caballo caballo2 = new Caballo();
 }
