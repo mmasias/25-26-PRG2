@@ -5,7 +5,7 @@ public class Pista {
 
     public void dibujar(Caballo caballo1, Caballo caballo2) {
         for (int i = 0; i < LONGITUD; i++) {
-            System.out.println("_");
+            System.out.print("-");
         }
         System.out.println();
 
@@ -17,6 +17,11 @@ public class Pista {
             } else {
                 System.out.print(" ");
             }
+        }
+        System.out.println();
+
+        for (int i = 0; i < LONGITUD; i++) {
+            System.out.print("-");
         }
         System.out.println();
     }
