@@ -5,7 +5,7 @@ class Juego {
     }
 }
 
-public class Caballo {
+class Caballo {
     private int posicion;
     private String modelo = ";-;'";
 
@@ -26,12 +26,12 @@ public class Caballo {
     }
 }
 
-public class Carrera {
+class Carrera {
     private Caballo caballo1 = new Caballo();
     private Caballo caballo2 = new Caballo();
     private int META_FINAL = 40;
 
-    private void jugar(){
+    public void jugar(){
         while(caballo1.obtenerPosicion() < META_FINAL && caballo2.obtenerPosicion() < META_FINAL){
             caballo1.caballoAvanza();
             caballo2.caballoAvanza();
