@@ -1,4 +1,5 @@
 public class Caballo {
+
     private int numero;
     private int posicion;
 
@@ -7,8 +8,8 @@ public class Caballo {
         this.posicion = 0;
     }
 
-    public void avanzar() {
-        int avance = (int)(Math.random() * 4); // ahora 0-3
+    public void mover() {
+        int avance = (int)(Math.random() * 3); // 0,1,2
         posicion += avance;
     }
 
