@@ -27,6 +27,22 @@ class Carrera {
         return false;
     }
 
+    private void mostrarResultado() {
+        int ganadores = 0;
+        for (int posicion : posiciones) {
+            if (posicion >= LONGITUD) ganadores++;
+        }
+        if (ganadores > 1) {
+            System.out.println("Empate");
+        } else {
+            for (int i = 0; i < posiciones.length; i++) {
+                if (posiciones[i] >= LONGITUD) {
+                    System.out.println("Ganó el caballo " + (i + 1));
+                }
+            }
+        }
+    }
+
     void jugar() {
         mostrarPista();
         while (!hayGanador()) {
@@ -35,5 +51,6 @@ class Carrera {
             }
             mostrarPista();
         }
+        mostrarResultado();
     }
 }
