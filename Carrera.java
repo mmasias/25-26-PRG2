@@ -18,6 +18,15 @@ class Carrera {
         System.out.println("--------------------------------------------");
     }
 
+    private boolean hayGanador() {
+        for (int posicion : posiciones) {
+            if (posicion >= LONGITUD) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     void jugar() {
         mostrarPista();
         while (true) {
