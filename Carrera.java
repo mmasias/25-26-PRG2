@@ -19,5 +19,12 @@ class Carrera {
     }
 
     void jugar() {
+        mostrarPista();
+        while (true) {
+            for (int i = 0; i < posiciones.length; i++) {
+                avanzar(i);
+            }
+            mostrarPista();
+        }
     }
 }
