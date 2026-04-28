@@ -1,26 +1,26 @@
-import java.util.Random;
-
 class Carrera {
 
     private static final int LONGITUD = 40;
-    private int[] posiciones = new int[2];
-    private Random azar = new Random();
+    private Caballo[] caballos;
 
-    private void avanzar(int caballo) {
-        posiciones[caballo] += azar.nextInt(3);
+    public Carrera() {
+        caballos = new Caballo[2];
+        for (int i = 0; i < caballos.length; i++) {
+            caballos[i] = new Caballo();
+        }
     }
 
     private void mostrarPista() {
         System.out.println("--------------------------------------------");
-        for (int i = 0; i < posiciones.length; i++) {
-            System.out.println(" ".repeat(posiciones[i]) + ";-;'");
+        for (int i = 0; i < caballos.length; i++) {
+            System.out.println(" ".repeat(caballos[i].getPosicion()) + ";-;'");
         }
         System.out.println("--------------------------------------------");
     }
 
     private boolean hayGanador() {
-        for (int posicion : posiciones) {
-            if (posicion >= LONGITUD) {
+        for (Caballo caballo : caballos) {
+            if (caballo.getPosicion() >= LONGITUD) {
                 return true;
             }
         }
@@ -29,14 +29,14 @@ class Carrera {
 
     private void mostrarResultado() {
         int ganadores = 0;
-        for (int posicion : posiciones) {
-            if (posicion >= LONGITUD) ganadores++;
+        for (Caballo caballo : caballos) {
+            if (caballo.getPosicion() >= LONGITUD) ganadores++;
         }
         if (ganadores > 1) {
             System.out.println("Empate");
         } else {
-            for (int i = 0; i < posiciones.length; i++) {
-                if (posiciones[i] >= LONGITUD) {
+            for (int i = 0; i < caballos.length; i++) {
+                if (caballos[i].getPosicion() >= LONGITUD) {
                     System.out.println("Ganó el caballo " + (i + 1));
                 }
             }
@@ -46,8 +46,8 @@ class Carrera {
     void jugar() {
         mostrarPista();
         while (!hayGanador()) {
-            for (int i = 0; i < posiciones.length; i++) {
-                avanzar(i);
+            for (int i = 0; i < caballos.length; i++) {
+                caballos[i].avanzar();
             }
             mostrarPista();
         }
