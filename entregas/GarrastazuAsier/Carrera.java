@@ -13,7 +13,6 @@ public class Carrera {
             caballos[i] = new Caballo();
         }
         escenario = new Escenario();
-        carrera = new Carrera();
         juego = new Juego();
         turno = new Turno();
     }

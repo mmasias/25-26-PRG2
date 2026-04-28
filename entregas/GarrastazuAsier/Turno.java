@@ -1,15 +1,24 @@
 public class Turno {
+    private int actual;
+    private int total;
+
+    public Turno(int total) {
+        this.total = total;
+        this.actual = (int)(Math.random() * total); // empieza aleatorio
+    }
 
     public int toca() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toca'");
+        return actual;
     }
 
     public void siguiente() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'siguiente'");
+        actual++;
+        if (actual >= total) {
+            actual = 0;
+        }
     }
-
 }
+
+
     
 
