@@ -26,5 +26,19 @@ public void jugar() {
             turno = (turno == 0) ? 1 : 0;
 
             try { Thread.sleep(150); } catch (InterruptedException e) {}
-        } 
-}}
+        }
+        
+        determinarGanador();
+    }
+
+    private void determinarGanador() {
+        if (caballo1.getPosicion() >= pista.getLongitud() && 
+            caballo2.getPosicion() >= pista.getLongitud()) {
+            System.out.println("Empate");
+        } else if (caballo1.getPosicion() >= pista.getLongitud()) {
+            System.out.println("Ganó el caballo 1");
+        } else {
+            System.out.println("Ganó el caballo 2");
+        }
+    }
+}
