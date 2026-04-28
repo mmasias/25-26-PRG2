@@ -29,7 +29,7 @@ class Carrera {
 
     void jugar() {
         mostrarPista();
-        while (true) {
+        while (!hayGanador()) {
             for (int i = 0; i < posiciones.length; i++) {
                 avanzar(i);
             }
