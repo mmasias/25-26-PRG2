@@ -20,4 +20,31 @@ public class Pista {
             System.out.println(espacios + ";-;'");
         }
     }
+
+    public boolean hayGanador(Caballo[] caballos) {
+        for (int i = 0; i < caballos.length; i++) {
+            if (caballos[i].obtenerPosicion() >= largo) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String[] obtenerGanadores(Caballo[] caballos) {
+        int count = 0;
+        for (int i = 0; i < caballos.length; i++) {
+            if (caballos[i].obtenerPosicion() >= largo) {
+                count++;
+            }
+        }
+
+        String[] ganadores = new String[count];
+        int index = 0;
+        for (int i = 0; i < caballos.length; i++) {
+            if (caballos[i].obtenerPosicion() >= largo) {
+                ganadores[index++] = caballos[i].obtenerIdentificador();
+            }
+        }
+        return ganadores;
+    }
 }

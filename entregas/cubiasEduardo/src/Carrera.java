@@ -23,7 +23,7 @@ public class Carrera {
                 System.out.println("Turno de caballo " + caballo.obtenerIdentificador() + " avanzó " + avance + " casillas.");
             }
 
-            ganado = hayGanador();
+            ganado = pista.hayGanador(caballos);
             if (!ganado) {
                 System.out.println();
             }
@@ -32,7 +32,7 @@ public class Carrera {
         System.out.println("----------------------------------------------");
         pista.mostrar(caballos);
         System.out.println("----------------------------------------------");
-        anunciarGanadores();
+        mostrarGanadores();
     }
 
     private void crearParticipantes(String[] identificadores) {
@@ -42,32 +42,16 @@ public class Carrera {
         }
     }
 
-    private boolean hayGanador() {
-        for (int i = 0; i < caballos.length; i++) {
-            if (caballos[i].obtenerPosicion() >= pista.obtenerLargo()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private void anunciarGanadores() {
-        String ganadores = "";
-        int count = 0;
-        for (int i = 0; i < caballos.length; i++) {
-            if (caballos[i].obtenerPosicion() >= pista.obtenerLargo()) {
-                if (count > 0) {
-                    ganadores += ", ";
-                }
-                ganadores += caballos[i].obtenerIdentificador();
-                count++;
-            }
-        }
-
-        if (count == 1) {
-            System.out.println("Ganó el caballo " + ganadores);
+    private void mostrarGanadores() {
+        String[] ganadores = pista.obtenerGanadores(caballos);
+        if (ganadores.length == 1) {
+            System.out.println("Ganó el caballo " + ganadores[0]);
         } else {
-            System.out.println("Empate entre los caballos " + ganadores);
+            String resultado = ganadores[0];
+            for (int i = 1; i < ganadores.length; i++) {
+                resultado += ", " + ganadores[i];
+            }
+            System.out.println("Empate entre los caballos " + resultado);
         }
     }
 }
