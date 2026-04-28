@@ -1,10 +1,10 @@
 public class Turno {
     private int actual;
-    private int total;
+    private int totalCaballos;
 
-    public Turno(int total) {
-        this.total = total;
-        this.actual = (int)(Math.random() * total); // empieza aleatorio
+    public Turno(int totalCaballos) {
+        this.totalCaballos = totalCaballos;
+        this.actual = (int)(Math.random() * totalCaballos);
     }
 
     public int toca() {
@@ -13,12 +13,9 @@ public class Turno {
 
     public void siguiente() {
         actual++;
-        if (actual >= total) {
+        if (actual >= totalCaballos) {
             actual = 0;
         }
     }
 }
-
-
-    
 
