@@ -4,9 +4,9 @@ public class Utilidad {
         System.out.flush();
     }
 
-    public static void pausar(int milisegundo){
+    public static void pausar(int segundos){
         try {
-            Thread.sleep(milisegundos);
+            Thread.sleep(1000* segundos);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }

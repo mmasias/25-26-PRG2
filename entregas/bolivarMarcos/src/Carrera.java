@@ -21,7 +21,7 @@ public class Carrera {
                 }
             }
             pista.dibujar(caballos);
-            Utilidad.pausar(400);   
+            Utilidad.pausar(1);   
         }
         anunciarResultados();
     }
