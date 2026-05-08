@@ -17,7 +17,7 @@ class Baraja {
     }
 
     public Carta sacar() {
-        assert this.hayCartas()
+        assert this.hayCartas();
 
         ultima = ultima - 1;
 
@@ -28,5 +28,10 @@ class Baraja {
     }
 
     public void moverA(Descarte descarte) {
+        assert descarte != null;
+
+        if(this.hayCartas()) {
+            descarte.recibir(this.sacar());
+        }
     }
 }
