@@ -43,7 +43,18 @@ public class Blackjack {
         }
     }
 
-    private void emppezarDeNuevo() {
+    private void pedirCarta() {
+        if (baraja.hayCartas()) {
+            baraja.moverA(descarte);
+            descarte.moverA(mano);
+
+            if (mano.haPerdido()) {
+                console.writeln("Has perdido");
+            }
+        }
+    }
+
+    private void empezarDeNuevo() {
         baraja = new Baraja();
         descarte = new Descarte();
         mano = new Mano();
