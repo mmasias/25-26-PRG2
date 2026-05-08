@@ -1,6 +1,5 @@
 public class Cliente {
     private static final String SEPARADOR = "--------------------";
-    private static boolean jugando;
     private static Mano mano;
     private static Baraja baraja;
     private static final int NUMERO_MAXIMO_PUNTOS = 21;
@@ -23,19 +22,19 @@ public class Cliente {
     }
 
     public static void main(String[] args) {
-        jugando = true;
         mano = new Mano(console);
         baraja = new Baraja();
         mano.agregarCarta(baraja.sacarCarta());
         mano.agregarCarta(baraja.sacarCarta());
+        Estado estado = Estado.SIGUE;
         do {
-            Estado estado = procesarFinal();
+            estado = procesarFinal();
             imprimirSeparador();
             mano.mostrarMano(estado.etiqueta());
             imprimirSeparador();
             menu(estado);
             imprimirSeparador();
-        } while (jugando);
+        } while (estado == Estado.SIGUE);
     }
 
     private static void menu(Estado estado) {
@@ -50,7 +49,8 @@ public class Cliente {
                 }
             }
             case 2 -> reiniciarPartida();
-            case 3 -> jugando = false;
+            case 3 -> {
+            }
         }
     }
 
