@@ -2,6 +2,7 @@ import java.util.Random;
 
 public class Baraja {
     Carta[] cartas = new Carta[52];
+    int indiceSiguienteCarta = 0;
 
     Baraja() {
         inicializarBaraja();
@@ -9,7 +10,8 @@ public class Baraja {
     }
 
     public Carta sacarCarta() {
-        return new Carta();
+        indiceSiguienteCarta++;
+        return cartas[indiceSiguienteCarta - 1];
     }
 
     private void mezclar() {
