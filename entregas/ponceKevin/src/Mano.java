@@ -1,5 +1,7 @@
 public class Mano {
-    Carta[] cartas = new Carta[52];
+    private static final int MAX_CARTAS_MANO = 11;
+    private static final int NUMERO_MAXIMO_PUNTOS = 21;
+    Carta[] cartas = new Carta[MAX_CARTAS_MANO];
     int indiceSiguienteCarta = 0;
 
     Mano() {
@@ -11,7 +13,7 @@ public class Mano {
     }
 
     public void mostrarMano() {
-        System.out.println("puntaje: " + calcularValor() + " de 21");
+        System.out.println("puntaje: " + calcularValor() + " de " + NUMERO_MAXIMO_PUNTOS);
         System.out.print("Tu mano: ");
         for (int i = 0; i < indiceSiguienteCarta; i++) {
             System.out.print(cartas[i].toString() + " ");
