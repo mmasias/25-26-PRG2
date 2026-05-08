@@ -26,5 +26,16 @@ public class Mano {
         return valorTotal;
     }
 
+       private int valorCarta(Carta carta) {
+        if (carta.esAs()) {
+            return 11;
+        }
+        String valor = carta.getValor();
+        if (valor.equals("J") || valor.equals("Q") || valor.equals("K")) {
+            return 10;
+        }
+        return Integer.parseInt(valor);
+    }
+
  
 }
