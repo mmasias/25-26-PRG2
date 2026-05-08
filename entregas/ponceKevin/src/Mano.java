@@ -1,6 +1,5 @@
 public class Mano {
     private static final int MAX_CARTAS_MANO = 11;
-    private static final int NUMERO_MAXIMO_PUNTOS = 21;
     private static final int VALOR_AS_UNICO = 1;
     private static final int VALOR_AS_DOBLE = 11;
     private static final int VALOR_FIGURA = 10;
