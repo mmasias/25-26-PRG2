@@ -66,3 +66,10 @@ public class Blackjack {
     private void salir() {
         console.writeln("saliendo...");
     }
+
+    private void mostrarEstado() {
+        console.writeln("-------------------------------------");
+        mano.mostyar();
+        console.writeln("Puntaje: " + mano.puntaje());
+        console.writeln("-------------------------------------");
+    }
