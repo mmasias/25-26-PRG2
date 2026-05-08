@@ -14,7 +14,7 @@ public class Carta {
         return valor;
     }
 
-    public void mostrarCarta() {
-        System.out.println(valor + " de " + palo);
+    public String toString() {
+        return "|" + valor + "-" + palo.charAt(0) + "|";
     }
 }
