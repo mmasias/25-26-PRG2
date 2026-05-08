@@ -12,6 +12,7 @@ public class Cliente {
         mano.agregarCarta(baraja.sacarCarta());
         mano.agregarCarta(baraja.sacarCarta());
         do {
+            limpiarPantalla();
             mano.mostrarMano();
             menu();
             procesarFinal();
@@ -40,11 +41,18 @@ public class Cliente {
 
     private static void procesarFinal() {
         if (mano.calcularValor() > 21) {
+            mano.mostrarMano();
             System.out.println("Perdiste te has pasado de 21");
             jugando = false;
         } else if (mano.calcularValor() == 21) {
+            mano.mostrarMano();
             System.out.println("¡Ganaste!");
             jugando = false;
         }
+    }
+
+    private static void limpiarPantalla() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }
