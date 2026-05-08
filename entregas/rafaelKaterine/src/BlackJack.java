@@ -60,6 +60,14 @@ class BlackJack {
         }
     }
 
+    private void mostrarEstado() {
+        console.writeln("Tus cartas:");
+        for (int i = 0; i < puntiaje; i++) {
+            misCartas[i].mostrar();
+        }
+        console.writeln("Puntaje actual: " + this.obtenerPuntaje());
+    }
+
 
 
         
