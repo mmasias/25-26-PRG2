@@ -40,10 +40,10 @@ public class Cliente {
 
     private static void procesarFinal() {
         if (mano.calcularValor() > 21) {
-            System.out.println("Perdiste");
+            System.out.println("Perdiste te has pasado de 21");
             jugando = false;
         } else if (mano.calcularValor() == 21) {
-            System.out.println("Ganaste");
+            System.out.println("¡Ganaste!");
             jugando = false;
         }
     }
