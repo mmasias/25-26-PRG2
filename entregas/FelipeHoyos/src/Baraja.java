@@ -12,6 +12,14 @@ class Baraja {
 
     }
 
+    private void generar() {
+        for (int palo = 0; palo < 4; palo++) {
+            for (int numero = 1; numero <= 13; numero++) {
+                this.poner(new Carta(palo, numero));
+            }
+        }
+    }
+
     public boolean hayCartas() {
         return ultima < 0;
     }
