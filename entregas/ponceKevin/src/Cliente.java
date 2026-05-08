@@ -1,7 +1,9 @@
+import java.util.Scanner;
+
 public class Cliente {
     private static boolean jugando;
     private static Mano mano;
-    private static baraja baraja;
+    private static Baraja baraja;
 
     public static void main(String[] args) {
         jugando = true;
@@ -31,7 +33,7 @@ public class Cliente {
 
     private static void reiniciarPartida() {
         mano = new Mano();
-        baraja = new baraja();
+        baraja = new Baraja();
         mano.agregarCarta(baraja.sacarCarta());
         mano.agregarCarta(baraja.sacarCarta());
     }
