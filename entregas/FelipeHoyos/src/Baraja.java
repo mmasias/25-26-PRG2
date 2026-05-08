@@ -34,6 +34,12 @@ class Baraja {
         }
     }
 
+    private void intercambiar(int i, int j) {
+        Carta auxiliar = cartas[primera];
+        cartas[primera] = cartas[segunda];
+        cartas[segunda] = auxiliar;
+    }
+
     public boolean hayCartas() {
         return ultima > 0;
     }
