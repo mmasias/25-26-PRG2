@@ -1,12 +1,14 @@
 import java.io.Console;
 
-public class Blackjack {
+class Blackjack {
 
     private Baraja baraja;
     private Descarte descarte;
     private Mano mano;
     private Menu menu;
-    private Console console;
+    private Console console; 
+    
+    }
 
     public Blackjack() {
         baraja = new Baraja();
