@@ -63,13 +63,12 @@ public class Cliente {
 
     private static Estado procesarFinal() {
         int valorMano = mano.calcularValor();
-        if (valorMano > NUMERO_MAXIMO_PUNTOS) {
-            return Estado.PERDIO;
+        if (valorMano >= NUMERO_MAXIMO_PUNTOS) {
+            jugando = false;
         }
-        if (valorMano == NUMERO_MAXIMO_PUNTOS) {
-            return Estado.GANO;
-        }
-        return Estado.SIGUE;
+        return valorMano >= NUMERO_MAXIMO_PUNTOS
+                ? (valorMano == NUMERO_MAXIMO_PUNTOS ? Estado.GANO : Estado.PERDIO)
+                : Estado.SIGUE;
     }
 
     private static void imprimirSeparador() {
