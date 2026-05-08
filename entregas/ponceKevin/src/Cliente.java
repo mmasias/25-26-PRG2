@@ -1,4 +1,8 @@
 public class Cliente {
+    private static final String SEPARADOR = "--------------------";
+    private static final String ESTADO_SIGA = "Sigue jugando";
+    private static final String ESTADO_GANO = "Ganó";
+    private static final String ESTADO_PERDIO = "Perdió";
     private static boolean jugando;
     private static Mano mano;
     private static Baraja baraja;
@@ -12,20 +16,26 @@ public class Cliente {
         mano.agregarCarta(baraja.sacarCarta());
         mano.agregarCarta(baraja.sacarCarta());
         do {
-            limpiarPantalla();
-            mano.mostrarMano();
-            menu();
-            procesarFinal();
+            String estado = procesarFinal();
+            imprimirSeparador();
+            mano.mostrarMano(estado);
+            imprimirSeparador();
+            menu(estado);
+            imprimirSeparador();
         } while (jugando);
     }
 
-    private static void menu() {
-        console.writeln("1.pedir carta");
-        console.writeln("2.Reiniciar juego");
+    private static void menu(String estado) {
+        console.writeln("1. Pedir");
+        console.writeln("2. Empezar de nuevo");
         console.writeln("3. Salir");
         int opcion = console.readInt();
         switch (opcion) {
-            case 1 -> mano.agregarCarta(baraja.sacarCarta());
+            case 1 -> {
+                if (ESTADO_SIGA.equals(estado)) {
+                    mano.agregarCarta(baraja.sacarCarta());
+                }
+            }
             case 2 -> reiniciarPartida();
             case 3 -> jugando = false;
         }
@@ -38,19 +48,18 @@ public class Cliente {
         mano.agregarCarta(baraja.sacarCarta());
     }
 
-    private static void procesarFinal() {
+    private static String procesarFinal() {
         int valorMano = mano.calcularValor();
-        if (valorMano >= NUMERO_MAXIMO_PUNTOS) {
-            mano.mostrarMano();
-            String mensaje = valorMano == NUMERO_MAXIMO_PUNTOS
-                    ? "¡Ganaste!"
-                    : "Perdiste te has pasado de " + NUMERO_MAXIMO_PUNTOS;
-            console.writeln(mensaje);
-            jugando = false;
+        if (valorMano > NUMERO_MAXIMO_PUNTOS) {
+            return ESTADO_PERDIO;
         }
+        if (valorMano == NUMERO_MAXIMO_PUNTOS) {
+            return ESTADO_GANO;
+        }
+        return ESTADO_SIGA;
     }
 
-    private static void limpiarPantalla() {
-        console.cleanScreen();
+    private static void imprimirSeparador() {
+        console.writeln(SEPARADOR);
     }
 }

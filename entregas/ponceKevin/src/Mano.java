@@ -17,13 +17,12 @@ public class Mano {
         indiceSiguienteCarta++;
     }
 
-    public void mostrarMano() {
-        console.writeln("puntaje: " + calcularValor() + " de " + NUMERO_MAXIMO_PUNTOS);
-        console.write("Tu mano: ");
+    public void mostrarMano(String estado) {
+        console.write("Mano: ");
         for (int i = 0; i < indiceSiguienteCarta; i++) {
-            console.write(cartas[i].toString() + " ");
+            console.write(cartas[i].toString());
         }
-        console.writeln();
+        console.writeln(" - Puntaje: " + calcularValor() + " ==> " + estado);
     }
 
     public int calcularValor() {
