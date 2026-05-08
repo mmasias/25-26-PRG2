@@ -17,6 +17,14 @@ class Baraja {
     }
 
     public Carta sacar() {
+        assert this.hayCartas()
+
+        ultima = ultima - 1;
+
+        Carta carta = cartas[ultima];
+        cartas[ultima] = null;
+
+        return carta;
     }
 
     public void moverA(Descarte descarte) {
