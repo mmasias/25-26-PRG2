@@ -11,11 +11,12 @@ public class Mano {
     }
 
     public void mostrarMano() {
-        System.out.println("puntaje: " + calcularValor()+"de 21 \n");
-        System.out.println("Tu mano:");
+        System.out.println("puntaje: " + calcularValor() + " de 21");
+        System.out.print("Tu mano: ");
         for (int i = 0; i < indiceSiguienteCarta; i++) {
-            cartas[i].mostrarCarta();
+            System.out.print(cartas[i].toString() + " ");
         }
+        System.out.println();
     }
 
     public int calcularValor() {
