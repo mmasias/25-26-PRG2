@@ -1,14 +1,13 @@
-import java.util.Scanner;
-
 public class Cliente {
     private static boolean jugando;
     private static Mano mano;
     private static Baraja baraja;
     private static final int NUMERO_MAXIMO_PUNTOS = 21;
+    private static final Console console = new Console();
 
     public static void main(String[] args) {
         jugando = true;
-        mano = new Mano();
+        mano = new Mano(console);
         baraja = new Baraja();
         mano.agregarCarta(baraja.sacarCarta());
         mano.agregarCarta(baraja.sacarCarta());
@@ -21,11 +20,10 @@ public class Cliente {
     }
 
     private static void menu() {
-        System.out.println("1.pedir carta");
-        System.out.println("2.Reiniciar juego");
-        System.out.println("3. Salir");
-        Scanner scanner = new Scanner(System.in);
-        int opcion = scanner.nextInt();
+        console.writeln("1.pedir carta");
+        console.writeln("2.Reiniciar juego");
+        console.writeln("3. Salir");
+        int opcion = console.readInt();
         switch (opcion) {
             case 1 -> mano.agregarCarta(baraja.sacarCarta());
             case 2 -> reiniciarPartida();
@@ -34,7 +32,7 @@ public class Cliente {
     }
 
     private static void reiniciarPartida() {
-        mano = new Mano();
+        mano = new Mano(console);
         baraja = new Baraja();
         mano.agregarCarta(baraja.sacarCarta());
         mano.agregarCarta(baraja.sacarCarta());
@@ -47,13 +45,12 @@ public class Cliente {
             String mensaje = valorMano == NUMERO_MAXIMO_PUNTOS
                     ? "¡Ganaste!"
                     : "Perdiste te has pasado de " + NUMERO_MAXIMO_PUNTOS;
-            System.out.println(mensaje);
+            console.writeln(mensaje);
             jugando = false;
         }
     }
 
     private static void limpiarPantalla() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+        console.cleanScreen();
     }
 }
