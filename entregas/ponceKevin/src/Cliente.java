@@ -1,8 +1,12 @@
 public class Cliente {
-    private public static void main(String[] args) {
-        boolean jugando = true;
-        Mano mano = new Mano();
-        baraja baraja = new baraja();
+    private static boolean jugando;
+    private static Mano mano;
+    private static baraja baraja;
+
+    public static void main(String[] args) {
+        jugando = true;
+        mano = new Mano();
+        baraja = new baraja();
         mano.agregarCarta(baraja.sacarCarta());
         mano.agregarCarta(baraja.sacarCarta());
         do {
@@ -32,4 +36,13 @@ public class Cliente {
         mano.agregarCarta(baraja.sacarCarta());
     }
 
+    private static void procesarFinal() {
+        if (mano.calcularValor() > 21) {
+            System.out.println("Perdiste");
+            jugando = false;
+        } else if (mano.calcularValor() == 21) {
+            System.out.println("Ganaste");
+            jugando = false;
+        }
+    }
 }
