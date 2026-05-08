@@ -4,6 +4,7 @@ public class Cliente {
     private static boolean jugando;
     private static Mano mano;
     private static Baraja baraja;
+    private static final int NUMERO_MAXIMO_PUNTOS = 21;
 
     public static void main(String[] args) {
         jugando = true;
@@ -40,13 +41,13 @@ public class Cliente {
     }
 
     private static void procesarFinal() {
-        if (mano.calcularValor() > 21) {
+        int valorMano = mano.calcularValor();
+        if (valorMano >= NUMERO_MAXIMO_PUNTOS) {
             mano.mostrarMano();
-            System.out.println("Perdiste te has pasado de 21");
-            jugando = false;
-        } else if (mano.calcularValor() == 21) {
-            mano.mostrarMano();
-            System.out.println("¡Ganaste!");
+            String mensaje = valorMano == NUMERO_MAXIMO_PUNTOS
+                    ? "¡Ganaste!"
+                    : "Perdiste te has pasado de " + NUMERO_MAXIMO_PUNTOS;
+            System.out.println(mensaje);
             jugando = false;
         }
     }
