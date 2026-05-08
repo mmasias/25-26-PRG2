@@ -7,5 +7,10 @@ public class Blackjack {
     private Console console;
 
     public Blackjack() {
+        baraja = new Baraja();
+        descarte = new Descarte();
+        mano = new Mano();
+        menu = new Menu();
+        console = new Console();
     }
 }
