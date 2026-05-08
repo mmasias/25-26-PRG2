@@ -13,4 +13,35 @@ public class Blackjack {
         menu = new Menu();
         console = new Console();
     }
+
+    private void jugar() {
+        int opcion;
+
+        this.empezarDeNuevo();
+        do {
+            this.mostrarEstado();
+            opcion = menu.pedirOpcion();
+
+            switch (opcion) {
+                case 1:
+                    this.pedirCarta();
+                    break;
+                case 2:
+                    this.empezarDeNuevo();
+                    break;
+                case 3:
+                    console.writeln("Saliendo...");
+                    break;
+            }
+        } while (opcion != 3);
+    }
+
+    private void emppezarDeNuevo() {
+        baraja = new Baraja();
+        descarte = new Descarte();
+        mano = new Mano();
+
+        this.pedirCarta();
+        this.pedirCarta();
+    }
 }
