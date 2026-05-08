@@ -30,10 +30,20 @@ class Mano {
     }
 
     public boolean haPerdido() {
-        return this.puntaje() > 21;
+        final int LIMITE = 21;
+
+        return this.puntaje() > LIMITE;
     }
 
     public void mostrar() {
+        console.write("Mano: ");
+
+        for (int i = 0; i < tamaño; i++) {
+            console.write(cartas[i] + " ");
+
+        }
+
+        console.writeln("");
         
     }
 }
