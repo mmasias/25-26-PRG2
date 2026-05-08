@@ -13,4 +13,8 @@ public class Carta {
     public int getValor() {
         return valor;
     }
+
+    public void mostrarCarta() {
+        System.out.println(valor + " de " + palo);
+    }
 }
