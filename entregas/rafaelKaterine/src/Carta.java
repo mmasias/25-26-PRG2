@@ -13,6 +13,7 @@ public class Carta {
         this.palo = palo;
         this.numero = numero;
         bocaArriba = false;
+        console = new Console();
     }
 
     public void mostrar() {

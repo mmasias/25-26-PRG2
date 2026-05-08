@@ -25,7 +25,7 @@ class BlackJack {
             puntuaje++;
         }
 
-    private void jugar() {
+    public void jugar() {
         Menu menu = new Menu();
         boolean estaJugando = true;
         boolean haGanado = false;
