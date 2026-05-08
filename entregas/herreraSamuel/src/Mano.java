@@ -21,4 +21,26 @@ public class Mano {
         }
     }
 
+    public int calcularPuntaje() {
+        int total = 0;
+        int ases = 0;
+
+        for (int i = 0; i < cantidad; i++) {
+            total += cartas[i].obtenerValor();
+            if (cartas[i].esAs()) {
+                ases++;
+            }
+        }
+
+        while (total > 21 && ases > 0) {
+            total -= 10;
+            ases--;
+        }
+
+        return total;
+    }
+
+
+
+
 }
