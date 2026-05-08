@@ -8,7 +8,7 @@ public class Cliente {
     public static void main(String[] args) {
         jugando = true;
         mano = new Mano();
-        baraja = new baraja();
+        baraja = new Baraja();
         mano.agregarCarta(baraja.sacarCarta());
         mano.agregarCarta(baraja.sacarCarta());
         do {
