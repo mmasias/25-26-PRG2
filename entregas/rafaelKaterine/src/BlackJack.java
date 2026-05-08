@@ -12,7 +12,7 @@ class BlackJack {
         misCartas = new Carta[52]; 
         puntuaje = 0;
     }
-    private void iniciarNuevaPartida() {
+    private void iniciarPartida() {
             this.baraja = new Baraja();
             this.puntuaje = 0;
             this.recibirCarta();

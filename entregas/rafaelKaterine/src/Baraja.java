@@ -40,4 +40,8 @@ public class Baraja {
         return cartas[ultima];
     }
 
+    public boolean vacia() {
+        return ultima==0;
+    }
+
 }
