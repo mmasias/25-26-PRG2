@@ -18,11 +18,19 @@ class Mano {
     }
 
     public int puntaje() {
-        
+        int puntaje = 0;
+
+        for (int i = 0; i < tamaño; i++) {
+            puntaje = 
+                puntaje + 
+                cartas[i].valorBlackjack();
+        }
+
+        return puntaje;
     }
 
     public boolean haPerdido() {
-        
+        return this.puntaje() > 21;
     }
 
     public void mostrar() {
