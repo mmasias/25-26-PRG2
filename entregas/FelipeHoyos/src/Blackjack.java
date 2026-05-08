@@ -63,13 +63,6 @@ public class Blackjack {
         this.pedirCarta();
     }
 
-    private void pedirCarta() {
-        if (baraja.hayCartas()) {
-            baraja.moverA(descarte);
-            descarte.moverA(mano);
-        }
-
-        Carta carta = baraja.sacarCarta();
-        mano.agregarCarta(carta);
+    private void salir() {
+        console.writeln("saliendo...");
     }
-}
