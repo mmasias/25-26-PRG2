@@ -31,7 +31,15 @@ public class Carta {
     }
 
     public boolean esAs() {
-        return numero==1;
+        return numero==0;
+    }
+
+    public int obtenerValor() {
+        if (numero >= 10) {
+            return 10;
+        } else {
+            return numero + 1;
+        }
     }
 
 }
