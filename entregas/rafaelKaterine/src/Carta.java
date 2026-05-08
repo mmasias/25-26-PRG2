@@ -13,7 +13,6 @@ public class Carta {
         this.palo = palo;
         this.numero = numero;
         bocaArriba = false;
-        console = new Console();
     }
 
     public void mostrar() {
@@ -35,11 +34,7 @@ public class Carta {
     }
 
     public int obtenerValor() {
-        if (numero >= 10) {
-            return 10;
-        } else {
-            return numero + 1;
-        }
+        return this.numero;
     }
 
 }
