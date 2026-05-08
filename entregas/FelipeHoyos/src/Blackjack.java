@@ -1,3 +1,5 @@
+import java.io.Console;
+
 public class Blackjack {
 
     private Baraja baraja;
@@ -21,19 +23,24 @@ public class Blackjack {
         do {
             this.mostrarEstado();
             opcion = menu.pedirOpcion();
+            this.procesar(opcion);
+         } while (opcion != 3);
+    }
 
-            switch (opcion) {
-                case 1:
-                    this.pedirCarta();
-                    break;
-                case 2:
-                    this.empezarDeNuevo();
-                    break;
-                case 3:
-                    console.writeln("Saliendo...");
-                    break;
-            }
-        } while (opcion != 3);
+    private void procesar(int opcion) {
+        switch (opcion) {
+            case 1:
+                this.pedirCarta();
+                return;
+            case 2:
+                this.empezarDeNuevo();
+                return;
+            case 3:
+                this.salir();
+                return;
+            default:
+                console.println("Opción no válida");
+        }
     }
 
     private void emppezarDeNuevo() {
