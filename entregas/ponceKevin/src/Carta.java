@@ -6,5 +6,9 @@ public class Carta {
         this.valor = valor;
     }
 
+    public boolean esAs() {
+        return valor.equals("A");
+    }
 
+  
 }
