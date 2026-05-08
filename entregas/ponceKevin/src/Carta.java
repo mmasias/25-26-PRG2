@@ -10,5 +10,7 @@ public class Carta {
         return valor.equals("A");
     }
 
-  
+    public int getValor() {
+        return valor;
+    }
 }
