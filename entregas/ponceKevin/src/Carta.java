@@ -15,6 +15,16 @@ public class Carta {
     }
 
     public String toString() {
-        return "|" + valor + "-" + palo.charAt(0) + "|";
+        return "[" + valor + " " + simboloPalo() + "]";
+    }
+
+    private String simboloPalo() {
+        return switch (palo) {
+            case "Corazones" -> "♥";
+            case "Diamantes" -> "♦";
+            case "Tréboles" -> "♣";
+            case "Picas" -> "♠";
+            default -> palo.substring(0, 1);
+        };
     }
 }
