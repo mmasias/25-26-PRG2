@@ -19,15 +19,12 @@ public class Carta {
     }
 
     private char simboloPalo() {
-        if (palo.equals("Corazones")) {
-            return '♥';
-        }
-        if (palo.equals("Diamantes")) {
-            return '♦';
-        }
-        if (palo.equals("Tréboles")) {
-            return '♣';
-        }
-        return '♠';
+        return switch (palo) {
+            case "Corazones" -> '♥';
+            case "Diamantes" -> '♦';
+            case "Tréboles" -> '♣';
+            case "Picas" -> '♠';
+            default -> '♠';
+        };
     }
 }
