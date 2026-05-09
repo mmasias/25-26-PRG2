@@ -11,23 +11,29 @@ public class Blackjack {
 
     public void jugar() {
         boolean salir = false;
-        this.repartirManoInicial(); 
+        this.repartirManoInicial();
 
-        do {
-            mano.mostrar(); 
+        while (!salir) {
+            mano.mostrar();
             int opcion = menu.obtenerOpcion();
 
             switch (opcion) {
                 case 1 -> {
                     if (mano.puedeSeguir()) {
                         mano.recibirCarta(baraja.repartir());
+                    } else {
+                        System.out.println("Acción no permitida: Ya no puedes pedir más cartas.");
                     }
                 }
                 case 2 -> this.repartirManoInicial();
                 case 3 -> salir = true;
-                default -> System.out.println("Opción no válida");
+                default -> {
+
+                    assert false : "Error crítico: Opción no gestionada: " + opcion;
+                }
             }
-        } while (!salir);
+        }
+        System.out.println("Fin de la sesión. ¡Hasta la próxima!");
     }
 
     private void repartirManoInicial() {
