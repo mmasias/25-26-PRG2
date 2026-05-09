@@ -5,13 +5,13 @@ public class Baraja {
     public Baraja() {
         cartas = new Carta[52];
         siguiente = 0;
-        this.inicializarCartas(); 
-        this.barajar();           
+        this.inicializarCartas();
+        this.barajar();
     }
 
     private void inicializarCartas() {
-        String[] palos = {"♥", "♣", "♦", "♠"};
-        String[] rangos = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+        String[] palos = { "Corazones", "Diamantes", "Treboles", "Picas" };
+        String[] rangos = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
         int indice = 0;
 
         for (int i = 0; i < palos.length; i++) {
@@ -35,8 +35,7 @@ public class Baraja {
         Carta cartaAEntregar = cartas[siguiente];
         siguiente++;
         return cartaAEntregar;
-     
-    }
 
+    }
 
 }

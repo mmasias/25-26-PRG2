@@ -27,6 +27,9 @@ public class Mano {
     }
 
     public void recibirCarta(Carta carta) {
+        assert this.puedeSeguir()
+                : "Error de lógica: Se intentó añadir una carta a una mano que ya no puede recibir más.";
+
         if (cantidad < cartas.length) {
             cartas[cantidad] = carta;
             cantidad++;
@@ -50,6 +53,10 @@ public class Mano {
         }
 
         return total;
+    }
+
+    public void limpiar() {
+        this.cantidad = 0;
     }
 
 }

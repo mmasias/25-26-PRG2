@@ -37,8 +37,9 @@ public class Blackjack {
     }
 
     private void repartirManoInicial() {
-        mano = new Mano();
-        mano.recibirCarta(baraja.repartir());
-        mano.recibirCarta(baraja.repartir());
+        mano.limpiar();
+        for (int i = 0; i < 2; i++) {
+            mano.recibirCarta(baraja.repartir());
+        }
     }
 }
