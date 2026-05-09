@@ -3,7 +3,7 @@ public class Mano {
     private int cantidad;
 
     public Mano() {
-        cartas = new Carta[10]; 
+        cartas = new Carta[10];
         cantidad = 0;
     }
 
@@ -13,7 +13,7 @@ public class Mano {
         for (int i = 0; i < cantidad; i++) {
             cartas[i].mostrar();
         }
-        
+
         String estado = switch (puntos) {
             case 21 -> "Ganó";
             default -> puntos > 21 ? "Perdió" : "Sigue jugando";
@@ -21,15 +21,13 @@ public class Mano {
 
         System.out.println(" - Puntaje: " + puntos + " ==> " + estado);
     }
-        
-    }
 
     public boolean puedeSeguir() {
         return calcularPuntaje() < 21;
     }
 
     public void recibirCarta(Carta carta) {
-       if (cantidad < cartas.length) {
+        if (cantidad < cartas.length) {
             cartas[cantidad] = carta;
             cantidad++;
         }
@@ -53,10 +51,5 @@ public class Mano {
 
         return total;
     }
-
-
-
-
-
 
 }
