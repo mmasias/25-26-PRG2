@@ -8,10 +8,24 @@ public class Mano {
     }
 
     public void mostrar() {
+        int puntos = calcularPuntaje();
+        System.out.print("Mano: ");
+        for (int i = 0; i < cantidad; i++) {
+            cartas[i].mostrar();
+        }
+        
+        String estado = switch (puntos) {
+            case 21 -> "Ganó";
+            default -> puntos > 21 ? "Perdió" : "Sigue jugando";
+        };
+
+        System.out.println(" - Puntaje: " + puntos + " ==> " + estado);
+    }
+        
     }
 
     public boolean puedeSeguir() {
-        
+        return calcularPuntaje() < 21;
     }
 
     public void recibirCarta(Carta carta) {
@@ -39,6 +53,8 @@ public class Mano {
 
         return total;
     }
+
+
 
 
 
