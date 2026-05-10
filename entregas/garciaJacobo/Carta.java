@@ -4,7 +4,7 @@ public class Carta {
     private int numero;
     private boolean bocaArriba;
 
-    private final String[] PALOS = { "♠️", "♣️", "♦️", "♥️" };
+    private final String[] PALOS = {"P", "C", "D", "T"};
     private final String[] NUMEROS = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "X", "J", "Q", "K" };
 
     private Console console;
@@ -47,7 +47,7 @@ public class Carta {
     }
 
     private boolean negro() {
-        return this.palo==0 || this.palo==1;
+        return this.palo == 0 || this.palo == 1;
     }
 
     private boolean rojo() {
@@ -55,12 +55,21 @@ public class Carta {
     }
 
     public boolean esAs() {
-        return numero==0;
+        return numero == 0;
     }
 
     public boolean igualPalo(Carta carta) {
         return this.palo == carta.palo;
-    }    
+    }
+
+    public int getValor() {
+        if (numero >= 9) {
+            return 10;
+        } else if (numero == 0) {
+            return 11;
+        } else {
+            return numero + 1;
+        }
+    }
 
 }
-
