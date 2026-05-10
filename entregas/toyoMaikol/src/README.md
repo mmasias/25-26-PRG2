@@ -1,0 +1,1 @@
+## Entrega çjuego de solitario
