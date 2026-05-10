@@ -19,7 +19,7 @@ public class Mano {
         int contadorAses = 0;
         for (int i = 0; i < contador; i++) {
             total = total + cartas[i].getValor();
-            if (cartas[i].getValor() == 11) {
+            if (cartas[i].esAs()) {
                 contadorAses++;
             }
         }
