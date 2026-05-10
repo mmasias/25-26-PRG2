@@ -1,4 +1,3 @@
-
 public class Blackjack {
     private Baraja baraja;
     private Mano mano;
@@ -18,9 +17,12 @@ public class Blackjack {
             if (mano.estaVacia()) {
                 Carta carta1 = baraja.sacar();
                 Carta carta2 = baraja.sacar();
+                carta1.voltear();
+                carta2.voltear();
                 mano.añadir(carta1);
                 mano.añadir(carta2);
             }
+            this.mostrarInterfaz(mano.getPuntuacion(), this.obtenerEstado());
             int opcion = console.readInt();
             switch (opcion) {
                 case 1 -> {
@@ -33,10 +35,33 @@ public class Blackjack {
                 case 3 -> estaJugando = false;
             }
             hayaGanado = mano.haGanado();
-            mano.mostrar();
+
             mano.getPuntuacion();
         } while (!hayaGanado && estaJugando);
+    }
 
+    private void mostrarInterfaz(int puntos, String estado) {
+        console.writeln("--------------------");
+        console.write("Mano: ");
+        mano.mostrar();
+        console.writeln(" - Puntaje: " + puntos + estado);
+        console.writeln("--------------------");
+        console.writeln("1. Pedir");
+        console.writeln("2. Empezar de nuevo");
+        console.writeln("3. Salir");
+        console.writeln("--------------------");
+
+    }
+
+    private String obtenerEstado() {
+        int puntos = mano.getPuntuacion();
+        if (puntos == 21) {
+            return " ==> ¡Ganó!";
+        } else if (puntos > 21) {
+            return " ==> Perdió";
+        } else {
+            return " ==> Sigue jugando";
+        }
     }
 
     public static void main(String[] args) {
