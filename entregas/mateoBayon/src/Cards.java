@@ -7,8 +7,17 @@ public class Cards {
         this.suit = suit;
     }
 
-    public String getRank() {
-        return rank;
+    public int getValueRank() {
+        switch(this.rank){
+            case "A":
+                return 11;
+            case "K":
+            case "Q":
+            case "J":
+                return 10;
+            default:
+                return Integer.parseInt(this.rank);
+        }
     }
 
     public String getSuit() {
