@@ -23,7 +23,7 @@ class Blackjack {
             menu.mostrar();
             mano.mostrarManoInicial();
 
-            int opcion = console.leerOpcion();
+            int opcion = ((Object) console).leerOpcion();
 
             switch (opcion) {
 

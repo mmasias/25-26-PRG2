@@ -13,11 +13,15 @@ public class Mano {
 
         System.out.println("\n===== TU MANO =====");
 
-        for (Carta carta : cartas) {
-            System.out.println(carta);
+        if (cartas.isEmpty()) {
+            System.out.println("No tienes cartas.");
+        } else {
+
+            for (Carta carta : cartas) {
+                System.out.println(carta);
+            }
         }
 
-        System.out.println("Puntos: " + calcularPuntos());
         System.out.println("===================\n");
     }
 
@@ -26,8 +30,12 @@ public class Mano {
         Carta carta = baraja.sacarCarta();
 
         if (carta != null) {
+
             cartas.add(carta);
             System.out.println("Has robado: " + carta);
+
+        } else {
+            System.out.println("No quedan cartas en la baraja.");
         }
     }
 
@@ -38,10 +46,19 @@ public class Mano {
 
         for (Carta carta : cartas) {
 
-            total += carta.getPuntos();
+            int valor = carta.getValor();
 
-            if (carta.getValor().equals("A")) {
+
+            if (valor > 10) {
+                total += 10;
+
+            // As
+            } else if (valor == 1) {
+                total += 11;
                 cantidadAses++;
+
+            } else {
+                total += valor;
             }
         }
 
@@ -53,11 +70,8 @@ public class Mano {
         return total;
     }
 
-    public void plantarse() {
-        System.out.println("Te has plantado.");
-    }
-
     public void volverAJugar() {
+
         cartas.clear();
         System.out.println("Nueva partida iniciada.");
     }
