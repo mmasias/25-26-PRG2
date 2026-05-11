@@ -14,4 +14,13 @@ public class Deck {
             }
         }
     }
+
+    public void shuffleCards() {
+        for(int i = 0; i < cards.length; i++){
+            int randomIndex = (int) (Math.random()) * 52;
+            Cards temp = cards[i];
+            cards[i] = cards[randomIndex];
+            cards[randomIndex] = temp;
+        }
+    }
 }
