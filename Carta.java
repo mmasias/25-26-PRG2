@@ -21,7 +21,6 @@ public class Carta {
         return valor;
     }
 
-    @Override
     public String toString() {
         return valor + " de " + palo;
     }

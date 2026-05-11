@@ -52,7 +52,7 @@ public class Mano {
             if (valor > 10) {
                 total += 10;
 
-            // As
+            
             } else if (valor == 1) {
                 total += 11;
                 cantidadAses++;
