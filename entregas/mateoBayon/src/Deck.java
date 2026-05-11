@@ -7,5 +7,11 @@ public class Deck {
         this.cards = new Cards[52];
 
         int index = 0;
+        for(int r = 0; r < ranks.length; r++){
+            for(int s = 0; s < suits.length; s++){
+                this.cards[index] = new Cards(ranks[r], suits[s]);
+                index++;
+            }
+        }
     }
 }
