@@ -37,15 +37,16 @@ class BlackJack {
             menu.mostrar();
 
             switch (menu.pedirOpcion()) {
-                case 1 -> { this.recibirCarta();
+                case 1: this.recibirCarta();
                     if (this.obtenerPuntaje() > PUNTUAJE_GANADOR) {
                         estaJugando = false;
                     }
-                }
-                case 2 -> { this.iniciarPartida(); }
-                case 3 -> { estaJugando = false; }
-                default -> console.writeln("Opción no válida");
+                
+                case 2:  this.iniciarPartida(); 
+                case 3:  estaJugando = false; 
+                default: console.writeln("Opción no válida");
             }
+        
 
             haGanado = (this.obtenerPuntaje() == PUNTUAJE_GANADOR);
 
