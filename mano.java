@@ -1,44 +1,64 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Mano {
 
-    public Object volverAJugar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'volverAJugar'");
-    }
+    private List<Carta> cartas;
 
-    public Object pedirCarta(Baraja baraja) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'pedirCarta'");
-    }
-
-    public Object plantarse() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'plantarse'");
+    public Mano() {
+        cartas = new ArrayList<>();
     }
 
     public void mostrarManoInicial() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrarManoInicial'");
+
+        System.out.println("\n===== TU MANO =====");
+
+        for (Carta carta : cartas) {
+            System.out.println(carta);
+        }
+
+        System.out.println("Puntos: " + calcularPuntos());
+        System.out.println("===================\n");
     }
 
-    void plantarse() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void pedirCarta(Baraja baraja) {
+
+        Carta carta = baraja.sacarCarta();
+
+        if (carta != null) {
+            cartas.add(carta);
+            System.out.println("Has robado: " + carta);
+        }
     }
 
     public int calcularPuntos() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'calcularPuntos'");
+
+        int total = 0;
+        int cantidadAses = 0;
+
+        for (Carta carta : cartas) {
+
+            total += carta.getPuntos();
+
+            if (carta.getValor().equals("A")) {
+                cantidadAses++;
+            }
+        }
+
+        while (total > 21 && cantidadAses > 0) {
+            total -= 10;
+            cantidadAses--;
+        }
+
+        return total;
     }
 
-    void volverAJugar() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void plantarse() {
+        System.out.println("Te has plantado.");
     }
 
-    int calcularPuntos() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void volverAJugar() {
+        cartas.clear();
+        System.out.println("Nueva partida iniciada.");
     }
-
-    void pedirCarta(Baraja baraja) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
 }
