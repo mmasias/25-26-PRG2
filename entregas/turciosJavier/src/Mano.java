@@ -33,4 +33,8 @@ class Mano {
     public boolean estaBuena() {
         return calcularPuntos() <= 21;
     }
+
+    public void limpiar() {
+        cartas.clear();
+    }
 }
