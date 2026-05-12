@@ -1,7 +1,9 @@
 package entregas.bolivarMarcos.src;
 
+import java.util.Random;
+
 public class Baraja {
-    
+
      private Carta[] cartas;
     private int ultima;
     private Console console;
@@ -17,5 +19,64 @@ public class Baraja {
         this.mezclar();
         console = new Console();
     }
+     private void mezclar() {
+        Random aleatorio = new Random();
+        for(int i = 0; i<1000; i++){
+            int origen = aleatorio.nextInt(52);
+            int destino = aleatorio.nextInt(52);
+            Carta carta = cartas[origen];
+            cartas[origen] = cartas[destino];
+            cartas[destino] = carta;
+        }        
+    }
+
+    public void poner(Carta carta) {
+        cartas[ultima]=carta;
+        ultima++;
+    }
+
+    public void mostrar() {
+        console.write("BARAJA: ");
+        if (vacia()) {
+            console.writeln("La baraja está vacía!!!");
+        } else {
+            Carta carta = cima();
+            carta.mostrar();
+            console.writeln();
+        }
+    }
+
+    private Carta cima() {
+        return cartas[ultima-1];
+    }
+
+    public void darA(Jugador jugador) {
+        if (this.vacia()) {
+            console.writeln("No hay cartas!!!");
+        } else {
+            int contador = 2;
+            while (contador > 0 && !this.vacia()) {
+                Carta carta = this.sacar();
+                carta.voltear();
+                jugador.agarrar(carta);
+                contador--;
+            }
+        }
+    }
+
+    public Carta sacar() {
+        assert !vacia();
+        ultima--;
+        return cartas[ultima];
+    }
+
+    public boolean vacia() {
+        return ultima == 0;
+    }
+
+    public void sacarCartasIniciales() {
+        this.mezclar();
+    }
+}
     
 }
