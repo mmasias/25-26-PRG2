@@ -10,4 +10,11 @@ class Juego {
         mano = new Mano();
         scanner = new Scanner(System.in);
     }
+
+    public void jugar() {
+        rondaBlackjack();
+    }
+
+    private void rondaBlackjack() {
+    }
 }
