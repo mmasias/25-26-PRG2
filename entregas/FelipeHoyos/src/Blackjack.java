@@ -1,5 +1,3 @@
-import java.io.Console;
-
 class Blackjack {
 
     private Baraja baraja;
@@ -7,8 +5,6 @@ class Blackjack {
     private Mano mano;
     private Menu menu;
     private Console console; 
-    
-    }
 
     public Blackjack() {
         baraja = new Baraja();
@@ -41,7 +37,7 @@ class Blackjack {
                 this.salir();
                 return;
             default:
-                console.println("Opción no válida");
+                console.writeln("Opción no válida");
         }
     }
 
@@ -66,12 +62,13 @@ class Blackjack {
     }
 
     private void salir() {
-        console.writeln("saliendo...");
+        console.writeln("Saliendo...");
     }
 
     private void mostrarEstado() {
         console.writeln("-------------------------------------");
-        mano.mostyar();
-        console.writeln("Puntaje: " + mano.puntaje());
+        mano.mostrar();
+        console.writeln("Puntuación: " + mano.puntaje());
         console.writeln("-------------------------------------");
     }
+}

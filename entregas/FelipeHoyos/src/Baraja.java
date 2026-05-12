@@ -34,7 +34,7 @@ class Baraja {
         }
     }
 
-    private void intercambiar(int i, int j) {
+    private void intercambiar(int primera, int segunda) {
         Carta auxiliar = cartas[primera];
         cartas[primera] = cartas[segunda];
         cartas[segunda] = auxiliar;

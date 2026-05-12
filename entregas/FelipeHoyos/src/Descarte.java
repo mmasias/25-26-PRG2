@@ -12,7 +12,7 @@ class Descarte {
         return tamaño > 0;
     }
 
-    public void recibir (Carta carta) {
+    public void recibir(Carta carta) {
         assert carta != null;
 
         cartas[tamaño] = carta;

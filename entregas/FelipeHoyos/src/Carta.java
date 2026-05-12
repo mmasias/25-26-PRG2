@@ -11,10 +11,10 @@ class Carta {
         this.numero = numero;
     }
     
-    public int valorBlackJack() {
+    public int valorBlackjack() {
         if (numero > 10) {
-        return 10;
-     } 
+            return 10;
+        }
 
         return numero;
 
@@ -26,11 +26,11 @@ class Carta {
                 this.numeroComoTexto() +
                 " " +
                 this.paloComoTexto() +
-                "]"
+                "]";
     }
 
 
-    private string numeroComoTexto() {
+    private String numeroComoTexto() {
         switch (numero) {
             case 1:
                 return "A";
