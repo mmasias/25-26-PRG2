@@ -16,5 +16,9 @@ class Juego {
     }
 
     private void rondaBlackjack() {
+        mano.limpiar();
+        mano.agregarCarta(baraja.repartir());
+        mano.agregarCarta(baraja.repartir());
+        System.out.println(mano);
     }
 }
