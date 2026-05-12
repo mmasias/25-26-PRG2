@@ -15,3 +15,17 @@ public class Carta {
         bocaArriba = false;
         console = new Console();
     }
+
+    public void mostrar() {
+        String numero = "?";
+        String palo = "?";
+        if (this.bocaArriba) {
+            numero = NUMEROS[this.numero];
+            palo = PALOS[this.palo];
+        }
+        console.write("[" + numero + " " + palo + " ]");
+    }
+
+    public void voltear() {
+        bocaArriba = !bocaArriba;
+    }
