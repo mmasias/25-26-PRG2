@@ -1,4 +1,4 @@
-public class Carta {
+public class carta {
     
     public Carta(String valor, String palo);
     
