@@ -13,4 +13,11 @@ public class Hand {
         }
         return numCards;
     }
+
+    public boolean playerWon() {
+        if(totalPoints() == 21){
+            return true;
+        }
+        return false;
+    }
 }
