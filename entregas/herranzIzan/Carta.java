@@ -14,4 +14,18 @@ public class Carta {
     public void mostrar() {
         console.write("[" + NUMEROS[this.numero] + " " + PALOS[this.palo] + "]");
     }
+
+    public int obtenerValor() {
+        if (esAs()) return 11;
+        if (esFigura()) return 10;
+        return numero + 1;
+    }
+
+    private boolean esFigura() {
+        return numero >= 9;
+    }
+
+    public boolean esAs() {
+        return numero == 0;
+    }
 }
