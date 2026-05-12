@@ -20,5 +20,21 @@ class Juego {
         mano.agregarCarta(baraja.repartir());
         mano.agregarCarta(baraja.repartir());
         System.out.println(mano);
+
+        boolean sigue = true;
+
+        while (sigue && mano.estaBuena()) {
+            System.out.println("1. Pedir");
+            System.out.println("2. Plantarse");
+            System.out.print("Opción: ");
+            int opcion = scanner.nextInt();
+
+            if (opcion == 1) {
+                mano.agregarCarta(baraja.repartir());
+                System.out.println(mano);
+            } else {
+                sigue = false;
+            }
+        }
     }
 }
