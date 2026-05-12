@@ -6,4 +6,8 @@ class Mano {
     public Mano() {
         cartas = new ArrayList<>();
     }
+
+    public void agregarCarta(Carta carta) {
+        cartas.add(carta);
+    }
 }
