@@ -29,4 +29,4 @@ El usuario interactúa mediante las siguientes opciones:
 3.  **Parar:** Finaliza la partida con el puntaje acumulado.
 
 ---
-
+![Diagrama de Clases UML](./img/diagrama.png)
