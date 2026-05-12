@@ -22,7 +22,11 @@ class Carta {
 
 
     public String toString() {
-
+        return "[" +
+                this.numeroComoTexto() +
+                " " +
+                this.paloComoTexto() +
+                "]"
     }
 
 
