@@ -3,6 +3,7 @@ public class Carta {
     private int palo;
     private int numero;
     private boolean bocaArriba;
+    private final int MIN_PARA_VALOR_DIEZ = 9;
 
     private final String[] PALOS = { "♠️", "♣️", "♦️", "♥️" };
     private final String[] NUMEROS = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "X", "J", "Q", "K" };
@@ -38,16 +39,8 @@ public class Carta {
         return bocaArriba;
     }
 
-    public boolean siguiente(Carta carta) {
-        return this.numero == carta.numero + 1;
-    }
-
     public boolean distintoColor(Carta carta) {
         return this.rojo() && carta.negro() || this.negro() && carta.rojo();
-    }
-
-    private boolean negro() {
-        return this.palo==0 || this.palo==1;
     }
 
     private boolean rojo() {
@@ -55,11 +48,16 @@ public class Carta {
     }
 
     public boolean esAs() {
-        return numero==0;
+        return this.numero == 0;
     }
 
-    public boolean igualPalo(Carta carta) {
-        return this.palo == carta.palo;
-    }    
-
+    public int valor21() {
+        if (this.esAs()) {
+            return 1;
+        }
+        if (this.numero >= MIN_PARA_VALOR_DIEZ) {
+            return 10;
+        }
+        return this.numero + 1;
+    }
 }
