@@ -14,7 +14,7 @@ class Blackjack {
         console = new Console();
     }
 
-    private void jugar() {
+    public void jugar() {
         int opcion;
 
         this.empezarDeNuevo();
