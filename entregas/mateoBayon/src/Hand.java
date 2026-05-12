@@ -1,17 +1,25 @@
 public class Hand {
     private Card[] myCards;
-    public int numCards = 0;
+    private int numCards;
 
     public Hand() {
         this.myCards = new Card[2];
         this.numCards = 0;
     }
 
-    public int totalPoints() {
-        for(int i = 0; i < myCards.length; i++) {
-            numCards += myCards[i].getValueRank();
+    public void getCard(Card card) {
+        for(int i = 0; i < myCards.length; i++){
+            this.myCards[numCards] = card;
+            this.numCards++;
         }
-        return numCards;
+    }
+
+    public int totalPoints() {
+        int total = 0;
+        for(int i = 0; i < myCards.length; i++) {
+            total += myCards[i].getValueRank();
+        }
+        return total;
     }
 
     public boolean playerWon() {
