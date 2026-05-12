@@ -3,7 +3,7 @@ public class Hand {
     private int numCards;
 
     public Hand() {
-        this.myCards = new Card[2];
+        this.myCards = new Card[10];
         this.numCards = 0;
     }
 
