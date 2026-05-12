@@ -29,4 +29,8 @@ class Mano {
 
         return puntos;
     }
+
+    public boolean estaBuena() {
+        return calcularPuntos() <= 21;
+    }
 }
