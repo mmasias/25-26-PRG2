@@ -32,3 +32,24 @@ public class Mano {
         }
         return total;
     }
+
+    public boolean haGanado() {
+        return getPuntaje() == 21;
+    }
+
+    public boolean seHaPasado() {
+        return getPuntaje() > 21;
+    }
+
+    public void tieneBlackjack() {
+        if (haGanado()) {
+            console.writeln("¡Enhorabuena, tienes Blackjack!");
+        }
+    }
+
+    public void mostrar() {
+        for (int i = 0; i < ultima; i++) {
+            cartas[i].mostrar();
+        }
+        console.writeln(" (Puntos: " + getPuntaje() + ")");
+    }
