@@ -36,5 +36,13 @@ class Juego {
                 sigue = false;
             }
         }
+
+        if (mano.calcularPuntos() == 21) {
+            System.out.println("¡Ganó! BLACKJACK");
+        } else if (mano.estaBuena()) {
+            System.out.println("Se plantó con " + mano.calcularPuntos());
+        } else {
+            System.out.println("Perdió (se pasó de 21)");
+        }
     }
 }
