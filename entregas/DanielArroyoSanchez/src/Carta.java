@@ -1,15 +1,17 @@
-public class Mano {
+public class Carta {
 
-    private Carta[] cartas;
+    private int palo;
+    private int numero;
+    private boolean bocaArriba;
+
+    private final String[] PALOS = { "♠️", "♣️", "♦️", "♥️" };
+    private final String[] NUMEROS = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+
     private Console console;
-    private int ultima;
 
-    public Mano() {
-        this.cartas = new Carta[20];
-        this.ultima = 0;
-        this.console = new Console();
+    public Carta(int palo, int numero) {
+        this.palo = palo;
+        this.numero = numero;
+        bocaArriba = false;
+        console = new Console();
     }
-
-
-
-}
