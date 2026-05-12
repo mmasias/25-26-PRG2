@@ -20,4 +20,18 @@ public class Mano {
             cartas[i].mostrar();
         }
     }
+
+    public int contarPuntos() {
+        int puntos = 0;
+        int ases = 0;
+        for (int i = 0; i < tamaño; i++) {
+            if (cartas[i].esAs()) ases++;
+            puntos += cartas[i].obtenerValor();
+            if (puntos > 21 && ases > 0) {
+                puntos -= 10;
+                ases--;
+            }
+        }
+        return puntos;
+    }
 }
