@@ -11,6 +11,12 @@ class Carta {
         return numero;
 
     }
+
+
+    public String toString() {
+
+    }
+
     
 
 
