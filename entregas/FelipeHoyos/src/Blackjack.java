@@ -37,7 +37,7 @@ class Blackjack {
                 this.salir();
                 return;
             default:
-                console.writeln("Opción no válida");
+                console.writeln("Opcion no valida");
         }
     }
 
@@ -68,7 +68,7 @@ class Blackjack {
     private void mostrarEstado() {
         console.writeln("-------------------------------------");
         mano.mostrar();
-        console.writeln("Puntuación: " + mano.puntaje());
+        console.writeln("Puntuacion: " + mano.puntaje());
         console.writeln("-------------------------------------");
     }
 }
