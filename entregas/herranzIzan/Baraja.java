@@ -18,4 +18,30 @@ public class Baraja {
         cartas[ultima] = carta;
         ultima++;
     }
+
+    private void mezclar() {
+        Random aleatorio = new Random();
+        for (int i = 0; i < 1000; i++) {
+            int origen = aleatorio.nextInt(52);
+            int destino = aleatorio.nextInt(52);
+            Carta temp = cartas[origen];
+            cartas[origen] = cartas[destino];
+            cartas[destino] = temp;
+        }
+    }
+
+    public Carta sacar() {
+        assert !vacia();
+        ultima--;
+        return cartas[ultima];
+    }
+
+    public boolean vacia() {
+        return ultima == 0;
+    }
+
+    public Baraja() {
+        // ...
+        mezclar(); // añade esta línea
+    }
 }
