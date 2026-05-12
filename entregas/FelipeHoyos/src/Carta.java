@@ -47,7 +47,20 @@ class Carta {
 
     }
 
-    
+    private String paloComoTexto() {
+        switch (palo) {
+            case 0:
+                return "♥";
+            case 1:
+                return "♦";
+            case 2:
+                return "♣";
+        }
+
+        return "♠";
+    }
+
+
 
 
 }
