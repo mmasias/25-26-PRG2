@@ -37,4 +37,14 @@ class Mano {
     public void limpiar() {
         cartas.clear();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("Mano: ");
+        for (Carta carta : cartas) {
+            sb.append(carta);
+        }
+        sb.append(" - Puntaje: ").append(calcularPuntos());
+        return sb.toString();
+    }
 }
