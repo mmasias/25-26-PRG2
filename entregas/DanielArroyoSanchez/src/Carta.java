@@ -29,3 +29,29 @@ public class Carta {
     public void voltear() {
         bocaArriba = !bocaArriba;
     }
+
+    public boolean bocaArriba() {
+        return bocaArriba;
+    }
+
+    public boolean siguiente(Carta carta) {
+        return this.numero == carta.numero + 1;
+    }
+
+    public boolean esAs() {
+        return numero == 0;
+    }
+
+    public int getValor() {
+        if (esAs()) {
+            return 11;
+        }
+        if (this.numero >= 9) {
+            return 10;
+        }
+        return this.numero + 1;
+    }
+
+    
+
+}
