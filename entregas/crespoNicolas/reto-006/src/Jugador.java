@@ -1,12 +1,28 @@
 
-    public int consultarPuntaje () {}
+   public class Jugador {
+    private Mano mano; 
 
-    public void recibirCartas () {}
+    public Jugador () {
+        this.mano = new Mano();
+    }
 
-    public boolean seHaPasado () {}
+    public int consultarPuntaje() {
+        return mano.sumaTotal();
+    }
+
+    public boolean seHaPasado() {
+        return mano.sumaTotal() > 21;
+    }
+
+    public boolean tiene21() {
+        return mano.tiene21();
+    }
 
     public void agarrar(Carta carta) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'agarrar'");
+        mano.añadir(carta);
+    }
+
+    public void mostrarMano() {
+        mano.mostrar();
     }
 }
