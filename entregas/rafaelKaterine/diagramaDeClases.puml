@@ -1,0 +1,70 @@
+@startuml
+
+class Juego {
+  + main(args: String[])$
+}
+
+class BlackJack {
+  - puntuaje: int
+  - PUNTUAJE_GANADOR: int
+  + BlackJack()
+  + jugar(): void
+  - iniciarPartida(): void
+  - recibirCarta(): void
+  - mostrarEstado(): void
+  - obtenerPuntuaje(): int
+}
+
+class Baraja {
+  - ultima: int
+  + Baraja()
+  - mezclar(): void
+  + poner(carta: Carta): void
+  + sacar(): Carta
+  + vacia(): boolean
+}
+
+class Carta {
+  - palo: int
+  - numero: int
+  - bocaArriba: boolean
+  - PALOS: String[] {readOnly}
+  - NUMEROS: String[] {readOnly}
+  + Carta(palo: int, numero: int)
+  + mostrar(): void
+  + voltear(): void
+  + esAs(): boolean
+  + obtenerValor(): int
+}
+
+class Menu {
+  + Menu()
+  + mostrar(): void
+  + pedirOpcion(): int
+}
+
+class Console {
+  - INTEGER_regExp: String$
+  - DOUBLE_regExp: String$
+  - CHAR_regExp: String$
+  - input: BufferedReader
+  + Console()
+  + readString(title: String): String
+  + readInt(title: String): int
+  + write(string: String): void
+  + cleanScreen(): void
+  + pause(seconds: int): void
+  - writeError(regExp: String): void
+}
+Juego ..> BlackJack : <<ejecuta>>
+BlackJack *-- Baraja : "1 tiene 1"
+Baraja o-- "52" Carta : "contiene"
+BlackJack o-- "0..*" Carta : "misCartas"
+
+BlackJack ..> Menu : <<usa>>
+Menu --> Console : "pide datos a"
+Baraja --> Console : "imprime en"
+Carta --> Console : "se muestra en"
+
+
+@enduml
